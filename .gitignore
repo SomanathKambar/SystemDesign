@@ -1,0 +1,63 @@
+# General
+.DS_Store
+*.log
+tmp/
+temp/
+
+# JetBrains IDE
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# VS Code
+.vscode/
+
+# Java
+target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Maven
+.mvn/
+mvnw
+mvnw.cmd
+
+# Gradle
+.gradle/
+build/
+gradlew
+gradlew.bat
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+venv/
+.venv/
+env/
+.env
+
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+dist/
+coverage/
+
+# Go
+bin/
+*.exe
+*.test
+*.out
+vendor/
+
+# Rust
+target/
+Cargo.lock
+
+# System Design Specific
+*.drawio.bkp
+*.puml.bkp
