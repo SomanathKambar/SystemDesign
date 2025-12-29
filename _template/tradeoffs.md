@@ -1,0 +1,3 @@
+# Tradeoffs
+
+| Decision | Benefit | Cost |
