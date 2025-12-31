@@ -94,6 +94,9 @@ POST /shorten
 ### Server → 302 Location: https://amazon.com/...
 ### Browser → Loads Amazon
 
+# Request → Validate code → Cache lookup → DB lookup → Return 302
+
+
  DB lookup is the single most critical operation in  system.
 
 ### (This one design decision determines:)
