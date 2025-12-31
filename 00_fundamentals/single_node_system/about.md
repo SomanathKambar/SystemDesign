@@ -34,9 +34,9 @@
 
 ## Now the table gives actionable numbers, not just resources.
 
-## You can reason about when vertical scaling fails, when to add nodes, and how to predict capacity.
+## we can reason about when vertical scaling fails, when to add nodes, and how to predict capacity.
 
-## This turns your design into production-ready planning, not just theory.
+## This turns our design into production-ready planning, not just theory.
 
 ## Cost of 1 redirect
 

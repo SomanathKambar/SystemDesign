@@ -80,11 +80,11 @@ POST /shorten
 
 ##  URL shorteners use 302 because:
 
-• You may change mapping
-• You want to track analytics
-• You don’t want browsers to cache forever
+• We may change mapping
+• We want to track analytics
+• We don’t want browsers to cache forever
 
-##  So every click hits  server → you retain control.
+##  So every click hits  server → We retain control.
 
 
 ## Full redirect flow

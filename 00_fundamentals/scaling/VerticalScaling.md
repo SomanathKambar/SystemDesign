@@ -81,7 +81,7 @@ At peak, this is ~1.3 BILLION redirects/day on one machine.
 
 # Step-by-Step Growth Path (Single Node)
 
-| Stage    | Machine          | What you do         | Why                |
+| Stage    | Machine          | What We do         | Why                |
 | -------- | ---------------- | ------------------- | ------------------ |
 | MVP      | 2 vCPU / 4GB RAM | Basic DB, no cache  | Cheapest           |
 | Growth   | 4 vCPU / 8GB     | Add indexes         | Handle traffic     |
@@ -126,10 +126,10 @@ Turns vague “machine is overloaded” into quantifiable triggers.
 
 ## Because:
 
-### • You save money
-### • You avoid premature distributed complexity
-### • You can handle millions of users on one box
-### • You understand real bottlenecks
+### • We save money
+### • We avoid premature distributed complexity
+### • We can handle millions of users on one box
+### • We understand real bottlenecks
 
 # This is how 90% of startups scale.
 

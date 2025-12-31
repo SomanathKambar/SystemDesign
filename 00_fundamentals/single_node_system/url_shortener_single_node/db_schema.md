@@ -7,9 +7,9 @@
 
 # What is this?
 
-This is the database schema for your URL Shortener.
+This is the database schema for our URL Shortener.
 
-It defines how your URLs are permanently stored.
+It defines how our URLs are permanently stored.
 
 
 | Column     | Type       | Meaning                       |
