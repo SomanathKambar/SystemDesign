@@ -1,0 +1,169 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Reliability & Scale Report - 2026-01-01_11-55-56</title>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+            <style>
+                body { background: #f8f9fa; padding: 20px; }
+                .card { margin-bottom: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); border: none; }
+                .card-header { font-weight: bold; background: #fff; border-bottom: 1px solid #eee; }
+                .rec-box { background: #e8f4fd; border-left: 5px solid #2196f3; padding: 15px; }
+                .kpi { font-size: 24px; font-weight: bold; }
+                .kpi-label { font-size: 12px; color: #666; text-transform: uppercase; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <h2 class="text-dark">🚀 System Reliability & Scale Report</h2>
+                        <p class="text-muted">Run ID: 2026-01-01_11-55-56 | Target: http://localhost:8080</p>
+                    </div>
+                </div>
+
+                <!-- KPIs -->
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card p-3 text-center">
+                            <div class="kpi">565</div>
+                            <div class="kpi-label">Peak RPS</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card p-3 text-center">
+                            <div class="kpi" style="color: red">
+                                1000
+                            </div>
+                            <div class="kpi-label">Breakpoint (Users)</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-3">
+                            <div class="rec-box">
+                                <h5>💡 Recommendation</h5>
+                                <p class="mb-0">⚠️ **Vertical Scaling Required:** System slows down at 1000 users. <br>The database or CPU is likely the bottleneck. Increase RAM/CPU or optimize DB queries.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Charts -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">Throughput & Error Rate</div>
+                            <div class="card-body">
+                                <canvas id="throughputChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">Latency Degradation</div>
+                            <div class="card-body">
+                                <canvas id="latencyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Security & Health -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">🛡️ Penetration Test (Basic DAST)</div>
+                            <div class="card-body">
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Total Injection Attempts
+                                        <span class="badge bg-primary rounded-pill">1662</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Blocked (HTTP 4xx) - Good
+                                        <span class="badge bg-success rounded-pill">0</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Server Crashes (HTTP 500) - Bad
+                                        <span class="badge bg-danger rounded-pill">0</span>
+                                    </li>
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        Accepted (HTTP 200) - Risky
+                                        <span class="badge bg-warning text-dark rounded-pill">1662</span>
+                                    </li>
+                                </ul>
+                                <small class="text-muted mt-2 d-block">* Checks for SQLi, XSS, and Large Buffers.</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card">
+                            <div class="card-header">💓 Health Recovery</div>
+                            <div class="card-body">
+                                <table class="table table-sm">
+                                    <thead><tr><th>After Stage</th><th>Status</th><th>Latency</th></tr></thead>
+                                    <tbody>
+                                        <tr><td>10 Users</td><td>❌ DOWN</td><td>1.70ms</td></tr><tr><td>50 Users</td><td>❌ DOWN</td><td>1.81ms</td></tr><tr><td>200 Users</td><td>❌ DOWN</td><td>2.42ms</td></tr><tr><td>500 Users</td><td>❌ DOWN</td><td>1.79ms</td></tr><tr><td>1000 Users</td><td>❌ DOWN</td><td>2.83ms</td></tr><tr><td>2000 Users</td><td>❌ DOWN</td><td>1.89ms</td></tr><tr><td>3000 Users</td><td>❌ DOWN</td><td>1.49ms</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const labels = ["10", "50", "200", "500", "1000", "2000", "3000"];
+                
+                new Chart(document.getElementById('throughputChart'), {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'Throughput (RPS)',
+                                data: [543.4, 565.1, 492.0, 523.1, 473.3, 571.0, 573.2],
+                                borderColor: '#2196f3',
+                                yAxisID: 'y'
+                            },
+                            {
+                                label: 'Error Rate (%)',
+                                data: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],
+                                borderColor: '#f44336',
+                                yAxisID: 'y1',
+                                borderDash: [5, 5]
+                            }
+                        ]
+                    },
+                    options: {
+                        scales: {
+                            y: { type: 'linear', display: true, position: 'left', title: {display: true, text: 'Req/Sec'} },
+                            y1: { type: 'linear', display: true, position: 'right', title: {display: true, text: 'Errors %'}, grid: {drawOnChartArea: false} }
+                        }
+                    }
+                });
+
+                new Chart(document.getElementById('latencyChart'), {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [
+                            {
+                                label: 'P95 Latency (ms)',
+                                data: [17.72007942199707, 60.20703315734863, 336.42057180404663, 884.3133449554443, 2186.354947090149, 1050.876545906067, 600.6554126739502],
+                                borderColor: '#ff9800',
+                                backgroundColor: 'rgba(255, 152, 0, 0.1)',
+                                fill: true
+                            }
+                        ]
+                    },
+                    options: {
+                        scales: { y: { title: {display: true, text: 'Milliseconds'} } }
+                    }
+                });
+            </script>
+        </body>
+        </html>
+        

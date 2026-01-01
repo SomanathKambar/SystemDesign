@@ -1,0 +1,158 @@
+{
+  "timestamp": "2026-01-01_11-55-56",
+  "config": {
+    "url": "http://localhost:8080",
+    "stages": [
+      [
+        10,
+        5
+      ],
+      [
+        50,
+        10
+      ],
+      [
+        200,
+        10
+      ],
+      [
+        500,
+        10
+      ],
+      [
+        1000,
+        10
+      ],
+      [
+        2000,
+        10
+      ],
+      [
+        3000,
+        5
+      ]
+    ]
+  },
+  "results": [
+    {
+      "users": 10,
+      "duration": 5,
+      "metrics": {
+        "rps": 543.4,
+        "avg": 15.316953104473363,
+        "p95": 17.72007942199707,
+        "p99": 19.534387588500977,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "users": 50,
+      "duration": 10,
+      "metrics": {
+        "rps": 565.1,
+        "avg": 45.087902045127585,
+        "p95": 60.20703315734863,
+        "p99": 66.5060043334961,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "users": 200,
+      "duration": 10,
+      "metrics": {
+        "rps": 492.0,
+        "avg": 193.8650751501564,
+        "p95": 336.42057180404663,
+        "p99": 374.4173741340637,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "users": 500,
+      "duration": 10,
+      "metrics": {
+        "rps": 523.1,
+        "avg": 291.727545839768,
+        "p95": 884.3133449554443,
+        "p99": 1021.8325138092041,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "users": 1000,
+      "duration": 10,
+      "metrics": {
+        "rps": 473.3,
+        "avg": 563.377400167946,
+        "p95": 2186.354947090149,
+        "p99": 2454.046196937561,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "users": 2000,
+      "duration": 10,
+      "metrics": {
+        "rps": 571.0,
+        "avg": 575.3740517354054,
+        "p95": 1050.876545906067,
+        "p99": 1280.6012105941772,
+        "error_rate": 0.0
+      }
+    },
+    {
+      "users": 3000,
+      "duration": 5,
+      "metrics": {
+        "rps": 573.2,
+        "avg": 345.52616334344157,
+        "p95": 600.6554126739502,
+        "p99": 700.8292269706726,
+        "error_rate": 0.0
+      }
+    }
+  ],
+  "health_checks": [
+    {
+      "after_stage_users": 10,
+      "healthy": false,
+      "latency": 1.7049312591552734
+    },
+    {
+      "after_stage_users": 50,
+      "healthy": false,
+      "latency": 1.809835433959961
+    },
+    {
+      "after_stage_users": 200,
+      "healthy": false,
+      "latency": 2.4220943450927734
+    },
+    {
+      "after_stage_users": 500,
+      "healthy": false,
+      "latency": 1.7921924591064453
+    },
+    {
+      "after_stage_users": 1000,
+      "healthy": false,
+      "latency": 2.8340816497802734
+    },
+    {
+      "after_stage_users": 2000,
+      "healthy": false,
+      "latency": 1.8889904022216797
+    },
+    {
+      "after_stage_users": 3000,
+      "healthy": false,
+      "latency": 1.4929771423339844
+    }
+  ],
+  "security_report": {
+    "attempts": 1662,
+    "blocked": 0,
+    "leaked_500": 0,
+    "successful_200": 1662
+  }
+}

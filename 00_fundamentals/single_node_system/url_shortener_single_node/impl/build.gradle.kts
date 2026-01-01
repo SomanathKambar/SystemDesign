@@ -23,7 +23,13 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("io.mockk:mockk:1.13.8")
+    testImplementation("com.ninja-squad:springmockk:4.0.0")
 
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
 
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
 }
