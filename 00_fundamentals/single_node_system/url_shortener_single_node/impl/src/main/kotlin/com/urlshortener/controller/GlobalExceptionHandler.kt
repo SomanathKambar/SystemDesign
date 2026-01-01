@@ -20,8 +20,13 @@ class GlobalExceptionHandler {
 
     @ExceptionHandler(Throwable::class)
     fun handleCriticalError(e: Throwable): ResponseEntity<Map<String, String>> {
-        // Log the critical error (Senior logic: don't expose internal stack traces for critical errors)
+        // Under 50k+ load, DB locks or Thread exhaustion can occur.
+        // We return 503 (Service Unavailable) so the load balancer/client knows to back off.
         return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE)
-            .body(mapOf("error" to "System is under extreme pressure and temporarily unavailable"))
+            .body(mapOf(
+                "error" to "System is under extreme pressure",
+                "type" to e.javaClass.simpleName,
+                "message" to (e.message ?: "Unknown critical error")
+            ))
     }
 }

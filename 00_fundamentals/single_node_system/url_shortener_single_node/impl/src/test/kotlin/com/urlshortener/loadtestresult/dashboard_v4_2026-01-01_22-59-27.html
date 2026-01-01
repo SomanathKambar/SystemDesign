@@ -1,0 +1,58 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Correctness & Analytics Report - 2026-01-01_22-59-27</title>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+            <style>
+                body { background: #f4f7f6; padding: 20px; }
+                .card { margin-bottom: 20px; border-radius: 12px; border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+                .stat-card { background: #fff; padding: 20px; text-align: center; }
+                .stat-value { font-size: 28px; font-weight: bold; color: #2c3e50; }
+                .stat-label { font-size: 14px; color: #7f8c8d; text-transform: uppercase; }
+                .chart-container { position: relative; height: 300px; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-12 text-center">
+                        <h2 class="fw-bold">📊 Correctness & Analytics Dashboard (V4 Fixed)</h2>
+                        <p class="text-muted">Target: http://localhost:8080 | Timestamp: 2026-01-01_22-59-27</p>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-md-3"><div class="card stat-card"><div class="stat-value">270152</div><div class="stat-label">Total Valid Cycles</div></div></div>
+                    <div class="col-md-3"><div class="card stat-card"><div class="stat-value text-primary">13490</div><div class="stat-label">Deduplication Hits</div></div></div>
+                    <div class="col-md-3"><div class="card stat-card"><div class="stat-value text-success">270152</div><div class="stat-label">Stats Verified</div></div></div>
+                    <div class="col-md-3"><div class="card stat-card"><div class="stat-value text-danger">462</div><div class="stat-label">Total Errors</div></div></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6"><div class="card p-4"><h5 class="fw-bold mb-4">Performance: Throughput (RPS)</h5><div class="chart-container"><canvas id="rpsChart"></canvas></div></div></div>
+                    <div class="col-md-6"><div class="card p-4"><h5 class="fw-bold mb-4">Reliability: P95 Latency (ms)</h5><div class="chart-container"><canvas id="latencyChart"></canvas></div></div></div>
+                </div>
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5 class="fw-bold mb-3">System Logic Verification</h5>
+                            <div class="alert alert-success"><strong>Hashing:</strong> Hashing Correct: No unexpected errors during deduplication.</div>
+                            <div class="alert alert-info"><strong>Observer Pattern:</strong> Stats verified accurately across threads.</div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5 class="fw-bold mb-3">💓 Health Recovery</h5>
+                            <table class="table table-sm"><thead><tr><th>After Stage</th><th>Status</th><th>Latency</th></tr></thead><tbody><tr><td>10 Users</td><td>✅ UP</td><td>1.14ms</td></tr><tr><td>50 Users</td><td>✅ UP</td><td>1.25ms</td></tr><tr><td>20000 Users</td><td>✅ UP</td><td>1.90ms</td></tr><tr><td>40000 Users</td><td>✅ UP</td><td>1.96ms</td></tr></tbody></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                const labels = ["10", "50", "20000", "40000"];
+                new Chart(document.getElementById('rpsChart'), { type: 'bar', data: { labels: labels, datasets: [{ label: 'Requests Per Second', data: [1314.0, 1350.0, 790.76, 533.3333333333334], backgroundColor: '#3498db' }] }, options: { maintainAspectRatio: false } });
+                new Chart(document.getElementById('latencyChart'), { type: 'line', data: { labels: labels, datasets: [{ label: 'P95 Latency', data: [6.5694451332092285, 21.037006378173828, 4978.476440906525, 6173.588955402374], borderColor: '#e67e22', tension: 0.3, fill: true, backgroundColor: 'rgba(230, 126, 34, 0.1)' }] }, options: { maintainAspectRatio: false } });
+            </script>
+        </body></html>
+        
