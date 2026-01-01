@@ -13,8 +13,10 @@ import java.net.URI
 class UrlController(private val service: UrlService) {
 
     @PostMapping("/shorten")
-    fun shorten(@RequestBody req: Map<String, String>) =
-        mapOf("short_url" to "http://localhost:8080/" + service.shorten(req["long_url"]!!))
+    fun shorten(@RequestBody req: Map<String, String>): Map<String, String> {
+        val longUrl = req["long_url"] ?: throw IllegalArgumentException("Missing 'long_url' in request body")
+        return mapOf("short_url" to "http://localhost:8080/" + service.shorten(longUrl))
+    }
 
     @GetMapping("/{code}")
     fun redirect(@PathVariable code: String): ResponseEntity<Void> {

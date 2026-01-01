@@ -20,5 +20,14 @@ data class UrlEntity(
     @Column(columnDefinition = "TEXT", nullable = false)
     val longUrl: String,
 
-    val createdAt: Instant = Instant.now()
+    @Column(unique = true, length = 64, nullable = false)
+    val urlHash: String,
+
+    val createdAt: Instant = Instant.now(),
+
+    var lastAccessedAt: Instant = Instant.now(),
+
+    var clickCount: Long = 0,
+
+    var creationRequestCount: Long = 1
 )
