@@ -20,7 +20,13 @@ STAGES = [
     (10, 5),      # Warmup
     (50, 5),      # Baseline
     (100, 5),     # Moderate
-    (200, 5),     # Heavy
+    (500, 5),     # Moderate
+    (1000, 5),     # Moderate
+    (10000, 5),     # Heavy
+    (20000, 5),     # Heavy
+    (40000, 5),     # Heavy
+    (45000, 5),     # Heavy
+    (50000, 5),     # Heavy
 ]
 
 class LoadTestReporter:
@@ -89,6 +95,20 @@ class LoadTestReporter:
         stats_status = "info" if analytics['stats_verification_failures'] == 0 else "danger"
         stats_msg = "Observer Pattern: Stats verified accurately across threads." if analytics['stats_verification_failures'] == 0 else f"Stats Mismatch: {analytics['stats_verification_failures']} verification failures detected."
 
+        # Collapse logic
+        collapse_msg = self.run_data["analytics_summary"].get("collapse_detected")
+        collapse_html = f"""
+        <div class="row mt-2">
+            <div class="col-12">
+                <div class="alert alert-danger">
+                    <h5 class="fw-bold">💥 Critical Failure Detected</h5>
+                    <p class="mb-0">{collapse_msg}</p>
+                    <small>The system or test script hit a hard resource limit (e.g., Thread or File Descriptor limit).</small>
+                </div>
+            </div>
+        </div>
+        """ if collapse_msg else ""
+
         html_content = f"""
         <!DOCTYPE html>
         <html>
@@ -114,6 +134,8 @@ class LoadTestReporter:
                         <p class="text-muted">Target: {BASE_URL} | Timestamp: {self.timestamp}</p>
                     </div>
                 </div>
+
+                {collapse_html}
 
                 <div class="row mb-4">
                     <div class="col-md-3">
@@ -330,20 +352,30 @@ class LoadTester:
         self.reporter.update_analytics(success, dedup_hits, stats_calls, stats_fails, errors)
         print(f"  -> RPS: {metrics['rps']:.2f} | P95: {metrics['p95']:.2f}ms | Errors: {errors}")
 
-    def run(self):
-        print(f"🚀 Starting Correctness-First Stress Test V4 (Fixed)")
-        print(f"Target: {BASE_URL}")
-        for users, duration in STAGES:
-            self.run_stage(users, duration)
-            self.check_health(users)
-            time.sleep(1)
-
-        json_path = self.reporter.save_json()
-        print(f"\n✅ Load test complete. Raw data: {json_path}")
-        self.reporter.generate_html_dashboard()
-
-if __name__ == "__main__":
-    try:
+        def run(self):
+            print(f"🚀 Starting Correctness-First Stress Test V4 (Fixed)")
+            print(f"Target: {BASE_URL}")
+            
+            try:
+                for users, duration in STAGES:
+                    self.run_stage(users, duration)
+                    self.check_health(users)
+                    time.sleep(1)
+            except RuntimeError as e:
+                print(f"\n💥 SCRIPT CRASHED (Resource Exhaustion): {e}")
+                print("The test script hit the OS thread limit. This is a local bottleneck.")
+                with self.reporter.lock:
+                    self.reporter.run_data["analytics_summary"]["errors"] += 1
+                    self.reporter.run_data["analytics_summary"]["collapse_detected"] = str(e)
+            except Exception as e:
+                print(f"\n⚠️ Unexpected Error: {e}")
+            finally:
+                print("\nFinalizing Reports...")
+                json_path = self.reporter.save_json()
+                print(f"✅ Raw data: {json_path}")
+                self.reporter.generate_html_dashboard()
+    
+    if __name__ == "__main__":    try:
         requests.get(f"{BASE_URL}/health", timeout=2)
     except:
         print("❌ Server not found at localhost:8080. Start the Spring Boot app first.")

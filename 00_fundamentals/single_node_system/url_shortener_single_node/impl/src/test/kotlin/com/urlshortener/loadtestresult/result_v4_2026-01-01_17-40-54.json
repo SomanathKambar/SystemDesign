@@ -1,0 +1,155 @@
+{
+  "timestamp": "2026-01-01_17-40-54",
+  "config": {
+    "url": "http://localhost:8080",
+    "stages": [
+      [
+        10,
+        5
+      ],
+      [
+        50,
+        5
+      ],
+      [
+        100,
+        5
+      ],
+      [
+        200,
+        5
+      ],
+      [
+        500,
+        5
+      ],
+      [
+        1000,
+        5
+      ],
+      [
+        2000,
+        5
+      ],
+      [
+        50000,
+        5
+      ]
+    ]
+  },
+  "results": [
+    {
+      "users": 10,
+      "duration": 5,
+      "metrics": {
+        "rps": 532.0,
+        "p95": 18.45078468322754
+      }
+    },
+    {
+      "users": 50,
+      "duration": 5,
+      "metrics": {
+        "rps": 560.0,
+        "p95": 63.90676498413086
+      }
+    },
+    {
+      "users": 100,
+      "duration": 5,
+      "metrics": {
+        "rps": 540.0,
+        "p95": 109.07691717147827
+      }
+    },
+    {
+      "users": 200,
+      "duration": 5,
+      "metrics": {
+        "rps": 520.0,
+        "p95": 214.56825733184814
+      }
+    },
+    {
+      "users": 500,
+      "duration": 5,
+      "metrics": {
+        "rps": 500.0,
+        "p95": 604.5020699501038
+      }
+    },
+    {
+      "users": 1000,
+      "duration": 5,
+      "metrics": {
+        "rps": 600.0,
+        "p95": 854.7104001045227
+      }
+    },
+    {
+      "users": 2000,
+      "duration": 5,
+      "metrics": {
+        "rps": 800.0,
+        "p95": 733.2288384437561
+      }
+    },
+    {
+      "users": 50000,
+      "duration": 5,
+      "metrics": {
+        "rps": 10000.0,
+        "p95": 22589.141619205475
+      }
+    }
+  ],
+  "health_checks": [
+    {
+      "after_stage_users": 10,
+      "healthy": true,
+      "latency": 1.0597705841064453
+    },
+    {
+      "after_stage_users": 50,
+      "healthy": true,
+      "latency": 1.0900497436523438
+    },
+    {
+      "after_stage_users": 100,
+      "healthy": true,
+      "latency": 1.7151832580566406
+    },
+    {
+      "after_stage_users": 200,
+      "healthy": true,
+      "latency": 1.8811225891113281
+    },
+    {
+      "after_stage_users": 500,
+      "healthy": true,
+      "latency": 2.471923828125
+    },
+    {
+      "after_stage_users": 1000,
+      "healthy": true,
+      "latency": 1.3470649719238281
+    },
+    {
+      "after_stage_users": 2000,
+      "healthy": true,
+      "latency": 1.377105712890625
+    },
+    {
+      "after_stage_users": 50000,
+      "healthy": true,
+      "latency": 2.147674560546875
+    }
+  ],
+  "analytics_summary": {
+    "total_requests": 70260,
+    "deduplication_saved_count": 70240,
+    "stats_verification_calls": 70260,
+    "stats_verification_failures": 0,
+    "errors": 0
+  }
+}
