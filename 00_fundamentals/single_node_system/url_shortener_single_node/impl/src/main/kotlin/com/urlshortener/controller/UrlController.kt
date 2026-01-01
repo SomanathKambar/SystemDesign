@@ -23,4 +23,21 @@ class UrlController(private val service: UrlService) {
         val url = service.resolve(code) ?: return ResponseEntity.notFound().build()
         return ResponseEntity.status(302).location(URI.create(url)).build()
     }
+
+    @GetMapping("/stats/{code}")
+    fun getStats(@PathVariable code: String): ResponseEntity<Map<String, Any>> {
+        val stats = service.getStats(code) ?: return ResponseEntity.notFound().build()
+        return ResponseEntity.ok(mapOf(
+            "short_code" to stats.shortCode,
+            "long_url" to stats.longUrl,
+            "click_count" to stats.clickCount,
+            "creation_request_count" to stats.creationRequestCount,
+            "created_at" to stats.createdAt,
+            "last_accessed_at" to stats.lastAccessedAt
+        ))
+    }
+
+    @GetMapping("/health")
+    fun health(): ResponseEntity<Map<String, String>> = 
+        ResponseEntity.ok(mapOf("status" to "UP"))
 }

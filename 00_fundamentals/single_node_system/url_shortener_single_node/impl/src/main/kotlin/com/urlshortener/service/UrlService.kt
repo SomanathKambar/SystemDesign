@@ -62,6 +62,10 @@ class UrlService(
         return entity.longUrl
     }
 
+    fun getStats(code: String): UrlEntity? {
+        return repo.findByShortCode(code)
+    }
+
     private fun hashUrl(url: String): String {
         val bytes = MessageDigest.getInstance("SHA-256").digest(url.toByteArray())
         return bytes.joinToString("") { "%02x".format(it) }

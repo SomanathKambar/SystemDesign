@@ -346,7 +346,7 @@ class LoadTester:
     def check_health(self, after_users):
         try:
             t0 = time.time()
-            resp = requests.get(f"{BASE_URL}/api-docs", timeout=2)
+            resp = requests.get(f"{BASE_URL}/health", timeout=2)
             lat = (time.time() - t0) * 1000
             is_healthy = resp.status_code == 200
             self.reporter.add_health_check(after_users, is_healthy, lat)
@@ -439,7 +439,7 @@ class LoadTester:
 
 def check_server():
     try:
-        requests.get(f"{BASE_URL}/api-docs", timeout=2)
+        requests.get(f"{BASE_URL}/health", timeout=2)
         return True
     except:
         return False
