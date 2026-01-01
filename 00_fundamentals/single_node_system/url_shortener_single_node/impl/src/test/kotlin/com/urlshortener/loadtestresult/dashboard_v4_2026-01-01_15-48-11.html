@@ -1,0 +1,132 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <title>Correctness & Analytics Report - 2026-01-01_15-48-11</title>
+            <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+            <style>
+                body { background: #f4f7f6; padding: 20px; }
+                .card { margin-bottom: 20px; border-radius: 12px; border: none; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
+                .stat-card { background: #fff; padding: 20px; text-align: center; }
+                .stat-value { font-size: 28px; font-weight: bold; color: #2c3e50; }
+                .stat-label { font-size: 14px; color: #7f8c8d; text-transform: uppercase; }
+                .chart-container { position: relative; height: 300px; }
+            </style>
+        </head>
+        <body>
+            <div class="container">
+                <div class="row mb-4">
+                    <div class="col-12 text-center">
+                        <h2 class="fw-bold">📊 Correctness & Analytics Dashboard (V4 Fixed)</h2>
+                        <p class="text-muted">Target: http://localhost:8080 | Timestamp: 2026-01-01_15-48-11</p>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-3">
+                        <div class="card stat-card">
+                            <div class="stat-value">10378</div>
+                            <div class="stat-label">Total Valid Cycles</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card">
+                            <div class="stat-value text-primary">10358</div>
+                            <div class="stat-label">Deduplication Hits</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card">
+                            <div class="stat-value text-success">10378</div>
+                            <div class="stat-label">Stats Verified</div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card stat-card">
+                            <div class="stat-value text-danger">2</div>
+                            <div class="stat-label">Total Errors</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5 class="fw-bold mb-4">Performance: Throughput (RPS)</h5>
+                            <div class="chart-container">
+                                <canvas id="rpsChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5 class="fw-bold mb-4">Reliability: P95 Latency (ms)</h5>
+                            <div class="chart-container">
+                                <canvas id="latencyChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5 class="fw-bold mb-3">System Logic Verification</h5>
+                            <div class="alert alert-warning">
+                                <strong>Hashing:</strong> Hashing Issues: Some requests failed.
+                            </div>
+                            <div class="alert alert-danger">
+                                <strong>Observer Pattern:</strong> Stats Mismatch: 925 verification failures detected.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card p-4">
+                            <h5 class="fw-bold mb-3">💓 Health Recovery</h5>
+                            <table class="table table-sm">
+                                <thead><tr><th>After Stage</th><th>Status</th><th>Latency</th></tr></thead>
+                                <tbody>
+                                    <tr><td>10 Users</td><td>✅ UP</td><td>1.22ms</td></tr><tr><td>50 Users</td><td>✅ UP</td><td>1.04ms</td></tr><tr><td>100 Users</td><td>✅ UP</td><td>1.19ms</td></tr><tr><td>200 Users</td><td>✅ UP</td><td>1.81ms</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <script>
+                const labels = ["10", "50", "100", "200"];
+                new Chart(document.getElementById('rpsChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: labels,
+                        datasets: [{ 
+                            label: 'Requests Per Second',
+                            data: [445.6, 550.0, 560.0, 520.0],
+                            backgroundColor: '#3498db'
+                        }]
+                    },
+                    options: { maintainAspectRatio: false }
+                });
+
+                new Chart(document.getElementById('latencyChart'), {
+                    type: 'line',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: 'P95 Latency',
+                            data: [20.677483081817627, 64.0501618385315, 104.78216409683228, 227.41886377334595],
+                            borderColor: '#e67e22',
+                            tension: 0.3,
+                            fill: true,
+                            backgroundColor: 'rgba(230, 126, 34, 0.1)'
+                        }]
+                    },
+                    options: { maintainAspectRatio: false }
+                });
+            </script>
+        </body>
+        </html>
+        

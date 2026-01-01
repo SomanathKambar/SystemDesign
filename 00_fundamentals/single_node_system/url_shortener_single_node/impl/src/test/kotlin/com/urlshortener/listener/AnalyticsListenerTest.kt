@@ -14,49 +14,32 @@ class AnalyticsListenerTest {
     private val listener = AnalyticsListener(repository)
 
     @Test
-    fun `should update lastAccessedAt and increment clickCount on UrlAccessedEvent`() {
+    fun `should call atomic increment for click count on UrlAccessedEvent`() {
         // Given
         val shortCode = "ABC12345"
         val event = UrlAccessedEvent(shortCode = shortCode, accessedAt = Instant.now())
-        val entity = UrlEntity(
-            shortCode = shortCode,
-            longUrl = "http://example.com",
-            urlHash = "hash",
-            clickCount = 10
-        )
-
-        every { repository.findByShortCode(shortCode) } returns entity
-        every { repository.save(any<UrlEntity>()) } returnsArgument 0
+        
+        every { repository.incrementClickCount(any(), any()) } just runs
 
         // When
         listener.onUrlAccessed(event)
 
         // Then
-        verify(exactly = 1) { repository.save(any<UrlEntity>()) }
-        assert(entity.clickCount == 11L)
-        assert(entity.lastAccessedAt == event.accessedAt)
+        verify(exactly = 1) { repository.incrementClickCount(shortCode, event.accessedAt) }
     }
 
     @Test
-    fun `should increment creationRequestCount on UrlCreationRequestedEvent`() {
+    fun `should call atomic increment for creation request on UrlCreationRequestedEvent`() {
         // Given
         val hash = "someHash"
         val event = UrlCreationRequestedEvent(urlHash = hash)
-        val entity = UrlEntity(
-            shortCode = "ABC",
-            longUrl = "http://example.com",
-            urlHash = hash,
-            creationRequestCount = 5
-        )
-
-        every { repository.findByUrlHash(hash) } returns entity
-        every { repository.save(any<UrlEntity>()) } returnsArgument 0
+        
+        every { repository.incrementCreationRequestCount(any()) } just runs
 
         // When
         listener.onUrlCreationRequested(event)
 
         // Then
-        verify(exactly = 1) { repository.save(any<UrlEntity>()) }
-        assert(entity.creationRequestCount == 6L)
+        verify(exactly = 1) { repository.incrementCreationRequestCount(hash) }
     }
 }

@@ -27,7 +27,7 @@ class UrlServiceTest {
         every { validator.validateAndNormalize(longUrl) } returns longUrl
         every { generator.generate() } returns "ABC12345"
         every { repository.findByUrlHash(any()) } returns null
-        every { repository.save(any()) } returnsArgument 0
+        every { repository.saveAndFlush(any()) } returnsArgument 0
         
         // When
         val shortCode = service.shorten(longUrl)
@@ -35,7 +35,7 @@ class UrlServiceTest {
         // Then
         assertNotNull(shortCode)
         assertEquals("ABC12345", shortCode)
-        verify(exactly = 1) { repository.save(any()) }
+        verify(exactly = 1) { repository.saveAndFlush(any()) }
         
         val slot = slot<Any>()
         verify { eventPublisher.publishEvent(capture(slot)) }
@@ -57,7 +57,7 @@ class UrlServiceTest {
 
         // Then
         assertEquals(existingCode, shortCode)
-        verify(exactly = 0) { repository.save(any()) }
+        verify(exactly = 0) { repository.saveAndFlush(any()) }
         
         val slot = slot<Any>()
         verify { eventPublisher.publishEvent(capture(slot)) }
@@ -85,7 +85,7 @@ class UrlServiceTest {
 
         // Then
         assertEquals(longUrl, result)
-        verify(exactly = 0) { repository.save(any()) }
+        verify(exactly = 0) { repository.saveAndFlush(any()) }
         
         val slot = slot<Any>()
         verify { eventPublisher.publishEvent(capture(slot)) }

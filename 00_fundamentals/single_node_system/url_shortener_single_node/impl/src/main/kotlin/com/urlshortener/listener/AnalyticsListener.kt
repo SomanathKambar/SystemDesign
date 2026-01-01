@@ -14,24 +14,14 @@ class AnalyticsListener(private val repo: UrlRepository) {
     @EventListener
     @Transactional
     fun onUrlAccessed(event: UrlAccessedEvent) {
-        // In a real system, we might push this to a queue (Kafka/RabbitMQ)
-        // For now, we update the DB directly but separately from the main flow logic
-        val entity = repo.findByShortCode(event.shortCode)
-        if (entity != null) {
-            entity.lastAccessedAt = event.accessedAt
-            entity.clickCount++
-            repo.save(entity)
-        }
+        // Atomic increment in DB prevents "Lost Updates" from concurrent threads
+        repo.incrementClickCount(event.shortCode, event.accessedAt)
     }
 
     @EventListener
     @Transactional
     fun onUrlCreationRequested(event: UrlCreationRequestedEvent) {
-        // Track how many times people ask for the same URL
-        val entity = repo.findByUrlHash(event.urlHash)
-        if (entity != null) {
-            entity.creationRequestCount++
-            repo.save(entity)
-        }
+        // Atomic increment in DB ensures we count every attempt correctly
+        repo.incrementCreationRequestCount(event.urlHash)
     }
 }

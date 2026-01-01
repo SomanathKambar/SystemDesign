@@ -1,0 +1,87 @@
+{
+  "timestamp": "2026-01-01_15-48-11",
+  "config": {
+    "url": "http://localhost:8080",
+    "stages": [
+      [
+        10,
+        5
+      ],
+      [
+        50,
+        5
+      ],
+      [
+        100,
+        5
+      ],
+      [
+        200,
+        5
+      ]
+    ]
+  },
+  "results": [
+    {
+      "users": 10,
+      "duration": 5,
+      "metrics": {
+        "rps": 445.6,
+        "p95": 20.677483081817627
+      }
+    },
+    {
+      "users": 50,
+      "duration": 5,
+      "metrics": {
+        "rps": 550.0,
+        "p95": 64.0501618385315
+      }
+    },
+    {
+      "users": 100,
+      "duration": 5,
+      "metrics": {
+        "rps": 560.0,
+        "p95": 104.78216409683228
+      }
+    },
+    {
+      "users": 200,
+      "duration": 5,
+      "metrics": {
+        "rps": 520.0,
+        "p95": 227.41886377334595
+      }
+    }
+  ],
+  "health_checks": [
+    {
+      "after_stage_users": 10,
+      "healthy": true,
+      "latency": 1.2249946594238281
+    },
+    {
+      "after_stage_users": 50,
+      "healthy": true,
+      "latency": 1.0409355163574219
+    },
+    {
+      "after_stage_users": 100,
+      "healthy": true,
+      "latency": 1.1920928955078125
+    },
+    {
+      "after_stage_users": 200,
+      "healthy": true,
+      "latency": 1.8148422241210938
+    }
+  ],
+  "analytics_summary": {
+    "total_requests": 10378,
+    "deduplication_saved_count": 10358,
+    "stats_verification_calls": 10378,
+    "stats_verification_failures": 925,
+    "errors": 2
+  }
+}

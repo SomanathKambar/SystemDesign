@@ -28,23 +28,25 @@ class UrlService(
         val hash = hashUrl(normalizedUrl)
 
         // 2. Publish "Intent" Event (Analytics)
-        // We track that someone WANTED this URL, regardless of whether it's new or old.
         eventPublisher.publishEvent(UrlCreationRequestedEvent(hash))
 
-        // 3. Deduplication
+        // 3. Early Check
         repo.findByUrlHash(hash)?.let { return it.shortCode }
 
         // 4. Generation loop
         repeat(5) { 
             val code = codeGenerator.generate()
             try {
-                repo.save(UrlEntity(
+                // We use a manual save and flush to catch the error immediately
+                return repo.saveAndFlush(UrlEntity(
                     shortCode = code,
                     longUrl = normalizedUrl,
                     urlHash = hash
-                ))
-                return code
-            } catch (e: DataIntegrityViolationException) {
+                )).shortCode
+            } catch (e: Exception) {
+                // If it failed (likely due to unique constraint collision),
+                // it means another thread JUST inserted it. 
+                // We fetch that winner and return it.
                 repo.findByUrlHash(hash)?.let { return it.shortCode }
             }
         }
