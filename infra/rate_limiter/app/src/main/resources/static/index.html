@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fixed Window Rate Limiter Demo</title>
+    <title>Rate Limiter Infrastructure Playground</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
             --primary: #3b82f6;
@@ -252,7 +253,6 @@
             </div>
         </div>
 
-        <!-- Stats -->
         <div class="card">
             <h2>Strategy Metrics</h2>
             <div class="stats-grid" id="statsGrid">
@@ -276,6 +276,19 @@
             </div>
         </div>
 
+        <!-- Real-time Analytics -->
+        <div class="card">
+            <h2>Live Throughput & Distribution</h2>
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; height: 250px;">
+                <div>
+                    <canvas id="throughputChart"></canvas>
+                </div>
+                <div>
+                    <canvas id="ratioChart"></canvas>
+                </div>
+            </div>
+        </div>
+
         <!-- Log -->
         <div class="card">
             <h2>Request Log</h2>
@@ -287,6 +300,95 @@
         let loadInterval = null;
         let stats = { total: 0, allowed: 0, blocked: 0 };
         let currentConfig = { limit: 5, windowSizeMs: 10000, strategy: 'FIXED_WINDOW' };
+        
+        // Chart Initialization
+        const ctxThroughput = document.getElementById('throughputChart').getContext('2d');
+        const ctxRatio = document.getElementById('ratioChart').getContext('2d');
+        
+        const throughputChart = new Chart(ctxThroughput, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [
+                    { label: 'Allowed', borderColor: '#22c55e', data: [], fill: false, tension: 0.4 },
+                    { label: 'Blocked', borderColor: '#ef4444', data: [], fill: false, tension: 0.4 }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: { x: { display: false }, y: { beginAtZero: true } },
+                animation: false
+            }
+        });
+
+        const ratioChart = new Chart(ctxRatio, {
+            type: 'doughnut',
+            data: {
+                labels: ['Allowed', 'Blocked'],
+                datasets: [{
+                    data: [0, 0],
+                    backgroundColor: ['#22c55e', '#ef4444']
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { position: 'bottom' } }
+            }
+        });
+
+        let chartDataBuffer = { allowed: 0, blocked: 0 };
+        setInterval(() => {
+            const now = new Date().toLocaleTimeString();
+            throughputChart.data.labels.push(now);
+            throughputChart.data.datasets[0].data.push(chartDataBuffer.allowed);
+            throughputChart.data.datasets[1].data.push(chartDataBuffer.blocked);
+            
+            if (throughputChart.data.labels.length > 20) {
+                throughputChart.data.labels.shift();
+                throughputChart.data.datasets[0].data.shift();
+                throughputChart.data.datasets[1].data.shift();
+            }
+            throughputChart.update('none');
+            
+            // Reset buffer for next interval
+            chartDataBuffer.allowed = 0;
+            chartDataBuffer.blocked = 0;
+        }, 1000);
+
+        function createParticle(x, y, color) {
+            const particle = document.createElement('div');
+            particle.style.position = 'fixed';
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+            particle.style.width = '8px';
+            particle.style.height = '8px';
+            particle.style.backgroundColor = color;
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '1000';
+            document.body.appendChild(particle);
+
+            const angle = Math.random() * Math.PI * 2;
+            const velocity = 2 + Math.random() * 5;
+            const vx = Math.cos(angle) * velocity;
+            const vy = Math.sin(angle) * velocity;
+            let opacity = 1;
+
+            function animate() {
+                const top = parseFloat(particle.style.top);
+                const left = parseFloat(particle.style.left);
+                particle.style.top = `${top + vy}px`;
+                particle.style.left = `${left + vx}px`;
+                opacity -= 0.02;
+                particle.style.opacity = opacity;
+
+                if (opacity > 0) requestAnimationFrame(animate);
+                else particle.remove();
+            }
+            animate();
+        }
 
         async function updateConfig() {
             const limit = parseInt(document.getElementById('limit').value);
@@ -326,6 +428,10 @@
                 updateWindowUI(data.serverTimeMs, data.windowStartMs, data.currentWindowSizeMs);
                 
                 // Visual feedback
+                const rect = visualizer.getBoundingClientRect();
+                const color = data.allowed ? '#22c55e' : '#ef4444';
+                for(let i=0; i<8; i++) createParticle(rect.left + rect.width/2, rect.top + rect.height/2, color);
+
                 visualizer.classList.remove('pulse');
                 void visualizer.offsetWidth; // trigger reflow
                 visualizer.classList.add('pulse');
@@ -378,12 +484,21 @@
 
         function updateStats(data) {
             stats.total++;
-            if (data.allowed) stats.allowed++;
-            else stats.blocked++;
+            if (data.allowed) {
+                stats.allowed++;
+                chartDataBuffer.allowed++;
+            } else {
+                stats.blocked++;
+                chartDataBuffer.blocked++;
+            }
 
             document.getElementById('totalRequests').textContent = stats.total;
             document.getElementById('allowedRequests').textContent = stats.allowed;
             document.getElementById('blockedRequests').textContent = stats.blocked;
+
+            // Update Ratio Chart
+            ratioChart.data.datasets[0].data = [stats.allowed, stats.blocked];
+            ratioChart.update('none');
 
             const dynamicVal = document.getElementById('dynamicValue');
             const dynamicLab = document.getElementById('dynamicLabel');
@@ -405,6 +520,14 @@
             document.getElementById('blockedRequests').textContent = 0;
             document.getElementById('dynamicValue').textContent = "-";
             document.getElementById('log').innerHTML = '';
+            
+            throughputChart.data.labels = [];
+            throughputChart.data.datasets[0].data = [];
+            throughputChart.data.datasets[1].data = [];
+            throughputChart.update();
+            
+            ratioChart.data.datasets[0].data = [0, 0];
+            ratioChart.update();
         }
 
         function addLogEntry(source, message, isSuccess) {
