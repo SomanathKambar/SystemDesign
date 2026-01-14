@@ -15,6 +15,36 @@
             --text: #1f2937;
         }
 
+        /* Tab System */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            max-width: 800px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background: #e5e7eb;
+            border-radius: 8px 8px 0 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: #6b7280;
+            transition: all 0.2s;
+        }
+        .tab.active {
+            background: var(--card-bg);
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+        .tab-content {
+            display: none;
+            width: 100%;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: var(--bg);
@@ -202,147 +232,168 @@
             <p>System Design Infrastructure Playground</p>
         </header>
 
-        <!-- Configuration -->
-        <div class="card">
-            <h2>Algorithm Configuration</h2>
-            <div class="controls">
-                <div class="form-group">
-                    <label for="strategy">Strategy</label>
-                    <select id="strategy" style="padding: 8px; border-radius: 4px; border: 1px solid #d1d5db;">
-                        <option value="FIXED_WINDOW">Fixed Window</option>
-                        <option value="SLIDING_WINDOW">Sliding Window</option>
-                    </select>
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('manual')">Live Simulation</div>
+            <div class="tab" onclick="switchTab('comparison')">Benchmarking</div>
+        </div>
+
+        <!-- MANUAL TAB CONTENT -->
+        <div id="manual" class="tab-content active">
+            <!-- Configuration -->
+            <div class="card">
+                <h2>Algorithm Configuration</h2>
+                <div class="controls">
+                    <div class="form-group">
+                        <label for="strategy">Strategy</label>
+                        <select id="strategy" style="padding: 8px; border-radius: 4px; border: 1px solid #d1d5db;">
+                            <option value="FIXED_WINDOW">Fixed Window</option>
+                            <option value="SLIDING_WINDOW">Sliding Window</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="limit">Limit (requests)</label>
+                        <input type="number" id="limit" value="5" min="1">
+                    </div>
+                    <div class="form-group">
+                        <label for="windowSize">Window Size (ms)</label>
+                        <input type="number" id="windowSize" value="10000" step="1000" min="1000">
+                    </div>
+                    <button class="btn-primary" onclick="updateConfig()">Update Configuration</button>
                 </div>
-                <div class="form-group">
-                    <label for="limit">Limit (requests)</label>
-                    <input type="number" id="limit" value="5" min="1">
+            </div>
+
+            <!-- Testing -->
+            <div class="card">
+                <h2>Test Controls</h2>
+                <div class="controls">
+                    <div class="form-group">
+                        <label for="userKey">User Key</label>
+                        <input type="text" id="userKey" value="user1">
+                    </div>
+                    <button class="btn-success" onclick="sendRequest()">Send Single Request</button>
+                    <button class="btn-danger" id="loadBtn" onclick="toggleLoad()">Start Load Test (5 req/sec)</button>
                 </div>
-                <div class="form-group">
-                    <label for="windowSize">Window Size (ms)</label>
-                    <input type="number" id="windowSize" value="10000" step="1000" min="1000">
+                
+                <div style="margin-top: 20px;">
+                    <label>Current Window Progress</label>
+                    <div style="width: 100%; background: #e5e7eb; height: 20px; border-radius: 10px; overflow: hidden; margin-top: 5px;">
+                        <div id="progressBar" style="width: 0%; height: 100%; background: var(--primary); transition: width 0.1s linear;"></div>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #6b7280; margin-top: 4px;">
+                        <span id="windowStartText">Window Start: -</span>
+                        <span id="windowEndText">Window End: -</span>
+                    </div>
                 </div>
-                <button class="btn-primary" onclick="updateConfig()">Update Configuration</button>
+
+                <div id="visualizer" class="visualizer" style="margin-top: 20px;">
+                    <span id="visualizer-text">Ready</span>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Strategy Metrics</h2>
+                <div class="stats-grid" id="statsGrid">
+                    <div class="stat-box">
+                        <div class="stat-value" id="totalRequests">0</div>
+                        <div class="stat-label">Total Traffic</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" style="color: var(--success)" id="allowedRequests">0</div>
+                        <div class="stat-label">Allowed</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value" style="color: var(--error)" id="blockedRequests">0</div>
+                        <div class="stat-label">Blocked</div>
+                    </div>
+                    <!-- Dynamic metrics will be appended here -->
+                    <div class="stat-box" id="dynamicStatBox">
+                        <div class="stat-value" style="color: var(--primary)" id="dynamicValue">-</div>
+                        <div class="stat-label" id="dynamicLabel">Metric</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Real-time Analytics -->
+            <div class="card">
+                <h2>Live Throughput & Distribution</h2>
+                <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; height: 250px;">
+                    <div>
+                        <canvas id="throughputChart"></canvas>
+                    </div>
+                    <div>
+                        <canvas id="ratioChart"></canvas>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- Testing -->
-        <div class="card">
-            <h2>Test Controls</h2>
-            <div class="controls">
-                <div class="form-group">
-                    <label for="userKey">User Key</label>
-                    <input type="text" id="userKey" value="user1">
-                </div>
-                <button class="btn-success" onclick="sendRequest()">Send Single Request</button>
-                <button class="btn-danger" id="loadBtn" onclick="toggleLoad()">Start Load Test (5 req/sec)</button>
-            </div>
-            
-            <div style="margin-top: 20px;">
-                <label>Current Window Progress</label>
-                <div style="width: 100%; background: #e5e7eb; height: 20px; border-radius: 10px; overflow: hidden; margin-top: 5px;">
-                    <div id="progressBar" style="width: 0%; height: 100%; background: var(--primary); transition: width 0.1s linear;"></div>
-                </div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #6b7280; margin-top: 4px;">
-                    <span id="windowStartText">Window Start: -</span>
-                    <span id="windowEndText">Window End: -</span>
+        <!-- COMPARISON TAB CONTENT -->
+        <div id="comparison" class="tab-content">
+            <div class="card">
+                <h2>Comparison Logic Guide</h2>
+                <div style="font-size: 0.9em; line-height: 1.5; color: #4b5563;">
+                    <p>In high-load scenarios, <strong>Sliding Window</strong> is often preferred even if total throughput is similar to <strong>Fixed Window</strong>. Here's why:</p>
+                    <ul style="padding-left: 20px;">
+                        <li><strong>Boundary Protection:</strong> Fixed window allows bursts right at the window reset boundary. Sliding window smooths this using weighted historical data.</li>
+                        <li><strong>Sustained Load:</strong> Fixed windows behave like a step function. Sliding windows behave like a continuous curve, which is safer for downstream microservices.</li>
+                    </ul>
+                    <p><em>Verdict:</em> If Throughput results are identical, <strong>Sliding Window</strong> is awarded the win for better protection metrics.</p>
                 </div>
             </div>
 
-            <div id="visualizer" class="visualizer" style="margin-top: 20px;">
-                <span id="visualizer-text">Ready</span>
-            </div>
-        </div>
-
-        <div class="card">
-            <h2>Strategy Metrics</h2>
-            <div class="stats-grid" id="statsGrid">
-                <div class="stat-box">
-                    <div class="stat-value" id="totalRequests">0</div>
-                    <div class="stat-label">Total Traffic</div>
+            <!-- Comparison Dashboard -->
+            <div class="card" id="comparisonSection">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h2>Scientific Stress Test</h2>
+                    <button class="btn-primary" id="compareBtn" onclick="runComparison()">Run Stress Test Comparison</button>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-value" style="color: var(--success)" id="allowedRequests">0</div>
-                    <div class="stat-label">Allowed</div>
+                
+                <div class="controls" style="margin-top: 15px; background: #f9fafb; padding: 15px; border-radius: 8px;">
+                    <div class="form-group">
+                        <label>Sim. Duration (s)</label>
+                        <input type="number" id="compDuration" value="10">
+                    </div>
+                    <div class="form-group">
+                        <label>Requests/sec</label>
+                        <input type="number" id="compRps" value="15">
+                    </div>
+                    <div class="form-group">
+                        <label>Limit</label>
+                        <input type="number" id="compLimit" value="20">
+                    </div>
+                    <div class="form-group">
+                        <label>Window (ms)</label>
+                        <input type="number" id="compWindow" value="5000">
+                    </div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-value" style="color: var(--error)" id="blockedRequests">0</div>
-                    <div class="stat-label">Blocked</div>
-                </div>
-                <!-- Dynamic metrics will be appended here -->
-                <div class="stat-box" id="dynamicStatBox">
-                    <div class="stat-value" style="color: var(--primary)" id="dynamicValue">-</div>
-                    <div class="stat-label" id="dynamicLabel">Metric</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Real-time Analytics -->
-        <div class="card">
-            <h2>Live Throughput & Distribution</h2>
-            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 20px; height: 250px;">
-                <div>
-                    <canvas id="throughputChart"></canvas>
-                </div>
-                <div>
-                    <canvas id="ratioChart"></canvas>
-                </div>
-            </div>
-        </div>
-
-        <!-- Comparison Dashboard -->
-        <div class="card" id="comparisonSection">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <h2>Comparative Analysis</h2>
-                <button class="btn-primary" id="compareBtn" onclick="runComparison()">Run Stress Test Comparison</button>
-            </div>
-            
-            <div class="controls" style="margin-top: 15px; background: #f9fafb; padding: 15px; border-radius: 8px;">
-                <div class="form-group">
-                    <label>Sim. Duration (s)</label>
-                    <input type="number" id="compDuration" value="10">
-                </div>
-                <div class="form-group">
-                    <label>Requests/sec</label>
-                    <input type="number" id="compRps" value="15">
-                </div>
-                <div class="form-group">
-                    <label>Limit</label>
-                    <input type="number" id="compLimit" value="20">
-                </div>
-                <div class="form-group">
-                    <label>Window (ms)</label>
-                    <input type="number" id="compWindow" value="5000">
-                </div>
-            </div>
-            
-            <div id="comparisonResults" style="display: none; margin-top: 20px;">
-                <div style="height: 300px; margin-bottom: 20px;">
-                    <canvas id="comparisonChart"></canvas>
-                </div>
-                <table style="width: 100%; border-collapse: collapse; text-align: left;">
-                    <thead>
-                        <tr style="border-bottom: 2px solid #e5e7eb;">
-                            <th style="padding: 10px;">Strategy</th>
-                            <th>Allowed</th>
-                            <th>Blocked</th>
-                            <th>Avg. Throughput</th>
-                            <th>Verdict</th>
-                        </tr>
-                    </thead>
-                    <tbody id="comparisonTableBody">
-                        <!-- Results injected here -->
-                    </tbody>
-                </table>
-                <div id="winnerAnnounce" style="margin-top: 20px; padding: 15px; border-radius: 8px; background: #f0fdf4; border: 1px solid #86efac; text-align: center;">
-                    <h3 style="margin: 0; color: #166534;">🏆 Winner: <span id="winnerName">-</span></h3>
-                    <p id="winnerLogic" style="margin: 5px 0 0 0; font-size: 0.9em; color: #166534;"></p>
+                
+                <div id="comparisonResults" style="display: none; margin-top: 20px;">
+                    <div style="height: 300px; margin-bottom: 20px;">
+                        <canvas id="comparisonChart"></canvas>
+                    </div>
+                    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                        <thead>
+                            <tr style="border-bottom: 2px solid #e5e7eb;">
+                                <th style="padding: 10px;">Strategy</th>
+                                <th>Allowed</th>
+                                <th>Blocked</th>
+                                <th>Avg. Throughput</th>
+                                <th>Verdict</th>
+                            </tr>
+                        </thead>
+                        <tbody id="comparisonTableBody"></tbody>
+                    </table>
+                    <div id="winnerAnnounce" style="margin-top: 20px; padding: 15px; border-radius: 8px; background: #f0fdf4; border: 1px solid #86efac; text-align: center;">
+                        <h3 style="margin: 0; color: #166534;">🏆 Winner: <span id="winnerName">-</span></h3>
+                        <p id="winnerLogic" style="margin: 5px 0 0 0; font-size: 0.9em; color: #166534;"></p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Log -->
         <div class="card">
-            <h2>Request Log</h2>
+            <h2>Activity Log</h2>
             <div id="log"></div>
         </div>
     </div>
@@ -352,6 +403,17 @@
         let stats = { total: 0, allowed: 0, blocked: 0 };
         let currentConfig = { limit: 5, windowSizeMs: 10000, strategy: 'FIXED_WINDOW' };
         
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+            
+            // Add a log entry when switching
+            addLogEntry('System', `Switched to ${tabId === 'manual' ? 'Live Simulation' : 'Comparative Benchmarking'}`, true);
+        }
+
         // Chart Initialization
         const ctxThroughput = document.getElementById('throughputChart').getContext('2d');
         const ctxRatio = document.getElementById('ratioChart').getContext('2d');
