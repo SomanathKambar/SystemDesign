@@ -54,6 +54,15 @@ data class ConfigUpdateResponse(
 data class ComparisonDataPoint(val second: Int, val fixedAllowed: Int, val slidingAllowed: Int)
 
 @Serializable
+data class ComparisonResult(
+    val strategy: StrategyType,
+    val allowed: Int,
+    val blocked: Int,
+    val throughput: Double,
+    val description: String
+)
+
+@Serializable
 data class ComparisonResponse(
     val results: List<ComparisonResult>,
     val winner: StrategyType,
