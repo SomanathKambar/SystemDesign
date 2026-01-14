@@ -27,6 +27,12 @@ data class RateLimitResponse(
     val currentWindowSizeMs: Long
 )
 
+@Serializable
+data class ConfigUpdateResponse(
+    val status: String,
+    val config: ConfigRequest
+)
+
 class RateLimiterManager {
     // Default config
     private var currentLimit = 5
@@ -76,7 +82,7 @@ fun main() {
                 post("/config") {
                     val config = call.receive<ConfigRequest>()
                     manager.updateConfig(config.limit, config.windowSizeMs)
-                    call.respond(mapOf("status" to "updated", "config" to config))
+                    call.respond(ConfigUpdateResponse(status = "updated", config = config))
                 }
 
                 post("/request") {
