@@ -6,6 +6,7 @@ plugins {
 
 dependencies {
     implementation(project(":strategies:fixed-window"))
+    implementation(project(":strategies:sliding-window"))
     implementation(project(":core"))
     
     val ktorVersion = "2.3.7"

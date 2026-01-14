@@ -53,10 +53,21 @@ classDiagram
         -windowSize: Long
         +allow(key) Decision
     }
+    class SlidingWindowRateLimiter {
+        -limit: Int
+        -windowSize: Long
+        +allow(key) Decision
+    }
     class StateStore {
         <<Interface>>
         +get(key)
         +save(key, val, ttl)
+    }
+    class SlidingWindowStore {
+        <<Interface>>
+        +getLog(key)
+        +saveLog(key, log, ttl)
+        +removeOldEntries(key, before)
     }
     class InMemoryStateStore {
         -map: ConcurrentHashMap
@@ -67,9 +78,11 @@ classDiagram
 
     Client --> RateLimiter
     RateLimiter <|-- FixedWindowRateLimiter
+    RateLimiter <|-- SlidingWindowRateLimiter
     FixedWindowRateLimiter --> StateStore
+    SlidingWindowRateLimiter --> SlidingWindowStore
     StateStore <|-- InMemoryStateStore
-    StateStore <|-- RedisStateStore
+    SlidingWindowStore <|-- InMemorySlidingWindowStore
 ```
 
 ## 4. Data Flow

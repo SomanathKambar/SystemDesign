@@ -61,5 +61,26 @@ This demo application bridges the backend logic with a reactive frontend to visu
     *   **Green Pulse**: CSS Animation triggered on HTTP 200 (Allowed).
     *   **Red Block**: CSS Class added on HTTP 200 (Blocked response), displaying the `retryAfter` countdown.
 
-## Summary
-The "failure" you see when increasing window size while keeping requests constant is the algorithm working correctly: you are extending the duration for which the counter persists, making it more likely for the accumulated requests to hit the ceiling.
+## Sliding Window Counter Algorithm
+
+
+
+While Fixed Window is simple, it can allow a "double burst" at window boundaries. The **Sliding Window Counter** approximates a smoother limit.
+
+
+
+### How it works:
+
+- It looks at the count in the **Current Window** and the **Previous Window**.
+
+- It calculates a weighted sum: 
+
+  `Estimated Count = Current Window Count + (Previous Window Count * (1 - Percentage of Current Window Elapsed))`
+
+- **Benefit**: It smooths out the boundary issues of Fixed Window without the storage overhead of a full "Sliding Window Log" (which stores every timestamp).
+
+
+
+### Proportion & Throughput
+
+- If you are 30% into your 10-second window, and you had 10 requests in the previous 10 seconds, the algorithm assumes `10 * (1 - 0.3) = 7` requests from the "sliding" portion of the previous window still count toward your current limit.

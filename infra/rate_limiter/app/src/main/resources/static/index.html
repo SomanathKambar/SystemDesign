@@ -206,6 +206,13 @@
             <h2>Configuration</h2>
             <div class="controls">
                 <div class="form-group">
+                    <label for="strategy">Strategy</label>
+                    <select id="strategy" style="padding: 8px; border-radius: 4px; border: 1px solid #d1d5db;">
+                        <option value="FIXED_WINDOW">Fixed Window</option>
+                        <option value="SLIDING_WINDOW">Sliding Window</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="limit">Limit (requests)</label>
                     <input type="number" id="limit" value="5" min="1">
                 </div>
@@ -248,7 +255,7 @@
         <!-- Stats -->
         <div class="card">
             <h2>Statistics</h2>
-            <div class="stats-grid">
+            <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
                 <div class="stat-box">
                     <div class="stat-value" id="totalRequests">0</div>
                     <div class="stat-label">Total Requests</div>
@@ -260,6 +267,10 @@
                 <div class="stat-box">
                     <div class="stat-value" style="color: var(--error)" id="blockedRequests">0</div>
                     <div class="stat-label">Blocked</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-value" style="color: var(--primary)" id="estCount">0.0</div>
+                    <div class="stat-label">Est. Count (Sliding)</div>
                 </div>
             </div>
         </div>
@@ -274,21 +285,22 @@
     <script>
         let loadInterval = null;
         let stats = { total: 0, allowed: 0, blocked: 0 };
-        let currentConfig = { limit: 5, windowSizeMs: 10000 };
+        let currentConfig = { limit: 5, windowSizeMs: 10000, strategy: 'FIXED_WINDOW' };
 
         async function updateConfig() {
             const limit = parseInt(document.getElementById('limit').value);
             const windowSizeMs = parseInt(document.getElementById('windowSize').value);
+            const strategy = document.getElementById('strategy').value;
 
             try {
                 const response = await fetch('/api/config', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ limit, windowSizeMs })
+                    body: JSON.stringify({ limit, windowSizeMs, strategy })
                 });
                 const data = await response.json();
                 currentConfig = data.config;
-                addLogEntry('System', `Config updated: ${data.config.limit} req / ${data.config.windowSizeMs} ms`, true);
+                addLogEntry('System', `Config updated: ${data.config.strategy} | ${data.config.limit} req / ${data.config.windowSizeMs} ms`, true);
                 resetStats();
             } catch (e) {
                 addLogEntry('System', 'Failed to update config', false);
@@ -308,7 +320,7 @@
                 });
                 const data = await response.json();
 
-                updateStats(data.allowed);
+                updateStats(data.allowed, data.estimatedCount);
                 updateWindowUI(data.serverTimeMs, data.windowStartMs, data.currentWindowSizeMs);
                 
                 // Visual feedback
@@ -320,12 +332,12 @@
                     visualizer.classList.remove('blocked');
                     visualizerText.textContent = "Allowed";
                     visualizerText.style.color = "var(--success)";
-                    addLogEntry(key, `Request Allowed (Window: ${data.currentLimit} req / ${data.currentWindowSizeMs} ms)`, true);
+                    addLogEntry(key, `[${data.strategy}] Allowed (Est: ${data.estimatedCount || '-'})`, true);
                 } else {
                     visualizer.classList.add('blocked');
                     visualizerText.textContent = `Blocked (Retry after ${data.retryAfterMs}ms)`;
                     visualizerText.style.color = "var(--error)";
-                    addLogEntry(key, `Request Blocked! Retry after ${data.retryAfterMs}ms`, false);
+                    addLogEntry(key, `[${data.strategy}] Blocked! (Est: ${data.estimatedCount || '-'})`, false);
                 }
 
             } catch (e) {
@@ -334,31 +346,20 @@
             }
         }
 
-        function updateWindowUI(serverTime, windowStart, windowSize) {
-            const elapsed = serverTime - windowStart;
-            const progress = (elapsed / windowSize) * 100;
-            const progressBar = document.getElementById('progressBar');
-            
-            progressBar.style.width = `${progress}%`;
-            
-            document.getElementById('windowStartText').textContent = `Start: ${new Date(windowStart).toLocaleTimeString()}.${String(windowStart % 1000).padStart(3, '0')}`;
-            document.getElementById('windowEndText').textContent = `Reset: ${new Date(windowStart + windowSize).toLocaleTimeString()}.${String((windowStart + windowSize) % 1000).padStart(3, '0')}`;
-        }
-
         function toggleLoad() {
             const btn = document.getElementById('loadBtn');
             if (loadInterval) {
                 clearInterval(loadInterval);
                 loadInterval = null;
                 btn.textContent = "Start Load Test (5 req/sec)";
-                btn.classList.replace('btn-primary', 'btn-danger'); // revert color if needed, actually was danger
+                btn.classList.replace('btn-primary', 'btn-danger');
             } else {
-                loadInterval = setInterval(sendRequest, 200); // 5 times a second
+                loadInterval = setInterval(sendRequest, 200);
                 btn.textContent = "Stop Load Test";
             }
         }
 
-        function updateStats(allowed) {
+        function updateStats(allowed, estCount) {
             stats.total++;
             if (allowed) stats.allowed++;
             else stats.blocked++;
@@ -366,6 +367,11 @@
             document.getElementById('totalRequests').textContent = stats.total;
             document.getElementById('allowedRequests').textContent = stats.allowed;
             document.getElementById('blockedRequests').textContent = stats.blocked;
+            if (estCount !== null && estCount !== undefined) {
+                document.getElementById('estCount').textContent = estCount.toFixed(2);
+            } else {
+                document.getElementById('estCount').textContent = "-";
+            }
         }
 
         function resetStats() {
@@ -373,6 +379,7 @@
             document.getElementById('totalRequests').textContent = 0;
             document.getElementById('allowedRequests').textContent = 0;
             document.getElementById('blockedRequests').textContent = 0;
+            document.getElementById('estCount').textContent = "0.0";
             document.getElementById('log').innerHTML = '';
         }
 
@@ -386,7 +393,6 @@
             
             log.insertBefore(entry, log.firstChild);
             
-            // Limit log size
             if (log.children.length > 50) {
                 log.removeChild(log.lastChild);
             }
@@ -398,6 +404,8 @@
             .then(data => {
                 document.getElementById('limit').value = data.limit;
                 document.getElementById('windowSize').value = data.windowSizeMs;
+                document.getElementById('strategy').value = data.strategy;
+                currentConfig = data;
             });
     </script>
 </body>
