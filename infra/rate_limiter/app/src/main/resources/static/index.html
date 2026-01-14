@@ -197,13 +197,13 @@
 
     <div class="container">
         <header style="text-align: center;">
-            <h1>Fixed Window Rate Limiter</h1>
-            <p>Interactive Demo & Visualization</p>
+            <h1 id="main-title">Rate Limiter Infrastructure</h1>
+            <p>System Design Infrastructure Playground</p>
         </header>
 
         <!-- Configuration -->
         <div class="card">
-            <h2>Configuration</h2>
+            <h2>Algorithm Configuration</h2>
             <div class="controls">
                 <div class="form-group">
                     <label for="strategy">Strategy</label>
@@ -254,11 +254,11 @@
 
         <!-- Stats -->
         <div class="card">
-            <h2>Statistics</h2>
-            <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
+            <h2>Strategy Metrics</h2>
+            <div class="stats-grid" id="statsGrid">
                 <div class="stat-box">
                     <div class="stat-value" id="totalRequests">0</div>
-                    <div class="stat-label">Total Requests</div>
+                    <div class="stat-label">Total Traffic</div>
                 </div>
                 <div class="stat-box">
                     <div class="stat-value" style="color: var(--success)" id="allowedRequests">0</div>
@@ -268,9 +268,10 @@
                     <div class="stat-value" style="color: var(--error)" id="blockedRequests">0</div>
                     <div class="stat-label">Blocked</div>
                 </div>
-                <div class="stat-box">
-                    <div class="stat-value" style="color: var(--primary)" id="estCount">0.0</div>
-                    <div class="stat-label">Est. Count (Sliding)</div>
+                <!-- Dynamic metrics will be appended here -->
+                <div class="stat-box" id="dynamicStatBox">
+                    <div class="stat-value" style="color: var(--primary)" id="dynamicValue">-</div>
+                    <div class="stat-label" id="dynamicLabel">Metric</div>
                 </div>
             </div>
         </div>
@@ -320,7 +321,7 @@
                 });
                 const data = await response.json();
 
-                updateStats(data.allowed, data.estimatedCount);
+                updateStats(data);
                 updateWindowUI(data.serverTimeMs, data.windowStartMs, data.currentWindowSizeMs);
                 
                 // Visual feedback
@@ -359,18 +360,25 @@
             }
         }
 
-        function updateStats(allowed, estCount) {
+        function updateStats(data) {
             stats.total++;
-            if (allowed) stats.allowed++;
+            if (data.allowed) stats.allowed++;
             else stats.blocked++;
 
             document.getElementById('totalRequests').textContent = stats.total;
             document.getElementById('allowedRequests').textContent = stats.allowed;
             document.getElementById('blockedRequests').textContent = stats.blocked;
-            if (estCount !== null && estCount !== undefined) {
-                document.getElementById('estCount').textContent = estCount.toFixed(2);
-            } else {
-                document.getElementById('estCount').textContent = "-";
+
+            const dynamicVal = document.getElementById('dynamicValue');
+            const dynamicLab = document.getElementById('dynamicLabel');
+
+            if (data.strategy === 'SLIDING_WINDOW') {
+                dynamicLab.textContent = "Est. Count";
+                dynamicVal.textContent = data.estimatedCount ? data.estimatedCount.toFixed(2) : "0.00";
+            } else if (data.strategy === 'FIXED_WINDOW') {
+                dynamicLab.textContent = "Window Progress";
+                const elapsed = data.serverTimeMs - data.windowStartMs;
+                dynamicVal.textContent = Math.floor((elapsed / data.currentWindowSizeMs) * 100) + "%";
             }
         }
 
@@ -379,7 +387,7 @@
             document.getElementById('totalRequests').textContent = 0;
             document.getElementById('allowedRequests').textContent = 0;
             document.getElementById('blockedRequests').textContent = 0;
-            document.getElementById('estCount').textContent = "0.0";
+            document.getElementById('dynamicValue').textContent = "-";
             document.getElementById('log').innerHTML = '';
         }
 
