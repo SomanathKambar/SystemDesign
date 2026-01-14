@@ -1,7 +1,7 @@
 # 🗺️ System Design Zero → Pro Roadmap
 
 ## 🎯 Objective
-Design scalable, fault-tolerant systems, crack Staff/Principal interviews, and build production-grade platforms.
+Design scalable, fault-tolerant systems and build production-grade platforms.
 
 ---
 ## Phase 0 — Foundations
