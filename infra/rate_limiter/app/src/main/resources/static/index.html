@@ -229,7 +229,18 @@
                 <button class="btn-danger" id="loadBtn" onclick="toggleLoad()">Start Load Test (5 req/sec)</button>
             </div>
             
-            <div id="visualizer" class="visualizer">
+            <div style="margin-top: 20px;">
+                <label>Current Window Progress</label>
+                <div style="width: 100%; background: #e5e7eb; height: 20px; border-radius: 10px; overflow: hidden; margin-top: 5px;">
+                    <div id="progressBar" style="width: 0%; height: 100%; background: var(--primary); transition: width 0.1s linear;"></div>
+                </div>
+                <div style="display: flex; justify-content: space-between; font-size: 0.8em; color: #6b7280; margin-top: 4px;">
+                    <span id="windowStartText">Window Start: -</span>
+                    <span id="windowEndText">Window End: -</span>
+                </div>
+            </div>
+
+            <div id="visualizer" class="visualizer" style="margin-top: 20px;">
                 <span id="visualizer-text">Ready</span>
             </div>
         </div>
@@ -263,6 +274,7 @@
     <script>
         let loadInterval = null;
         let stats = { total: 0, allowed: 0, blocked: 0 };
+        let currentConfig = { limit: 5, windowSizeMs: 10000 };
 
         async function updateConfig() {
             const limit = parseInt(document.getElementById('limit').value);
@@ -275,6 +287,7 @@
                     body: JSON.stringify({ limit, windowSizeMs })
                 });
                 const data = await response.json();
+                currentConfig = data.config;
                 addLogEntry('System', `Config updated: ${data.config.limit} req / ${data.config.windowSizeMs} ms`, true);
                 resetStats();
             } catch (e) {
@@ -296,6 +309,7 @@
                 const data = await response.json();
 
                 updateStats(data.allowed);
+                updateWindowUI(data.serverTimeMs, data.windowStartMs, data.currentWindowSizeMs);
                 
                 // Visual feedback
                 visualizer.classList.remove('pulse');
@@ -318,6 +332,17 @@
                 console.error(e);
                 addLogEntry('System', 'Network Error', false);
             }
+        }
+
+        function updateWindowUI(serverTime, windowStart, windowSize) {
+            const elapsed = serverTime - windowStart;
+            const progress = (elapsed / windowSize) * 100;
+            const progressBar = document.getElementById('progressBar');
+            
+            progressBar.style.width = `${progress}%`;
+            
+            document.getElementById('windowStartText').textContent = `Start: ${new Date(windowStart).toLocaleTimeString()}.${String(windowStart % 1000).padStart(3, '0')}`;
+            document.getElementById('windowEndText').textContent = `Reset: ${new Date(windowStart + windowSize).toLocaleTimeString()}.${String((windowStart + windowSize) % 1000).padStart(3, '0')}`;
         }
 
         function toggleLoad() {

@@ -24,7 +24,9 @@ data class RateLimitResponse(
     val allowed: Boolean,
     val retryAfterMs: Long? = null,
     val currentLimit: Int,
-    val currentWindowSizeMs: Long
+    val currentWindowSizeMs: Long,
+    val serverTimeMs: Long,
+    val windowStartMs: Long
 )
 
 @Serializable
@@ -51,12 +53,17 @@ class RateLimiterManager {
     }
 
     fun allow(key: String): RateLimitResponse {
+        val now = System.currentTimeMillis()
         val decision = limiterRef.get().allow(key)
+        val windowStart = (now / currentWindowSize) * currentWindowSize
+        
         return RateLimitResponse(
             allowed = decision.allowed,
             retryAfterMs = decision.retryAfterMs,
             currentLimit = currentLimit,
-            currentWindowSizeMs = currentWindowSize
+            currentWindowSizeMs = currentWindowSize,
+            serverTimeMs = now,
+            windowStartMs = windowStart
         )
     }
     
