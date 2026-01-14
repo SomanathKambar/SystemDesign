@@ -51,19 +51,14 @@ data class ConfigUpdateResponse(
 )
 
 @Serializable
-data class ComparisonResult(
-    val strategy: StrategyType,
-    val allowed: Int,
-    val blocked: Int,
-    val throughput: Double,
-    val description: String
-)
+data class ComparisonDataPoint(val second: Int, val fixedAllowed: Int, val slidingAllowed: Int)
 
 @Serializable
 data class ComparisonResponse(
     val results: List<ComparisonResult>,
     val winner: StrategyType,
-    val logic: String
+    val logic: String,
+    val timeSeries: List<ComparisonDataPoint>
 )
 
 class RateLimiterManager {
@@ -81,47 +76,78 @@ class RateLimiterManager {
         }
     }
 
-    fun runComparison(durationSec: Int, rps: Int): ComparisonResponse {
-        val totalRequests = durationSec * rps
-        val limit = (rps * 2) // Set a challenging limit
-        val windowMs = 5000L
+    fun runComparison(durationSec: Int, rps: Int, limit: Int, windowMs: Long): ComparisonResponse {
+        val timeSeries = mutableListOf<ComparisonDataPoint>()
         
-        val fixed = FixedWindowRateLimiter(limit, windowMs, InMemoryStateStore())
-        val sliding = SlidingWindowRateLimiter(limit, windowMs, InMemoryStateStore())
+        // Use custom clocks to simulate time passing without Thread.sleep
+        class ManualClock(var millis: Long) : java.time.Clock() {
+            override fun getZone(): java.time.ZoneId = java.time.ZoneOffset.UTC
+            override fun withZone(zone: java.time.ZoneId?): java.time.Clock = this
+            override fun instant(): java.time.Instant = java.time.Instant.ofEpochMilli(millis)
+            override fun millis(): Long = millis
+        }
+
+        val startTime = System.currentTimeMillis()
+        val fixedClock = ManualClock(startTime)
+        val slidingClock = ManualClock(startTime)
+
+        val fixed = FixedWindowRateLimiter(limit, windowMs, InMemoryStateStore(), fixedClock)
+        val sliding = SlidingWindowRateLimiter(limit, windowMs, InMemoryStateStore(), slidingClock)
         
-        var fixedAllowed = 0
-        var slidingAllowed = 0
+        var totalFixedAllowed = 0
+        var totalSlidingAllowed = 0
         
-        // Simulate requests
-        for (i in 1..totalRequests) {
-            if (fixed.allow("comp").allowed) fixedAllowed++
-            if (sliding.allow("comp").allowed) slidingAllowed++
-            // In a real simulation, we'd add Thread.sleep or use virtual time
+        for (sec in 1..durationSec) {
+            var secFixedAllowed = 0
+            var secSlidingAllowed = 0
+            
+            for (r in 1..rps) {
+                // Spread requests within the second
+                val offset = (r * (1000 / rps)).toLong()
+                fixedClock.millis = startTime + (sec - 1) * 1000 + offset
+                slidingClock.millis = startTime + (sec - 1) * 1000 + offset
+                
+                if (fixed.allow("comp").allowed) secFixedAllowed++
+                if (sliding.allow("comp").allowed) secSlidingAllowed++
+            }
+            
+            totalFixedAllowed += secFixedAllowed
+            totalSlidingAllowed += secSlidingAllowed
+            timeSeries.add(ComparisonDataPoint(sec, secFixedAllowed, secSlidingAllowed))
         }
 
         val results = listOf(
             ComparisonResult(
                 StrategyType.FIXED_WINDOW, 
-                fixedAllowed, 
-                totalRequests - fixedAllowed,
-                (fixedAllowed.toDouble() / durationSec),
-                "Predictable but prone to boundary bursts."
+                totalFixedAllowed, 
+                (durationSec * rps) - totalFixedAllowed,
+                (totalFixedAllowed.toDouble() / durationSec),
+                "Predictable but prone to boundary bursts (Step-function behavior)."
             ),
             ComparisonResult(
                 StrategyType.SLIDING_WINDOW, 
-                slidingAllowed, 
-                totalRequests - slidingAllowed,
-                (slidingAllowed.toDouble() / durationSec),
-                "Smoother distribution, prevents edge-case spikes."
+                totalSlidingAllowed, 
+                (durationSec * rps) - totalSlidingAllowed,
+                (totalSlidingAllowed.toDouble() / durationSec),
+                "Smoother distribution, prevents edge-case spikes using weighted averages."
             )
         )
 
-        val winner = if (slidingAllowed >= fixedAllowed) StrategyType.SLIDING_WINDOW else StrategyType.FIXED_WINDOW
+        // Winner logic: If throughput is tied, Sliding wins for smoothness.
+        // If one has strictly better throughput, it wins.
+        val winner = when {
+            totalSlidingAllowed > totalFixedAllowed -> StrategyType.SLIDING_WINDOW
+            totalFixedAllowed > totalSlidingAllowed -> StrategyType.FIXED_WINDOW
+            else -> StrategyType.SLIDING_WINDOW // Default to sliding for better edge-case protection
+        }
         
         return ComparisonResponse(
             results = results,
             winner = winner,
-            logic = "Winner chosen based on total throughput under sustained load."
+            logic = if (totalFixedAllowed == totalSlidingAllowed) 
+                "Tied on throughput, but Sliding Window is preferred for preventing boundary bursts." 
+                else "Winner determined by superior throughput under the specific load pattern.",
+            timeSeries = timeSeries
         )
     }
 
@@ -181,7 +207,9 @@ fun main() {
                 get("/compare") {
                     val duration = call.request.queryParameters["duration"]?.toInt() ?: 10
                     val rps = call.request.queryParameters["rps"]?.toInt() ?: 10
-                    call.respond(manager.runComparison(duration, rps))
+                    val limit = call.request.queryParameters["limit"]?.toInt() ?: 20
+                    val windowMs = call.request.queryParameters["windowMs"]?.toLong() ?: 5000L
+                    call.respond(manager.runComparison(duration, rps, limit, windowMs))
                 }
             }
         }

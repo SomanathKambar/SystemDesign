@@ -295,9 +295,30 @@
                 <h2>Comparative Analysis</h2>
                 <button class="btn-primary" id="compareBtn" onclick="runComparison()">Run Stress Test Comparison</button>
             </div>
-            <p class="text-muted">Runs a 10s stress test (10 req/sec) across all strategies with identical inputs.</p>
+            
+            <div class="controls" style="margin-top: 15px; background: #f9fafb; padding: 15px; border-radius: 8px;">
+                <div class="form-group">
+                    <label>Sim. Duration (s)</label>
+                    <input type="number" id="compDuration" value="10">
+                </div>
+                <div class="form-group">
+                    <label>Requests/sec</label>
+                    <input type="number" id="compRps" value="15">
+                </div>
+                <div class="form-group">
+                    <label>Limit</label>
+                    <input type="number" id="compLimit" value="20">
+                </div>
+                <div class="form-group">
+                    <label>Window (ms)</label>
+                    <input type="number" id="compWindow" value="5000">
+                </div>
+            </div>
             
             <div id="comparisonResults" style="display: none; margin-top: 20px;">
+                <div style="height: 300px; margin-bottom: 20px;">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
                 <table style="width: 100%; border-collapse: collapse; text-align: left;">
                     <thead>
                         <tr style="border-bottom: 2px solid #e5e7eb;">
@@ -575,16 +596,24 @@
             }
         }
 
+        let comparisonChart = null;
+
         async function runComparison() {
             const btn = document.getElementById('compareBtn');
             const resultDiv = document.getElementById('comparisonResults');
             const tableBody = document.getElementById('comparisonTableBody');
             
+            // Get dynamic params
+            const duration = document.getElementById('compDuration').value;
+            const rps = document.getElementById('compRps').value;
+            const limit = document.getElementById('compLimit').value;
+            const windowMs = document.getElementById('compWindow').value;
+
             btn.disabled = true;
             btn.textContent = "Analyzing...";
             
             try {
-                const response = await fetch('/api/compare?duration=10&rps=15');
+                const response = await fetch(`/api/compare?duration=${duration}&rps=${rps}&limit=${limit}&windowMs=${windowMs}`);
                 const data = await response.json();
                 
                 tableBody.innerHTML = '';
@@ -604,6 +633,26 @@
                 document.getElementById('winnerName').textContent = data.winner;
                 document.getElementById('winnerLogic').textContent = data.logic;
                 resultDiv.style.display = 'block';
+
+                // Update Comparison Chart
+                if (comparisonChart) comparisonChart.destroy();
+                const ctxComp = document.getElementById('comparisonChart').getContext('2d');
+                comparisonChart = new Chart(ctxComp, {
+                    type: 'line',
+                    data: {
+                        labels: data.timeSeries.map(p => `Sec ${p.second}`),
+                        datasets: [
+                            { label: 'Fixed Window', data: data.timeSeries.map(p => p.fixedAllowed), borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.1)', fill: true },
+                            { label: 'Sliding Window', data: data.timeSeries.map(p => p.slidingAllowed), borderColor: '#8b5cf6', backgroundColor: 'rgba(139, 92, 246, 0.1)', fill: true }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { title: { display: true, text: 'Throughput Comparison (Allowed Requests/Sec)' } },
+                        scales: { y: { beginAtZero: true, title: { display: true, text: 'Allowed Requests' } } }
+                    }
+                });
                 
             } catch (e) {
                 console.error('Comparison failed:', e);
