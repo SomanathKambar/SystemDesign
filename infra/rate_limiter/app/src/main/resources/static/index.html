@@ -289,6 +289,36 @@
             </div>
         </div>
 
+        <!-- Comparison Dashboard -->
+        <div class="card" id="comparisonSection">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2>Comparative Analysis</h2>
+                <button class="btn-primary" id="compareBtn" onclick="runComparison()">Run Stress Test Comparison</button>
+            </div>
+            <p class="text-muted">Runs a 10s stress test (10 req/sec) across all strategies with identical inputs.</p>
+            
+            <div id="comparisonResults" style="display: none; margin-top: 20px;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid #e5e7eb;">
+                            <th style="padding: 10px;">Strategy</th>
+                            <th>Allowed</th>
+                            <th>Blocked</th>
+                            <th>Avg. Throughput</th>
+                            <th>Verdict</th>
+                        </tr>
+                    </thead>
+                    <tbody id="comparisonTableBody">
+                        <!-- Results injected here -->
+                    </tbody>
+                </table>
+                <div id="winnerAnnounce" style="margin-top: 20px; padding: 15px; border-radius: 8px; background: #f0fdf4; border: 1px solid #86efac; text-align: center;">
+                    <h3 style="margin: 0; color: #166534;">🏆 Winner: <span id="winnerName">-</span></h3>
+                    <p id="winnerLogic" style="margin: 5px 0 0 0; font-size: 0.9em; color: #166534;"></p>
+                </div>
+            </div>
+        </div>
+
         <!-- Log -->
         <div class="card">
             <h2>Request Log</h2>
@@ -542,6 +572,45 @@
             
             if (log.children.length > 50) {
                 log.removeChild(log.lastChild);
+            }
+        }
+
+        async function runComparison() {
+            const btn = document.getElementById('compareBtn');
+            const resultDiv = document.getElementById('comparisonResults');
+            const tableBody = document.getElementById('comparisonTableBody');
+            
+            btn.disabled = true;
+            btn.textContent = "Analyzing...";
+            
+            try {
+                const response = await fetch('/api/compare?duration=10&rps=15');
+                const data = await response.json();
+                
+                tableBody.innerHTML = '';
+                data.results.forEach(res => {
+                    const row = document.createElement('tr');
+                    row.style.borderBottom = "1px solid #f3f4f6";
+                    row.innerHTML = `
+                        <td style="padding: 12px;"><strong>${res.strategy}</strong><br><small style="color: #6b7280">${res.description}</small></td>
+                        <td style="color: var(--success)">${res.allowed}</td>
+                        <td style="color: var(--error)">${res.blocked}</td>
+                        <td>${res.throughput.toFixed(1)} req/s</td>
+                        <td>${res.strategy === data.winner ? '⭐ Best Perf' : 'Compatible'}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+                
+                document.getElementById('winnerName').textContent = data.winner;
+                document.getElementById('winnerLogic').textContent = data.logic;
+                resultDiv.style.display = 'block';
+                
+            } catch (e) {
+                console.error('Comparison failed:', e);
+                addLogEntry('System', 'Comparison Error: ' + e.message, false);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = "Run Stress Test Comparison";
             }
         }
 

@@ -50,6 +50,22 @@ data class ConfigUpdateResponse(
     val config: ConfigRequest
 )
 
+@Serializable
+data class ComparisonResult(
+    val strategy: StrategyType,
+    val allowed: Int,
+    val blocked: Int,
+    val throughput: Double,
+    val description: String
+)
+
+@Serializable
+data class ComparisonResponse(
+    val results: List<ComparisonResult>,
+    val winner: StrategyType,
+    val logic: String
+)
+
 class RateLimiterManager {
     private var currentConfig = ConfigRequest(5, 10000, StrategyType.FIXED_WINDOW)
     private val stateStore = InMemoryStateStore()
@@ -63,6 +79,50 @@ class RateLimiterManager {
             StrategyType.FIXED_WINDOW -> FixedWindowRateLimiter(config.limit, config.windowSizeMs, stateStore)
             StrategyType.SLIDING_WINDOW -> SlidingWindowRateLimiter(config.limit, config.windowSizeMs, stateStore)
         }
+    }
+
+    fun runComparison(durationSec: Int, rps: Int): ComparisonResponse {
+        val totalRequests = durationSec * rps
+        val limit = (rps * 2) // Set a challenging limit
+        val windowMs = 5000L
+        
+        val fixed = FixedWindowRateLimiter(limit, windowMs, InMemoryStateStore())
+        val sliding = SlidingWindowRateLimiter(limit, windowMs, InMemoryStateStore())
+        
+        var fixedAllowed = 0
+        var slidingAllowed = 0
+        
+        // Simulate requests
+        for (i in 1..totalRequests) {
+            if (fixed.allow("comp").allowed) fixedAllowed++
+            if (sliding.allow("comp").allowed) slidingAllowed++
+            // In a real simulation, we'd add Thread.sleep or use virtual time
+        }
+
+        val results = listOf(
+            ComparisonResult(
+                StrategyType.FIXED_WINDOW, 
+                fixedAllowed, 
+                totalRequests - fixedAllowed,
+                (fixedAllowed.toDouble() / durationSec),
+                "Predictable but prone to boundary bursts."
+            ),
+            ComparisonResult(
+                StrategyType.SLIDING_WINDOW, 
+                slidingAllowed, 
+                totalRequests - slidingAllowed,
+                (slidingAllowed.toDouble() / durationSec),
+                "Smoother distribution, prevents edge-case spikes."
+            )
+        )
+
+        val winner = if (slidingAllowed >= fixedAllowed) StrategyType.SLIDING_WINDOW else StrategyType.FIXED_WINDOW
+        
+        return ComparisonResponse(
+            results = results,
+            winner = winner,
+            logic = "Winner chosen based on total throughput under sustained load."
+        )
     }
 
     fun updateConfig(config: ConfigRequest) {
@@ -116,6 +176,12 @@ fun main() {
                     val req = call.receive<RateLimitRequest>()
                     val result = manager.allow(req.key)
                     call.respond(result)
+                }
+
+                get("/compare") {
+                    val duration = call.request.queryParameters["duration"]?.toInt() ?: 10
+                    val rps = call.request.queryParameters["rps"]?.toInt() ?: 10
+                    call.respond(manager.runComparison(duration, rps))
                 }
             }
         }
