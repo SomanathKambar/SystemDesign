@@ -46,11 +46,10 @@ class SlidingWindowRateLimiter(
         }
 
         // Increment current window
-        stateStore.save(
-            key = currentWindowKey,
-            state = CounterState(currentCount + 1, currentWindowStart),
-            ttlMs = windowSizeMs * 2 // Keep long enough for next window to use as 'previous'
-        )
+        stateStore.compute(currentWindowKey, windowSizeMs * 2) { state ->
+            val count = state?.count ?: 0
+            CounterState(count + 1, currentWindowStart)
+        }
 
         return Decision(
             allowed = true,

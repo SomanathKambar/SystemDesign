@@ -245,18 +245,32 @@
                 <div class="controls">
                     <div class="form-group">
                         <label for="strategy">Strategy</label>
-                        <select id="strategy" style="padding: 8px; border-radius: 4px; border: 1px solid #d1d5db;">
+                        <select id="strategy" onchange="toggleConfigFields()" style="padding: 8px; border-radius: 4px; border: 1px solid #d1d5db;">
                             <option value="FIXED_WINDOW">Fixed Window</option>
-                            <option value="SLIDING_WINDOW">Sliding Window</option>
+                            <option value="SLIDING_WINDOW_COUNTER">Sliding Window Counter</option>
+                            <option value="SLIDING_WINDOW_LOG">Sliding Window Log</option>
+                            <option value="TOKEN_BUCKET">Token Bucket</option>
                         </select>
                     </div>
-                    <div class="form-group">
-                        <label for="limit">Limit (requests)</label>
-                        <input type="number" id="limit" value="5" min="1">
+                    <div id="standard-params" style="display: contents;">
+                        <div class="form-group">
+                            <label for="limit">Limit (requests)</label>
+                            <input type="number" id="limit" value="5" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="windowSize">Window Size (ms)</label>
+                            <input type="number" id="windowSize" value="10000" step="1000" min="1000">
+                        </div>
                     </div>
-                    <div class="form-group">
-                        <label for="windowSize">Window Size (ms)</label>
-                        <input type="number" id="windowSize" value="10000" step="1000" min="1000">
+                    <div id="token-bucket-params" style="display: none;">
+                        <div class="form-group">
+                            <label for="capacity">Capacity</label>
+                            <input type="number" id="capacity" value="10" min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="refillRate">Refill Rate (tokens/s)</label>
+                            <input type="number" id="refillRate" value="1" step="0.1" min="0.1">
+                        </div>
                     </div>
                     <button class="btn-primary" onclick="updateConfig()">Update Configuration</button>
                 </div>
@@ -401,8 +415,22 @@
     <script>
         let loadInterval = null;
         let stats = { total: 0, allowed: 0, blocked: 0 };
-        let currentConfig = { limit: 5, windowSizeMs: 10000, strategy: 'FIXED_WINDOW' };
+        let currentConfig = { limit: 5, windowSizeMs: 10000, strategy: 'FIXED_WINDOW', capacity: 10, refillTokensPerSecond: 1.0 };
         
+        function toggleConfigFields() {
+            const strategy = document.getElementById('strategy').value;
+            const standard = document.getElementById('standard-params');
+            const tokenBucket = document.getElementById('token-bucket-params');
+            
+            if (strategy === 'TOKEN_BUCKET') {
+                standard.style.display = 'none';
+                tokenBucket.style.display = 'contents';
+            } else {
+                standard.style.display = 'contents';
+                tokenBucket.style.display = 'none';
+            }
+        }
+
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -410,7 +438,6 @@
             document.getElementById(tabId).classList.add('active');
             event.currentTarget.classList.add('active');
             
-            // Add a log entry when switching
             addLogEntry('System', `Switched to ${tabId === 'manual' ? 'Live Simulation' : 'Comparative Benchmarking'}`, true);
         }
 
@@ -465,7 +492,6 @@
             }
             throughputChart.update('none');
             
-            // Reset buffer for next interval
             chartDataBuffer.allowed = 0;
             chartDataBuffer.blocked = 0;
         }, 1000);
@@ -507,16 +533,24 @@
             const limit = parseInt(document.getElementById('limit').value);
             const windowSizeMs = parseInt(document.getElementById('windowSize').value);
             const strategy = document.getElementById('strategy').value;
+            const capacity = parseFloat(document.getElementById('capacity').value);
+            const refillRate = parseFloat(document.getElementById('refillRate').value);
 
             try {
                 const response = await fetch('/api/config', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ limit, windowSizeMs, strategy })
+                    body: JSON.stringify({ 
+                        limit, 
+                        windowSizeMs, 
+                        strategy,
+                        capacity,
+                        refillTokensPerSecond: refillRate
+                    })
                 });
                 const data = await response.json();
                 currentConfig = data.config;
-                addLogEntry('System', `Config updated: ${data.config.strategy} | ${data.config.limit} req / ${data.config.windowSizeMs} ms`, true);
+                addLogEntry('System', `Config updated: ${data.config.strategy}`, true);
                 resetStats();
             } catch (e) {
                 console.error('Config update failed:', e);
@@ -540,25 +574,24 @@
                 updateStats(data);
                 updateWindowUI(data.serverTimeMs, data.windowStartMs, data.currentWindowSizeMs);
                 
-                // Visual feedback
                 const rect = visualizer.getBoundingClientRect();
                 const color = data.allowed ? '#22c55e' : '#ef4444';
                 for(let i=0; i<8; i++) createParticle(rect.left + rect.width/2, rect.top + rect.height/2, color);
 
                 visualizer.classList.remove('pulse');
-                void visualizer.offsetWidth; // trigger reflow
+                void visualizer.offsetWidth;
                 visualizer.classList.add('pulse');
 
                 if (data.allowed) {
                     visualizer.classList.remove('blocked');
                     visualizerText.textContent = "Allowed";
                     visualizerText.style.color = "var(--success)";
-                    addLogEntry(key, `[${data.strategy}] Allowed (Est: ${data.estimatedCount || '-'})`, true);
+                    addLogEntry(key, `[${data.strategy}] Allowed`, true);
                 } else {
                     visualizer.classList.add('blocked');
                     visualizerText.textContent = `Blocked (Retry after ${data.retryAfterMs}ms)`;
                     visualizerText.style.color = "var(--error)";
-                    addLogEntry(key, `[${data.strategy}] Blocked! (Est: ${data.estimatedCount || '-'})`, false);
+                    addLogEntry(key, `[${data.strategy}] Blocked!`, false);
                 }
 
             } catch (e) {
@@ -568,7 +601,11 @@
         }
 
         function updateWindowUI(serverTime, windowStart, windowSize) {
-            if (!windowStart || !windowSize) return;
+            if (!windowStart || !windowSize || currentConfig.strategy === 'TOKEN_BUCKET') {
+                document.getElementById('progressBar').parentElement.style.opacity = '0.3';
+                return;
+            }
+            document.getElementById('progressBar').parentElement.style.opacity = '1';
             const elapsed = serverTime - windowStart;
             const progress = Math.min(100, Math.max(0, (elapsed / windowSize) * 100));
             const progressBar = document.getElementById('progressBar');
@@ -578,8 +615,8 @@
             const startDate = new Date(windowStart);
             const endDate = new Date(windowStart + windowSize);
             
-            document.getElementById('windowStartText').textContent = `Start: ${startDate.toLocaleTimeString()}.${String(windowStart % 1000).padStart(3, '0')}`;
-            document.getElementById('windowEndText').textContent = `Reset: ${endDate.toLocaleTimeString()}.${String((windowStart + windowSize) % 1000).padStart(3, '0')}`;
+            document.getElementById('windowStartText').textContent = `Start: ${startDate.toLocaleTimeString()}`;
+            document.getElementById('windowEndText').textContent = `Reset: ${endDate.toLocaleTimeString()}`;
         }
 
         function toggleLoad() {
@@ -592,6 +629,7 @@
             } else {
                 loadInterval = setInterval(sendRequest, 200);
                 btn.textContent = "Stop Load Test";
+                btn.classList.replace('btn-danger', 'btn-primary');
             }
         }
 
@@ -609,20 +647,22 @@
             document.getElementById('allowedRequests').textContent = stats.allowed;
             document.getElementById('blockedRequests').textContent = stats.blocked;
 
-            // Update Ratio Chart
             ratioChart.data.datasets[0].data = [stats.allowed, stats.blocked];
             ratioChart.update('none');
 
             const dynamicVal = document.getElementById('dynamicValue');
             const dynamicLab = document.getElementById('dynamicLabel');
 
-            if (data.strategy === 'SLIDING_WINDOW') {
-                dynamicLab.textContent = "Est. Count";
+            if (data.strategy.includes('SLIDING_WINDOW')) {
+                dynamicLab.textContent = "Current/Est. Count";
                 dynamicVal.textContent = data.estimatedCount ? data.estimatedCount.toFixed(2) : "0.00";
             } else if (data.strategy === 'FIXED_WINDOW') {
                 dynamicLab.textContent = "Window Progress";
                 const elapsed = data.serverTimeMs - data.windowStartMs;
                 dynamicVal.textContent = Math.floor((elapsed / data.currentWindowSizeMs) * 100) + "%";
+            } else if (data.strategy === 'TOKEN_BUCKET') {
+                dynamicLab.textContent = "Available Tokens";
+                dynamicVal.textContent = data.tokens ? data.tokens.toFixed(2) : "-";
             }
         }
 
@@ -652,10 +692,7 @@
             entry.innerHTML = `<span><strong>[${time}] ${source}</strong>: ${message}</span>`;
             
             log.insertBefore(entry, log.firstChild);
-            
-            if (log.children.length > 50) {
-                log.removeChild(log.lastChild);
-            }
+            if (log.children.length > 50) log.removeChild(log.lastChild);
         }
 
         let comparisonChart = null;
@@ -665,14 +702,13 @@
             const resultDiv = document.getElementById('comparisonResults');
             const tableBody = document.getElementById('comparisonTableBody');
             
-            // Get dynamic params
             const duration = document.getElementById('compDuration').value;
             const rps = document.getElementById('compRps').value;
             const limit = document.getElementById('compLimit').value;
             const windowMs = document.getElementById('compWindow').value;
 
             btn.disabled = true;
-            btn.textContent = "Analyzing...";
+            btn.textContent = "Simulating...";
             
             try {
                 const response = await fetch(`/api/compare?duration=${duration}&rps=${rps}&limit=${limit}&windowMs=${windowMs}`);
@@ -687,7 +723,7 @@
                         <td style="color: var(--success)">${res.allowed}</td>
                         <td style="color: var(--error)">${res.blocked}</td>
                         <td>${res.throughput.toFixed(1)} req/s</td>
-                        <td>${res.strategy === data.winner ? '⭐ Best Perf' : 'Compatible'}</td>
+                        <td>${res.strategy === data.winner ? '⭐ Best' : 'Ok'}</td>
                     `;
                     tableBody.appendChild(row);
                 });
@@ -696,7 +732,6 @@
                 document.getElementById('winnerLogic').textContent = data.logic;
                 resultDiv.style.display = 'block';
 
-                // Update Comparison Chart
                 if (comparisonChart) comparisonChart.destroy();
                 const ctxComp = document.getElementById('comparisonChart').getContext('2d');
                 comparisonChart = new Chart(ctxComp, {
@@ -704,28 +739,28 @@
                     data: {
                         labels: data.timeSeries.map(p => `Sec ${p.second}`),
                         datasets: [
-                            { label: 'Fixed Window', data: data.timeSeries.map(p => p.fixedAllowed), borderColor: '#3b82f6', backgroundColor: 'rgba(59, 130, 246, 0.1)', fill: true },
-                            { label: 'Sliding Window', data: data.timeSeries.map(p => p.slidingAllowed), borderColor: '#8b5cf6', backgroundColor: 'rgba(139, 92, 246, 0.1)', fill: true }
+                            { label: 'Fixed Window', data: data.timeSeries.map(p => p.fixedAllowed), borderColor: '#3b82f6', tension: 0.3 },
+                            { label: 'Sliding Counter', data: data.timeSeries.map(p => p.slidingCounterAllowed), borderColor: '#8b5cf6', tension: 0.3 },
+                            { label: 'Sliding Log', data: data.timeSeries.map(p => p.slidingLogAllowed), borderColor: '#ec4899', tension: 0.3 },
+                            { label: 'Token Bucket', data: data.timeSeries.map(p => p.tokenBucketAllowed), borderColor: '#f59e0b', tension: 0.3 }
                         ]
                     },
                     options: {
                         responsive: true,
                         maintainAspectRatio: false,
-                        plugins: { title: { display: true, text: 'Throughput Comparison (Allowed Requests/Sec)' } },
-                        scales: { y: { beginAtZero: true, title: { display: true, text: 'Allowed Requests' } } }
+                        plugins: { title: { display: true, text: 'Throughput (Allowed/Sec)' } },
+                        scales: { y: { beginAtZero: true } }
                     }
                 });
                 
             } catch (e) {
                 console.error('Comparison failed:', e);
-                addLogEntry('System', 'Comparison Error: ' + e.message, false);
             } finally {
                 btn.disabled = false;
                 btn.textContent = "Run Stress Test Comparison";
             }
         }
 
-        // Init
         fetch('/api/config')
             .then(res => res.json())
             .then(data => {
@@ -733,6 +768,7 @@
                 document.getElementById('windowSize').value = data.windowSizeMs;
                 document.getElementById('strategy').value = data.strategy;
                 currentConfig = data;
+                toggleConfigFields();
             });
     </script>
 </body>

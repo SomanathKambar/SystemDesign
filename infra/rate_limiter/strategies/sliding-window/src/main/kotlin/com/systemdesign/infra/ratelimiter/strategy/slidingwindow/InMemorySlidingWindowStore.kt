@@ -20,4 +20,17 @@ class InMemorySlidingWindowStore : SlidingWindowStore {
             timestamps.filter { it >= beforeTimestamp }
         }
     }
+
+    override fun compute(
+        key: String,
+        ttlMs: Long,
+        remappingFunction: (SlidingWindowLog?) -> SlidingWindowLog?
+    ): SlidingWindowLog? {
+        val result = store.compute(key) { _, timestamps ->
+            val log = timestamps?.let { SlidingWindowLog(it) }
+            val newLog = remappingFunction(log)
+            newLog?.timestamps
+        }
+        return result?.let { SlidingWindowLog(it) }
+    }
 }

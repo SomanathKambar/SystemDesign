@@ -12,4 +12,13 @@ class InMemoryTokenBucketStore : TokenBucketStore {
     override fun save(key: String, state: TokenBucketState) {
         store[key] = state
     }
+
+    override fun compute(
+        key: String,
+        remappingFunction: (TokenBucketState?) -> TokenBucketState?
+    ): TokenBucketState? {
+        return store.compute(key) { _, currentState ->
+            remappingFunction(currentState)
+        }
+    }
 }

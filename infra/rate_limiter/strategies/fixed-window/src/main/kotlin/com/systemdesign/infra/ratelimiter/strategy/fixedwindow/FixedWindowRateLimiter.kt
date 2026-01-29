@@ -18,25 +18,23 @@ class FixedWindowRateLimiter(
         val windowStart = (now / windowSizeMs) * windowSizeMs
         val windowKey = "$key:$windowStart"
 
-        val state = stateStore.get(windowKey)
-        
-        // If current window exists and is full
-        if (state != null && state.count >= limit) {
-             val resetTime = windowStart + windowSizeMs
-             return Decision(
-                 allowed = false,
-                 retryAfterMs = resetTime - now
-             )
+        var decision: Decision? = null
+
+        stateStore.compute(windowKey, windowSizeMs) { state ->
+            if (state != null && state.count >= limit) {
+                val resetTime = windowStart + windowSizeMs
+                decision = Decision(
+                    allowed = false,
+                    retryAfterMs = resetTime - now
+                )
+                state
+            } else {
+                val newCount = (state?.count ?: 0) + 1
+                decision = Decision(allowed = true)
+                CounterState(newCount, windowStart)
+            }
         }
 
-        // Increment or create
-        val newCount = (state?.count ?: 0) + 1
-        stateStore.save(
-            key = windowKey,
-            state = CounterState(newCount, windowStart),
-            ttlMs = windowSizeMs // In Redis this would auto-expire old keys
-        )
-
-        return Decision(allowed = true)
+        return decision!!
     }
 }

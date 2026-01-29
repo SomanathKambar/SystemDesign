@@ -4,6 +4,10 @@ import com.systemdesign.infra.ratelimiter.core.RateLimiter
 import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.FixedWindowRateLimiter
 import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.InMemoryStateStore
 import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowRateLimiter
+import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowLogRateLimiter
+import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.InMemorySlidingWindowStore
+import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.TokenBucketRateLimiter
+import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.InMemoryTokenBucketStore
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
@@ -19,14 +23,18 @@ import java.util.concurrent.atomic.AtomicReference
 @Serializable
 enum class StrategyType {
     FIXED_WINDOW,
-    SLIDING_WINDOW
+    SLIDING_WINDOW_COUNTER,
+    SLIDING_WINDOW_LOG,
+    TOKEN_BUCKET
 }
 
 @Serializable
 data class ConfigRequest(
     val limit: Int, 
     val windowSizeMs: Long,
-    val strategy: StrategyType = StrategyType.FIXED_WINDOW
+    val strategy: StrategyType = StrategyType.FIXED_WINDOW,
+    val capacity: Double = 10.0,
+    val refillTokensPerSecond: Double = 1.0
 )
 
 @Serializable
@@ -41,7 +49,8 @@ data class RateLimitResponse(
     val serverTimeMs: Long,
     val windowStartMs: Long,
     val strategy: StrategyType,
-    val estimatedCount: Double? = null
+    val estimatedCount: Double? = null,
+    val tokens: Double? = null
 )
 
 @Serializable
@@ -51,7 +60,13 @@ data class ConfigUpdateResponse(
 )
 
 @Serializable
-data class ComparisonDataPoint(val second: Int, val fixedAllowed: Int, val slidingAllowed: Int)
+data class ComparisonDataPoint(
+    val second: Int, 
+    val fixedAllowed: Int, 
+    val slidingCounterAllowed: Int,
+    val slidingLogAllowed: Int,
+    val tokenBucketAllowed: Int
+)
 
 @Serializable
 data class ComparisonResult(
@@ -73,6 +88,8 @@ data class ComparisonResponse(
 class RateLimiterManager {
     private var currentConfig = ConfigRequest(5, 10000, StrategyType.FIXED_WINDOW)
     private val stateStore = InMemoryStateStore()
+    private val slidingStore = InMemorySlidingWindowStore()
+    private val tokenBucketStore = InMemoryTokenBucketStore()
     
     private val limiterRef = AtomicReference<RateLimiter>(
         createLimiter(currentConfig)
@@ -81,7 +98,9 @@ class RateLimiterManager {
     private fun createLimiter(config: ConfigRequest): RateLimiter {
         return when (config.strategy) {
             StrategyType.FIXED_WINDOW -> FixedWindowRateLimiter(config.limit, config.windowSizeMs, stateStore)
-            StrategyType.SLIDING_WINDOW -> SlidingWindowRateLimiter(config.limit, config.windowSizeMs, stateStore)
+            StrategyType.SLIDING_WINDOW_COUNTER -> SlidingWindowRateLimiter(config.limit, config.windowSizeMs, stateStore)
+            StrategyType.SLIDING_WINDOW_LOG -> SlidingWindowLogRateLimiter(config.limit, config.windowSizeMs, slidingStore)
+            StrategyType.TOKEN_BUCKET -> TokenBucketRateLimiter(config.capacity, config.refillTokensPerSecond, tokenBucketStore)
         }
     }
 
@@ -98,31 +117,46 @@ class RateLimiterManager {
 
         val startTime = System.currentTimeMillis()
         val fixedClock = ManualClock(startTime)
-        val slidingClock = ManualClock(startTime)
+        val slidingCounterClock = ManualClock(startTime)
+        val slidingLogClock = ManualClock(startTime)
+        val tokenBucketClock = ManualClock(startTime)
 
         val fixed = FixedWindowRateLimiter(limit, windowMs, InMemoryStateStore(), fixedClock)
-        val sliding = SlidingWindowRateLimiter(limit, windowMs, InMemoryStateStore(), slidingClock)
+        val slidingCounter = SlidingWindowRateLimiter(limit, windowMs, InMemoryStateStore(), slidingCounterClock)
+        val slidingLog = SlidingWindowLogRateLimiter(limit, windowMs, InMemorySlidingWindowStore(), slidingLogClock)
+        val tokenBucket = TokenBucketRateLimiter(limit.toDouble(), (limit.toDouble() / (windowMs / 1000.0)), InMemoryTokenBucketStore(), tokenBucketClock)
         
         var totalFixedAllowed = 0
-        var totalSlidingAllowed = 0
+        var totalSlidingCounterAllowed = 0
+        var totalSlidingLogAllowed = 0
+        var totalTokenBucketAllowed = 0
         
         for (sec in 1..durationSec) {
             var secFixedAllowed = 0
-            var secSlidingAllowed = 0
+            var secSlidingCounterAllowed = 0
+            var secSlidingLogAllowed = 0
+            var secTokenBucketAllowed = 0
             
             for (r in 1..rps) {
                 // Spread requests within the second
                 val offset = (r * (1000 / rps)).toLong()
-                fixedClock.millis = startTime + (sec - 1) * 1000 + offset
-                slidingClock.millis = startTime + (sec - 1) * 1000 + offset
+                val currentMillis = startTime + (sec - 1) * 1000 + offset
+                fixedClock.millis = currentMillis
+                slidingCounterClock.millis = currentMillis
+                slidingLogClock.millis = currentMillis
+                tokenBucketClock.millis = currentMillis
                 
                 if (fixed.allow("comp").allowed) secFixedAllowed++
-                if (sliding.allow("comp").allowed) secSlidingAllowed++
+                if (slidingCounter.allow("comp").allowed) secSlidingCounterAllowed++
+                if (slidingLog.allow("comp").allowed) secSlidingLogAllowed++
+                if (tokenBucket.allow("comp").allowed) secTokenBucketAllowed++
             }
             
             totalFixedAllowed += secFixedAllowed
-            totalSlidingAllowed += secSlidingAllowed
-            timeSeries.add(ComparisonDataPoint(sec, secFixedAllowed, secSlidingAllowed))
+            totalSlidingCounterAllowed += secSlidingCounterAllowed
+            totalSlidingLogAllowed += secSlidingLogAllowed
+            totalTokenBucketAllowed += secTokenBucketAllowed
+            timeSeries.add(ComparisonDataPoint(sec, secFixedAllowed, secSlidingCounterAllowed, secSlidingLogAllowed, secTokenBucketAllowed))
         }
 
         val results = listOf(
@@ -131,31 +165,38 @@ class RateLimiterManager {
                 totalFixedAllowed, 
                 (durationSec * rps) - totalFixedAllowed,
                 (totalFixedAllowed.toDouble() / durationSec),
-                "Predictable but prone to boundary bursts (Step-function behavior)."
+                "Simple, but prone to bursts at window boundaries."
             ),
             ComparisonResult(
-                StrategyType.SLIDING_WINDOW, 
-                totalSlidingAllowed, 
-                (durationSec * rps) - totalSlidingAllowed,
-                (totalSlidingAllowed.toDouble() / durationSec),
-                "Smoother distribution, prevents edge-case spikes using weighted averages."
+                StrategyType.SLIDING_WINDOW_COUNTER, 
+                totalSlidingCounterAllowed, 
+                (durationSec * rps) - totalSlidingCounterAllowed,
+                (totalSlidingCounterAllowed.toDouble() / durationSec),
+                "Approximates sliding window using weighted average of current and previous window."
+            ),
+            ComparisonResult(
+                StrategyType.SLIDING_WINDOW_LOG,
+                totalSlidingLogAllowed,
+                (durationSec * rps) - totalSlidingLogAllowed,
+                (totalSlidingLogAllowed.toDouble() / durationSec),
+                "Exact sliding window, tracks every request timestamp. Higher memory usage."
+            ),
+            ComparisonResult(
+                StrategyType.TOKEN_BUCKET,
+                totalTokenBucketAllowed,
+                (durationSec * rps) - totalTokenBucketAllowed,
+                (totalTokenBucketAllowed.toDouble() / durationSec),
+                "Allows bursts up to capacity and refills at a constant rate. Best for smoothing traffic."
             )
         )
 
-        // Winner logic: If throughput is tied, Sliding wins for smoothness.
-        // If one has strictly better throughput, it wins.
-        val winner = when {
-            totalSlidingAllowed > totalFixedAllowed -> StrategyType.SLIDING_WINDOW
-            totalFixedAllowed > totalSlidingAllowed -> StrategyType.FIXED_WINDOW
-            else -> StrategyType.SLIDING_WINDOW // Default to sliding for better edge-case protection
-        }
+        // Simple winner logic for now
+        val winner = results.maxByOrNull { it.allowed }?.strategy ?: StrategyType.TOKEN_BUCKET
         
         return ComparisonResponse(
             results = results,
             winner = winner,
-            logic = if (totalFixedAllowed == totalSlidingAllowed) 
-                "Tied on throughput, but Sliding Window is preferred for preventing boundary bursts." 
-                else "Winner determined by superior throughput under the specific load pattern.",
+            logic = "Winner determined by throughput under the simulated load pattern.",
             timeSeries = timeSeries
         )
     }
@@ -170,6 +211,11 @@ class RateLimiterManager {
         val decision = limiterRef.get().allow(key)
         val windowStart = (now / currentConfig.windowSizeMs) * currentConfig.windowSizeMs
         
+        // For Token Bucket, we want to know current tokens
+        val tokens = if (currentConfig.strategy == StrategyType.TOKEN_BUCKET) {
+            tokenBucketStore.get(key)?.tokens
+        } else null
+
         return RateLimitResponse(
             allowed = decision.allowed,
             retryAfterMs = decision.retryAfterMs,
@@ -178,7 +224,8 @@ class RateLimiterManager {
             serverTimeMs = now,
             windowStartMs = windowStart,
             strategy = currentConfig.strategy,
-            estimatedCount = decision.context["estimatedCount"] as? Double ?: (decision.context["estimatedCount"] as? Int)?.toDouble()
+            estimatedCount = decision.context["estimatedCount"] as? Double ?: (decision.context["estimatedCount"] as? Int)?.toDouble(),
+            tokens = tokens
         )
     }
     

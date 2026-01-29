@@ -6,4 +6,9 @@ interface SlidingWindowStore {
     fun getLog(key: String): SlidingWindowLog?
     fun saveLog(key: String, log: SlidingWindowLog, ttlMs: Long)
     fun removeOldEntries(key: String, beforeTimestamp: Long)
+
+    /**
+     * Atomically computes the new log based on the current log.
+     */
+    fun compute(key: String, ttlMs: Long, remappingFunction: (SlidingWindowLog?) -> SlidingWindowLog?): SlidingWindowLog?
 }

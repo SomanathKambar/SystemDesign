@@ -22,4 +22,14 @@ class InMemoryStateStore : StateStore {
     override fun delete(key: String) {
         store.remove(key)
     }
+
+    override fun compute(
+        key: String,
+        ttlMs: Long,
+        remappingFunction: (CounterState?) -> CounterState?
+    ): CounterState? {
+        return store.compute(key) { _, currentState ->
+            remappingFunction(currentState)
+        }
+    }
 }

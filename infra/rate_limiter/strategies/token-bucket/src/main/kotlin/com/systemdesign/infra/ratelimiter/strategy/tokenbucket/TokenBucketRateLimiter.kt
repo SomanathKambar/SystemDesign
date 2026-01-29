@@ -16,26 +16,33 @@ class TokenBucketRateLimiter(
 
     override fun allow(key: String): Decision {
         val now = clock.millis()
-        val state = store.get(key) ?: TokenBucketState(capacity, now)
+        var decision: Decision? = null
 
-        // 1. Calculate refill
-        val timePassedMs = now - state.lastRefillTime
-        val tokensToAdd = (timePassedMs * refillTokensPerSecond) / 1000.0
-        val refilledTokens = min(capacity, state.tokens + tokensToAdd)
+        store.compute(key) { state ->
+            val currentState = state ?: TokenBucketState(capacity, now)
 
-        // 2. Decide
-        return if (refilledTokens >= 1.0) {
-            val newState = TokenBucketState(refilledTokens - 1.0, now)
-            store.save(key, newState)
-            Decision(allowed = true)
-        } else {
-            // Calculate when the next token will be available
-            val needed = 1.0 - refilledTokens
-            val waitTimeMs = (needed * 1000.0 / refillTokensPerSecond).toLong()
-            Decision(
-                allowed = false,
-                retryAfterMs = waitTimeMs
-            )
+            // 1. Calculate refill
+            val timePassedMs = now - currentState.lastRefillTime
+            val tokensToAdd = (timePassedMs * refillTokensPerSecond) / 1000.0
+            val refilledTokens = min(capacity, currentState.tokens + tokensToAdd)
+
+            // 2. Decide
+            if (refilledTokens >= 1.0) {
+                decision = Decision(allowed = true)
+                TokenBucketState(refilledTokens - 1.0, now)
+            } else {
+                val needed = 1.0 - refilledTokens
+                val waitTimeMs = (needed * 1000.0 / refillTokensPerSecond).toLong()
+                decision = Decision(
+                    allowed = false,
+                    retryAfterMs = waitTimeMs
+                )
+                // Update state to reflect partial refill, or keep as is?
+                // Updating is better to avoid recalculating large time diffs repeatedly
+                TokenBucketState(refilledTokens, now)
+            }
         }
+
+        return decision!!
     }
 }
