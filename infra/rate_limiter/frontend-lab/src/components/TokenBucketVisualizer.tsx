@@ -31,7 +31,7 @@ export const TokenBucketVisualizer = ({ currentTime, events, config }: Props) =>
     if (lastEvent) {
       lastStateTime = lastEvent.timestampMs;
       if (lastEvent.type === 'TOKEN_REFILLED') {
-        currentTokens = parseFloat(lastEvent.payload.tokensAfterRefill || lastEvent.currentTokens?.toString() || '0');
+        currentTokens = lastEvent.currentTokens ?? parseFloat(lastEvent.payload.tokensAfterRefill || '0');
       } else if (lastEvent.type === 'REQUEST_ALLOWED') {
         currentTokens = parseFloat(lastEvent.payload.tokensAfterConsuming || '0');
       } else {

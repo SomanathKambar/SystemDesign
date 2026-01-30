@@ -58,10 +58,9 @@ export const FixedWindowVisualizer = ({ currentTime, events, config }: Props) =>
             ctx.shadowBlur = 0;
         }
         
-        // Use rounded rect for better look
-        const radius = Math.min(4, blockWidth / 2);
+        // Use standard rect for better compatibility
         ctx.beginPath();
-        ctx.roundRect(bx, y, blockWidth, rectHeight, radius);
+        ctx.rect(bx, y, blockWidth, rectHeight);
         ctx.fill();
         ctx.shadowBlur = 0;
     }

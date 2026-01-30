@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { ExperimentLoader } from '../services/ExperimentLoader';
 import type { ExperimentMetadata, RateLimitEvent } from '../types';
 import { TokenBucketVisualizer } from './TokenBucketVisualizer';
+import { LeakyBucketVisualizer } from './LeakyBucketVisualizer';
 import { FixedWindowVisualizer } from './FixedWindowVisualizer';
 import { SlidingWindowVisualizer } from './SlidingWindowVisualizer';
 
@@ -19,16 +20,24 @@ export const ComparisonDashboard = ({ currentTime, selectedExperiments }: Props)
 
   useEffect(() => {
     setLoading(true);
-    Promise.all(
-      selectedExperiments.map(async (exp) => {
-        const metadata = await ExperimentLoader.loadMetadata(exp.strategy, exp.id);
-        const events = await ExperimentLoader.loadEvents(exp.strategy, exp.id);
-        return { metadata, events };
-      })
-    ).then((results) => {
-      setData(results);
+    const loadAll = async () => {
+      const results = await Promise.all(
+        selectedExperiments.map(async (exp) => {
+          try {
+            const metadata = await ExperimentLoader.loadMetadata(exp.strategy, exp.id);
+            const events = await ExperimentLoader.loadEvents(exp.strategy, exp.id);
+            return { metadata, events };
+          } catch (err) {
+            console.error(`Failed to load experiment ${exp.id}:`, err);
+            return null;
+          }
+        })
+      );
+      setData(results.filter((r): r is { metadata: ExperimentMetadata; events: RateLimitEvent[] } => r !== null));
       setLoading(false);
-    });
+    };
+    
+    loadAll();
   }, [selectedExperiments]);
 
   if (loading) {
@@ -44,6 +53,8 @@ export const ComparisonDashboard = ({ currentTime, selectedExperiments }: Props)
     switch (metadata.strategy) {
       case 'TOKEN_BUCKET':
         return <TokenBucketVisualizer currentTime={currentTime} events={events} config={metadata.config} />
+      case 'LEAKY_BUCKET':
+        return <LeakyBucketVisualizer currentTime={currentTime} events={events} config={metadata.config} />
       case 'FIXED_WINDOW':
         return <FixedWindowVisualizer currentTime={currentTime} events={events} config={metadata.config} />
       case 'SLIDING_WINDOW_COUNTER':
@@ -70,16 +81,17 @@ export const ComparisonDashboard = ({ currentTime, selectedExperiments }: Props)
   })[0];
 
   const isBoundaryTest = processedData.some(d => d.metadata.name.includes('Boundary'));
+  const activeScenario = data[0]?.metadata.name.split(' - ')[1] || 'Boundary';
 
   return (
     <div className="flex flex-col w-full h-full">
       <div className="p-6 bg-blue-600/10 border-b border-blue-500/20 mb-4 flex items-center justify-between">
          <div>
-            <h2 className="text-lg font-bold text-blue-400">
-                {isBoundaryTest ? 'SYNCED COMPARISON: BOUNDARY PROTECTION' : 'SYNCED COMPARISON: LOAD BALANCING'}
+            <h2 className="text-lg font-bold text-blue-400 uppercase tracking-tight">
+                SYNCED COMPARISON: {activeScenario} Scenario
             </h2>
             <p className="text-[10px] text-slate-500 uppercase tracking-widest">
-                {isBoundaryTest ? 'Fixed Window vulnerability: allowing 2x limit at boundaries' : 'Evaluating throughput and smoothness under constant load'}
+                {activeScenario === 'Boundary' ? 'Fixed Window vulnerability: allowing 2x limit at boundaries' : `Evaluating ${activeScenario} traffic pattern across strategies`}
             </p>
          </div>
          {leader && (
@@ -92,8 +104,8 @@ export const ComparisonDashboard = ({ currentTime, selectedExperiments }: Props)
          )}
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full flex-1 p-4 overflow-y-auto">
-        {processedData.filter(item => item.metadata.name.includes('Boundary')).map((item, index) => {
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full flex-1 p-4 overflow-y-auto">
+        {processedData.filter(item => item.metadata.name.includes(activeScenario)).map((item, index) => {
           const isLeader = leader && item.metadata.id === leader.metadata.id;
           const isFixedWindowFail = item.metadata.strategy === 'FIXED_WINDOW' && item.allowed > 10;
           return (

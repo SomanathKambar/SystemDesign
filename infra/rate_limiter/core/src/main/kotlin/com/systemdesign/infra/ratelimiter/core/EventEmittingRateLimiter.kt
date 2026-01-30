@@ -79,6 +79,20 @@ class EventEmittingRateLimiter(
                 )
             )
         }
+
+        // Leaky Bucket Leak
+        if (ctx.containsKey("leakedAmount") && (ctx["leakedAmount"] as? Double ?: 0.0) >= 0.0) {
+            eventConsumer(
+                RateLimitEvent.LeakOccurred(
+                    eventId = UUID.randomUUID().toString(),
+                    timestampMs = timestamp,
+                    strategy = strategyName,
+                    nodeId = nodeId,
+                    leakedAmount = ctx["leakedAmount"] as Double,
+                    waterLevelAfterLeak = ctx["waterAfterLeak"] as Double
+                )
+            )
+        }
     }
     
     fun emitTick() {

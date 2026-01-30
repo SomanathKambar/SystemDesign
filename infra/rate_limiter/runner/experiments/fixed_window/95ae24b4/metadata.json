@@ -1,0 +1,19 @@
+{
+    "id": "95ae24b4",
+    "name": "FIXED_WINDOW - HighLoad",
+    "description": "Simulation of FIXED_WINDOW under HighLoad traffic.",
+    "strategy": "FIXED_WINDOW",
+    "config": {
+        "capacity": "10.0",
+        "rate": "2.0",
+        "duration": "30000",
+        "windowSizeMs": "5000"
+    },
+    "profile": {
+        "type": "com.systemdesign.infra.ratelimiter.runner.TrafficProfile.Constant",
+        "name": "High Load",
+        "requestsPerSecond": 12.0,
+        "durationMs": 30000
+    },
+    "timestamp": 1769773245072
+}

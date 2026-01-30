@@ -1,22 +1,19 @@
 package com.systemdesign.infra.ratelimiter.runner
 
 import com.github.ajalt.clikt.core.CliktCommand
-import com.github.ajalt.clikt.parameters.options.default
-import com.github.ajalt.clikt.parameters.options.option
-import com.github.ajalt.clikt.parameters.types.double
-import com.github.ajalt.clikt.parameters.types.long
 import com.systemdesign.infra.ratelimiter.core.EventEmittingRateLimiter
 import com.systemdesign.infra.ratelimiter.core.TestClock
 import com.systemdesign.infra.ratelimiter.core.event.RateLimitEvent
 import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.FixedWindowRateLimiter
 import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.TokenBucketRateLimiter
+import com.systemdesign.infra.ratelimiter.strategy.leakybucket.LeakyBucketRateLimiter
 import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowRateLimiter
 import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowLogRateLimiter
 import java.util.*
 
 class RunExperiment : CliktCommand() {
     override fun run() {
-        val strategies = listOf("TOKEN_BUCKET", "FIXED_WINDOW", "SLIDING_WINDOW_COUNTER", "SLIDING_WINDOW_LOG")
+        val strategies = listOf("TOKEN_BUCKET", "LEAKY_BUCKET", "FIXED_WINDOW", "SLIDING_WINDOW_COUNTER", "SLIDING_WINDOW_LOG")
         val durations = 30000L // 30 seconds for better visualization
         
         strategies.forEach { strategy ->
@@ -39,6 +36,11 @@ class RunExperiment : CliktCommand() {
             "TOKEN_BUCKET" -> TokenBucketRateLimiter(
                 capacity = capacity,
                 refillTokensPerSecond = rate,
+                clock = clock
+            )
+            "LEAKY_BUCKET" -> LeakyBucketRateLimiter(
+                capacity = capacity,
+                leakRatePerSecond = rate,
                 clock = clock
             )
             "FIXED_WINDOW" -> FixedWindowRateLimiter(
@@ -73,7 +75,7 @@ class RunExperiment : CliktCommand() {
         simulator.run(profile)
 
         val metadata = ExperimentMetadata(
-            id = UUID.randomUUID().toString().take(8),
+            id = "${strategy.lowercase()}_${scenarioName.lowercase()}",
             name = "$strategy - $scenarioName",
             description = "Simulation of $strategy under $scenarioName traffic.",
             strategy = strategy.uppercase(),
@@ -94,7 +96,7 @@ class RunExperiment : CliktCommand() {
             timestamp = System.currentTimeMillis()
         )
 
-        val writer = ExperimentWriter()
+        val writer = ExperimentWriter(baseDir = "../../frontend-lab/public/experiments")
         val dir = writer.write(metadata, capturedEvents)
         
         echo("Experiment saved to: ${dir.absolutePath}")

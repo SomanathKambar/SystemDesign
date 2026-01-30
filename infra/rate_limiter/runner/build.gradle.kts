@@ -9,6 +9,7 @@ dependencies {
     implementation(project(":strategies:fixed-window"))
     implementation(project(":strategies:sliding-window"))
     implementation(project(":strategies:token-bucket"))
+    implementation(project(":strategies:leaky-bucket"))
     
     implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
     implementation("com.github.ajalt.clikt:clikt:4.2.1")

@@ -1,0 +1,494 @@
+{"type":"REQUEST_ALLOWED","eventId":"4bf71956-8a81-469f-9704-5a79dd2f4bd4","timestampMs":0,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"10.0","tokensAdded":"0.0","tokensAfterRefill":"10.0","tokensAfterConsuming":"9.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"55b2a5e5-8393-482b-9b5b-91c1a215a17c","timestampMs":0,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"9.0","tokensAdded":"0.0","tokensAfterRefill":"9.0","tokensAfterConsuming":"8.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"542c0075-93c9-4ffa-92bc-a6ef6a0dfdc2","timestampMs":0,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"8.0","tokensAdded":"0.0","tokensAfterRefill":"8.0","tokensAfterConsuming":"7.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"4ce402c9-fb1d-46f6-8a88-bcf47b64c3ab","timestampMs":0,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"7.0","tokensAdded":"0.0","tokensAfterRefill":"7.0","tokensAfterConsuming":"6.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"945494a5-c7ba-4f3c-89b2-b5115673b87f","timestampMs":0,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"6.0","tokensAdded":"0.0","tokensAfterRefill":"6.0","tokensAfterConsuming":"5.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"ee964fb1-2351-4c95-b452-e70d0ec638a4","timestampMs":0,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"5.0","tokensAdded":"0.0","tokensAfterRefill":"5.0","tokensAfterConsuming":"4.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"e25e4abf-886d-47d3-a66c-113339663976","timestampMs":0,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"4.0","tokensAdded":"0.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"5af1c91e-1588-49d2-b520-ec682ea68c2d","timestampMs":0,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"a9243b57-f214-4c50-8122-132052f922cc","timestampMs":0,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"de1ccd63-28f8-43c9-a220-7eb296bcc873","timestampMs":0,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"cb51f010-74d8-4065-a282-08e696ce5394","timestampMs":0,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"2f38264a-5169-46cb-82a9-7eb11e10e36a","timestampMs":0,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"896745ba-9378-4294-8285-136549c58781","timestampMs":100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"45e5c5ed-433a-4868-9850-232e167bd299","timestampMs":200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"19290985-2cc6-4fde-b859-5624110a82cc","timestampMs":300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"46191d03-48fd-4891-8cab-507d572e5611","timestampMs":400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6b38fbb6-c2b3-4c95-aaac-892939b5c3f9","timestampMs":500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0a735acb-43ec-430c-b061-295d517e1075","timestampMs":600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d7b11fba-641e-4105-87a7-6efdd6de1989","timestampMs":700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"db987dac-37c2-42de-af84-8c5eef12e03c","timestampMs":800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"82c59e60-0d00-4e88-8bed-ccb78e6c70ba","timestampMs":900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b85c3613-fdcc-483b-94b6-a44c76944f33","timestampMs":1000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e9d1b33c-9bc0-4de8-a32b-b33c1f5693ef","timestampMs":1100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7e506c98-b5b7-4dbb-9c9b-635fc0eb15a7","timestampMs":1200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"28804e16-c43e-4633-9dcc-052ddf27b5e2","timestampMs":1300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b7d08af3-d9e7-4cb6-a726-54647b5ad935","timestampMs":1400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8e473d9a-79de-4def-9470-1468e30a65ef","timestampMs":1500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"bc307600-1760-4a2d-9266-25ccc80f8b2e","timestampMs":1600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2c34a596-84f8-42be-a84f-b72b71e9c7f0","timestampMs":1700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"827a5138-0c79-4c06-ad17-cbcb4fdcf1cb","timestampMs":1800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"73fb4aef-fdda-4d02-bac7-de55dc8e9a6d","timestampMs":1900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e3116590-9a55-470c-a905-a7be9ec4c0fb","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"d9b6bffa-2d6a-480c-a14d-997328188422","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"ecf1b049-2e56-4068-94c3-53a7dbe23bc3","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"70f24c81-556f-4bf8-a284-d508cd9d5c50","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"2a805ffd-4d09-4e5e-b1f1-6d3db4613f29","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"3c80ad85-ee34-4a39-8e5b-795b107779f1","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"e656e81c-5c82-43a5-b4a3-3149be8111e5","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"41996d90-22b8-4228-b32a-3127a9a9a825","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"768858f7-267c-4e31-ac4a-54bf7b744a00","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"c49c0ca9-4213-4ff0-8403-bd2b9f18541c","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"3743acdd-bbfe-4326-b8dc-cea3f4404d15","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"e2156685-70e7-40f6-968b-b249d1cd5da7","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"4c48fcff-269c-4541-9d73-8302ebcb5158","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"dd6225c3-186a-49c5-9c18-9dbd746511a5","timestampMs":2000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"663481da-98db-4e61-be16-c57a4f6c465e","timestampMs":2100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1949a5e3-be26-4cb8-b123-3c7a2663c45a","timestampMs":2200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"09cb9114-3d49-4c41-a940-71abb82c81f5","timestampMs":2300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"00d27228-575a-4af3-80fc-e2b5be060adc","timestampMs":2400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5a726544-de14-4200-b09a-b8c242f7c969","timestampMs":2500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3279cac3-effd-4323-af1c-e990832313ed","timestampMs":2600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"dfcb6685-766e-428c-bba4-10c2c777f0e2","timestampMs":2700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e11e27c2-cd0b-4f47-9874-8617556b1f2e","timestampMs":2800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d03edd61-7c70-46a5-91fa-f213d60c9dc8","timestampMs":2900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"fda51b1b-25c2-4625-8991-062c48fbcca6","timestampMs":3000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"516fb949-7797-488d-b167-2695d39e15f3","timestampMs":3100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6bccd1f4-dfa9-4282-b762-bd38cc52ef36","timestampMs":3200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a215a2cc-8632-4863-937d-8a6d2a7df01f","timestampMs":3300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"712fd41a-af1b-4f7c-b0cc-25993187d8ee","timestampMs":3400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ece872e3-44e0-470b-83e3-b658d1e42d13","timestampMs":3500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5cbef1f1-b49e-4560-8d7d-ba2c23ca406b","timestampMs":3600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"edb72acb-9d9b-4228-9c36-46537e3dcbfc","timestampMs":3700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"434b3fd7-a76e-49f7-887e-e736bf3ebf91","timestampMs":3800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1c5afc5b-0305-4bb7-9fb7-d9da5f01dace","timestampMs":3900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6ef13a69-fb6d-4c41-901c-9fe8c118f152","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"e594d8d7-dd07-4d82-9e1c-90ccde80227d","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"d2a9319a-1b2f-407f-a776-bd4313bf1192","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"91749847-ad78-4400-b07b-18f0a2d106fe","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"a03098da-d696-4381-9c25-62f7a81135d1","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"ba354b7d-1fdf-4668-a7a2-310739deb4b6","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"c30dabfc-dc34-496a-87bd-180a4b74c2e5","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"0409ee83-86a2-4b90-900d-8813f726bcca","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"def201e6-2bd1-4651-9cf3-d55ec5720e82","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"f6e39116-48db-479a-a4e5-0a114234fc8e","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"a3b2018d-39e2-452e-b39e-451db3caf43b","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"da3782d6-811d-4ee1-bf48-a78454885d18","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"51a6cce1-d09c-4d50-a5ad-c580afebbfe4","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"47292a5b-4e17-4931-8b9c-432b2bc20d8c","timestampMs":4000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"357587b0-2344-4420-b43b-08d390dca6b1","timestampMs":4100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"dfb23d2d-0b2c-49ce-b294-a9229ee5fd62","timestampMs":4200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"cbff76d9-31cb-48e9-beb5-b864d3178c4c","timestampMs":4300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"00e9de9c-9400-4ff4-8368-736989f8905c","timestampMs":4400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ae192f8f-17fd-4586-84a4-22f91872c231","timestampMs":4500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"220164b0-5e8b-46ea-b4a0-c4553a359c54","timestampMs":4600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"195bdf52-b488-4edd-8bbd-55464a0ffff1","timestampMs":4700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1b2d4db9-e877-47b4-8de6-a181f2dc1086","timestampMs":4800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4ae21eca-b2df-4a42-8572-1931b60b29d0","timestampMs":4900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ed1f1de9-28ae-4ded-91ef-584aac45854d","timestampMs":5000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"96a395b3-2773-4edc-919d-226fe3cec196","timestampMs":5100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ec9f7ea4-f774-4328-808b-e563c0e2a180","timestampMs":5200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"865a2448-8d1d-44aa-ae7a-eab6c1de16a7","timestampMs":5300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0fcfa8fe-fb0c-4232-aa00-1b79d8c254f7","timestampMs":5400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"edae777e-fe47-4906-9888-92c004ee5b99","timestampMs":5500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8b35b04e-75f9-46b1-be3c-250110982183","timestampMs":5600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3b6359ad-8019-44ca-bd88-85ef4fbe40ab","timestampMs":5700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2157ff10-3b06-4d77-a63d-7304c3e51e8f","timestampMs":5800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"c0f66d57-4c84-478b-ae94-e8a0479850af","timestampMs":5900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"82efd8ea-5fcf-4c21-bfa6-c4a39ac4a37d","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"442c1d1b-a097-44d3-8ed0-8240ed61ea2f","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"10ffd784-752a-4e7c-b63a-7acb84d25d7c","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"9c10527d-523c-4ab2-ae97-674a3dcfa612","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"7b344a2e-db73-4698-8815-796cf5a22145","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"aebed463-ff23-43dc-b36a-52fedcd91f49","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"519dd75c-c74e-4f89-bc02-19ce28c30585","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"0d85445e-5a3c-4736-8a6f-31adbfda0e60","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"e74b03d2-bdfa-440a-b683-a206a09bc4db","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"420cb49a-a51f-4095-8094-65187106f7ca","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"09234d2a-0402-4fa1-b2a5-31392f51ab2e","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"a197d723-be4a-4bd8-b58d-b80d278d715a","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"4cc4d305-6d82-4160-91bc-1a2997459ffb","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"f98b9cd1-864b-4a41-b2e1-6b37bea24582","timestampMs":6000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"d89fa659-6577-4f41-ab0a-b73c439837e2","timestampMs":6100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ab5f0faf-1599-485f-bbd4-6e414539f4a2","timestampMs":6200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"008224a4-79ff-45f0-91fc-2f9690d6ad76","timestampMs":6300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3184e33e-bda5-452e-91cd-56d4d0f87586","timestampMs":6400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5cc971c3-f323-4b4f-bc5d-5787ab6fed3d","timestampMs":6500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"15d743e8-66f6-4592-b1fa-ca2111ad9246","timestampMs":6600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"bfd1b730-fc29-4f25-9431-b95167dd407c","timestampMs":6700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d0880e5a-144f-4e19-ace5-9fd20dad1df4","timestampMs":6800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4c4e0fe5-057a-449a-b9ac-d71ae5ca5e58","timestampMs":6900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ddea1907-39a3-4615-826e-6f62c56b1919","timestampMs":7000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9d165b9b-fc7a-439d-a9b6-f82906ffcc0d","timestampMs":7100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4a2c3fc0-af1e-4540-b29b-a41fc7c317e0","timestampMs":7200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4266e794-9e3a-4fdb-a9be-04a8f3d2b972","timestampMs":7300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9a3a4088-c4eb-4eb5-a1f6-4fa7e3529768","timestampMs":7400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a29b2d88-7b70-41a2-ad5d-6e138097f546","timestampMs":7500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4959dfa8-c151-4b83-85ee-269cd588d176","timestampMs":7600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"c310f6b2-3bf0-40fd-ac73-2bb5b3b74c7f","timestampMs":7700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"407f0ee5-6667-4280-9b26-efe303191b76","timestampMs":7800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2e798b30-4a35-4f0d-85c2-4fcdeeb4861a","timestampMs":7900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7ea50d0e-1e7d-410f-882c-8f7307d8a44d","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"c9612f6a-335c-484e-8484-df59b2e55449","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"a0232677-7985-40f7-b5ae-b653053442ba","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"603cfc08-933e-4d14-8738-a3b9b755bc98","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"8f8fe5bd-fae5-4d4c-b2c0-c36869ba6d2c","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"3c1900d1-a2f9-400f-9220-cec0d3911383","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"429fb8eb-d759-4f17-8b78-32dcd19bb91a","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"cd7ff520-31d0-4800-bd7a-dd83f33303c9","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"aef1525d-9ddc-4e1d-9228-1c510171d115","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"ea3909be-c39a-4cb3-9da3-218393265842","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"331c8f5f-91a7-42fd-ab46-7d4597c96e6a","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"59900ace-f96a-43dc-a2a6-2e4fd75fc346","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"fa56e9f2-c67a-4a13-9669-40f9fd36eb77","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"cda5cda2-1e8e-41ce-829f-ded313ba0bb2","timestampMs":8000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"6cceef6d-4de3-43df-82cf-a3a44922fb69","timestampMs":8100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"fe32c24a-ce42-402b-9b7b-8d5cb0dac182","timestampMs":8200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"c3ee8ffe-ebbb-4ad4-bd24-a4137ccfc654","timestampMs":8300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"97a0bc90-5754-48cb-93c1-d491e2807217","timestampMs":8400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d62bcfcb-5026-4582-832f-7df7dcead64e","timestampMs":8500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"20da7b4e-4ef9-4a81-b38a-6738ed7d6596","timestampMs":8600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d6b89886-2805-4e12-8c46-b5a26df9aef9","timestampMs":8700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d98204e1-e368-43fa-8e25-72e77458a295","timestampMs":8800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5c691009-b888-4070-91db-9359730f0603","timestampMs":8900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"181f442b-33d3-4205-93f0-6546bfcb5834","timestampMs":9000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"248787df-8bbb-4886-b8c2-496c9449819a","timestampMs":9100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2d5810c6-3748-4443-9824-c4b515cf8459","timestampMs":9200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5b1db283-e4ad-4afc-a348-5ce5d7a856e4","timestampMs":9300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2173c8e6-1550-4219-9e86-3075a57ec134","timestampMs":9400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"dfeb6d3f-73d2-46ce-bd54-777d2bf04a9c","timestampMs":9500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b3c7f377-1ca6-4a7e-9cb4-d54d59c9d131","timestampMs":9600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b6983f48-7db4-4f8f-a7be-5f6cbffb0ad0","timestampMs":9700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"abbc83a0-ff8d-45ca-af80-b38b95b2b820","timestampMs":9800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"83c964aa-a80c-4142-8a84-9a1a193e2bbe","timestampMs":9900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2babaea9-5a4f-4b53-96bc-8e92ceaf3fa7","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"f05e81c5-9384-4c15-bbd6-f33af64d8d50","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"8661ebd1-c9d1-4065-9463-f6227e643be1","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"497df5b0-a819-4566-88d3-f6fcd866064a","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"54fd8fee-d879-4bfd-a6cc-8de5ccf00b38","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"bc8728e4-b02c-4dab-a287-3f1eb21820a4","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"ee679de8-242a-44c9-a5c7-9ada62ba77dc","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"50e18a7b-49e4-4f7e-ac36-f93d99e9e173","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"abd7dc2f-825b-44d5-818d-bd738fa83434","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"d0304a83-6827-4d5a-941a-de318d91b7b4","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"e1f1c6aa-8685-4320-9710-609bf0c71131","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"62daea85-b706-4e5e-b5d1-9629a583ce0a","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"6faddef4-de35-4bca-849f-f696d339c4f7","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"ad1deea6-2d46-4d63-9326-afb8c8836b14","timestampMs":10000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"4b4abd3c-525b-4976-8d26-86abbebc4f12","timestampMs":10100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3151331f-c4ec-47b2-97f0-79bb006810b3","timestampMs":10200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9de6e6aa-b72b-4640-ad26-b058f2bbf709","timestampMs":10300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"973b3896-417e-45c9-b69a-129d9be924ae","timestampMs":10400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"c12bf172-21a1-4581-986b-b6d10099a2b7","timestampMs":10500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"44f771f1-4928-4c3e-bd50-427d264deb4f","timestampMs":10600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"811c45f5-a33f-489e-92df-eee60513c020","timestampMs":10700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"f3b8db14-1bdf-4ba6-a7b8-3ca360d7ddb6","timestampMs":10800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8e101560-df2c-4d3c-9acb-6d4b86a89fa4","timestampMs":10900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1099f7cd-c0f4-4216-8dbc-0a9eb7700544","timestampMs":11000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b30a73b1-2aaa-4412-b18a-d1d016fe6dc4","timestampMs":11100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"801f3d47-ce4e-4d1f-bd5c-bfd5e12d727e","timestampMs":11200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5b5834ed-718f-40f6-84c3-55e5dd146b8e","timestampMs":11300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"378a23c8-749c-4397-9783-a5edc6fc1d51","timestampMs":11400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"69c5ad7b-5e51-47d1-b7d1-4fa6344979b9","timestampMs":11500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4c488345-82b5-478f-9853-fb7809a4c844","timestampMs":11600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3114ddd8-007a-464d-ac09-5e79ecdf180f","timestampMs":11700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6a07d9f8-075f-4f4a-9723-ca4aceb0415a","timestampMs":11800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e9772163-ca11-4252-9cd0-419b111f236e","timestampMs":11900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"35ed5dc0-bb36-484f-8bc1-1ed3f82f6e1a","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"8268b846-b86f-40b9-bc8d-7c4c4efc41e2","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"bad71ed9-3496-40d6-8075-cdee2b8959d3","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"0aef87e8-b022-473f-8ef5-0a8563219f0f","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"1635b4fc-ef59-42d3-85f2-059b5f7e2f3b","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"b7eae3af-921d-43dd-9c77-03b37f9bfc79","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"ba4fd189-2826-4811-89a4-fb094db505d4","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"de8e18e9-b53e-4381-930b-4092055c41d9","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"e51093d5-1f8c-4894-8a8a-3e87257edd39","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"d5c43d51-4d8b-42fa-9f2c-e868f8d40abc","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"f5fa05aa-2255-4bae-874b-c81356fd145a","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"1f56d97d-1dc3-437c-bb1d-f10b09298c48","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"8cb93d0f-fe17-4d56-bd00-64f29a7cbf6e","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"11f22edb-f72c-472e-900a-583b4e3b5419","timestampMs":12000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"70306170-fcea-48fe-9120-f8f02f6dbb2a","timestampMs":12100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7cc17850-9e07-44a3-8c44-1bae6dfb0df6","timestampMs":12200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"efebc910-bf21-419d-b651-488e46b53d5c","timestampMs":12300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9fbfd441-5e6b-4d5b-b2d3-fe55a7456551","timestampMs":12400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1747e9f1-255a-4d45-8d58-5131c773d5fe","timestampMs":12500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2871d82d-ab1d-44ea-b0b0-af95c36f7bbb","timestampMs":12600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6907a944-dd13-4d90-abeb-3a2c5e93772f","timestampMs":12700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"c804b581-d7b5-44f4-8875-e594ba4046db","timestampMs":12800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e9a7ea93-214c-48fe-9d65-2057f29c721d","timestampMs":12900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6db65389-761a-4d66-857f-413fbc8ac8b5","timestampMs":13000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"af2ff883-dea7-48f4-a005-16f69ba98646","timestampMs":13100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ffcae4d9-2eaf-4646-a171-0314642ba3e2","timestampMs":13200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"664f9c73-6459-4e08-95c5-5457999ce5ff","timestampMs":13300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"74a2351c-5642-4ad3-a41d-858f5ffd0b01","timestampMs":13400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"098dad71-9e19-4d13-937b-d1d26737fd88","timestampMs":13500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3b3092f5-420b-43bb-933e-4a65c0ebcc33","timestampMs":13600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"df7dd88e-0b3c-4a21-8a38-5173b5ff6b08","timestampMs":13700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5be88efd-4417-46b7-b28f-ae049b4cc2aa","timestampMs":13800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6876f7df-0cec-4da3-b0fb-1879f1ac88bd","timestampMs":13900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4df39e74-ec10-4107-b9d5-74de8e9f4fae","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"2daacc6c-be56-4717-9a00-0ee2fb944a0b","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"2a38abeb-4436-4c5f-9001-749f8378fa2c","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"262ab203-77e6-4f77-921e-f3a68dae65a0","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"ad3d88d0-d740-4729-bf70-8ddf35a35ea9","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"f44f9180-ec20-42a7-bd6f-909b63cec6ad","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"6408390f-4cb9-4194-9062-ee9f63a83965","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"8d0fae3a-f15a-4eaa-881d-e5bb52a65ffc","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"cf1c61e1-25e0-4b6a-8667-d121c53f8706","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"910f7021-a58f-4250-b45f-edfe4cf29da1","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"10f3fa17-63b2-4e89-96e2-a2849c0f9b98","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"9e858b5e-c6c4-4327-9588-e1de18551e7a","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"6ec845e0-50e7-4f6a-bca7-8dfc8e737e71","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"0deb0dde-b1e8-4d24-86a7-b2ec56cf73d7","timestampMs":14000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"11886f4b-7e95-4da1-8eed-1c26d3ddd4e9","timestampMs":14100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0b019cc3-a9c0-4472-8937-b64f90991d56","timestampMs":14200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2855137b-1742-4549-8790-8cfb94dfd605","timestampMs":14300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"53a29be1-b05b-4dcc-97fb-cab85070eb3a","timestampMs":14400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8990b9ce-92e5-4302-a66a-c17e9e0f802d","timestampMs":14500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2da043e2-a096-42ae-8c01-d6262a1253d2","timestampMs":14600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"267fd2cf-8761-43ee-8ae8-10a41cc3c463","timestampMs":14700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7847fe3e-9bb4-49b3-9ffb-f350ce8a842d","timestampMs":14800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"114402f2-0dfa-4432-a87a-317bd5c777eb","timestampMs":14900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"34e7ab6c-dfcd-404d-a825-8236cb0c2418","timestampMs":15000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a7282db0-0a85-4704-b24c-61e752a017a1","timestampMs":15100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8d713460-0169-4695-8f04-35a4784cd56e","timestampMs":15200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e88ce41d-46ec-4314-bc55-d4b2535307d6","timestampMs":15300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"00df16eb-dab0-464c-ab3d-184dcd942931","timestampMs":15400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5e90bbf4-5c82-4810-8219-e42048fcee91","timestampMs":15500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e8e8ff34-ff7a-4d4a-8014-073d7b278d47","timestampMs":15600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"af1cf9b7-1b2f-4239-9c5b-f7e0e8e8fb9a","timestampMs":15700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"23fddcaa-71db-4866-8ff6-109bd7cde692","timestampMs":15800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"00fe4c6d-dc31-4dbd-8b8e-667de1ca2b46","timestampMs":15900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d735c87c-5e34-48d0-bf76-89cfd1f286de","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"962f9233-0a56-4cf0-9c6d-36e659625d48","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"5303fcc3-8001-49ca-90d4-444a9af8ddce","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"bb34d4d3-21aa-4a69-b32d-72c5256fa842","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"c4a2008d-7f6e-4b3d-ba74-d42bd4284950","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"1c4f8a50-1fe2-4705-9123-27dc5adc6677","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"0312b179-41ac-4e75-892e-232014ef911d","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"f4f35a09-7d5c-46ea-8f4a-f31ecf6854b4","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"2e88327a-3b42-4f34-8b73-0edfa5e5fe03","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"9711fbd5-8dde-4794-a76c-eecc74d70387","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"777c0cfc-9bd2-4b7d-887a-96ece4555f29","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"f3e155b6-b059-49b5-b38c-18053f43aad4","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"0af08ca4-7df4-4b9d-90d3-1a20425eddf0","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"c6403b7b-ec1b-433b-8956-ee39b9dfed11","timestampMs":16000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"e459ffbe-0e5f-404b-8ed6-ff50a99ec422","timestampMs":16100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3697a7ce-29ce-4814-91b6-1981cafe4f3c","timestampMs":16200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9fbad7f0-dd08-4d8c-898e-be188a536847","timestampMs":16300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2067f55d-3305-4316-8c0d-4d6314a61447","timestampMs":16400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"055cb9bf-cfa0-4efe-bb10-a011e76573fe","timestampMs":16500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"89ac500b-de11-4bad-88f5-c5a177fb8668","timestampMs":16600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"87d160f4-09fb-4985-a19b-56b001d8aef5","timestampMs":16700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"25b160d9-70d1-4f44-b90d-a1224459df66","timestampMs":16800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2088fdaf-3cb6-4093-a616-007d284139f2","timestampMs":16900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2f7d121f-c80e-49a7-8412-653173a6f1cd","timestampMs":17000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e0791ea7-75ae-422d-8844-560de3360c44","timestampMs":17100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"cebc7545-6cfd-4f08-81a9-e296003f5e54","timestampMs":17200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a1fc66de-1441-4039-b968-53fc2af8edbf","timestampMs":17300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"26ae6d26-097f-47d6-a3a2-7f744658603f","timestampMs":17400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6f2adbc7-02e4-4548-86f7-63d84b5501eb","timestampMs":17500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e4daf727-7430-4b9a-a48f-e77c6217c4d9","timestampMs":17600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7fdbafc9-7a2b-49bc-bb95-9b6b967762ae","timestampMs":17700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8b2477ad-5dca-4ee0-bf1e-1c3c5e88af18","timestampMs":17800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b7be41e4-46d2-4513-81bf-07722f58f5d7","timestampMs":17900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"00974e23-53cc-4ccf-8860-66e4e9441f2a","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"f2449832-7b00-4b4a-9db5-00e65e99fc27","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"bfb1c30c-7170-4165-83a2-4d1160d0eac3","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"2e6b1adf-7ee1-4b50-a4fc-b0a90ce0fed7","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"ae498e4c-d429-4860-a435-0dda626fade0","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"cd7a1c2a-5fe1-4b3d-9548-2ba072c74ca5","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"482d8a01-f3f2-4693-b4f6-ca815fc7d83b","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"40c5395b-f9ec-4071-bdd3-75a0756f4eb5","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"27ec6330-c451-4b56-8c0f-0af100b543a8","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"a47647a0-cec1-4a28-b57d-b734faf4c3eb","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"40832712-c20e-4702-af4d-bfc78102c13d","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"a6b6f2da-dcfd-4b50-83c8-9346c9da637e","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"13ac05e7-5c8e-4ba5-b9af-c4d36e495808","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"4b4adb6a-b8dd-4521-b6e6-90b8c7f0803c","timestampMs":18000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"317bb593-30fb-419e-8218-6159b5ab20e2","timestampMs":18100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"bd02edac-8da7-49e9-832a-593564d96d2d","timestampMs":18200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"62ddb687-0c81-45b5-9a3a-59d314c0366d","timestampMs":18300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"eb26fd65-ccc4-4bf5-90aa-1a3470ccfc07","timestampMs":18400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"75dd0318-a4eb-4aaf-83e8-64d0a8a276ec","timestampMs":18500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1b2661b7-fa56-4223-a075-b07c4a36e5fc","timestampMs":18600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"75193c14-81dc-4ae0-b330-f871829cc574","timestampMs":18700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0d278bb2-2054-486b-8c40-34aa3a21190a","timestampMs":18800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"26a971ed-a44a-45ed-9519-b3b2f1a93f77","timestampMs":18900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"cd372929-bfe1-4164-85cb-d7af5e160e54","timestampMs":19000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"eeec4583-bd30-456b-aaf3-fda71d11d46f","timestampMs":19100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"38bacab3-4ec7-4d78-a7b8-00b3e7ab87d9","timestampMs":19200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b13f7eed-5faf-44ec-b07d-5349c9dd11b7","timestampMs":19300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"c268e223-ef25-4401-8ffc-67e49346ec0a","timestampMs":19400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"18d780ae-2191-4aa3-8f6c-8ba00b1f5556","timestampMs":19500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d2cab0bb-4889-4e78-a6f3-4c766b1a4db2","timestampMs":19600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"54ec08b3-2bda-4bf4-80ac-0e7368f07b8d","timestampMs":19700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"180e067e-34fb-45bc-8308-cb33ac69672a","timestampMs":19800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7343b71d-b1ba-44fe-9a54-744eef6f6285","timestampMs":19900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b6582681-16c9-47c9-b746-3acf117d519b","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"b0aee3b9-0b0c-4c0d-81dc-742572d575d8","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"476964e0-6a04-4161-bb4a-45c9a536a0eb","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"76e53c2c-98dc-4bde-8244-8ce2c9bb276e","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"90d2b5af-a68b-4d46-97b7-879f8a690b00","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"b7abc95b-4ea6-429b-9a8c-2eb013f6060c","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"8088d0c2-1bd2-4be1-b3c3-e7d6a263b498","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"1e39513b-b297-44f7-b88c-c208bad3a6b3","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"261a9b68-9852-4930-bfcf-2d2be8d0fe00","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"9477d4ca-784d-46ca-a267-79eafd0c8e6c","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"1f511933-5dac-44a6-bba1-059a0ce937e0","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"a2381e56-eacc-491a-80aa-cd83fae79d1d","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"e8378391-343c-4729-af14-08a672ee0fd2","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"dbaf7dee-fdcf-4587-9d1b-de1e34cf2910","timestampMs":20000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"8a988f5e-a082-47d8-84a4-0d311312c745","timestampMs":20100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"322afa2e-07e1-46ff-9c8c-47340dfecf19","timestampMs":20200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1d8406cc-8a50-4284-b361-1d3779a491fa","timestampMs":20300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"63d2879e-4186-4597-95e7-4f8fbe54a009","timestampMs":20400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"930a55db-3868-435f-a95e-61ea1e576086","timestampMs":20500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"09771845-ccdc-453f-9b24-b03d38c42689","timestampMs":20600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"86c7a1e8-7ba6-4f38-9ee4-699ce6190f76","timestampMs":20700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"f275b03f-342a-45b7-b5dc-6e7157c1e8fa","timestampMs":20800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"68a294ea-2236-4eb4-9089-b5279d558f00","timestampMs":20900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"23cb5964-cc86-44ac-b553-66adf0eba50f","timestampMs":21000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2027fd18-7790-43a0-a01a-f4699e3560d0","timestampMs":21100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"194ec832-6d22-4a94-8f45-583a96aafc99","timestampMs":21200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d7f02416-e2d8-445b-b0dd-cebfd95bdac1","timestampMs":21300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4e6053b8-85b8-475f-a354-bfbb5af958b2","timestampMs":21400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6ec41259-8142-4fb4-a488-5d0c6e73784a","timestampMs":21500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"487685c3-4b1e-44bd-8d7e-198fe1c49278","timestampMs":21600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7a1ece19-7c3a-47bf-ba82-2f4330dfa131","timestampMs":21700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9cc97642-d63b-42be-8b0c-951da457435c","timestampMs":21800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"fa7e0fe2-4059-4eda-a8c7-ed29997a0b86","timestampMs":21900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"fd38f0b9-bff6-4563-8e32-3b69d702c244","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"0ac2bb41-275a-48fa-b106-825142857406","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"d178ad24-49d5-4cdc-b919-6d93d91de871","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"5585324a-3f21-41ed-94ac-c84727bb04dc","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"8d3a9591-edba-4362-a5a2-d51a66620444","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"d265887e-62d7-4175-bd2e-558fdc1306a8","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"955adc4e-91e5-4dba-b1fe-e7947cb77801","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"9cc9950e-3a42-4bb0-a438-4141491c93b7","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"d6067a19-3a41-4686-b3a9-4f59743ee5fb","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"80c35e95-b23b-4066-affe-7d710a8fb014","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"7eb486d3-7722-4612-bfee-07cc3a2af541","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"901d06fc-d612-4960-9cf9-5c88b2bbbed7","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"75e686ca-49b6-40c2-bfc8-e1912336adb2","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"59350e5c-94aa-421c-acca-e206817ce937","timestampMs":22000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"d2d73e91-5e96-4671-baff-15b0de400f15","timestampMs":22100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"34d2c307-c166-4af0-8e41-280ad1e72cae","timestampMs":22200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"505554d4-58d2-4408-b3ab-cb5f430b9748","timestampMs":22300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8737a786-031e-4856-bf8a-4a979cdcd754","timestampMs":22400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3ad29d9e-863e-4c5c-8d0f-1a46e6c3ed7b","timestampMs":22500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"74b4e622-7173-4f04-82a3-b70cfa1b8b95","timestampMs":22600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2913084c-3510-4909-9469-b12eeb1e255a","timestampMs":22700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d6c521fb-923c-4104-84fc-52304fcceb6c","timestampMs":22800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4ccfd510-116b-4a9e-9dd6-b7b7fc3a5e4f","timestampMs":22900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b36bff06-36da-4388-9055-c0a816b13c29","timestampMs":23000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d1969293-1d5b-4a41-9073-8e669ec97924","timestampMs":23100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"27335518-0f33-4ed6-918a-e1cf97cd7fee","timestampMs":23200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"26e8aa77-550c-45f5-b034-cd5335f7c382","timestampMs":23300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"813acced-c505-4d46-a2f0-0f9c044d2623","timestampMs":23400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7ab21e30-114d-4bb0-9230-fe98cb6c6c6e","timestampMs":23500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e469dc9a-4dbb-4914-a19c-dd10bd2fafef","timestampMs":23600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"eba89275-e018-4f9d-8b60-675fbe09a956","timestampMs":23700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9949f3e7-4273-410c-a8d4-46ebdeeceeed","timestampMs":23800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"61ee0840-1906-49a4-b800-0d3c526a8808","timestampMs":23900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d3e553ec-a643-4caf-ace8-6016abc4057f","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"59ffdf18-f61b-4df6-836a-871209faa278","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"0bc7ce2b-2bf5-41b0-a0ca-49cded046ac8","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"fab28e98-1af3-47ae-a77c-5a3faef67d44","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"b8f98966-86d6-42f2-bbe1-8cf9c87f6a61","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"6bcff782-3cb1-45b4-91b1-a875268a1344","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"a26e93fb-7987-4eb6-b02b-44c6d57063b1","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"d2006424-7587-4da9-8396-de18bf8bc909","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"16b3ca01-de79-4ce0-a76d-677827fbe804","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"a34362ea-803c-427c-bb61-e19437a89995","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"67b3b1ba-1640-4d51-b340-fabe8844bb0f","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"914a06fd-5ebb-412e-a3a8-c451b35233a3","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"025ebc90-2b10-44d2-8dc6-26823e87af0f","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"b5c0868d-2133-43a4-bb63-33c01194b40f","timestampMs":24000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"e80d703c-110d-41f9-bf75-32659ada094f","timestampMs":24100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a72ce253-b29a-49a1-a7ad-f191f2dc0111","timestampMs":24200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"abd5de24-712c-4ea8-b905-e6197c2aa36f","timestampMs":24300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"50fdaf37-7c91-4237-9d9a-e0388416a1cc","timestampMs":24400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"884a0d8e-e864-4b08-8134-31d6ab1877fa","timestampMs":24500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b6a136ed-2782-4b24-a4c8-d0dc873275e2","timestampMs":24600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"f8822c48-c799-4316-8468-0e7633cf3a74","timestampMs":24700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d6a45f3b-1aaa-462d-9e98-151e3bcd8a8e","timestampMs":24800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"cc950ca3-8f95-4b8a-96cb-49a45312152a","timestampMs":24900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b481754d-1f72-4471-920d-f48c148ed038","timestampMs":25000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"f709745e-7dd3-4474-a3d0-c3ac11665346","timestampMs":25100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"762df7a3-5070-4a85-95ac-29f62e43314e","timestampMs":25200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d584c04c-e411-4ba2-8797-808d4819e55b","timestampMs":25300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"af23a0a0-d399-46cd-a6c8-20b8764b0075","timestampMs":25400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d614e829-c6bf-4cd2-b079-2c70314e81e8","timestampMs":25500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"221ca48b-aedc-4f40-936a-dc407c051c20","timestampMs":25600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"14805bd3-9c12-4b8b-bb50-c549984da7c6","timestampMs":25700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8b7e6518-5272-4f1e-9bc8-0fa5cc861399","timestampMs":25800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"13a9f49c-39a1-4a4d-8d8a-d2770d8433c6","timestampMs":25900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"defb9f83-48b4-4da5-899f-c3871a6c1786","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"3026dfda-1416-40c0-ba3c-5974901e3a42","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"13d3c932-cb1c-4b5d-ad3a-fd41f1ece3b9","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"493607c0-2bee-4423-80c2-c7dd943d674a","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"cec0fdf0-f0c7-4164-803d-37ea5b61c80e","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"335f4dd4-9f7d-4d13-9455-526167cb4a84","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"a1561ab3-fb55-48f9-9f74-13759d407018","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"787ee4f8-1e84-4800-8242-6f0c66018b0a","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"24b15189-ba94-4908-b68a-8cb091bdf082","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"8c371778-a5cb-4b50-aa8b-07c7cab2e19b","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"e5211680-ae06-4316-9b89-4aa9a493c75a","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"f9263215-a0e9-4396-b2f8-6a084c8afd89","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"48d4e823-2050-430d-998f-a16112607cb6","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"ccc3168c-1a1d-4b9a-bc14-69ebf099ce2c","timestampMs":26000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"077ac068-07e8-4d3d-89eb-87d3a3ac4c5c","timestampMs":26100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4aec8f41-90d6-4d54-947b-03f25f88a1ac","timestampMs":26200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"39887a3f-8f26-4161-8b7b-ed1a660ea62e","timestampMs":26300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"480e04dd-3d8e-43f7-a8d1-d5b12ceb6b90","timestampMs":26400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1b499d4b-95ce-4f21-8474-40a392fc064b","timestampMs":26500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3e99ee70-fb3c-4770-b073-9ca8d8eeb06f","timestampMs":26600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6b7b0993-743e-493d-9ade-67b61e9d4569","timestampMs":26700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"fdeef9ce-2a4b-44a4-9432-25caf9853ecf","timestampMs":26800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5893c29f-3899-45e2-9fd1-c060615b1e32","timestampMs":26900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7b767098-7320-4758-a05a-a6e2b3e1cf59","timestampMs":27000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5c4fd5ae-cf22-4da6-b1a2-e21896d43313","timestampMs":27100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"00368710-4216-406b-9396-c57bdb2c2c5b","timestampMs":27200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e3bfb3db-48c7-402d-9dc5-fb9e7b404c0b","timestampMs":27300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0f52dcc7-e9ea-4502-8f7c-fbef02456bef","timestampMs":27400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5a21ceda-63e5-493a-89fe-2cdbb18f38d5","timestampMs":27500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a7df24ba-01df-493b-88eb-f5e6ca49e814","timestampMs":27600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"c7062a17-7416-4dc4-9b97-dcf33e10ea93","timestampMs":27700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5b911113-1403-4ab6-8e42-315fe4dbfec8","timestampMs":27800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"388a6bd6-5738-40e0-a68d-7960dd2de00a","timestampMs":27900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b2003bd0-dda1-4cc8-b0ed-56e47b393dc9","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TOKEN_REFILLED","eventId":"502a28a4-3233-4254-a5fc-dab2ca10a0d6","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","tokensAdded":4.0,"currentTokens":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"8cf9841d-9b3e-4ac6-b065-14c9d460a331","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"0.0","tokensAdded":"4.0","tokensAfterRefill":"4.0","tokensAfterConsuming":"3.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"18e06b6e-8cfd-43ca-a111-05934709344a","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"3.0","tokensAdded":"0.0","tokensAfterRefill":"3.0","tokensAfterConsuming":"2.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"e8600ed7-8f7b-4e3b-8ade-e8671c0b034a","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"2.0","tokensAdded":"0.0","tokensAfterRefill":"2.0","tokensAfterConsuming":"1.0","key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"ee999088-aa39-46e4-b12f-7a1da5d97179","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{"tokensBefore":"1.0","tokensAdded":"0.0","tokensAfterRefill":"1.0","tokensAfterConsuming":"0.0","key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"7c4fedc5-d39d-4803-8cdd-400be9e9a3c3","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"0be45e07-f426-40b9-aec6-d53c61070677","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"bd7ab8d5-8a86-468c-9ccc-dc128a5db741","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"63807524-6e51-4c62-acad-4901ce1c0de1","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"45d62072-9972-4089-9eeb-5a3a30750df7","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"a0dee1b8-4a8d-440d-ad59-c7241f2b3348","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"6804c464-1b2a-4d1f-b62e-d88e760f0ebf","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"REQUEST_BLOCKED","eventId":"2b6e0694-63ee-4c2e-acb6-eb74aeb48288","timestampMs":28000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"tokensBefore":"0.0","tokensAdded":"0.0","tokensAfterRefill":"0.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"01071498-dd4e-4302-9688-cd97808ef9df","timestampMs":28100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1a8e9530-b5fe-4b5b-93b6-76395c517aa1","timestampMs":28200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a2e77288-9b3a-4ab1-aa2f-eac98264f239","timestampMs":28300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"41145bdd-7e6e-4479-a811-949d4419496d","timestampMs":28400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1fd7574f-6871-4efd-ba6d-971d92b6ee96","timestampMs":28500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"f0248784-f148-4705-a0a3-a448fd493605","timestampMs":28600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a7c058b0-a650-4cf1-a85a-938cddcfc6ca","timestampMs":28700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3b88b2e4-267e-4394-9b6b-f058de093663","timestampMs":28800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"71473cb5-3eb6-4d24-b103-f7b29e3a34fb","timestampMs":28900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"276843ac-7197-40d7-aade-e5b3fd447b3e","timestampMs":29000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"68a72992-74ee-4f9f-929b-7557a5232e4a","timestampMs":29100,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"34b30e3f-10b5-467a-84fd-0edb09c4ce1c","timestampMs":29200,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2c2a56a6-777b-46fb-ad28-098670bdbf0e","timestampMs":29300,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2ab01660-c3b4-487c-ad14-496c628df8f1","timestampMs":29400,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"04f864f3-fc44-4acc-a199-37a127d5cd9d","timestampMs":29500,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"01eea667-4f30-4d94-ad0a-7a3472501bbd","timestampMs":29600,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8f73a20e-e0cb-40de-960b-de7763b7aec6","timestampMs":29700,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"35e231ed-2cb1-4905-9dc7-9a138ef6c64e","timestampMs":29800,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a7b0edba-05d9-4724-baec-b6e025eef719","timestampMs":29900,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2981b791-6d90-46b6-8d17-638b60b069b0","timestampMs":30000,"strategy":"TOKEN_BUCKET","nodeId":"node-1","payload":{}}

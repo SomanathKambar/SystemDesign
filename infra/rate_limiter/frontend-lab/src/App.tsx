@@ -2,21 +2,25 @@ import { useEffect, useState, useRef } from 'react'
 import { ExperimentLoader } from './services/ExperimentLoader'
 import type { ExperimentMetadata, RateLimitEvent } from './types'
 import { TokenBucketVisualizer } from './components/TokenBucketVisualizer'
+import { LeakyBucketVisualizer } from './components/LeakyBucketVisualizer'
 import { FixedWindowVisualizer } from './components/FixedWindowVisualizer'
 import { SlidingWindowVisualizer } from './components/SlidingWindowVisualizer'
 import { ComparisonDashboard } from './components/ComparisonDashboard'
 
 const SAMPLE_EXPERIMENTS = [
-    { strategy: 'fixed_window', id: 'e232d063', label: 'Fixed Window (Boundary Burst)' },
-    { strategy: 'sliding_window_counter', id: 'da18e7ac', label: 'Sliding Counter (Boundary Burst)' },
-    { strategy: 'sliding_window_log', id: 'f97aa1c4', label: 'Sliding Log (Boundary Burst)' },
-    { strategy: 'token_bucket', id: '545784ac', label: 'Token Bucket (Boundary Burst)' },
-    { strategy: 'fixed_window', id: '8ebff515', label: 'Fixed Window (High Load)' },
-    { strategy: 'sliding_window_counter', id: 'a03ecf98', label: 'Sliding Counter (High Load)' },
-    { strategy: 'sliding_window_log', id: 'aeb9c29d', label: 'Sliding Log (High Load)' },
-    { strategy: 'token_bucket', id: 'b717428c', label: 'Token Bucket (High Load)' },
-    { strategy: 'fixed_window', id: 'c649fc06', label: 'Fixed Window (Standard Burst)' },
-    { strategy: 'token_bucket', id: '97bdce6d', label: 'Token Bucket (Standard Burst)' },
+    { strategy: 'fixed_window', id: 'fixed_window_boundary', label: 'Fixed Window (Boundary Burst)' },
+    { strategy: 'sliding_window_counter', id: 'sliding_window_counter_boundary', label: 'Sliding Counter (Boundary Burst)' },
+    { strategy: 'sliding_window_log', id: 'sliding_window_log_boundary', label: 'Sliding Log (Boundary Burst)' },
+    { strategy: 'token_bucket', id: 'token_bucket_boundary', label: 'Token Bucket (Boundary Burst)' },
+    { strategy: 'leaky_bucket', id: 'leaky_bucket_boundary', label: 'Leaky Bucket (Boundary Burst)' },
+    { strategy: 'fixed_window', id: 'fixed_window_highload', label: 'Fixed Window (High Load)' },
+    { strategy: 'sliding_window_counter', id: 'sliding_window_counter_highload', label: 'Sliding Counter (High Load)' },
+    { strategy: 'sliding_window_log', id: 'sliding_window_log_highload', label: 'Sliding Log (High Load)' },
+    { strategy: 'token_bucket', id: 'token_bucket_highload', label: 'Token Bucket (High Load)' },
+    { strategy: 'leaky_bucket', id: 'leaky_bucket_highload', label: 'Leaky Bucket (High Load)' },
+    { strategy: 'fixed_window', id: 'fixed_window_burst', label: 'Fixed Window (Standard Burst)' },
+    { strategy: 'token_bucket', id: 'token_bucket_burst', label: 'Token Bucket (Standard Burst)' },
+    { strategy: 'leaky_bucket', id: 'leaky_bucket_burst', label: 'Leaky Bucket (Standard Burst)' },
 ]
 
 function App() {
@@ -90,6 +94,8 @@ function App() {
     switch (metadata.strategy) {
       case 'TOKEN_BUCKET':
         return <TokenBucketVisualizer currentTime={currentTime} events={events} config={metadata.config} />
+      case 'LEAKY_BUCKET':
+        return <LeakyBucketVisualizer currentTime={currentTime} events={events} config={metadata.config} />
       case 'FIXED_WINDOW':
         return <FixedWindowVisualizer currentTime={currentTime} events={events} config={metadata.config} />
       case 'SLIDING_WINDOW_COUNTER':

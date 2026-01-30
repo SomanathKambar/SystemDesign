@@ -10,6 +10,8 @@ export interface RateLimitEvent {
   currentTokens?: number;
   newWindowStartMs?: number;
   reason?: string;
+  leakedAmount?: number;
+  waterLevelAfterLeak?: number;
 }
 
 export interface TrafficProfile {

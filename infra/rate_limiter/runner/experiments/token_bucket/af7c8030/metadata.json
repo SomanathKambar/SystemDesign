@@ -1,0 +1,20 @@
+{
+    "id": "af7c8030",
+    "name": "TOKEN_BUCKET - Burst",
+    "description": "Simulation of TOKEN_BUCKET under Burst traffic.",
+    "strategy": "TOKEN_BUCKET",
+    "config": {
+        "capacity": "10.0",
+        "rate": "2.0",
+        "duration": "30000",
+        "windowSizeMs": "5000"
+    },
+    "profile": {
+        "type": "com.systemdesign.infra.ratelimiter.runner.TrafficProfile.Burst",
+        "name": "Burst Traffic",
+        "burstSize": 12,
+        "intervalMs": 2000,
+        "durationMs": 30000
+    },
+    "timestamp": 1769773245009
+}

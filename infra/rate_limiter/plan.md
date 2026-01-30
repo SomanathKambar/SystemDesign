@@ -243,6 +243,80 @@ Interruption Snapshot:
 - Token Bucket refill only happens during `allow()` calls, making it look broken in UI when no requests are made.
 Open questions: None.
 
+
+## 8. Verification & Correctness Audit
+
+### 1. Token Bucket: The "Flexible" Metric
+- **Target Logic**: `Allow if tokens >= 1.0`.
+- **Refill Algorithm**: Lazy calculation: `newTokens = min(capacity, currentTokens + (now - lastRefill) * refillRate)`.
+- **Precision**: Uses `Double` for tokens to ensure smooth refill even at high frequencies.
+- **Wait Time**: `(1.0 - currentTokens) / refillRate` converted to milliseconds.
+- **Trade-off**: High precision and burst support, but slightly more complex than counters.
+
+### 2. Leaky Bucket: The "Smoothing" Metric
+- **Target Logic**: `Allow if bucket has space`.
+- **Drip Algorithm**: Constant outflow rate.
+- **Implementation**: Can be implemented using a "Next Available Time" slot or a FIFO queue.
+- **Difference from Token Bucket**: Token Bucket allows bursts up to capacity; Leaky Bucket forces a steady stream (shaping).
+- **Status**: **PENDING IMPLEMENTATION**.
+
+### 3. Fixed Window Counter: The "Cheap" Metric
+- **Target Logic**: `Allow if counter < limit`.
+- **Reset Logic**: `windowStart = (now / windowSize) * windowSize`.
+- **Critical Flaw**: Window boundary burst (2x limit in short duration).
+- **Trade-off**: Extremely low memory (1 counter per key) and high performance.
+
+### 4. Sliding Window Counter: The "Precision Estimate"
+- **Target Logic**: `weightedSum = currentCount + (previousCount * weight)`.
+- **Weight**: `(windowSize - timeElapsedInCurrentWindow) / windowSize`.
+- **Accuracy**: Good approximation of a sliding window without the memory overhead of a log.
+- **Trade-off**: Much better than Fixed Window at boundaries, still uses constant memory.
+
+### 5. Sliding Window Log: The "Perfect" Metric
+- **Target Logic**: `count(timestamps in [now - windowSize, now]) < limit`.
+- **Implementation**: Store timestamps in a list/ZSET and filter old ones on every request.
+- **Accuracy**: 100% accurate sliding window.
+- **Trade-off**: Memory scales with the limit (O(N)).
+
+---
+
+## 9. Execution Plan (Refined)
+
+### Step 1: Implement Leaky Bucket
+- [ ] Create `LeakyBucketRateLimiter` in `:strategies:leaky-bucket`.
+- [ ] Implement `InMemoryLeakyBucketStore`.
+- [ ] Add unit tests verifying the "smoothing" behavior (constant outflow).
+
+### Step 2: Correctness & Concurrency Audit
+- [ ] **Boundary Test**: Verify Fixed Window "double burst" and how Sliding Window Counter mitigates it.
+- [ ] **Concurrency Test**: Ensure `store.compute` handles high-contention updates without losing tokens/counts.
+- [ ] **Precision Test**: Compare `SlidingWindowLog` vs `SlidingWindowCounter` under jittery traffic.
+
+### Step 3: Visualization & Lab Update
+- [ ] Add `LEAKY_BUCKET` to `frontend-lab`.
+- [ ] Update `runner` to generate `LEAKY_BUCKET` experiments.
+- [ ] Fix comparison view visibility issues.
+
+### Step 4: Distributed Readiness
+- [ ] Verify `persistence:redis` implementations for all strategies.
+- [ ] Ensure Lua scripts are used (or planned) for Redis atomicity if multi-key operations are needed.
+
+---
+
+## CURRENT STATE
+Phase: PHASE 5 (Verification & Refinement)
+Last completed step: Fixed UI data loading issues. Deterministic experiment IDs implemented.
+Next step: Distributed Readiness - Verify Redis implementations and ensure Lua scripts for atomicity.
+Interruption Snapshot: 
+- Fixed `runner` path issues to correctly output experiments to `frontend-lab/public/experiments`.
+- Implemented deterministic experiment IDs (e.g., `leaky_bucket_burst`) to stabilize frontend fetching.
+- Added `LEAK_OCCURRED` event to `core` for precise Leaky Bucket visualization.
+- Improved `ComparisonDashboard` robustness with `Promise.allSettled`-like logic and `try-catch`.
+- Fixed potential canvas API compatibility issues (replaced `roundRect` with `rect`).
+Open questions: None.
+
+## Verify 
+
 ---
 
 # ✅ PART 2 — MASTER PROMPT (PASTE THIS EVERY TIME)

@@ -55,13 +55,48 @@ sealed class RateLimitEvent {
         override val payload: Map<String, String> = emptyMap()
     ) : RateLimitEvent()
 
-    @Serializable
-    @SerialName("TICK")
-    data class Tick(
-        override val eventId: String,
-        override val timestampMs: Long,
-        override val strategy: String,
-        override val nodeId: String,
-        override val payload: Map<String, String> = emptyMap()
-    ) : RateLimitEvent()
-}
+        @Serializable
+
+        @SerialName("TICK")
+
+        data class Tick(
+
+            override val eventId: String,
+
+            override val timestampMs: Long,
+
+            override val strategy: String,
+
+            override val nodeId: String,
+
+            override val payload: Map<String, String> = emptyMap()
+
+        ) : RateLimitEvent()
+
+    
+
+        @Serializable
+
+        @SerialName("LEAK_OCCURRED")
+
+        data class LeakOccurred(
+
+            override val eventId: String,
+
+            override val timestampMs: Long,
+
+            override val strategy: String,
+
+            override val nodeId: String,
+
+            val leakedAmount: Double,
+
+            val waterLevelAfterLeak: Double,
+
+            override val payload: Map<String, String> = emptyMap()
+
+        ) : RateLimitEvent()
+
+    }
+
+    
