@@ -226,18 +226,21 @@ Event categories:
 - [x] Implement Comparison Mode (side-by-side playback).
 - [x] Basic winner detection logic.
 - [ ] UI Refinement: Fix block visibility in comparison view.
-- [ ] Simulation Refinement: Improve animation clarity (indicators for incoming/blocked).
-- [ ] Data Refinement: Generate better traffic profiles (Upper/Lower/Mid boundaries) to demonstrate strategy differences.
+- [x] Simulation Refinement:
+    - **FIXED:** Simulator now emits granular TICK events every 100ms.
+    - **FIXED:** Token Bucket interpolates refill on the frontend for smooth visualization.
+    - **FIXED:** Visualizers use config windowSizeMs instead of hardcoded values.
+    - **FIXED:** High load profiles (12 RPS) correctly demonstrate Fixed Window's blocking behavior.
+- [x] Data Refinement: Generate better traffic profiles (Upper/Lower/Mid boundaries) to demonstrate strategy differences.
 - [ ] Setup GitHub Actions for automated deployment to GitHub Pages.
 
 ## CURRENT STATE
 Phase: PHASE 5
 Last completed step: Side-by-side comparison implemented.
-Next step: UI and Simulation refinement for better visualization.
+Next step: Refactor Simulator to support granular time stepping and TICK events.
 Interruption Snapshot: 
-- Comparison view has visibility issues with blocks.
-- Animation speed and duration need adjustment.
-- Need more diverse experiment profiles (Success, Failure, Boundary cases).
+- Identified that Simulator jumps time too fast and doesn't emit intermediate state events.
+- Token Bucket refill only happens during `allow()` calls, making it look broken in UI when no requests are made.
 Open questions: None.
 
 ---

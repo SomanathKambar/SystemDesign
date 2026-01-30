@@ -10,7 +10,7 @@ interface Props {
 export const FixedWindowVisualizer = ({ currentTime, events, config }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const maxRequests = parseInt(config.capacity || '10');
-  const windowSizeMs = 1000; // Hardcoded or from config
+  const windowSizeMs = parseInt(config.windowSizeMs || '1000');
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -25,6 +25,7 @@ export const FixedWindowVisualizer = ({ currentTime, events, config }: Props) =>
     const pastEvents = events.filter(e => e.timestampMs <= currentTime);
     
     // Calculate current window count
+    // Important: Only count requests that happened WITHIN the CURRENT window
     const currentWindowEvents = pastEvents.filter(e => 
         e.timestampMs >= windowStart && e.type === 'REQUEST_ALLOWED'
     );

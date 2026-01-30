@@ -7,14 +7,16 @@ import { SlidingWindowVisualizer } from './components/SlidingWindowVisualizer'
 import { ComparisonDashboard } from './components/ComparisonDashboard'
 
 const SAMPLE_EXPERIMENTS = [
-    { strategy: 'fixed_window', id: 'fea3207d', label: 'Fixed Window (Boundary Burst)' },
-    { strategy: 'sliding_window_counter', id: 'd53faf9c', label: 'Sliding Counter (Boundary Burst)' },
-    { strategy: 'sliding_window_log', id: 'b6db74cd', label: 'Sliding Log (Boundary Burst)' },
-    { strategy: 'token_bucket', id: 'e137799a', label: 'Token Bucket (Boundary Burst)' },
-    { strategy: 'fixed_window', id: 'f22a3afb', label: 'Fixed Window (High Load)' },
-    { strategy: 'token_bucket', id: '337e3ece', label: 'Token Bucket (High Load)' },
-    { strategy: 'fixed_window', id: 'f8eb5022', label: 'Fixed Window (Standard Burst)' },
-    { strategy: 'token_bucket', id: '5f80aa72', label: 'Token Bucket (Standard Burst)' },
+    { strategy: 'fixed_window', id: 'e232d063', label: 'Fixed Window (Boundary Burst)' },
+    { strategy: 'sliding_window_counter', id: 'da18e7ac', label: 'Sliding Counter (Boundary Burst)' },
+    { strategy: 'sliding_window_log', id: 'f97aa1c4', label: 'Sliding Log (Boundary Burst)' },
+    { strategy: 'token_bucket', id: '545784ac', label: 'Token Bucket (Boundary Burst)' },
+    { strategy: 'fixed_window', id: '8ebff515', label: 'Fixed Window (High Load)' },
+    { strategy: 'sliding_window_counter', id: 'a03ecf98', label: 'Sliding Counter (High Load)' },
+    { strategy: 'sliding_window_log', id: 'aeb9c29d', label: 'Sliding Log (High Load)' },
+    { strategy: 'token_bucket', id: 'b717428c', label: 'Token Bucket (High Load)' },
+    { strategy: 'fixed_window', id: 'c649fc06', label: 'Fixed Window (Standard Burst)' },
+    { strategy: 'token_bucket', id: '97bdce6d', label: 'Token Bucket (Standard Burst)' },
 ]
 
 function App() {

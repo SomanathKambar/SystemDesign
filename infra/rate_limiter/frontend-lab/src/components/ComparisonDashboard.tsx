@@ -69,12 +69,18 @@ export const ComparisonDashboard = ({ currentTime, selectedExperiments }: Props)
     return b.blocked - a.blocked;
   })[0];
 
+  const isBoundaryTest = processedData.some(d => d.metadata.name.includes('Boundary'));
+
   return (
     <div className="flex flex-col w-full h-full">
       <div className="p-6 bg-blue-600/10 border-b border-blue-500/20 mb-4 flex items-center justify-between">
          <div>
-            <h2 className="text-lg font-bold text-blue-400">SYNCED COMPARISON: BOUNDARY PROTECTION</h2>
-            <p className="text-[10px] text-slate-500 uppercase tracking-widest">Fixed Window vulnerability: allowing 2x limit at boundaries</p>
+            <h2 className="text-lg font-bold text-blue-400">
+                {isBoundaryTest ? 'SYNCED COMPARISON: BOUNDARY PROTECTION' : 'SYNCED COMPARISON: LOAD BALANCING'}
+            </h2>
+            <p className="text-[10px] text-slate-500 uppercase tracking-widest">
+                {isBoundaryTest ? 'Fixed Window vulnerability: allowing 2x limit at boundaries' : 'Evaluating throughput and smoothness under constant load'}
+            </p>
          </div>
          {leader && (
             <div className="text-right">
@@ -87,7 +93,7 @@ export const ComparisonDashboard = ({ currentTime, selectedExperiments }: Props)
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full flex-1 p-4 overflow-y-auto">
-        {processedData.filter((_, idx) => idx < 4).map((item, index) => {
+        {processedData.filter(item => item.metadata.name.includes('Boundary')).map((item, index) => {
           const isLeader = leader && item.metadata.id === leader.metadata.id;
           const isFixedWindowFail = item.metadata.strategy === 'FIXED_WINDOW' && item.allowed > 10;
           return (

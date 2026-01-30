@@ -10,7 +10,7 @@ interface Props {
 export const SlidingWindowVisualizer = ({ currentTime, events, config }: Props) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const maxRequests = parseInt(config.capacity || '10');
-  const windowSizeMs = 1000; 
+  const windowSizeMs = parseInt(config.windowSizeMs || '1000');
 
   useEffect(() => {
     const canvas = canvasRef.current;

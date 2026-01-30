@@ -21,20 +21,29 @@ export const TokenBucketVisualizer = ({ currentTime, events, config }: Props) =>
     const pastEvents = events.filter(e => e.timestampMs <= currentTime);
     
     // Find the latest state-carrying event
-    let currentTokens = capacity; // Start full
+    let currentTokens = capacity; 
+    let lastStateTime = 0;
+    
     const lastEvent = [...pastEvents].reverse().find(e => 
       e.type === 'TOKEN_REFILLED' || e.type === 'REQUEST_ALLOWED' || e.type === 'REQUEST_BLOCKED'
     );
 
     if (lastEvent) {
+      lastStateTime = lastEvent.timestampMs;
       if (lastEvent.type === 'TOKEN_REFILLED') {
-        currentTokens = parseFloat(lastEvent.payload.tokensAfterRefill || '0');
+        currentTokens = parseFloat(lastEvent.payload.tokensAfterRefill || lastEvent.currentTokens?.toString() || '0');
       } else if (lastEvent.type === 'REQUEST_ALLOWED') {
         currentTokens = parseFloat(lastEvent.payload.tokensAfterConsuming || '0');
       } else {
         currentTokens = parseFloat(lastEvent.payload.tokensAfterRefill || lastEvent.payload.tokensBefore || '0');
       }
     }
+
+    // Interpolate refill since last event
+    const refillRate = parseFloat(config.rate || '1');
+    const timePassed = currentTime - lastStateTime;
+    const refilled = (timePassed * refillRate) / 1000;
+    currentTokens = Math.min(capacity, currentTokens + refilled);
 
     // Clear and Draw
     const { width, height } = canvas;

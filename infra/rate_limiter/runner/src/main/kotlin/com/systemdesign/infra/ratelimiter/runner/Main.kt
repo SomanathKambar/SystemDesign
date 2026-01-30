@@ -20,8 +20,8 @@ class RunExperiment : CliktCommand() {
         val durations = 30000L // 30 seconds for better visualization
         
         strategies.forEach { strategy ->
-            runScenario(strategy, "Burst", TrafficProfile.Burst("Burst Traffic", 8, 2000, durations))
-            runScenario(strategy, "HighLoad", TrafficProfile.Constant("High Load", 5.0, durations))
+            runScenario(strategy, "Burst", TrafficProfile.Burst("Burst Traffic", 12, 2000, durations))
+            runScenario(strategy, "HighLoad", TrafficProfile.Constant("High Load", 12.0, durations))
             runScenario(strategy, "Boundary", TrafficProfile.Boundary("Boundary Burst", 5000, 10, durations))
         }
     }
