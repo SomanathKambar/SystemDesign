@@ -45,9 +45,17 @@ export const TokenBucketVisualizer = ({ currentTime, events, config }: Props) =>
     const refilled = (timePassed * refillRate) / 1000;
     currentTokens = Math.min(capacity, currentTokens + refilled);
 
-    // Clear and Draw
     const { width, height } = canvas;
     ctx.clearRect(0, 0, width, height);
+
+    // Background Heartbeat Pulse
+    const scanLinePos = (currentTime % 2000) / 2000;
+    ctx.strokeStyle = 'rgba(59, 130, 246, 0.05)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, height * scanLinePos);
+    ctx.lineTo(width, height * scanLinePos);
+    ctx.stroke();
 
     // Draw Bucket
     const bucketWidth = 200;
@@ -74,13 +82,14 @@ export const TokenBucketVisualizer = ({ currentTime, events, config }: Props) =>
     ctx.fillStyle = gradient;
     ctx.fillRect(x + 4, y + bucketHeight - fillHeight, bucketWidth - 8, fillHeight);
 
-    // Glow for liquid
-    if (fillHeight > 0) {
-        ctx.shadowBlur = 15;
-        ctx.shadowColor = '#3b82f6';
-        ctx.strokeRect(x + 4, y + bucketHeight - fillHeight, bucketWidth - 8, 1);
-        ctx.shadowBlur = 0;
-    }
+    // Activity Glow (Always on)
+    const pulse = (Math.sin(currentTime / 200) + 1) / 2;
+    ctx.shadowBlur = 5 + pulse * 10;
+    ctx.shadowColor = '#3b82f6';
+    ctx.strokeStyle = `rgba(59, 130, 246, ${0.3 + pulse * 0.4})`;
+    ctx.lineWidth = 1;
+    ctx.strokeRect(x + 2, y + bucketHeight - fillHeight - 2, bucketWidth - 4, fillHeight + 4);
+    ctx.shadowBlur = 0;
 
     // Text info
     ctx.fillStyle = '#f8fafc';
@@ -93,38 +102,45 @@ export const TokenBucketVisualizer = ({ currentTime, events, config }: Props) =>
     ctx.fillText(`TOKENS AVAILABLE (Limit: ${capacity})`, width / 2, y + bucketHeight + 40);
 
     // Recent Event Indicators
-    const recentEvents = pastEvents.filter(e => currentTime - e.timestampMs < 400);
+    const recentEvents = pastEvents.filter(e => currentTime - e.timestampMs < 600);
     recentEvents.forEach(e => {
         const age = currentTime - e.timestampMs;
-        const opacity = 1 - (age / 400);
-        const yOffset = (age / 400) * 50;
+        const opacity = 1 - (age / 600);
+        const yOffset = (age / 600) * 60;
 
         ctx.save();
         ctx.globalAlpha = opacity;
         ctx.textAlign = 'center';
         if (e.type === 'REQUEST_ALLOWED') {
+            // High impact flash on entry
+            if (age < 100) {
+                ctx.fillStyle = 'rgba(16, 185, 129, 0.4)';
+                ctx.fillRect(x, y, bucketWidth, bucketHeight);
+            }
+
             ctx.fillStyle = '#10b981';
-            ctx.font = 'bold 14px Inter';
+            ctx.font = 'bold 18px Inter';
             ctx.fillText('ALLOWED ✓', width / 2, y - 40 - yOffset);
             
-            // Draw falling token
-            const dropY = y + bucketHeight + (age / 400) * 150;
+            // Draw falling token (larger and more visible)
+            const dropY = y + bucketHeight + (age / 600) * 180;
             ctx.fillStyle = '#fbbf24';
             ctx.beginPath();
-            ctx.arc(width / 2, dropY, 10, 0, Math.PI * 2);
+            ctx.arc(width / 2, dropY, 12, 0, Math.PI * 2);
             ctx.fill();
-            ctx.shadowBlur = 15;
+            ctx.shadowBlur = 20;
             ctx.shadowColor = '#fbbf24';
             ctx.stroke();
         } else if (e.type === 'REQUEST_BLOCKED') {
             ctx.fillStyle = '#ef4444';
-            ctx.font = 'bold 16px Inter';
+            ctx.font = 'bold 20px Inter';
             ctx.fillText('BLOCKED (EMPTY) ✕', width / 2, y + bucketHeight + 80 + yOffset);
             
             // Shake the bucket
+            const shake = Math.sin(age / 20) * 5;
             ctx.strokeStyle = '#ef4444';
-            ctx.lineWidth = 2;
-            ctx.strokeRect(x - 5, y - 5, bucketWidth + 10, bucketHeight + 10);
+            ctx.lineWidth = 3;
+            ctx.strokeRect(x - 5 + shake, y - 5, bucketWidth + 10, bucketHeight + 10);
         }
         ctx.restore();
     });

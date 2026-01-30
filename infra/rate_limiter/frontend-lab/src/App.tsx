@@ -112,7 +112,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white p-8 font-sans selection:bg-blue-500/30">
+    <div className="min-h-screen bg-slate-900 text-white p-8 font-sans selection:bg-blue-500/30 overflow-y-auto custom-scrollbar">
       <header className="max-w-7xl mx-auto mb-12 flex justify-between items-end">
         <div>
             <h1 className="text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500 mb-2">
@@ -183,7 +183,7 @@ function App() {
                 </span>
              </div>
              
-             {viewMode === 'single' ? renderVisualizer() : <ComparisonDashboard currentTime={currentTime} selectedExperiments={SAMPLE_EXPERIMENTS} />}
+             {viewMode === 'single' ? renderVisualizer() : <ComparisonDashboard currentTime={currentTime} allExperiments={SAMPLE_EXPERIMENTS} />}
 
              {/* Time HUD */}
              <div className="absolute bottom-6 right-8 text-right z-10 bg-slate-900/80 px-4 py-2 rounded-2xl backdrop-blur-md border border-white/5">
@@ -305,6 +305,40 @@ function App() {
           </div>
         )}
       </main>
+
+      {/* Scenario Catalog (Single View Only) */}
+      {viewMode === 'single' && (
+          <div className="max-w-7xl mx-auto mt-20 mb-20">
+              <h3 className="text-xs font-black text-slate-500 uppercase tracking-[0.4em] mb-8 text-center">Scenario Catalog & Lab Reports</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                  {SAMPLE_EXPERIMENTS.map((exp) => (
+                      <button 
+                        key={`${exp.strategy}-${exp.id}`}
+                        onClick={() => setSelectedExp(exp)}
+                        className={`group p-6 rounded-3xl border transition-all text-left ${
+                            selectedExp.id === exp.id 
+                            ? 'bg-blue-600/10 border-blue-500/50 shadow-[0_0_30px_rgba(59,130,246,0.1)]' 
+                            : 'bg-slate-800/40 border-white/5 hover:border-white/10'
+                        }`}
+                      >
+                          <div className="flex justify-between items-start mb-4">
+                              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">{exp.strategy.replace('_', ' ')}</span>
+                              {selectedExp.id === exp.id && <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>}
+                          </div>
+                          <h4 className="text-sm font-bold text-slate-200 mb-2">{exp.label}</h4>
+                          <p className="text-[10px] text-slate-500 leading-relaxed mb-4">
+                              {exp.label.includes('Boundary') ? 'Stress test for window-edge overflow vulnerabilities.' : 
+                               exp.label.includes('High Load') ? 'Sustainability test under constant maximum throughput.' : 
+                               'Validation of burst handling and recovery speed.'}
+                          </p>
+                          <div className="flex items-center gap-2">
+                              <span className="text-[9px] font-black text-blue-400 uppercase tracking-tighter group-hover:underline">Launch Simulation →</span>
+                          </div>
+                      </button>
+                  ))}
+              </div>
+          </div>
+      )}
     </div>
   )
 }

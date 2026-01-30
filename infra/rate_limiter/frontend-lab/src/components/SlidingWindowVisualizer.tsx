@@ -43,7 +43,7 @@ export const SlidingWindowVisualizer = ({ currentTime, events, config }: Props) 
     ctx.stroke();
 
     // Mapping function: time -> x
-    // Let's show a range of [currentTime - 2000, currentTime + 500]
+    // Show a range of [currentTime - 2000, currentTime + 500]
     const viewStart = currentTime - 2000;
     const viewEnd = currentTime + 500;
     const timeToX = (t: number) => {
@@ -51,15 +51,40 @@ export const SlidingWindowVisualizer = ({ currentTime, events, config }: Props) 
         return axisPadding + ratio * axisWidth;
     };
 
-    // Draw Sliding Window Box
+    // Draw Sliding Window "Cloth"
     const winXStart = timeToX(windowStart);
     const winXEnd = timeToX(currentTime);
-    ctx.fillStyle = 'rgba(59, 130, 246, 0.15)';
+    const winWidth = winXEnd - winXStart;
+    
+    // Cloth Gradient
+    const gradient = ctx.createLinearGradient(winXStart, 0, winXEnd, 0);
+    gradient.addColorStop(0, 'rgba(59, 130, 246, 0.1)');
+    gradient.addColorStop(0.5, 'rgba(59, 130, 246, 0.2)');
+    gradient.addColorStop(1, 'rgba(59, 130, 246, 0.1)');
+
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.roundRect(winXStart, axisY - 80, winWidth, 100, 12);
+    ctx.fill();
+    
     ctx.strokeStyle = '#3b82f6';
-    ctx.setLineDash([2, 2]);
-    ctx.fillRect(winXStart, axisY - 80, winXEnd - winXStart, 100);
-    ctx.strokeRect(winXStart, axisY - 80, winXEnd - winXStart, 100);
+    ctx.setLineDash([5, 5]);
+    ctx.lineWidth = 2;
+    ctx.stroke();
     ctx.setLineDash([]);
+
+    // Wind Effect (Moving lines inside window)
+    const windOffset = (currentTime / 10) % 50;
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    for(let i = 0; i < 5; i++) {
+        const yLine = axisY - 70 + i * 20;
+        const xLine = winXStart + (windOffset + i * 30) % winWidth;
+        ctx.moveTo(xLine, yLine);
+        ctx.lineTo(Math.min(xLine + 20, winXEnd), yLine);
+    }
+    ctx.stroke();
 
     // Draw Window Label
     ctx.fillStyle = '#3b82f6';
@@ -67,17 +92,25 @@ export const SlidingWindowVisualizer = ({ currentTime, events, config }: Props) 
     ctx.textAlign = 'center';
     ctx.fillText('SLIDING WINDOW', (winXStart + winXEnd) / 2, axisY - 90);
 
-    // Draw Events as dots/markers
+    // Draw Events
     pastEvents.filter(e => e.timestampMs >= viewStart).forEach(e => {
         const ex = timeToX(e.timestampMs);
-        const isAllowed = e.type === 'REQUEST_ALLOWED';
         const inWindow = e.timestampMs >= windowStart;
+        
+        // Age for animation
+        const age = currentTime - e.timestampMs;
 
-        if (isAllowed) {
+        if (e.type === 'REQUEST_ALLOWED') {
+            const isFresh = age < 200;
             ctx.fillStyle = inWindow ? '#10b981' : '#334155';
+            
+            // Pulse if fresh
+            const radius = isFresh ? 6 + Math.sin(age * 0.1) * 2 : 6;
+            
             ctx.beginPath();
-            ctx.arc(ex, axisY, 6, 0, Math.PI * 2);
+            ctx.arc(ex, axisY, radius, 0, Math.PI * 2);
             ctx.fill();
+            
             if (inWindow) {
                 ctx.shadowBlur = 10;
                 ctx.shadowColor = '#10b981';
@@ -85,13 +118,35 @@ export const SlidingWindowVisualizer = ({ currentTime, events, config }: Props) 
                 ctx.shadowBlur = 0;
             }
         } else if (e.type === 'REQUEST_BLOCKED') {
-            ctx.fillStyle = '#ef4444';
-            ctx.beginPath();
-            ctx.moveTo(ex - 5, axisY - 5);
-            ctx.lineTo(ex + 5, axisY + 5);
-            ctx.moveTo(ex + 5, axisY - 5);
-            ctx.lineTo(ex - 5, axisY + 5);
-            ctx.stroke();
+            // Blown off animation
+            // Fly up and fade out
+            const flyHeight = Math.min(100, age * 0.2); // Fly up to 100px
+            const flyX = age * 0.1; // Drift right
+            const opacity = Math.max(0, 1 - age / 600);
+            
+            if (opacity > 0) {
+                ctx.save();
+                ctx.globalAlpha = opacity;
+                ctx.fillStyle = '#ef4444';
+                
+                // Draw as a small particle/shard
+                const particleX = ex + flyX;
+                const particleY = axisY - flyHeight;
+                
+                ctx.translate(particleX, particleY);
+                ctx.rotate(age * 0.01); // Spin
+                
+                ctx.beginPath();
+                ctx.moveTo(-4, -4);
+                ctx.lineTo(4, 4);
+                ctx.moveTo(4, -4);
+                ctx.lineTo(-4, 4);
+                ctx.strokeStyle = '#ef4444';
+                ctx.lineWidth = 2;
+                ctx.stroke();
+                
+                ctx.restore();
+            }
         }
     });
 
@@ -116,14 +171,13 @@ export const SlidingWindowVisualizer = ({ currentTime, events, config }: Props) 
     
     ctx.fillStyle = '#64748b';
     ctx.font = 'bold 14px Inter';
-    ctx.fillText(`REQUESTS IN SLIDING WINDOW (Limit: ${maxRequests})`, width / 2, height / 2 - 40);
+    ctx.fillText(`REQUESTS IN WINDOW (Limit: ${maxRequests})`, width / 2, height / 2 - 40);
 
-    // Recent Event Indicators
-    const recentEvents = pastEvents.filter(e => currentTime - e.timestampMs < 400);
+    // Recent Event Text Indicators (Static at bottom)
+    const recentEvents = pastEvents.filter(e => currentTime - e.timestampMs < 300);
     recentEvents.forEach(e => {
         const age = currentTime - e.timestampMs;
-        const opacity = 1 - (age / 400);
-        const yOffset = (age / 400) * 30;
+        const opacity = 1 - (age / 300);
         
         ctx.save();
         ctx.globalAlpha = opacity;
@@ -131,11 +185,11 @@ export const SlidingWindowVisualizer = ({ currentTime, events, config }: Props) 
         if (e.type === 'REQUEST_ALLOWED') {
             ctx.fillStyle = '#10b981';
             ctx.font = 'bold 14px Inter';
-            ctx.fillText('ALLOWED ✓', timeToX(e.timestampMs), axisY - 20 - yOffset);
+            ctx.fillText('ALLOWED ✓', timeToX(e.timestampMs), axisY + 30);
         } else if (e.type === 'REQUEST_BLOCKED') {
             ctx.fillStyle = '#ef4444';
             ctx.font = 'bold 14px Inter';
-            ctx.fillText('BLOCKED ✕', timeToX(e.timestampMs), axisY + 30 + yOffset);
+            ctx.fillText('BLOCKED ✕', timeToX(e.timestampMs), axisY + 30);
         }
         ctx.restore();
     });

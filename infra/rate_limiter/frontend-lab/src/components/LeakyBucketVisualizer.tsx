@@ -47,6 +47,15 @@ export const LeakyBucketVisualizer = ({ currentTime, events, config }: Props) =>
     const { width, height } = canvas;
     ctx.clearRect(0, 0, width, height);
 
+    // Background Heartbeat Pulse
+    const scanLinePos = (currentTime % 2000) / 2000;
+    ctx.strokeStyle = 'rgba(14, 165, 233, 0.05)';
+    ctx.lineWidth = 1;
+    ctx.beginPath();
+    ctx.moveTo(0, height * scanLinePos);
+    ctx.lineTo(width, height * scanLinePos);
+    ctx.stroke();
+
     // Draw Funnel/Bucket
     const bucketWidth = 200;
     const bucketHeight = 300;
@@ -75,13 +84,30 @@ export const LeakyBucketVisualizer = ({ currentTime, events, config }: Props) =>
         ctx.fillStyle = gradient;
         ctx.fillRect(x + 4, y + bucketHeight - fillHeight, bucketWidth - 8, fillHeight);
         
-        // Drip effect from the hole if there is water
-        const dripAge = (currentTime % 500) / 500;
-        const dripY = y + bucketHeight + dripAge * 40;
+        // Activity Glow
+        const pulse = (Math.sin(currentTime / 300) + 1) / 2;
+        ctx.shadowBlur = 10 + pulse * 10;
+        ctx.shadowColor = '#0ea5e9';
+        ctx.strokeStyle = `rgba(14, 165, 233, ${0.4 + pulse * 0.4})`;
+        ctx.lineWidth = 2;
+        ctx.strokeRect(x + 2, y + bucketHeight - fillHeight - 2, bucketWidth - 4, fillHeight + 4);
+        ctx.shadowBlur = 0;
+
+        // Continuous Drip effect from the hole if there is water
+        // Draw multiple small droplets falling
+        const numDroplets = 5;
         ctx.fillStyle = '#0ea5e9';
-        ctx.beginPath();
-        ctx.arc(width / 2, dripY, 3, 0, Math.PI * 2);
-        ctx.fill();
+        for (let i = 0; i < numDroplets; i++) {
+            const offset = (currentTime + i * 100) % 500;
+            const dropY = y + bucketHeight + offset * 0.3; // Speed
+            const dropAlpha = 1 - (offset / 500);
+            
+            ctx.globalAlpha = dropAlpha;
+            ctx.beginPath();
+            ctx.arc(width / 2, dropY, 3, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.globalAlpha = 1.0;
     }
 
     // Text info
@@ -95,35 +121,64 @@ export const LeakyBucketVisualizer = ({ currentTime, events, config }: Props) =>
     ctx.fillText(`WATER LEVEL (Capacity: ${capacity})`, width / 2, y + bucketHeight + 40);
 
     // Recent Event Indicators
-    const recentEvents = pastEvents.filter(e => currentTime - e.timestampMs < 400);
+    const recentEvents = pastEvents.filter(e => currentTime - e.timestampMs < 800);
     recentEvents.forEach(e => {
         const age = currentTime - e.timestampMs;
-        const opacity = 1 - (age / 400);
-        const yOffset = (age / 400) * 50;
-
+        const opacity = 1 - (age / 800);
+        
         ctx.save();
         ctx.globalAlpha = opacity;
         ctx.textAlign = 'center';
+
         if (e.type === 'REQUEST_ALLOWED') {
-            ctx.fillStyle = '#10b981';
-            ctx.font = 'bold 14px Inter';
-            ctx.fillText('ALLOWED (ADDED WATER) ✓', width / 2, y - 40 - yOffset);
-            
-            // Draw falling request
-            const dropY = y + (age / 400) * bucketHeight;
-            ctx.fillStyle = '#0ea5e9';
+            // Flash on top
+            if (age < 150) {
+                ctx.fillStyle = 'rgba(16, 185, 129, 0.4)';
+                ctx.fillRect(x, y, bucketWidth, 20); // Flash at rim
+            }
+
+            // Draw falling request (larger drop)
+            const dropY = y + (age / 800) * bucketHeight; // Fall through bucket
+            ctx.fillStyle = '#10b981'; // Green for allowed
             ctx.beginPath();
-            ctx.arc(width / 2, dropY, 8, 0, Math.PI * 2);
+            ctx.arc(width / 2, dropY, 12, 0, Math.PI * 2);
             ctx.fill();
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#10b981';
+            ctx.stroke();
+
+            // Text
+            ctx.fillStyle = '#10b981';
+            ctx.font = 'bold 18px Inter';
+            ctx.fillText('ALLOWED ✓', width / 2, y - 20 - (age/10));
+
         } else if (e.type === 'REQUEST_BLOCKED') {
+            // Bounce off animation
+            const bounceHeight = 100;
+            const progress = age / 800;
+            // Parabola: y = -4x(x-1) is 0 at 0 and 1, peak at 0.5
+            // We want it to start at rim (y) and go up and out
+            const arcX = width / 2 + (Math.random() > 0.5 ? 1 : -1) * (progress * 150 + 20); // Move sideways
+            const arcY = y - Math.sin(progress * Math.PI) * bounceHeight;
+
             ctx.fillStyle = '#ef4444';
-            ctx.font = 'bold 16px Inter';
-            ctx.fillText('BLOCKED (OVERFLOW) ✕', width / 2, y + bucketHeight + 80 + yOffset);
-            
-            // Overflow effect
+            ctx.beginPath();
+            ctx.arc(arcX, arcY, 8, 0, Math.PI * 2);
+            ctx.fill();
+
             ctx.strokeStyle = '#ef4444';
             ctx.lineWidth = 2;
-            ctx.strokeRect(x - 5, y - 5, bucketWidth + 10, bucketHeight + 10);
+            ctx.beginPath();
+            ctx.moveTo(arcX - 5, arcY - 5);
+            ctx.lineTo(arcX + 5, arcY + 5);
+            ctx.moveTo(arcX + 5, arcY - 5);
+            ctx.lineTo(arcX - 5, arcY + 5);
+            ctx.stroke();
+
+            // Text
+            ctx.fillStyle = '#ef4444';
+            ctx.font = 'bold 16px Inter';
+            ctx.fillText('BLOCKED ✕', arcX, arcY - 20);
         }
         ctx.restore();
     });

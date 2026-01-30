@@ -305,15 +305,30 @@ Open questions: None.
 
 ## CURRENT STATE
 Phase: PHASE 5 (Verification & Refinement)
-Last completed step: Fixed UI data loading issues. Deterministic experiment IDs implemented.
-Next step: Distributed Readiness - Verify Redis implementations and ensure Lua scripts for atomicity.
+Last completed step: Enhanced Comparison Dashboard with per-strategy selection, resilience scoring, and architectural reporting.
+Next step: Implement "Dynamic Lab" UX - Global Scenario Selector, Strategy Addition Awareness, and Single-View Telemetry Catalog.
 Interruption Snapshot: 
-- Fixed `runner` path issues to correctly output experiments to `frontend-lab/public/experiments`.
-- Implemented deterministic experiment IDs (e.g., `leaky_bucket_burst`) to stabilize frontend fetching.
-- Added `LEAK_OCCURRED` event to `core` for precise Leaky Bucket visualization.
-- Improved `ComparisonDashboard` robustness with `Promise.allSettled`-like logic and `try-catch`.
-- Fixed potential canvas API compatibility issues (replaced `roundRect` with `rect`).
+- Moving from per-card selection to Global Scenario selection in Comparison Mode.
+- Implementing "Add Strategy" button with awareness of available strategies.
+- Adding "Scenario Catalog" to Single View with detailed success/failure post-mortems.
+- Ensuring smooth, zero-latency UI transitions when switching global inputs.
 Open questions: None.
+
+## 10. Dynamic Lab UX Refinement
+
+### Step 1: Global Scenario Control (Comparison)
+- [ ] Add `GlobalScenario` selector (Boundary vs Burst vs HighLoad).
+- [ ] Sync all active strategy cards to the selected scenario automatically.
+- [ ] Update "Add Strategy" button to pick an unrepresented strategy and disable when full.
+
+### Step 2: Telemetry Catalog (Single View)
+- [ ] Add a scrollable "Scenario List" at the bottom of Single View.
+- [ ] Each item shows: Allow/Block counts, "Why it failed/passed", and specific timing metrics.
+- [ ] Implement smooth scrolling and improved page layout.
+
+### Step 3: Animation & Feedback
+- [ ] Ensure pulses and flashes are active even during "Quiet" periods (low traffic).
+- [ ] Fix blank-screen flickering during strategy/scenario swaps.
 
 ## Verify 
 
