@@ -15,16 +15,25 @@ import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowLo
 import java.util.*
 
 class RunExperiment : CliktCommand() {
-    val strategy by option(help = "Strategy to use").default("TOKEN_BUCKET")
-    val capacity by option(help = "Capacity/Limit").double().default(10.0)
-    val rate by option(help = "Refill Rate / Window Limit").double().default(2.0)
-    val duration by option(help = "Duration in MS").long().default(10000)
-    val name by option(help = "Experiment Name").default("Default Experiment")
-
     override fun run() {
+        val strategies = listOf("TOKEN_BUCKET", "FIXED_WINDOW", "SLIDING_WINDOW_COUNTER", "SLIDING_WINDOW_LOG")
+        val durations = 30000L // 30 seconds for better visualization
+        
+        strategies.forEach { strategy ->
+            runScenario(strategy, "Burst", TrafficProfile.Burst("Burst Traffic", 8, 2000, durations))
+            runScenario(strategy, "HighLoad", TrafficProfile.Constant("High Load", 5.0, durations))
+            runScenario(strategy, "Boundary", TrafficProfile.Boundary("Boundary Burst", 5000, 10, durations))
+        }
+    }
+
+    private fun runScenario(strategy: String, scenarioName: String, profile: TrafficProfile) {
         val clock = TestClock(0)
         val capturedEvents = mutableListOf<RateLimitEvent>()
         val consumer: (RateLimitEvent) -> Unit = { capturedEvents.add(it) }
+
+        val capacity = 10.0
+        val rate = 2.0
+        val windowSizeMs = 5000L
 
         val limiter = when (strategy.uppercase()) {
             "TOKEN_BUCKET" -> TokenBucketRateLimiter(
@@ -33,17 +42,17 @@ class RunExperiment : CliktCommand() {
                 clock = clock
             )
             "FIXED_WINDOW" -> FixedWindowRateLimiter(
-                windowSizeMs = 1000,
+                windowSizeMs = windowSizeMs,
                 maxRequests = capacity.toInt(),
                 clock = clock
             )
             "SLIDING_WINDOW_COUNTER" -> SlidingWindowRateLimiter(
-                windowSizeMs = 1000,
+                windowSizeMs = windowSizeMs,
                 maxRequests = capacity.toInt(),
                 clock = clock
             )
             "SLIDING_WINDOW_LOG" -> SlidingWindowLogRateLimiter(
-                windowSizeMs = 1000,
+                windowSizeMs = windowSizeMs,
                 maxRequests = capacity.toInt(),
                 clock = clock
             )
@@ -60,21 +69,26 @@ class RunExperiment : CliktCommand() {
 
         val simulator = Simulator(emitter, clock)
         
-        // Define profile
-        val profile = TrafficProfile.Burst("Burst Traffic", 5, 500, duration)
-        
-        echo("Running $strategy experiment: $name...")
+        echo("Running $strategy scenario: $scenarioName...")
         simulator.run(profile)
 
         val metadata = ExperimentMetadata(
             id = UUID.randomUUID().toString().take(8),
-            name = name,
-            description = "Simulation of $strategy with capacity $capacity and rate $rate",
+            name = "$strategy - $scenarioName",
+            description = "Simulation of $strategy under $scenarioName traffic.",
             strategy = strategy.uppercase(),
             config = mapOf(
                 "capacity" to capacity.toString(),
                 "rate" to rate.toString(),
-                "duration" to duration.toString()
+                "duration" to profile.let { 
+                    when(it) {
+                        is TrafficProfile.Constant -> it.durationMs
+                        is TrafficProfile.Burst -> it.durationMs
+                        is TrafficProfile.Random -> it.durationMs
+                        is TrafficProfile.Boundary -> it.durationMs
+                    }
+                }.toString(),
+                "windowSizeMs" to windowSizeMs.toString()
             ),
             profile = profile,
             timestamp = System.currentTimeMillis()
@@ -84,7 +98,6 @@ class RunExperiment : CliktCommand() {
         val dir = writer.write(metadata, capturedEvents)
         
         echo("Experiment saved to: ${dir.absolutePath}")
-        echo("Total events: ${capturedEvents.size}")
     }
 }
 

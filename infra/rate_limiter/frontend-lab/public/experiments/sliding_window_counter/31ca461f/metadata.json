@@ -1,0 +1,19 @@
+{
+    "id": "31ca461f",
+    "name": "SLIDING_WINDOW_COUNTER - HighLoad",
+    "description": "Simulation of SLIDING_WINDOW_COUNTER under HighLoad traffic.",
+    "strategy": "SLIDING_WINDOW_COUNTER",
+    "config": {
+        "capacity": "10.0",
+        "rate": "2.0",
+        "duration": "30000",
+        "windowSizeMs": "5000"
+    },
+    "profile": {
+        "type": "com.systemdesign.infra.ratelimiter.runner.TrafficProfile.Constant",
+        "name": "High Load",
+        "requestsPerSecond": 5.0,
+        "durationMs": 30000
+    },
+    "timestamp": 1769765019369
+}

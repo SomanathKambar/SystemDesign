@@ -27,9 +27,43 @@ class Simulator(
             is TrafficProfile.Constant -> simulateConstant(profile, capturedEvents)
             is TrafficProfile.Burst -> simulateBurst(profile, capturedEvents)
             is TrafficProfile.Random -> simulateRandom(profile, capturedEvents)
+            is TrafficProfile.Boundary -> simulateBoundary(profile, capturedEvents)
         }
         
         return capturedEvents
+    }
+
+    private fun simulateBoundary(profile: TrafficProfile.Boundary, capturedEvents: MutableList<RateLimitEvent>) {
+        var elapsed = 0L
+        while (elapsed < profile.durationMs) {
+            // First burst at the very end of a window
+            val windowEnd = ((elapsed / profile.windowSizeMs) + 1) * profile.windowSizeMs
+            val justBeforeEnd = windowEnd - 10
+            
+            if (justBeforeEnd > elapsed) {
+                clock.advanceBy(justBeforeEnd - elapsed)
+                elapsed = justBeforeEnd
+            }
+
+            repeat(profile.burstSize) {
+                limiter.allow("sim-key")
+            }
+
+            // Second burst at the very start of the next window
+            clock.advanceBy(20)
+            elapsed += 20
+
+            repeat(profile.burstSize) {
+                limiter.allow("sim-key")
+            }
+
+            // Advance to the next window boundary
+            val nextWindowEnd = ((elapsed / profile.windowSizeMs) + 1) * profile.windowSizeMs
+            if (nextWindowEnd > elapsed) {
+                clock.advanceBy(nextWindowEnd - elapsed)
+                elapsed = nextWindowEnd
+            }
+        }
     }
 
     private fun simulateConstant(profile: TrafficProfile.Constant, capturedEvents: MutableList<RateLimitEvent>) {

@@ -54,8 +54,6 @@ export const ComparisonDashboard = ({ currentTime, selectedExperiments }: Props)
     }
   };
 
-  // Determine Winner
-  const strategyPrecedence = ['SLIDING_WINDOW_LOG', 'SLIDING_WINDOW_COUNTER', 'TOKEN_BUCKET', 'FIXED_WINDOW'];
   const processedData = data.map(item => {
     const visibleEvents = item.events.filter(e => e.timestampMs <= currentTime);
     return {
@@ -65,40 +63,47 @@ export const ComparisonDashboard = ({ currentTime, selectedExperiments }: Props)
     };
   });
 
-  const winner = [...processedData].sort((a, b) => {
-    if (b.allowed !== a.allowed) return b.allowed - a.allowed;
-    return strategyPrecedence.indexOf(a.metadata.strategy) - strategyPrecedence.indexOf(b.metadata.strategy);
+  const leader = [...processedData].sort((a, b) => {
+    if (a.metadata.name.includes('Boundary') && a.metadata.strategy === 'FIXED_WINDOW' && a.allowed > 10) return 1;
+    if (b.metadata.name.includes('Boundary') && b.metadata.strategy === 'FIXED_WINDOW' && b.allowed > 10) return -1;
+    return b.blocked - a.blocked;
   })[0];
 
   return (
     <div className="flex flex-col w-full h-full">
       <div className="p-6 bg-blue-600/10 border-b border-blue-500/20 mb-4 flex items-center justify-between">
          <div>
-            <h2 className="text-lg font-bold text-blue-400">SYNCED COMPARISON</h2>
-            <p className="text-[10px] text-slate-500 uppercase tracking-widest">Evaluating {data.length} strategies under identical traffic</p>
+            <h2 className="text-lg font-bold text-blue-400">SYNCED COMPARISON: BOUNDARY PROTECTION</h2>
+            <p className="text-[10px] text-slate-500 uppercase tracking-widest">Fixed Window vulnerability: allowing 2x limit at boundaries</p>
          </div>
-         {winner && (
+         {leader && (
             <div className="text-right">
-                <span className="text-[10px] text-slate-500 uppercase block mb-1">Current Leader</span>
-                <span className="bg-blue-500 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-[0_0_15px_rgba(59,130,246,0.5)]">
-                    {winner.metadata.strategy}
+                <span className="text-[10px] text-slate-500 uppercase block mb-1">Most Resilient</span>
+                <span className="bg-green-600 text-white text-[10px] font-black px-3 py-1 rounded-full shadow-[0_0_15px_rgba(22,163,74,0.5)]">
+                    {leader.metadata.strategy}
                 </span>
             </div>
          )}
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full flex-1 p-4 overflow-y-auto">
-        {processedData.map((item, index) => {
+        {processedData.filter((_, idx) => idx < 4).map((item, index) => {
+          const isLeader = leader && item.metadata.id === leader.metadata.id;
+          const isFixedWindowFail = item.metadata.strategy === 'FIXED_WINDOW' && item.allowed > 10;
           return (
             <div key={`${item.metadata.strategy}-${index}`} className={`flex flex-col bg-slate-900/40 rounded-2xl border transition-all duration-300 ${
-                item.metadata.id === winner.metadata.id ? 'border-blue-500/50 shadow-[0_0_30px_rgba(59,130,246,0.1)]' : 'border-slate-700/50'
+                isLeader ? 'border-green-500/50 shadow-[0_0_30px_rgba(34,197,94,0.1)]' : 
+                isFixedWindowFail ? 'border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.1)]' : 'border-slate-700/50'
             } overflow-hidden`}>
               <div className="p-4 border-b border-slate-700/50 flex justify-between items-center bg-slate-800/30">
-                <h3 className="text-xs font-bold text-blue-400 tracking-wider uppercase">{item.metadata.strategy.replace('_', ' ')}</h3>
+                <div className="flex items-center gap-2">
+                    <h3 className="text-xs font-bold text-blue-400 tracking-wider uppercase">{item.metadata.strategy.replace('_', ' ')}</h3>
+                    {isFixedWindowFail && <span className="text-[8px] bg-red-500 text-white px-1.5 py-0.5 rounded font-black uppercase">Burst Exploit!</span>}
+                </div>
                 <div className="flex gap-4">
                   <div className="text-[10px] font-mono">
                      <span className="text-slate-500 uppercase mr-2">Allowed</span>
-                     <span className="text-green-400 font-bold">{item.allowed}</span>
+                     <span className={isFixedWindowFail ? "text-red-400 font-bold" : "text-green-400 font-bold"}>{item.allowed}</span>
                   </div>
                   <div className="text-[10px] font-mono">
                      <span className="text-slate-500 uppercase mr-2">Blocked</span>
@@ -112,9 +117,11 @@ export const ComparisonDashboard = ({ currentTime, selectedExperiments }: Props)
               </div>
               
               <div className="p-3 bg-slate-900/60 flex items-center justify-between">
-                  <p className="text-[9px] text-slate-500 italic truncate pr-4">{item.metadata.description}</p>
+                  <p className="text-[9px] text-slate-500 italic truncate pr-4">
+                    {isFixedWindowFail ? "Vulnerable: Window reset allowed a double burst." : item.metadata.description}
+                  </p>
                   <div className="flex items-center gap-2">
-                      {item.metadata.id === winner.metadata.id && <span className="text-[8px] bg-green-500/20 text-green-400 px-2 py-0.5 rounded font-bold mr-2 uppercase tracking-tighter">Leading</span>}
+                      {isLeader && <span className="text-[8px] bg-green-500/20 text-green-400 px-2 py-0.5 rounded font-bold mr-2 uppercase tracking-tighter">Accurate</span>}
                       <div className="w-1.5 h-1.5 rounded-full bg-blue-500 animate-pulse"></div>
                   </div>
               </div>

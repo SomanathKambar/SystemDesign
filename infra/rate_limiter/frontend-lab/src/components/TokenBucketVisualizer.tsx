@@ -75,24 +75,50 @@ export const TokenBucketVisualizer = ({ currentTime, events, config }: Props) =>
 
     // Text info
     ctx.fillStyle = '#f8fafc';
-    ctx.font = 'bold 16px Inter, system-ui';
+    ctx.font = '900 64px Inter';
     ctx.textAlign = 'center';
-    ctx.fillText(`${currentTokens.toFixed(1)} / ${capacity}`, width / 2, y + bucketHeight + 30);
+    ctx.fillText(`${currentTokens.toFixed(1)}`, width / 2, y + bucketHeight / 2);
+    
+    ctx.fillStyle = 'rgba(248, 250, 252, 0.5)';
+    ctx.font = 'bold 16px Inter';
+    ctx.fillText(`TOKENS AVAILABLE (Limit: ${capacity})`, width / 2, y + bucketHeight + 40);
 
-    // Draw falling tokens (if a request was allowed recently)
-    const recentAllowed = pastEvents.slice(-3).find(e => e.type === 'REQUEST_ALLOWED' && currentTime - e.timestampMs < 300);
-    if (recentAllowed) {
-        const age = currentTime - recentAllowed.timestampMs;
-        const dropY = y + bucketHeight + (age / 300) * 100;
-        ctx.fillStyle = '#fbbf24';
-        ctx.beginPath();
-        ctx.arc(width / 2, dropY, 8, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.shadowBlur = 10;
-        ctx.shadowColor = '#fbbf24';
-        ctx.stroke();
-        ctx.shadowBlur = 0;
-    }
+    // Recent Event Indicators
+    const recentEvents = pastEvents.filter(e => currentTime - e.timestampMs < 400);
+    recentEvents.forEach(e => {
+        const age = currentTime - e.timestampMs;
+        const opacity = 1 - (age / 400);
+        const yOffset = (age / 400) * 50;
+
+        ctx.save();
+        ctx.globalAlpha = opacity;
+        ctx.textAlign = 'center';
+        if (e.type === 'REQUEST_ALLOWED') {
+            ctx.fillStyle = '#10b981';
+            ctx.font = 'bold 14px Inter';
+            ctx.fillText('ALLOWED ✓', width / 2, y - 40 - yOffset);
+            
+            // Draw falling token
+            const dropY = y + bucketHeight + (age / 400) * 150;
+            ctx.fillStyle = '#fbbf24';
+            ctx.beginPath();
+            ctx.arc(width / 2, dropY, 10, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = '#fbbf24';
+            ctx.stroke();
+        } else if (e.type === 'REQUEST_BLOCKED') {
+            ctx.fillStyle = '#ef4444';
+            ctx.font = 'bold 16px Inter';
+            ctx.fillText('BLOCKED (EMPTY) ✕', width / 2, y + bucketHeight + 80 + yOffset);
+            
+            // Shake the bucket
+            ctx.strokeStyle = '#ef4444';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(x - 5, y - 5, bucketWidth + 10, bucketHeight + 10);
+        }
+        ctx.restore();
+    });
 
   }, [currentTime, events, capacity]);
 

@@ -31,59 +31,75 @@ export const FixedWindowVisualizer = ({ currentTime, events, config }: Props) =>
     const count = currentWindowEvents.length;
 
     // Draw Window Frame
-    const rectWidth = 240;
-    const rectHeight = 120;
+    const rectWidth = width * 0.8;
+    const rectHeight = 100;
     const x = width / 2 - rectWidth / 2;
-    const y = height / 2 - rectHeight / 2;
-
-    ctx.strokeStyle = '#334155';
-    ctx.setLineDash([5, 5]);
-    ctx.strokeRect(x - 20, y - 20, rectWidth + 40, rectHeight + 40);
-    ctx.setLineDash([]);
+    const y = height / 2 - 20;
 
     // Draw Window Label
     ctx.fillStyle = '#64748b';
-    ctx.font = 'bold 10px font-mono';
-    ctx.textAlign = 'left';
-    ctx.fillText(`WINDOW: ${windowStart}ms - ${windowStart + windowSizeMs}ms`, x - 20, y - 30);
+    ctx.font = 'bold 12px font-mono';
+    ctx.textAlign = 'center';
+    ctx.fillText(`CURRENT WINDOW: ${windowStart}ms - ${windowStart + windowSizeMs}ms`, width / 2, y - 40);
 
     // Draw Progress Bar / Blocks
-    const blockWidth = (rectWidth - (maxRequests - 1) * 4) / maxRequests;
+    const gap = 4;
+    const blockWidth = (rectWidth - (maxRequests - 1) * gap) / maxRequests;
+    
     for (let i = 0; i < maxRequests; i++) {
-        const bx = x + i * (blockWidth + 4);
+        const bx = x + i * (blockWidth + gap);
         if (i < count) {
             ctx.fillStyle = '#10b981'; // Filled
-            ctx.shadowBlur = 10;
+            ctx.shadowBlur = 15;
             ctx.shadowColor = '#10b981';
         } else {
             ctx.fillStyle = '#1e293b'; // Empty
             ctx.shadowBlur = 0;
         }
-        ctx.fillRect(bx, y + 20, blockWidth, rectHeight - 40);
+        
+        // Use rounded rect for better look
+        const radius = Math.min(4, blockWidth / 2);
+        ctx.beginPath();
+        ctx.roundRect(bx, y, blockWidth, rectHeight, radius);
+        ctx.fill();
         ctx.shadowBlur = 0;
     }
 
     // Counter Text
     ctx.fillStyle = count >= maxRequests ? '#ef4444' : '#f8fafc';
-    ctx.font = 'black 48px Inter';
+    ctx.font = '900 64px Inter';
     ctx.textAlign = 'center';
-    ctx.fillText(`${count}`, width / 2, y + rectHeight + 60);
+    ctx.fillText(`${count}`, width / 2, y - 80);
     
     ctx.fillStyle = '#64748b';
-    ctx.font = 'bold 12px Inter';
-    ctx.fillText(`LIMIT: ${maxRequests}`, width / 2, y + rectHeight + 85);
+    ctx.font = 'bold 14px Inter';
+    ctx.fillText(`LIMIT: ${maxRequests}`, width / 2, y + rectHeight + 30);
 
-    // Draw "Blocked" overlay if limit exceeded
-    const lastBlocked = [...pastEvents].reverse().find(e => 
-        e.timestampMs >= windowStart && e.type === 'REQUEST_BLOCKED' && currentTime - e.timestampMs < 200
-    );
-    if (lastBlocked) {
-        ctx.fillStyle = 'rgba(239, 68, 68, 0.2)';
-        ctx.fillRect(0, 0, width, height);
-        ctx.fillStyle = '#ef4444';
-        ctx.font = 'bold 24px Inter';
-        ctx.fillText('BLOCKED!', width / 2, height / 2);
-    }
+    // Indicators for recent events
+    const recentEvents = pastEvents.filter(e => currentTime - e.timestampMs < 400);
+    recentEvents.forEach((e) => {
+        const age = currentTime - e.timestampMs;
+        const opacity = 1 - (age / 400);
+        const yOffset = (age / 400) * 50;
+        
+        ctx.save();
+        ctx.globalAlpha = opacity;
+        if (e.type === 'REQUEST_ALLOWED') {
+            ctx.fillStyle = '#10b981';
+            ctx.font = 'bold 12px Inter';
+            ctx.fillText('INCOMING ✓', width / 2, y - 150 - yOffset);
+        } else if (e.type === 'REQUEST_BLOCKED') {
+            ctx.fillStyle = '#ef4444';
+            ctx.font = 'bold 16px Inter';
+            ctx.fillText('BLOCKED ✕', width / 2, y + rectHeight + 80 + yOffset);
+            
+            // Red flash on frame
+            ctx.strokeStyle = '#ef4444';
+            ctx.lineWidth = 2;
+            ctx.strokeRect(x - 10, y - 10, rectWidth + 20, rectHeight + 20);
+        }
+        ctx.restore();
+    });
 
   }, [currentTime, events, maxRequests, windowSizeMs]);
 

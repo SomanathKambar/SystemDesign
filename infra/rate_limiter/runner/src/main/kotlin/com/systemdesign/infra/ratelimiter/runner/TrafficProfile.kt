@@ -27,4 +27,12 @@ sealed class TrafficProfile {
         val avgRequestsPerSecond: Double,
         val durationMs: Long
     ) : TrafficProfile()
+
+    @Serializable
+    data class Boundary(
+        override val name: String,
+        val windowSizeMs: Long,
+        val burstSize: Int,
+        val durationMs: Long
+    ) : TrafficProfile()
 }

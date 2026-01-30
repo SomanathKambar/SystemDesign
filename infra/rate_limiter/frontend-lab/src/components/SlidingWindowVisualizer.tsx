@@ -110,13 +110,35 @@ export const SlidingWindowVisualizer = ({ currentTime, events, config }: Props) 
 
     // Counter Display
     ctx.fillStyle = count >= maxRequests ? '#ef4444' : '#f8fafc';
-    ctx.font = 'black 48px Inter';
+    ctx.font = '900 64px Inter';
     ctx.textAlign = 'center';
-    ctx.fillText(`${count}`, width / 2, height / 2 - 40);
+    ctx.fillText(`${count}`, width / 2, height / 2 - 80);
     
     ctx.fillStyle = '#64748b';
-    ctx.font = 'bold 12px Inter';
-    ctx.fillText(`ACTIVE REQUESTS IN WINDOW / LIMIT: ${maxRequests}`, width / 2, height / 2 - 10);
+    ctx.font = 'bold 14px Inter';
+    ctx.fillText(`REQUESTS IN SLIDING WINDOW (Limit: ${maxRequests})`, width / 2, height / 2 - 40);
+
+    // Recent Event Indicators
+    const recentEvents = pastEvents.filter(e => currentTime - e.timestampMs < 400);
+    recentEvents.forEach(e => {
+        const age = currentTime - e.timestampMs;
+        const opacity = 1 - (age / 400);
+        const yOffset = (age / 400) * 30;
+        
+        ctx.save();
+        ctx.globalAlpha = opacity;
+        ctx.textAlign = 'center';
+        if (e.type === 'REQUEST_ALLOWED') {
+            ctx.fillStyle = '#10b981';
+            ctx.font = 'bold 14px Inter';
+            ctx.fillText('ALLOWED ✓', timeToX(e.timestampMs), axisY - 20 - yOffset);
+        } else if (e.type === 'REQUEST_BLOCKED') {
+            ctx.fillStyle = '#ef4444';
+            ctx.font = 'bold 14px Inter';
+            ctx.fillText('BLOCKED ✕', timeToX(e.timestampMs), axisY + 30 + yOffset);
+        }
+        ctx.restore();
+    });
 
   }, [currentTime, events, maxRequests, windowSizeMs]);
 
