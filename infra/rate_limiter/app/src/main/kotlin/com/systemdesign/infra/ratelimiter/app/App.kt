@@ -1,11 +1,13 @@
 package com.systemdesign.infra.ratelimiter.app
 
+import com.systemdesign.infra.ratelimiter.core.Clock
 import com.systemdesign.infra.ratelimiter.core.RateLimiter
 import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.FixedWindowRateLimiter
-import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.InMemoryStateStore
+import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.InMemoryStateStore as FixedInMemoryStateStore
 import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowRateLimiter
 import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowLogRateLimiter
 import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.InMemorySlidingWindowStore
+import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.InMemoryStateStore as SlidingInMemoryStateStore
 import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.TokenBucketRateLimiter
 import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.InMemoryTokenBucketStore
 import io.ktor.serialization.kotlinx.json.*
@@ -87,8 +89,9 @@ data class ComparisonResponse(
 
 class RateLimiterManager {
     private var currentConfig = ConfigRequest(5, 10000, StrategyType.FIXED_WINDOW)
-    private val stateStore = InMemoryStateStore()
-    private val slidingStore = InMemorySlidingWindowStore()
+    private val fixedStateStore = FixedInMemoryStateStore()
+    private val slidingCounterStore = SlidingInMemoryStateStore()
+    private val slidingLogStore = InMemorySlidingWindowStore()
     private val tokenBucketStore = InMemoryTokenBucketStore()
     
     private val limiterRef = AtomicReference<RateLimiter>(
@@ -97,9 +100,9 @@ class RateLimiterManager {
 
     private fun createLimiter(config: ConfigRequest): RateLimiter {
         return when (config.strategy) {
-            StrategyType.FIXED_WINDOW -> FixedWindowRateLimiter(config.limit, config.windowSizeMs, stateStore)
-            StrategyType.SLIDING_WINDOW_COUNTER -> SlidingWindowRateLimiter(config.limit, config.windowSizeMs, stateStore)
-            StrategyType.SLIDING_WINDOW_LOG -> SlidingWindowLogRateLimiter(config.limit, config.windowSizeMs, slidingStore)
+            StrategyType.FIXED_WINDOW -> FixedWindowRateLimiter(config.windowSizeMs, config.limit, fixedStateStore)
+            StrategyType.SLIDING_WINDOW_COUNTER -> SlidingWindowRateLimiter(config.windowSizeMs, config.limit, slidingCounterStore)
+            StrategyType.SLIDING_WINDOW_LOG -> SlidingWindowLogRateLimiter(config.windowSizeMs, config.limit, slidingLogStore)
             StrategyType.TOKEN_BUCKET -> TokenBucketRateLimiter(config.capacity, config.refillTokensPerSecond, tokenBucketStore)
         }
     }
@@ -108,11 +111,8 @@ class RateLimiterManager {
         val timeSeries = mutableListOf<ComparisonDataPoint>()
         
         // Use custom clocks to simulate time passing without Thread.sleep
-        class ManualClock(var millis: Long) : java.time.Clock() {
-            override fun getZone(): java.time.ZoneId = java.time.ZoneOffset.UTC
-            override fun withZone(zone: java.time.ZoneId?): java.time.Clock = this
-            override fun instant(): java.time.Instant = java.time.Instant.ofEpochMilli(millis)
-            override fun millis(): Long = millis
+        class ManualClock(var millis: Long) : Clock {
+            override fun currentTimeMillis(): Long = millis
         }
 
         val startTime = System.currentTimeMillis()
@@ -121,9 +121,9 @@ class RateLimiterManager {
         val slidingLogClock = ManualClock(startTime)
         val tokenBucketClock = ManualClock(startTime)
 
-        val fixed = FixedWindowRateLimiter(limit, windowMs, InMemoryStateStore(), fixedClock)
-        val slidingCounter = SlidingWindowRateLimiter(limit, windowMs, InMemoryStateStore(), slidingCounterClock)
-        val slidingLog = SlidingWindowLogRateLimiter(limit, windowMs, InMemorySlidingWindowStore(), slidingLogClock)
+        val fixed = FixedWindowRateLimiter(windowMs, limit, FixedInMemoryStateStore(), fixedClock)
+        val slidingCounter = SlidingWindowRateLimiter(windowMs, limit, SlidingInMemoryStateStore(), slidingCounterClock)
+        val slidingLog = SlidingWindowLogRateLimiter(windowMs, limit, InMemorySlidingWindowStore(), slidingLogClock)
         val tokenBucket = TokenBucketRateLimiter(limit.toDouble(), (limit.toDouble() / (windowMs / 1000.0)), InMemoryTokenBucketStore(), tokenBucketClock)
         
         var totalFixedAllowed = 0
@@ -140,7 +140,7 @@ class RateLimiterManager {
             for (r in 1..rps) {
                 // Spread requests within the second
                 val offset = (r * (1000 / rps)).toLong()
-                val currentMillis = startTime + (sec - 1) * 1000 + offset
+                val currentMillis = startTime + (sec - 1).toLong() * 1000 + offset
                 fixedClock.millis = currentMillis
                 slidingCounterClock.millis = currentMillis
                 slidingLogClock.millis = currentMillis

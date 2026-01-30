@@ -17,16 +17,22 @@ class RedisTokenBucketStore(private val jedis: Jedis) : TokenBucketStore {
         )
     }
 
-    override fun save(key: String, state: TokenBucketState) {
+    override fun save(key: String, state: TokenBucketState, ttlMs: Long) {
         val map = mapOf(
             "tokens" to state.tokens.toString(),
             "lastRefillTime" to state.lastRefillTime.toString()
         )
         jedis.hmset(key, map)
+        jedis.pexpire(key, ttlMs)
+    }
+
+    override fun delete(key: String) {
+        jedis.del(key)
     }
 
     override fun compute(
         key: String,
+        ttlMs: Long,
         remappingFunction: (TokenBucketState?) -> TokenBucketState?
     ): TokenBucketState? {
         while (true) {
@@ -43,6 +49,7 @@ class RedisTokenBucketStore(private val jedis: Jedis) : TokenBucketStore {
                     "lastRefillTime" to newState.lastRefillTime.toString()
                 )
                 t.hmset(key, map)
+                t.pexpire(key, ttlMs)
             }
 
             val results = t.exec()

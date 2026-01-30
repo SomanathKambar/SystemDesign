@@ -4,14 +4,16 @@ import com.systemdesign.infra.ratelimiter.core.RateLimiter
 import com.systemdesign.infra.ratelimiter.core.StateStore
 import com.systemdesign.infra.ratelimiter.core.TokenBucketStore
 import com.systemdesign.infra.ratelimiter.core.SlidingWindowStore
-import com.systemdesign.infra.ratelimiter.persistence.redis.RedisStateStore
+import com.systemdesign.infra.ratelimiter.persistence.redis.RedisFixedWindowStore
+import com.systemdesign.infra.ratelimiter.persistence.redis.RedisSlidingWindowCounterStore
 import com.systemdesign.infra.ratelimiter.persistence.redis.RedisTokenBucketStore
 import com.systemdesign.infra.ratelimiter.persistence.redis.RedisSlidingWindowStore
 import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.FixedWindowRateLimiter
-import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.InMemoryStateStore
+import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.InMemoryStateStore as FixedInMemoryStore
 import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowRateLimiter
 import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowLogRateLimiter
 import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.InMemorySlidingWindowStore
+import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.InMemoryStateStore as SlidingInMemoryStore
 import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.TokenBucketRateLimiter
 import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.InMemoryTokenBucketStore
 import org.springframework.boot.autoconfigure.AutoConfiguration
@@ -39,26 +41,26 @@ class RateLimiterAutoConfiguration {
         
         return when (properties.type) {
             RateLimiterProperties.RateLimiterType.FIXED_WINDOW -> {
-                val store = if (jedis != null) RedisStateStore(jedis) else InMemoryStateStore()
+                val store = if (jedis != null) RedisFixedWindowStore(jedis) else FixedInMemoryStore()
                 FixedWindowRateLimiter(
-                    limit = properties.fixedWindow.limit,
                     windowSizeMs = properties.fixedWindow.windowSizeMs,
-                    stateStore = store
+                    maxRequests = properties.fixedWindow.limit,
+                    store = store
                 )
             }
             RateLimiterProperties.RateLimiterType.SLIDING_WINDOW_COUNTER -> {
-                val store = if (jedis != null) RedisStateStore(jedis) else InMemoryStateStore()
+                val store = if (jedis != null) RedisSlidingWindowCounterStore(jedis) else SlidingInMemoryStore()
                 SlidingWindowRateLimiter(
-                    limit = properties.slidingWindow.limit,
                     windowSizeMs = properties.slidingWindow.windowSizeMs,
-                    stateStore = store
+                    maxRequests = properties.slidingWindow.limit,
+                    store = store
                 )
             }
             RateLimiterProperties.RateLimiterType.SLIDING_WINDOW_LOG -> {
                 val store = if (jedis != null) RedisSlidingWindowStore(jedis) else InMemorySlidingWindowStore()
                 SlidingWindowLogRateLimiter(
-                    limit = properties.slidingWindow.limit,
                     windowSizeMs = properties.slidingWindow.windowSizeMs,
+                    maxRequests = properties.slidingWindow.limit,
                     store = store
                 )
             }

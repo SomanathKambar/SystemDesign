@@ -1,3 +1,7 @@
+plugins {
+    kotlin("plugin.serialization") version "1.9.22"
+}
+
 dependencies {
-    // No external dependencies for core interfaces
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
 }

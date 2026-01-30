@@ -1,59 +1,63 @@
 package com.systemdesign.infra.ratelimiter.strategy.slidingwindow
 
+import com.systemdesign.infra.ratelimiter.core.Clock
 import com.systemdesign.infra.ratelimiter.core.RateLimiter
 import com.systemdesign.infra.ratelimiter.core.StateStore
-import com.systemdesign.infra.ratelimiter.core.model.CounterState
+import com.systemdesign.infra.ratelimiter.core.SystemClock
 import com.systemdesign.infra.ratelimiter.core.model.Decision
-import java.time.Clock
+import com.systemdesign.infra.ratelimiter.core.model.SlidingWindowCounter
 
-/**
- * Sliding Window Counter implementation.
- * It approximates the count by taking a weighted average of the current and previous windows.
- */
 class SlidingWindowRateLimiter(
-    private val limit: Int,
     private val windowSizeMs: Long,
-    private val stateStore: StateStore,
-    private val clock: Clock = Clock.systemUTC()
+    private val maxRequests: Int,
+    private val store: StateStore<SlidingWindowCounter> = InMemoryStateStore(),
+    private val clock: Clock = SystemClock()
 ) : RateLimiter {
 
     override fun allow(key: String): Decision {
-        val now = clock.millis()
+        val now = clock.currentTimeMillis()
         val currentWindowStart = (now / windowSizeMs) * windowSizeMs
         val previousWindowStart = currentWindowStart - windowSizeMs
 
-        val currentWindowKey = "$key:$currentWindowStart"
-        val previousWindowKey = "$key:$previousWindowStart"
-
-        val currentCount = stateStore.get(currentWindowKey)?.count ?: 0
-        val previousCount = stateStore.get(previousWindowKey)?.count ?: 0
-
-        val timeElapsedInCurrentWindow = now - currentWindowStart
-        val weight = 1.0 - (timeElapsedInCurrentWindow.toDouble() / windowSizeMs)
+        var decision: Decision? = null
         
-        val estimatedCount = currentCount + (previousCount * weight)
+        // TTL is 2 windows to keep both current and previous state
+        store.compute(key, windowSizeMs * 2) { state: SlidingWindowCounter? ->
+            val isNewWindow = state == null || state.windowStart != currentWindowStart
+            val currentState = if (isNewWindow) {
+                val prevCount = if (state != null && state.windowStart == previousWindowStart) state.count else 0
+                SlidingWindowCounter(count = 0, windowStart = currentWindowStart, previousCount = prevCount)
+            } else {
+                state!!
+            }
 
-        if (estimatedCount >= limit) {
-            // For sliding window, the retry time is harder to calculate exactly as it's a smooth curve,
-            // but we can estimate when the count would drop below the limit.
-            // Simplified: try again after a small fraction of the window or when this specific window ends.
-            val resetTime = currentWindowStart + windowSizeMs
-            return Decision(
-                allowed = false,
-                retryAfterMs = resetTime - now,
-                context = mapOf("estimatedCount" to estimatedCount)
+            val timeElapsedInCurrentWindow = now - currentWindowStart
+            val weight = 1.0 - (timeElapsedInCurrentWindow.toDouble() / windowSizeMs)
+            val estimatedCount = currentState.count + (currentState.previousCount * weight)
+
+            val context = mapOf(
+                "windowStart" to currentWindowStart,
+                "isNewWindow" to isNewWindow,
+                "estimatedCount" to estimatedCount
             )
+
+            if (estimatedCount >= maxRequests) {
+                val resetTime = currentWindowStart + windowSizeMs
+                decision = Decision(
+                    allowed = false,
+                    retryAfterMs = resetTime - now,
+                    context = context
+                )
+                currentState
+            } else {
+                decision = Decision(
+                    allowed = true,
+                    context = context + ("newEstimatedCount" to (estimatedCount + 1))
+                )
+                currentState.copy(count = currentState.count + 1)
+            }
         }
 
-        // Increment current window
-        stateStore.compute(currentWindowKey, windowSizeMs * 2) { state ->
-            val count = state?.count ?: 0
-            CounterState(count + 1, currentWindowStart)
-        }
-
-        return Decision(
-            allowed = true,
-            context = mapOf("estimatedCount" to estimatedCount + 1)
-        )
+        return decision!!
     }
 }

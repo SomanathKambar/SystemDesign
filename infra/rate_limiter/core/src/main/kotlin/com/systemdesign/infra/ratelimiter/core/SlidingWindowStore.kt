@@ -2,13 +2,8 @@ package com.systemdesign.infra.ratelimiter.core
 
 import com.systemdesign.infra.ratelimiter.core.model.SlidingWindowLog
 
-interface SlidingWindowStore {
+interface SlidingWindowStore : StateStore<SlidingWindowLog> {
     fun getLog(key: String): SlidingWindowLog?
     fun saveLog(key: String, log: SlidingWindowLog, ttlMs: Long)
     fun removeOldEntries(key: String, beforeTimestamp: Long)
-
-    /**
-     * Atomically computes the new log based on the current log.
-     */
-    fun compute(key: String, ttlMs: Long, remappingFunction: (SlidingWindowLog?) -> SlidingWindowLog?): SlidingWindowLog?
 }

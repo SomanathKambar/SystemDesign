@@ -7,6 +7,14 @@ import java.util.UUID
 
 class RedisSlidingWindowStore(private val jedis: Jedis) : SlidingWindowStore {
 
+    override fun get(key: String): SlidingWindowLog? = getLog(key)
+
+    override fun save(key: String, state: SlidingWindowLog, ttlMs: Long) = saveLog(key, state, ttlMs)
+
+    override fun delete(key: String) {
+        jedis.del(key)
+    }
+
     override fun getLog(key: String): SlidingWindowLog? {
         val members = jedis.zrange(key, 0, -1)
         if (members.isEmpty()) return null

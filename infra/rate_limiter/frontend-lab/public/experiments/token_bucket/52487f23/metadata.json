@@ -1,0 +1,19 @@
+{
+    "id": "52487f23",
+    "name": "Token Bucket Burst",
+    "description": "Simulation of TOKEN_BUCKET with capacity 10.0 and rate 2.0",
+    "strategy": "TOKEN_BUCKET",
+    "config": {
+        "capacity": "10.0",
+        "rate": "2.0",
+        "duration": "10000"
+    },
+    "profile": {
+        "type": "com.systemdesign.infra.ratelimiter.runner.TrafficProfile.Burst",
+        "name": "Burst Traffic",
+        "burstSize": 5,
+        "intervalMs": 500,
+        "durationMs": 10000
+    },
+    "timestamp": 1769715341232
+}

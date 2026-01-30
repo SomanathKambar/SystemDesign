@@ -7,6 +7,14 @@ import java.util.concurrent.ConcurrentHashMap
 class InMemorySlidingWindowStore : SlidingWindowStore {
     private val store = ConcurrentHashMap<String, List<Long>>()
 
+    override fun get(key: String): SlidingWindowLog? = getLog(key)
+
+    override fun save(key: String, state: SlidingWindowLog, ttlMs: Long) = saveLog(key, state, ttlMs)
+
+    override fun delete(key: String) {
+        store.remove(key)
+    }
+
     override fun getLog(key: String): SlidingWindowLog? {
         return store[key]?.let { SlidingWindowLog(it) }
     }

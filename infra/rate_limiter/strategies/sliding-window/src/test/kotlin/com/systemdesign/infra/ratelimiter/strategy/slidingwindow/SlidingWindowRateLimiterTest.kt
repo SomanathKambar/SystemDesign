@@ -1,16 +1,14 @@
 package com.systemdesign.infra.ratelimiter.strategy.slidingwindow
 
+import com.systemdesign.infra.ratelimiter.core.TestClock
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
-import java.time.Clock
-import java.time.Instant
-import java.time.ZoneId
 
 class SlidingWindowRateLimiterTest {
 
     @Test
     fun `should allow requests within limit`() {
-        val limiter = SlidingWindowRateLimiter(limit = 3, windowSizeMs = 1000)
+        val limiter = SlidingWindowRateLimiter(maxRequests = 3, windowSizeMs = 1000)
         
         assertTrue(limiter.allow("u1").allowed)
         assertTrue(limiter.allow("u1").allowed)
@@ -20,41 +18,38 @@ class SlidingWindowRateLimiterTest {
 
     @Test
     fun `should slide window accurately`() {
-        var currentTime = 1000L
-        val mockClock = object : Clock() {
-            override fun getZone(): ZoneId = ZoneId.of("UTC")
-            override fun withZone(zone: ZoneId?): Clock = this
-            override fun instant(): Instant = Instant.ofEpochMilli(currentTime)
-        }
-
+        val clock = TestClock(1000)
         val limiter = SlidingWindowRateLimiter(
-            limit = 2, 
+            maxRequests = 2, 
             windowSizeMs = 1000, 
-            clock = mockClock
+            clock = clock
         )
 
         // T=1000
-        assertTrue(limiter.allow("u2").allowed)
+        assertTrue(limiter.allow("u2").allowed) // Current: 1, Prev: 0
         
         // T=1100
-        currentTime = 1100
-        assertTrue(limiter.allow("u2").allowed)
+        clock.setTime(1100)
+        assertTrue(limiter.allow("u2").allowed) // Current: 2, Prev: 0
         
         // T=1200 -> Blocked
-        currentTime = 1200
+        clock.setTime(1200)
         assertFalse(limiter.allow("u2").allowed)
 
-        // T=2001 -> T=1000 is expired, T=1100 remains. One slot available.
-        currentTime = 2001
-        val decision = limiter.allow("u2")
-        assertTrue(decision.allowed)
+        // T=2001 -> Current window [2000, 3000). Previous [1000, 2000).
+        // At T=2001, weight for prev is 1 - (1/1000) = 0.999
+        // Estimated = 0 + 2 * 0.999 = 1.998 < 2. ALLOWED.
+        clock.setTime(2001)
+        assertTrue(limiter.allow("u2").allowed) // Current: 1, Prev: 2
         
-        // T=2002 -> Still 2 in window (1100, 2001). Blocked.
-        currentTime = 2002
+        // After allowing, Current = 1.
+        // T=2002 -> Estimated = 1 + 2 * (1 - 2/1000) = 1 + 1.996 = 2.996 >= 2. BLOCKED.
+        clock.setTime(2002)
         assertFalse(limiter.allow("u2").allowed)
         
-        // T=2101 -> T=1100 expired. One slot available.
-        currentTime = 2101
+        // T=3001 -> Current [3000, 4000), Prev [2000, 3000). Prev count was 1.
+        // Estimated = 0 + 1 * weight < 2. ALLOWED.
+        clock.setTime(3001)
         assertTrue(limiter.allow("u2").allowed)
     }
 }

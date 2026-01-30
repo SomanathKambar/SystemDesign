@@ -1,26 +1,28 @@
 package com.systemdesign.infra.ratelimiter.persistence.redis
 
 import com.systemdesign.infra.ratelimiter.core.StateStore
-import com.systemdesign.infra.ratelimiter.core.model.CounterState
+import com.systemdesign.infra.ratelimiter.core.model.SlidingWindowCounter
 import redis.clients.jedis.Jedis
 import redis.clients.jedis.Transaction
 
-class RedisStateStore(private val jedis: Jedis) : StateStore {
+class RedisSlidingWindowCounterStore(private val jedis: Jedis) : StateStore<SlidingWindowCounter> {
 
-    override fun get(key: String): CounterState? {
+    override fun get(key: String): SlidingWindowCounter? {
         val data = jedis.hgetAll(key)
         if (data.isEmpty()) return null
         
-        return CounterState(
-            count = data["count"]?.toLong() ?: 0L,
-            windowStart = data["windowStart"]?.toLong() ?: 0L
+        return SlidingWindowCounter(
+            count = data["count"]?.toInt() ?: 0,
+            windowStart = data["windowStart"]?.toLong() ?: 0L,
+            previousCount = data["previousCount"]?.toInt() ?: 0
         )
     }
 
-    override fun save(key: String, state: CounterState, ttlMs: Long) {
+    override fun save(key: String, state: SlidingWindowCounter, ttlMs: Long) {
         val map = mapOf(
             "count" to state.count.toString(),
-            "windowStart" to state.windowStart.toString()
+            "windowStart" to state.windowStart.toString(),
+            "previousCount" to state.previousCount.toString()
         )
         jedis.hmset(key, map)
         jedis.pexpire(key, ttlMs)
@@ -33,9 +35,8 @@ class RedisStateStore(private val jedis: Jedis) : StateStore {
     override fun compute(
         key: String,
         ttlMs: Long,
-        remappingFunction: (CounterState?) -> CounterState?
-    ): CounterState? {
-        // Implementation using WATCH/MULTI/EXEC for optimistic concurrency
+        remappingFunction: (SlidingWindowCounter?) -> SlidingWindowCounter?
+    ): SlidingWindowCounter? {
         while (true) {
             jedis.watch(key)
             val currentState = get(key)
@@ -47,7 +48,8 @@ class RedisStateStore(private val jedis: Jedis) : StateStore {
             } else {
                 val map = mapOf(
                     "count" to newState.count.toString(),
-                    "windowStart" to newState.windowStart.toString()
+                    "windowStart" to newState.windowStart.toString(),
+                    "previousCount" to newState.previousCount.toString()
                 )
                 t.hmset(key, map)
                 t.pexpire(key, ttlMs)
@@ -57,7 +59,6 @@ class RedisStateStore(private val jedis: Jedis) : StateStore {
             if (results != null) {
                 return newState
             }
-            // If results is null, it means the key was modified by another client, retry.
         }
     }
 }
