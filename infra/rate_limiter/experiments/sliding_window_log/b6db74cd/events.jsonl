@@ -1,0 +1,60 @@
+{"type":"REQUEST_ALLOWED","eventId":"f5b99017-a0aa-4356-8b11-1fd1ef7aab13","timestampMs":4990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"14a5f265-a0a0-4580-80f2-64e5f7ea5b95","timestampMs":4990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"42395680-37b9-4e8a-9f03-155e2f9d3a1c","timestampMs":4990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"277a01b7-4815-416c-881e-654a50fc8bfa","timestampMs":4990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"55e97965-0ea4-45fe-8b97-10d1d08e936b","timestampMs":4990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"057b516e-5dc9-4fd4-82d2-18b318dc0280","timestampMs":4990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"d0691f4a-dded-4710-be9b-32c1ee7d023f","timestampMs":4990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"b97beba8-7a25-455d-a1c6-4dde0e1e2948","timestampMs":4990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"77c59176-62d4-4870-9992-6f5cfd0069d3","timestampMs":4990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"b4119182-a25f-45b5-9d82-faa6c29b2f2b","timestampMs":4990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"386b2962-91c1-4cf1-b4af-ae6fa234801a","timestampMs":5010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"afd48129-06c1-4c2b-a352-4c75ff4157bd","timestampMs":5010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"d4b5cc36-93b4-4ecb-94aa-c6d52a23823d","timestampMs":5010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"509fbace-6b20-48c1-873c-13d6009937c5","timestampMs":5010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"7af941e7-b10a-47e9-aacd-f4dbedcfb1d1","timestampMs":5010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"f4797c44-aea7-4a50-9fe6-54b276be09b3","timestampMs":5010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"34a62bce-1ea4-4e2f-839f-aeb9923d7427","timestampMs":5010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"dceafd04-346f-46c9-93e1-53b8ee8bfe65","timestampMs":5010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"31173c25-8493-4d1d-9e3a-32d380f963f8","timestampMs":5010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"7eb0a435-6193-4eef-a10a-cf3fd35bd375","timestampMs":5010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_ALLOWED","eventId":"a502fc3d-8187-42ec-82aa-5bd391f36aa0","timestampMs":14990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"f863ae0f-d991-425d-bf0e-c821ff9ae8c1","timestampMs":14990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"170c8caf-4eac-49a7-b660-b911a7c8c7d4","timestampMs":14990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"227af600-57b1-4bb7-a257-b21e30b65cbb","timestampMs":14990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"59b72828-4c3e-4116-b048-19bd5f6d54ac","timestampMs":14990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"08fb1ca3-b305-4aae-90e6-57d1f6ca728e","timestampMs":14990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"e7f881f4-16d3-4189-8d9f-1ba7a5a38331","timestampMs":14990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"72bd01ba-f4ee-49cb-b3bc-8ecb6db1dbdd","timestampMs":14990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"03de3401-44fe-4a2c-a2c9-a7eccb86d537","timestampMs":14990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"0d566abc-7084-4cb3-a37d-308148fb408b","timestampMs":14990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"062dd6e6-11c8-42f4-91ba-d6c3b1d77480","timestampMs":15010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"5fae31d9-62d1-4552-9757-8c9e87da0441","timestampMs":15010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"655dc83d-0190-4dc9-bd40-6b8597d7517c","timestampMs":15010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"879e1fb0-df26-4ee6-a008-0e08a9672b5d","timestampMs":15010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"d3b5b9f7-5e42-4c9a-a2a3-07e07848d214","timestampMs":15010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"f14bf629-a4db-4be1-9c86-afd486c362cd","timestampMs":15010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"4d8df537-4a24-4aa0-b540-97117d3a445d","timestampMs":15010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"3e2607b6-de59-4721-8e7e-3cb69578947d","timestampMs":15010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"4ae630e6-0772-42df-ab42-7f87bb18d977","timestampMs":15010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"6d528737-d954-440f-b333-3e021be083e6","timestampMs":15010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_ALLOWED","eventId":"3649ee5e-9bfd-48ae-a0f8-fe566df1d3e2","timestampMs":24990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"71d34736-f13f-454f-b940-162b519d2df6","timestampMs":24990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"b955b4ae-20db-4432-af2c-c36b9a478f20","timestampMs":24990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"55fdd28c-9093-4834-8440-a74e5ec6feb7","timestampMs":24990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"aa336a01-2e2e-4b7f-8352-98a9ff964cb1","timestampMs":24990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"7782efde-70e8-4d0a-84b6-b46f2f10cdd1","timestampMs":24990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"a24aeb5f-031d-401e-8f4d-b1d7a9e298b0","timestampMs":24990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"de567be5-e475-4f08-a746-98b93cca069e","timestampMs":24990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"25c911c2-eb2f-425a-9992-fa6240a3b0ab","timestampMs":24990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_ALLOWED","eventId":"d9346196-2cb1-4fe6-99f0-c2cf5cda4b95","timestampMs":24990,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","payload":{"key":"sim-key"}}
+{"type":"REQUEST_BLOCKED","eventId":"fb103114-7f6f-4901-ad7d-bef959043d9e","timestampMs":25010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"5b98e728-74cc-446c-84d9-2054a8220d3e","timestampMs":25010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"a70d425f-d500-48ee-800d-832ec433e971","timestampMs":25010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"da2a04cd-a9a8-4f3d-b966-0d73aac5b427","timestampMs":25010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"22ac9f75-bb57-48bf-b812-9fdbaa6ff7ee","timestampMs":25010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"3c5f3d43-f454-47db-9617-2adfb5a1673f","timestampMs":25010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"26e305cf-d77d-4ae6-8b82-2082606504ad","timestampMs":25010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"99adcca9-eb99-4f8f-bb53-41c2cef2310c","timestampMs":25010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"590f53fe-f8c7-4dbe-a8fa-819e9017d951","timestampMs":25010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}
+{"type":"REQUEST_BLOCKED","eventId":"5aad203a-43f3-4fde-a648-a46aaed56f9b","timestampMs":25010,"strategy":"SLIDING_WINDOW_LOG","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"key":"sim-key","retryAfterMs":"4980"}}

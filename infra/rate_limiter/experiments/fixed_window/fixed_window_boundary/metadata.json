@@ -1,0 +1,20 @@
+{
+    "id": "fixed_window_boundary",
+    "name": "FIXED_WINDOW - Boundary",
+    "description": "Simulation of FIXED_WINDOW under Boundary traffic.",
+    "strategy": "FIXED_WINDOW",
+    "config": {
+        "capacity": "10.0",
+        "rate": "2.0",
+        "duration": "30000",
+        "windowSizeMs": "5000"
+    },
+    "profile": {
+        "type": "com.systemdesign.infra.ratelimiter.runner.TrafficProfile.Boundary",
+        "name": "Boundary Burst",
+        "windowSizeMs": 5000,
+        "burstSize": 10,
+        "durationMs": 30000
+    },
+    "timestamp": 1769776311446
+}

@@ -1,0 +1,20 @@
+{
+    "id": "bb99a31f",
+    "name": "SLIDING_WINDOW_COUNTER - Burst",
+    "description": "Simulation of SLIDING_WINDOW_COUNTER under Burst traffic.",
+    "strategy": "SLIDING_WINDOW_COUNTER",
+    "config": {
+        "capacity": "10.0",
+        "rate": "2.0",
+        "duration": "30000",
+        "windowSizeMs": "5000"
+    },
+    "profile": {
+        "type": "com.systemdesign.infra.ratelimiter.runner.TrafficProfile.Burst",
+        "name": "Burst Traffic",
+        "burstSize": 12,
+        "intervalMs": 2000,
+        "durationMs": 30000
+    },
+    "timestamp": 1769768333552
+}
