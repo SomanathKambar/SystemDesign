@@ -1,5 +1,10 @@
 # Rate Limiter Infrastructure Playground
 
+## 🚀 Live Interactive Lab
+**[Open the Rate Limiter Lab](https://SomanathKambar.github.io/SystemDesign/infra/rate_limiter/)**
+
+Explore and compare different rate-limiting algorithms in a real-time, deterministic simulation.
+
 ## Overview
 This application is a **System Design Infrastructure Playground** designed to visualize, test, and compare various rate-limiting strategies in real-time.
 

@@ -2,33 +2,34 @@
 
 A modular repository for scalable system design solutions, emphasizing clean implementation, rigorous documentation (HLD/LLD), and failure mode analysis.
 
-## 🚀 Overview
+## 🚀 Live Demo
 
-This project is built to demonstrate production-grade system design components. Each solution starts with requirements and architecture before moving to implementation.
+### **[Rate Limiter Interactive Lab](https://SomanathKambar.github.io/SystemDesign/infra/rate_limiter/)**
+Explore and compare different rate-limiting algorithms (Token Bucket, Leaky Bucket, Sliding Window) in a real-time, deterministic simulation.
 
 ---
 
 ## 🏗️ Project Modules
 
-### 1. URL Shortener (Single Node)
+### 1. Infrastructure: Rate Limiter Lab & Library
+A pluggable, algorithm-agnostic library for request throttling in distributed systems, accompanied by a visual simulation lab.
+- **Location**: `infra/rate_limiter/`
+- **Interactive Lab**: [Open Lab](https://SomanathKambar.github.io/SystemDesign/infra/rate_limiter/)
+- **Features**:
+  - **Visual Simulation**: Deterministic replay of traffic scenarios (Burst, High Load, Boundary Stress).
+  - **Algorithm Comparison**: Side-by-side analysis of Token Bucket, Leaky Bucket, and Sliding Window.
+  - **Modular Architecture**: Separate `core` interfaces from implementation `strategies`.
+  - **Persistence Agnostic**: Support for `InMemory` (Single Node) and `Redis` (Distributed).
+- **Tech Stack**: Kotlin, React, Vite, Tailwind CSS, Redis, Spring Boot.
+
+### 2. URL Shortener (Single Node)
 A high-performance URL shortening service designed for single-node efficiency.
 - **Location**: `00_fundamentals/single_node_system/url_shortener_single_node/`
 - **Features**:
   - Base-62 encoding for URL compression.
   - RESTful API contracts.
   - Comprehensive LLD for caching and DB schema.
-  - Stress testing suite (Python).
-- **Tech Stack**: Kotlin, Spring Boot, Gradle, SQLite/H2 (Embedded), Python (Testing).
-
-### 2. Infrastructure: Rate Limiter Library
-A pluggable, algorithm-agnostic library for request throttling in distributed systems.
-- **Location**: `infra/rate_limiter/`
-- **Features**:
-  - **Modular Architecture**: Separate `core` interfaces from implementation `strategies`.
-  - **Fixed Window Strategy**: Memory-efficient counting per time bucket.
-  - **Sliding Window Log Strategy**: 100% accurate throttling using timestamp logs to prevent boundary bursts.
-  - **Persistence Agnostic**: Support for `InMemory` (Single Node) and extensible for `Redis` (Distributed).
-- **Tech Stack**: Kotlin, Multi-module Gradle, JUnit 5, MockK.
+- **Tech Stack**: Kotlin, Spring Boot, SQLite/H2, Python (Testing).
 
 ---
 
@@ -47,11 +48,11 @@ Every component in this repo adheres to a strict documentation lifecycle:
 
 | Layer | Technology |
 | :--- | :--- |
-| **Language** | Kotlin 1.9+ |
+| **Language** | Kotlin 1.9+, TypeScript |
+| **Frontend** | React 19, Vite, Tailwind CSS |
 | **Build System** | Gradle (Multi-module, KTS) |
-| **Testing** | JUnit 5, MockK, Python (Stress Testing) |
-| **Documentation** | Markdown, Mermaid.js |
-| **CI/CD** | GitHub Actions (Planned) |
+| **Infrastructure** | Redis, GitHub Pages (Hosting) |
+| **CI/CD** | GitHub Actions |
 
 ---
 
@@ -60,28 +61,16 @@ Every component in this repo adheres to a strict documentation lifecycle:
 ```text
 .
 ├── 00_fundamentals/           # Base system design concepts
-│   └── single_node_system/    # Single-node implementation patterns
 ├── infra/                     # Shared infrastructure libraries
-│   └── rate_limiter/          # Multi-module Rate Limiter project
+│   └── rate_limiter/          # Rate Limiter Lab & Library
 │       ├── core/              # API and Models
-│       └── strategies/        # Algorithm implementations (Fixed, Sliding)
+│       ├── strategies/        # Algorithm implementations
+│       ├── frontend-lab/      # React-based Visual Lab
+│       └── runner/            # Offline simulation generator
 ├── _template/                 # Standard templates for design docs
 ├── docs/                      # Global documentation
 └── LICENSE                    # Apache 2.0
 ```
 
-## 🛠️ Getting Started
-
-### Build the Rate Limiter
-```bash
-cd infra/rate_limiter
-./gradlew build
-```
-
-### Run Rate Limiter Tests
-```bash
-./gradlew test
-```
-
 ## 📄 License
-This project is licensed under the **Apache License 2.0**. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **Apache License 2.0**.
