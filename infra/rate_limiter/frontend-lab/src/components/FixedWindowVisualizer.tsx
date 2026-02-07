@@ -38,7 +38,7 @@ export const FixedWindowVisualizer = ({ currentTime, events, config }: Props) =>
     const y = height / 2 - 20;
 
     // Draw Window Label
-    ctx.fillStyle = '#64748b';
+    ctx.fillStyle = '#94a3b8'; // Slate-400
     ctx.font = 'bold 12px font-mono';
     ctx.textAlign = 'center';
     ctx.fillText(`CURRENT WINDOW: ${windowStart}ms - ${windowStart + windowSizeMs}ms`, width / 2, y - 40);
@@ -54,7 +54,7 @@ export const FixedWindowVisualizer = ({ currentTime, events, config }: Props) =>
             ctx.shadowBlur = 15;
             ctx.shadowColor = '#10b981';
         } else {
-            ctx.fillStyle = '#1e293b'; // Empty
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.05)'; // Empty glass
             ctx.shadowBlur = 0;
         }
         
@@ -71,7 +71,7 @@ export const FixedWindowVisualizer = ({ currentTime, events, config }: Props) =>
     ctx.textAlign = 'center';
     ctx.fillText(`${count}`, width / 2, y - 80);
     
-    ctx.fillStyle = '#64748b';
+    ctx.fillStyle = '#94a3b8';
     ctx.font = 'bold 14px Inter';
     ctx.fillText(`LIMIT: ${maxRequests}`, width / 2, y + rectHeight + 30);
 

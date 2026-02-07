@@ -66,12 +66,12 @@ export const TelemetryReport = ({ events, metadata, currentTime }: Props) => {
           <div 
             key={slot.index} 
             className={`p-4 rounded-2xl border transition-all duration-500 ${
-                isCurrent ? 'border-blue-500 bg-blue-500/10 shadow-[0_0_15px_rgba(59,130,246,0.1)]' : 'border-slate-800 bg-slate-800/20'
+                isCurrent ? 'border-cyan-500 bg-cyan-500/10 shadow-[0_0_15px_rgba(34,211,238,0.1)]' : 'border-slate-800 bg-slate-800/20'
             }`}
           >
             <div className="flex justify-between items-center mb-2">
                 <div className="flex items-center gap-3">
-                    <span className={`text-[10px] font-black uppercase tracking-widest ${isCurrent ? 'text-blue-400' : 'text-slate-500'}`}>
+                    <span className={`text-[10px] font-black uppercase tracking-widest ${isCurrent ? 'text-cyan-400' : 'text-slate-500'}`}>
                         Slot {slot.index} <span className="text-slate-600">({(slot.start/1000).toFixed(1)}s - {(slot.end/1000).toFixed(1)}s)</span>
                     </span>
                     {total > 0 && (

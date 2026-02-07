@@ -112,23 +112,23 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-900 text-white p-8 font-sans selection:bg-blue-500/30 overflow-y-auto custom-scrollbar">
+    <div className="min-h-screen bg-[#0B1120] text-white p-8 font-sans selection:bg-cyan-500/30 overflow-y-auto custom-scrollbar">
       <header className="max-w-7xl mx-auto mb-12 flex justify-between items-end">
         <div>
-            <h1 className="text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-500 mb-2">
+            <h1 className="text-5xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-cyan-400 mb-2">
                 RATE LIMITER LAB
             </h1>
             <div className="flex items-center gap-4">
-                <div className="flex p-1 bg-slate-800 rounded-lg border border-slate-700 mr-2">
+                <div className="flex p-1 bg-slate-800/50 rounded-lg border border-white/5 mr-2">
                     <button 
                         onClick={() => setViewMode('single')}
-                        className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${viewMode === 'single' ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                        className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${viewMode === 'single' ? 'bg-cyan-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-200'}`}
                     >
                         SINGLE VIEW
                     </button>
                     <button 
                         onClick={() => setViewMode('comparison')}
-                        className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${viewMode === 'comparison' ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'}`}
+                        className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${viewMode === 'comparison' ? 'bg-cyan-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-200'}`}
                     >
                         COMPARISON
                     </button>
@@ -142,7 +142,7 @@ function App() {
                             const found = SAMPLE_EXPERIMENTS.find(exp => exp.id === id && exp.strategy === strategy);
                             if (found) setSelectedExp(found);
                         }}
-                        className="bg-slate-800 border border-slate-700 text-slate-300 text-xs font-bold py-1 px-3 rounded-lg outline-none focus:border-blue-500 transition cursor-pointer"
+                        className="bg-slate-800/50 border border-white/10 text-slate-300 text-xs font-bold py-1 px-3 rounded-lg outline-none focus:border-cyan-500 transition cursor-pointer"
                     >
                         {SAMPLE_EXPERIMENTS.map(exp => (
                             <option key={exp.id} value={`${exp.strategy}:${exp.id}`}>{exp.label}</option>
@@ -151,13 +151,13 @@ function App() {
                 )}
                 
                 {metadata && viewMode === 'single' && (
-                    <div className="flex items-center gap-3 border-l border-slate-700 pl-4">
+                    <div className="flex items-center gap-3 border-l border-white/10 pl-4">
                         <p className="text-slate-400 text-sm italic">{metadata.description}</p>
                     </div>
                 )}
 
                 {viewMode === 'comparison' && (
-                    <div className="flex items-center gap-3 border-l border-slate-700 pl-4">
+                    <div className="flex items-center gap-3 border-l border-white/10 pl-4">
                         <p className="text-slate-400 text-sm italic font-mono uppercase tracking-widest opacity-60">Comparative Analysis: Multi-Strategy Sync</p>
                     </div>
                 )}
@@ -175,10 +175,10 @@ function App() {
       <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Visualization Area */}
         <div className={viewMode === 'single' ? 'lg:col-span-2 space-y-6' : 'lg:col-span-3 space-y-6'}>
-          <div className={`${viewMode === 'single' ? 'aspect-video' : 'h-[600px]'} bg-slate-800/50 backdrop-blur-sm rounded-3xl border border-slate-700/50 shadow-2xl flex items-center justify-center relative overflow-hidden group`}>
+          <div className={`${viewMode === 'single' ? 'aspect-video' : 'h-[600px]'} bg-slate-900/50 backdrop-blur-sm rounded-3xl border border-white/5 shadow-2xl flex items-center justify-center relative overflow-hidden group`}>
              <div className="absolute top-6 left-6 flex items-center gap-2 z-10">
-                <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse shadow-[0_0_8px_#3b82f6]"></div>
-                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">
+                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse shadow-[0_0_8px_#22d3ee]"></div>
+                <span className="text-[10px] font-mono text-cyan-500 uppercase tracking-widest">
                     {viewMode === 'single' ? 'Real-time Simulation' : 'Comparison Matrix'}
                 </span>
              </div>
@@ -186,22 +186,22 @@ function App() {
              {viewMode === 'single' ? renderVisualizer() : <ComparisonDashboard currentTime={currentTime} allExperiments={SAMPLE_EXPERIMENTS} />}
 
              {/* Time HUD */}
-             <div className="absolute bottom-6 right-8 text-right z-10 bg-slate-900/80 px-4 py-2 rounded-2xl backdrop-blur-md border border-white/5">
+             <div className="absolute bottom-6 right-8 text-right z-10 bg-slate-950/80 px-4 py-2 rounded-2xl backdrop-blur-md border border-white/5">
                 <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1">Elapsed Time</div>
-                <div className="text-3xl font-mono font-bold tabular-nums text-blue-400">
-                    {currentTime.toFixed(0).padStart(5, '0')}<span className="text-blue-900 ml-1">MS</span>
+                <div className="text-3xl font-mono font-bold tabular-nums text-cyan-400">
+                    {currentTime.toFixed(0).padStart(5, '0')}<span className="text-cyan-900 ml-1">MS</span>
                 </div>
              </div>
           </div>
 
           {/* Controls */}
-          <div className="bg-slate-800/40 backdrop-blur-md p-8 rounded-3xl border border-slate-700/50 shadow-xl">
+          <div className="bg-slate-900/50 backdrop-blur-md p-8 rounded-3xl border border-white/5 shadow-xl">
             <div className="flex flex-wrap items-center gap-6 mb-8">
               <button 
                 onClick={() => setIsPlaying(!isPlaying)}
                 className={`group relative flex items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${
-                    isPlaying ? 'bg-amber-500 hover:bg-amber-400' : 'bg-blue-600 hover:bg-blue-500'
-                } shadow-lg shadow-blue-900/20`}
+                    isPlaying ? 'bg-fuchsia-500 hover:bg-fuchsia-400' : 'bg-cyan-600 hover:bg-cyan-500'
+                } shadow-lg shadow-cyan-900/20`}
               >
                 {isPlaying ? (
                     <svg className="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
@@ -212,23 +212,23 @@ function App() {
               
               <button 
                 onClick={() => { setCurrentTime(0); setIsPlaying(false); }}
-                className="p-3 rounded-xl bg-slate-700/50 hover:bg-slate-700 text-slate-300 transition-colors"
+                className="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 transition-colors"
                 title="Reset Simulation"
               >
                 <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
               </button>
 
-              <div className="h-8 w-px bg-slate-700/50 mx-2"></div>
+              <div className="h-8 w-px bg-white/5 mx-2"></div>
 
               <div className="flex items-center gap-3">
                 <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Playback Speed</span>
-                <div className="flex p-1 bg-slate-900/50 rounded-xl border border-slate-700/30">
+                <div className="flex p-1 bg-slate-950/50 rounded-xl border border-white/5">
                     {[0.5, 1, 2, 5].map(speed => (
                     <button
                         key={speed}
                         onClick={() => setPlaybackSpeed(speed)}
                         className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                            playbackSpeed === speed ? 'bg-blue-600 text-white shadow-md' : 'text-slate-500 hover:text-slate-300'
+                            playbackSpeed === speed ? 'bg-cyan-600 text-white shadow-md' : 'text-slate-500 hover:text-slate-300'
                         }`}
                     >
                         {speed}x
@@ -245,7 +245,7 @@ function App() {
                     max={metadata ? metadata.config.duration : 10000} 
                     value={currentTime}
                     onChange={(e) => setCurrentTime(parseInt(e.target.value))}
-                    className="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-blue-500"
+                    className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-500"
                 />
                 <div className="flex justify-between mt-2 text-[10px] font-mono text-slate-600 uppercase tracking-tighter">
                     <span>00000ms</span>
@@ -258,21 +258,21 @@ function App() {
         {/* Sidebar / Logs (Only in single view) */}
         {viewMode === 'single' && (
           <div className="space-y-6">
-            <div className="bg-slate-800/40 backdrop-blur-md p-6 rounded-3xl border border-slate-700/50 shadow-xl h-[640px] flex flex-col">
+            <div className="bg-slate-900/50 backdrop-blur-md p-6 rounded-3xl border border-white/5 shadow-xl h-[640px] flex flex-col">
               <div className="flex items-center justify-between mb-6">
                   <h3 className="text-sm font-black uppercase tracking-widest text-slate-400 flex items-center gap-2">
                       <span className="w-1.5 h-1.5 bg-green-500 rounded-full shadow-[0_0_5px_#22c55e]"></span>
                       Telemetry Stream
                   </h3>
-                  <span className="text-[10px] font-mono text-slate-600">{visibleEvents.length} Events</span>
+                  <span className="text-[10px] font-mono text-slate-500">{visibleEvents.length} Events</span>
               </div>
               
-              <div className="flex-1 overflow-y-auto pr-2 space-y-3 scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-transparent">
+              <div className="flex-1 overflow-y-auto pr-2 space-y-3 scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent">
                 {latestEvents.map((event) => (
                   <div key={event.eventId} className={`p-4 rounded-2xl border transition-all duration-500 animate-in slide-in-from-right-8 ${
                     event.type === 'REQUEST_ALLOWED' ? 'border-green-500/20 bg-green-500/5 text-green-400 shadow-[inset_0_0_20px_rgba(34,197,94,0.05)]' :
                     event.type === 'REQUEST_BLOCKED' ? 'border-red-500/20 bg-red-500/5 text-red-400 shadow-[inset_0_0_20px_rgba(239,68,68,0.05)]' :
-                    'border-blue-500/20 bg-blue-500/5 text-blue-400'
+                    'border-cyan-500/20 bg-cyan-500/5 text-cyan-400'
                   }`}>
                     <div className="flex justify-between items-start mb-2">
                       <span className="text-[10px] font-black tracking-widest uppercase">{event.type.replace('_', ' ')}</span>
@@ -286,9 +286,9 @@ function App() {
                         </div>
                       ))}
                       {event.type === 'TOKEN_REFILLED' && (
-                          <div className="flex justify-between text-[10px] font-mono border-t border-blue-500/10 mt-1 pt-1">
+                          <div className="flex justify-between text-[10px] font-mono border-t border-cyan-500/10 mt-1 pt-1">
                               <span className="opacity-40 uppercase">Added</span>
-                              <span className="text-blue-300">+{event.tokensAdded?.toFixed(2)}</span>
+                              <span className="text-cyan-300">+{event.tokensAdded?.toFixed(2)}</span>
                           </div>
                       )}
                     </div>
@@ -296,8 +296,8 @@ function App() {
                 ))}
                 {!metadata && (
                   <div className="h-full flex flex-col items-center justify-center animate-pulse">
-                      <div className="w-12 h-12 border-4 border-blue-500/30 border-t-blue-500 rounded-full animate-spin mb-4"></div>
-                      <div className="text-[10px] font-mono uppercase tracking-widest">Loading Telemetry...</div>
+                      <div className="w-12 h-12 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin mb-4"></div>
+                      <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500">Loading Telemetry...</div>
                   </div>
                 )}
               </div>
@@ -317,22 +317,22 @@ function App() {
                         onClick={() => setSelectedExp(exp)}
                         className={`group p-6 rounded-3xl border transition-all text-left ${
                             selectedExp.id === exp.id 
-                            ? 'bg-blue-600/10 border-blue-500/50 shadow-[0_0_30px_rgba(59,130,246,0.1)]' 
-                            : 'bg-slate-800/40 border-white/5 hover:border-white/10'
+                            ? 'bg-fuchsia-600/10 border-fuchsia-500/50 shadow-[0_0_30px_rgba(232,121,249,0.1)]' 
+                            : 'bg-slate-900/40 border-white/5 hover:border-white/10'
                         }`}
                       >
                           <div className="flex justify-between items-start mb-4">
                               <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">{exp.strategy.replace('_', ' ')}</span>
-                              {selectedExp.id === exp.id && <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>}
+                              {selectedExp.id === exp.id && <span className="w-2 h-2 bg-fuchsia-500 rounded-full animate-pulse"></span>}
                           </div>
                           <h4 className="text-sm font-bold text-slate-200 mb-2">{exp.label}</h4>
-                          <p className="text-[10px] text-slate-500 leading-relaxed mb-4">
+                          <p className="text-[10px] text-slate-400 leading-relaxed mb-4">
                               {exp.label.includes('Boundary') ? 'Stress test for window-edge overflow vulnerabilities.' : 
                                exp.label.includes('High Load') ? 'Sustainability test under constant maximum throughput.' : 
                                'Validation of burst handling and recovery speed.'}
                           </p>
                           <div className="flex items-center gap-2">
-                              <span className="text-[9px] font-black text-blue-400 uppercase tracking-tighter group-hover:underline">Launch Simulation →</span>
+                              <span className={`text-[9px] font-black uppercase tracking-tighter group-hover:underline ${selectedExp.id === exp.id ? 'text-fuchsia-400' : 'text-cyan-400'}`}>Launch Simulation →</span>
                           </div>
                       </button>
                   ))}

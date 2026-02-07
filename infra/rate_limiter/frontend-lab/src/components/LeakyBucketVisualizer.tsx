@@ -49,7 +49,7 @@ export const LeakyBucketVisualizer = ({ currentTime, events, config }: Props) =>
 
     // Background Heartbeat Pulse
     const scanLinePos = (currentTime % 2000) / 2000;
-    ctx.strokeStyle = 'rgba(14, 165, 233, 0.05)';
+    ctx.strokeStyle = 'rgba(34, 211, 238, 0.05)';
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(0, height * scanLinePos);
@@ -63,7 +63,7 @@ export const LeakyBucketVisualizer = ({ currentTime, events, config }: Props) =>
     const y = (height - bucketHeight) / 2;
 
     // Bucket Outline (with a hole at the bottom)
-    ctx.strokeStyle = '#64748b';
+    ctx.strokeStyle = '#94a3b8';
     ctx.lineWidth = 4;
     ctx.beginPath();
     ctx.moveTo(x, y);
@@ -78,8 +78,8 @@ export const LeakyBucketVisualizer = ({ currentTime, events, config }: Props) =>
     const fillHeight = (waterLevel / capacity) * bucketHeight;
     if (fillHeight > 0) {
         const gradient = ctx.createLinearGradient(x, y + bucketHeight - fillHeight, x, y + bucketHeight);
-        gradient.addColorStop(0, '#0ea5e9');
-        gradient.addColorStop(1, '#0284c7');
+        gradient.addColorStop(0, '#22d3ee');
+        gradient.addColorStop(1, '#06b6d4');
 
         ctx.fillStyle = gradient;
         ctx.fillRect(x + 4, y + bucketHeight - fillHeight, bucketWidth - 8, fillHeight);
@@ -87,8 +87,8 @@ export const LeakyBucketVisualizer = ({ currentTime, events, config }: Props) =>
         // Activity Glow
         const pulse = (Math.sin(currentTime / 300) + 1) / 2;
         ctx.shadowBlur = 10 + pulse * 10;
-        ctx.shadowColor = '#0ea5e9';
-        ctx.strokeStyle = `rgba(14, 165, 233, ${0.4 + pulse * 0.4})`;
+        ctx.shadowColor = '#22d3ee';
+        ctx.strokeStyle = `rgba(34, 211, 238, ${0.4 + pulse * 0.4})`;
         ctx.lineWidth = 2;
         ctx.strokeRect(x + 2, y + bucketHeight - fillHeight - 2, bucketWidth - 4, fillHeight + 4);
         ctx.shadowBlur = 0;
@@ -96,7 +96,7 @@ export const LeakyBucketVisualizer = ({ currentTime, events, config }: Props) =>
         // Continuous Drip effect from the hole if there is water
         // Draw multiple small droplets falling
         const numDroplets = 5;
-        ctx.fillStyle = '#0ea5e9';
+        ctx.fillStyle = '#22d3ee';
         for (let i = 0; i < numDroplets; i++) {
             const offset = (currentTime + i * 100) % 500;
             const dropY = y + bucketHeight + offset * 0.3; // Speed
@@ -116,7 +116,7 @@ export const LeakyBucketVisualizer = ({ currentTime, events, config }: Props) =>
     ctx.textAlign = 'center';
     ctx.fillText(`${waterLevel.toFixed(1)}`, width / 2, y + bucketHeight / 2);
     
-    ctx.fillStyle = 'rgba(248, 250, 252, 0.5)';
+    ctx.fillStyle = '#94a3b8';
     ctx.font = 'bold 16px Inter';
     ctx.fillText(`WATER LEVEL (Capacity: ${capacity})`, width / 2, y + bucketHeight + 40);
 

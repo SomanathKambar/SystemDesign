@@ -58,16 +58,16 @@ export const SlidingWindowVisualizer = ({ currentTime, events, config }: Props) 
     
     // Cloth Gradient
     const gradient = ctx.createLinearGradient(winXStart, 0, winXEnd, 0);
-    gradient.addColorStop(0, 'rgba(59, 130, 246, 0.1)');
-    gradient.addColorStop(0.5, 'rgba(59, 130, 246, 0.2)');
-    gradient.addColorStop(1, 'rgba(59, 130, 246, 0.1)');
+    gradient.addColorStop(0, 'rgba(6, 182, 212, 0.1)');
+    gradient.addColorStop(0.5, 'rgba(6, 182, 212, 0.2)');
+    gradient.addColorStop(1, 'rgba(6, 182, 212, 0.1)');
 
     ctx.fillStyle = gradient;
     ctx.beginPath();
     ctx.roundRect(winXStart, axisY - 80, winWidth, 100, 12);
     ctx.fill();
     
-    ctx.strokeStyle = '#3b82f6';
+    ctx.strokeStyle = '#22d3ee';
     ctx.setLineDash([5, 5]);
     ctx.lineWidth = 2;
     ctx.stroke();
@@ -87,7 +87,7 @@ export const SlidingWindowVisualizer = ({ currentTime, events, config }: Props) 
     ctx.stroke();
 
     // Draw Window Label
-    ctx.fillStyle = '#3b82f6';
+    ctx.fillStyle = '#22d3ee';
     ctx.font = 'bold 10px font-mono';
     ctx.textAlign = 'center';
     ctx.fillText('SLIDING WINDOW', (winXStart + winXEnd) / 2, axisY - 90);
@@ -102,7 +102,7 @@ export const SlidingWindowVisualizer = ({ currentTime, events, config }: Props) 
 
         if (e.type === 'REQUEST_ALLOWED') {
             const isFresh = age < 200;
-            ctx.fillStyle = inWindow ? '#10b981' : '#334155';
+            ctx.fillStyle = inWindow ? '#10b981' : '#475569';
             
             // Pulse if fresh
             const radius = isFresh ? 6 + Math.sin(age * 0.1) * 2 : 6;
@@ -169,7 +169,7 @@ export const SlidingWindowVisualizer = ({ currentTime, events, config }: Props) 
     ctx.textAlign = 'center';
     ctx.fillText(`${count}`, width / 2, height / 2 - 80);
     
-    ctx.fillStyle = '#64748b';
+    ctx.fillStyle = '#94a3b8';
     ctx.font = 'bold 14px Inter';
     ctx.fillText(`REQUESTS IN WINDOW (Limit: ${maxRequests})`, width / 2, height / 2 - 40);
 

@@ -110,7 +110,7 @@ export const ComparisonDashboard = ({ currentTime, allExperiments }: Props) => {
   const renderVisualizer = (s: typeof processedData[0]) => {
     if (s.loading || !s.metadata) return (
         <div className="flex flex-col items-center justify-center w-full h-full bg-slate-900/50 rounded-2xl border border-slate-800 animate-pulse">
-            <div className="w-8 h-8 border-2 border-blue-500/20 border-t-blue-500 rounded-full animate-spin mb-2"></div>
+            <div className="w-8 h-8 border-2 border-cyan-500/20 border-t-cyan-500 rounded-full animate-spin mb-2"></div>
             <span className="text-[10px] font-mono text-slate-600 uppercase tracking-widest">Loading {s.strategyType}...</span>
         </div>
     );
@@ -133,7 +133,7 @@ export const ComparisonDashboard = ({ currentTime, allExperiments }: Props) => {
          <div className="flex items-center gap-6">
             <div>
                 <h2 className="text-xl font-black text-white tracking-tighter uppercase">Comparison Lab</h2>
-                <p className="text-[10px] text-slate-500 font-mono tracking-widest">Global Scenario: <span className="text-blue-400">{activeScenario}</span></p>
+                <p className="text-[10px] text-slate-500 font-mono tracking-widest">Global Scenario: <span className="text-cyan-400">{activeScenario}</span></p>
             </div>
             <div className="h-8 w-px bg-slate-800"></div>
             <div className="flex p-1 bg-slate-800/50 rounded-xl border border-white/5">
@@ -142,7 +142,7 @@ export const ComparisonDashboard = ({ currentTime, allExperiments }: Props) => {
                         key={scenario}
                         onClick={() => setActiveScenario(scenario)}
                         className={`px-4 py-1.5 rounded-lg text-[10px] font-black transition-all ${
-                            activeScenario === scenario ? 'bg-blue-600 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'
+                            activeScenario === scenario ? 'bg-cyan-600 text-white shadow-lg' : 'text-slate-500 hover:text-slate-300'
                         }`}
                     >
                         {scenario.toUpperCase()}
@@ -156,7 +156,7 @@ export const ComparisonDashboard = ({ currentTime, allExperiments }: Props) => {
             disabled={!canAddMore}
             className={`px-6 py-2 rounded-xl text-[10px] font-black tracking-widest transition-all border ${
                 canAddMore 
-                ? 'bg-blue-600/10 border-blue-500/30 text-blue-400 hover:bg-blue-600/20' 
+                ? 'bg-cyan-600/10 border-cyan-500/30 text-cyan-400 hover:bg-cyan-600/20' 
                 : 'opacity-30 cursor-not-allowed border-slate-700 text-slate-500'
             }`}
          >
@@ -167,11 +167,11 @@ export const ComparisonDashboard = ({ currentTime, allExperiments }: Props) => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 p-8">
         {processedData.map((s, index) => (
           <div key={`${s.strategyType}-${index}`} className={`group flex flex-col bg-slate-800/20 rounded-[2rem] border transition-all duration-500 ${
-            leader && s.strategyType === leader.strategyType ? 'border-blue-500/40 shadow-[0_0_50px_rgba(59,130,246,0.05)]' : 'border-white/5'
+            leader && s.strategyType === leader.strategyType ? 'border-cyan-500/40 shadow-[0_0_50px_rgba(34,211,238,0.05)]' : 'border-white/5'
           } overflow-hidden`}>
             <div className="p-6 border-b border-white/5 flex justify-between items-center bg-white/[0.02]">
                 <div>
-                    <h3 className="text-xs font-black text-blue-400 tracking-[0.2em] uppercase">{s.strategyType.replace('_', ' ')}</h3>
+                    <h3 className="text-xs font-black text-cyan-400 tracking-[0.2em] uppercase">{s.strategyType.replace('_', ' ')}</h3>
                     <div className="flex items-center gap-2 mt-1">
                         <div className={`w-1 h-1 rounded-full ${s.score > 80 ? 'bg-green-500' : s.score > 50 ? 'bg-amber-500' : 'bg-red-500'}`}></div>
                         <span className="text-[9px] font-mono text-slate-500 uppercase">Score: {s.score}%</span>
@@ -180,7 +180,7 @@ export const ComparisonDashboard = ({ currentTime, allExperiments }: Props) => {
                 <div className="flex items-center gap-2">
                     <button
                         onClick={() => toggleTelemetry(index)}
-                        className={`p-2 rounded-lg transition-all ${s.showTelemetry ? 'bg-blue-500/20 text-blue-400' : 'text-slate-600 hover:text-slate-400'}`}
+                        className={`p-2 rounded-lg transition-all ${s.showTelemetry ? 'bg-cyan-500/20 text-cyan-400' : 'text-slate-600 hover:text-slate-400'}`}
                         title="Toggle Telemetry Report"
                     >
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>

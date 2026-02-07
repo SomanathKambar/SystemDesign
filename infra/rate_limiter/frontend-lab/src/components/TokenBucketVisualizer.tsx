@@ -50,7 +50,7 @@ export const TokenBucketVisualizer = ({ currentTime, events, config }: Props) =>
 
     // Background Heartbeat Pulse
     const scanLinePos = (currentTime % 2000) / 2000;
-    ctx.strokeStyle = 'rgba(59, 130, 246, 0.05)';
+    ctx.strokeStyle = 'rgba(6, 182, 212, 0.05)';
     ctx.lineWidth = 1;
     ctx.beginPath();
     ctx.moveTo(0, height * scanLinePos);
@@ -64,7 +64,7 @@ export const TokenBucketVisualizer = ({ currentTime, events, config }: Props) =>
     const y = (height - bucketHeight) / 2;
 
     // Bucket glass effect
-    ctx.strokeStyle = '#64748b';
+    ctx.strokeStyle = '#94a3b8';
     ctx.lineWidth = 4;
     ctx.beginPath();
     ctx.moveTo(x, y);
@@ -76,8 +76,8 @@ export const TokenBucketVisualizer = ({ currentTime, events, config }: Props) =>
     // Draw Water/Tokens
     const fillHeight = (currentTokens / capacity) * bucketHeight;
     const gradient = ctx.createLinearGradient(x, y + bucketHeight - fillHeight, x, y + bucketHeight);
-    gradient.addColorStop(0, '#3b82f6');
-    gradient.addColorStop(1, '#1d4ed8');
+    gradient.addColorStop(0, '#06b6d4');
+    gradient.addColorStop(1, '#0e7490');
 
     ctx.fillStyle = gradient;
     ctx.fillRect(x + 4, y + bucketHeight - fillHeight, bucketWidth - 8, fillHeight);
@@ -85,8 +85,8 @@ export const TokenBucketVisualizer = ({ currentTime, events, config }: Props) =>
     // Activity Glow (Always on)
     const pulse = (Math.sin(currentTime / 200) + 1) / 2;
     ctx.shadowBlur = 5 + pulse * 10;
-    ctx.shadowColor = '#3b82f6';
-    ctx.strokeStyle = `rgba(59, 130, 246, ${0.3 + pulse * 0.4})`;
+    ctx.shadowColor = '#06b6d4';
+    ctx.strokeStyle = `rgba(6, 182, 212, ${0.3 + pulse * 0.4})`;
     ctx.lineWidth = 1;
     ctx.strokeRect(x + 2, y + bucketHeight - fillHeight - 2, bucketWidth - 4, fillHeight + 4);
     ctx.shadowBlur = 0;
