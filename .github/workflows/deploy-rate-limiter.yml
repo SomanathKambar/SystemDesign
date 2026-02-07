@@ -1,0 +1,40 @@
+name: Deploy Rate Limiter Lab
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'infra/rate_limiter/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'infra/rate_limiter/frontend-lab/package-lock.json'
+
+      - name: Install dependencies
+        run: npm install
+        working-directory: infra/rate_limiter/frontend-lab
+
+      - name: Build
+        run: npm run build
+        working-directory: infra/rate_limiter/frontend-lab
+
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: infra/rate_limiter/frontend-lab/dist
+          branch: gh-pages
+          target-folder: infra/rate-limiter
