@@ -1,0 +1,660 @@
+{"type":"LEAK_OCCURRED","eventId":"7cb190c9-e53a-4140-a614-a0644ccc03d2","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":0.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"3fd304c7-699e-475e-968d-4f050f8259bc","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"0.0","leakedAmount":"0.0","waterAfterLeak":"0.0","newWaterLevel":"1.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"35cb3487-d9ef-4b03-a58d-61bdc0fb11ef","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":1.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"dd462e8f-b6bf-4a59-a3c3-ebf915c1545a","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"1.0","leakedAmount":"0.0","waterAfterLeak":"1.0","newWaterLevel":"2.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"b173746d-34f6-4758-b144-5f8bd1f1d6b5","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":2.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"a705d63a-e024-4e92-a92b-d301ee44ad16","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"2.0","leakedAmount":"0.0","waterAfterLeak":"2.0","newWaterLevel":"3.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"2d66884b-90da-4edf-98d8-4a8967ff4a2c","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":3.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"d3b220e2-db96-4620-9229-41023914b2c4","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"3.0","leakedAmount":"0.0","waterAfterLeak":"3.0","newWaterLevel":"4.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"ea24cbe3-d25b-4a5d-9b10-09b5503cc921","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":4.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"c16fd589-b76a-4e55-bdb3-3cde888c73d7","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"4.0","leakedAmount":"0.0","waterAfterLeak":"4.0","newWaterLevel":"5.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"b8a893e6-9bf7-45aa-8d26-15976033857c","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":5.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"afa114fd-40f1-4ff1-a5aa-080f69d2ec56","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"5.0","leakedAmount":"0.0","waterAfterLeak":"5.0","newWaterLevel":"6.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"222029c4-5cf2-4f78-9435-a79138f5cef7","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"d51de9dc-1532-4581-9c4c-141c45ee90a0","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"6.0","leakedAmount":"0.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"f48e2c55-ed4f-4b06-8c36-093f436a8c1f","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"5bf4582d-e9e6-4670-930f-3d2dbc84a61f","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"072cec52-444d-4b61-93c2-76ee1ae5d27f","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"b005175d-dbc4-41db-bc7a-205683cc6999","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"160c33be-540f-48c1-b817-73543864d3c7","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"d4727239-5c54-41b9-8af9-949881a712f3","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"1c6a4d9e-76de-45d2-9fdb-c6c4b183ad15","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"d32ed095-fbb2-4313-b951-ab6b6d63a450","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"a84fdfda-7608-47f8-aea3-0da05767924e","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"d537502e-28e8-4677-82dd-0bba6ec20b42","timestampMs":0,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"7010584c-2d74-4502-8cac-fd032aa3bd28","timestampMs":100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b95f5d59-4526-459d-a648-017a9b63acf3","timestampMs":200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"91581556-502c-49f8-b997-f6f6349d609f","timestampMs":300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5a37a517-5ffe-48bf-8353-7237e969545d","timestampMs":400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"91311b21-ecab-457e-a55e-2bc20dcad0a2","timestampMs":500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6ba9b186-51ea-4d56-a623-9d44b71bee86","timestampMs":600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"74cc0d15-f772-4929-ad8f-365edc114ce1","timestampMs":700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"fad65ba4-5cbf-4a6c-9753-a5c47dca12fd","timestampMs":800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ca4b3f65-d854-4fdb-af71-0dab49ce1967","timestampMs":900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d7c5b760-1386-4b8a-96b3-88b4b467367d","timestampMs":1000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0e68753e-90aa-4d77-a9c9-386e83011652","timestampMs":1100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"484e65a0-952d-4cda-8b82-cc080b6c7207","timestampMs":1200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4a00360c-3261-4886-a6b5-d06e639edf74","timestampMs":1300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"10300323-8325-4c35-b3da-f0c8e4cfccf5","timestampMs":1400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6edc23d8-5dce-438c-9035-578cbe55e9f0","timestampMs":1500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"aa3bc439-31f5-41e8-9cb7-10276037f9f7","timestampMs":1600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"f045b50c-5fa4-4e08-a10d-44e774590ef2","timestampMs":1700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"81da8614-b617-4262-a983-38b0f21da511","timestampMs":1800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"752fceee-6bf0-4a73-bdac-47e11ee9f0c1","timestampMs":1900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"76de2c9c-e042-48b2-9cf0-a01088b121ac","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"a19979c0-672f-41ec-95dc-ce40c16f989f","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"b4def4e5-2585-475a-9682-eda2ea171fd6","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"493a5e7a-e094-485b-93a7-92c8c17d1db1","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"fb1f29d0-7ae4-4a9f-a587-9132500e1b70","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"ac748d4c-f5e4-4a06-b01d-68335bf6031b","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"437da181-8a4d-4630-abdb-c521d5663bf4","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"8ebb9ad0-9eeb-4307-8f2b-ecfcf97386c9","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"9be0336d-f21f-480c-bdc1-9b829cd08e24","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"918398c8-6164-4d29-9eed-338c7194b0d3","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"fa70583c-f2c7-486a-b49d-c00c4b05b535","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"63e3cf41-3bf4-4fbe-bfe3-88a5c9f90ab5","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"823a8309-2acc-4ae5-b7cf-2315244cc8cf","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"d6ef7c57-2042-4480-b10d-87d3b2771556","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"2d20b354-af79-4462-8840-a562e3096cec","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"31ed4a3f-ce9f-4784-91b9-8645172b376f","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"35bdd71f-ac94-4e02-b2df-56536963fdcb","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"6044b28f-0e49-4c2f-a6d3-48ca2717a906","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"1ee1168a-6116-46fc-93df-aa1eda8ad16f","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"a61056ac-0ec7-47e7-a1de-4d5038d2f4c9","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"233e0aa7-8a1b-42cf-850f-bd19f3ded38f","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"95472837-e679-460c-9259-b86bd51d45b8","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"c48dea5f-08e8-4e5b-ad8d-063c1a8f92ac","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"9ae46276-51e2-46ba-bf6e-0b218d7bb504","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"582f22b3-3742-44bb-ab4c-0c705a0bcc02","timestampMs":2000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"87a76981-a08e-4e25-84e7-643f7d1bd32f","timestampMs":2100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4d0556b1-c657-45f5-851d-9315a1772c9d","timestampMs":2200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"62dcdd8f-9a65-4a4a-b6b2-31ec7a4fa754","timestampMs":2300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6793c4f5-651e-4d56-9029-ee95e8a94179","timestampMs":2400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8d073c98-d5e7-4c86-b52f-0825b9ff2029","timestampMs":2500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"41593015-06d1-463d-99bc-9a8ba79c6651","timestampMs":2600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7a866686-76c7-4560-8eaa-0502f38dd309","timestampMs":2700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8e9c9409-08e8-4d7e-979c-7cb1ce45ca25","timestampMs":2800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6596338e-fce6-4a26-98f9-85981658c68f","timestampMs":2900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8754957c-af43-4c2f-91ce-c06ba455c8f3","timestampMs":3000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"fd1f7cc1-df98-4bc8-a649-d54c4b5ffe77","timestampMs":3100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d1fa79c8-3f67-414d-9d6a-8767851056ba","timestampMs":3200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b399f49b-03b5-4602-918b-8b18e41697d3","timestampMs":3300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8c7998f9-581c-42d0-a0db-986f882331a3","timestampMs":3400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"97e37de7-4828-4fac-9e7b-b87b13261274","timestampMs":3500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"62b37e31-0cf1-49fa-97f5-24d58976ff8c","timestampMs":3600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b90164d7-9fe8-4748-959c-2b1f8cb1f48d","timestampMs":3700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5592343a-3898-444e-a480-b2ec6bd9840e","timestampMs":3800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e2fa3f5c-2866-4061-a50b-02ad62edecb4","timestampMs":3900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2de95c5e-a003-489e-af9f-bb5fead94478","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"373c4735-5d5a-4ced-8fd7-304598413bb1","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"db8d456c-1dc9-445a-9988-f542c400aeec","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"c1cd1c0f-f924-4c63-a78f-7775533ffd2d","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"ea357f33-cee6-49be-9515-c415da61d8c1","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"ee1f4122-6773-4190-b807-b350f2dda209","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"e0f44db7-5cde-4fc6-a42b-e0e03f5d4428","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"26e2195e-6991-4dc7-b4d8-f1f8f66fe976","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"c894cae1-2c5e-4335-a814-dc6e3d191ace","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"6fb63bbf-8645-40b9-914d-36b7c84e2d0b","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"6da76676-c5bc-4c09-b997-8f20bcb7669f","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"a25252ee-fb57-4fce-abd2-117aa167b82d","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"41baa760-6311-4a77-b7bd-9af92740f0ea","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"5d883cc7-3abf-4cdc-8472-7f1028fdf775","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"44a5e977-d91c-478c-80d5-db2c9240dd6b","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"10ce3957-03bf-412a-a7ac-b3305659203e","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"dd1eae33-ff16-4b5e-b64a-696c98aba9e2","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"eeed93ed-bc75-4378-9af1-1a32b728986f","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"c9ef88de-ebc0-4878-8ead-206852205569","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"55553202-d381-489c-ac53-f265842e4e48","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"dd4476e2-3217-47ae-9ae5-5d79cd9019ea","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"d7772231-ed6d-4550-86ad-cf003e28bc53","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"2db20141-cecc-4848-8285-b7d0abf76e34","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"c70481d4-35a0-4c81-bb8b-0bf7826af66a","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"ab225e48-682d-49c6-93e4-c5e4e64223c2","timestampMs":4000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"b4f0fdff-1e6d-4ebf-b88a-dff2a657fcfb","timestampMs":4100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e13be0a7-2b6d-4d2a-a3e4-3d43a778263b","timestampMs":4200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"95a062d7-30f7-42c0-9e2d-594fd55f727a","timestampMs":4300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d9d1cfdf-a7ec-4473-9cf7-6c14e9a71cde","timestampMs":4400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"641a94df-ce3c-41ad-b6b2-871348efcb4d","timestampMs":4500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"77d05a42-574f-48aa-98de-e9658396d0ab","timestampMs":4600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"19db1b09-582a-462e-b0c3-0c811e96c463","timestampMs":4700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4fbedeae-aaa5-419d-9ff1-4b909491d978","timestampMs":4800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"c8e5c58e-95ba-437c-a94c-9ee47b868640","timestampMs":4900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"65fc108c-4720-4880-b399-c2ab3bc34ba0","timestampMs":5000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"f6d3c53a-cbed-4738-b6bb-818dd47c6f28","timestampMs":5100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7c341440-bd43-4570-86a5-fed1f73b0d66","timestampMs":5200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"26b604a1-4044-4b32-ad41-9b2b60c96feb","timestampMs":5300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5434ef35-c625-4efd-bfb2-55d619b742e1","timestampMs":5400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"bac493de-886e-415d-b332-008e1791a912","timestampMs":5500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"880d83b0-08ad-416d-a758-2b66f0cba38b","timestampMs":5600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0c18e885-dd59-4cfb-98d3-2bd43a2c20a6","timestampMs":5700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d47551a2-a588-4c5c-b52c-ff92d2a59c50","timestampMs":5800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7db08901-1c04-45e7-9d58-2c46459231b9","timestampMs":5900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"75dc3918-3e31-44d6-9fc7-70d8d998b2b9","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"1697d92e-77da-43c8-900a-ba788fdd7c4f","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"6050dac7-767f-4d4a-9ac8-33cc19957a33","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"73ac2bb3-7403-4cd8-9a9e-b2f19b4a633e","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"e2836cba-1320-4c95-9057-01647e2be655","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"10e6d472-1e52-4a2d-b5bf-c6591b00fadb","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"eac3eef3-b62c-4c03-82a3-f5b65b7a4e55","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"44677f59-3207-4d58-968f-957aa8761d5c","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"10a95883-fe08-4edf-80ce-12ded71e3cfb","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"ba1b6eb3-ed4e-46e5-b8e7-e93b21e8abc1","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"b36e99a5-011f-469a-98be-722e45034a84","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"d67f1d6c-fb6f-4cc0-903d-3dc1f31a646a","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"0429a549-2127-464a-85e4-abb0a7754c34","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"fb204b1e-e2bf-4bff-a8ae-209d04336f2d","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"b1e6474c-1ca5-46f4-a966-788c45433d45","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"652e714e-dc31-4e7e-9154-f08599ae5112","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"4154a76e-6499-482e-9262-2de2bd029f82","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"9e2dbbc6-c1f0-48a5-8ff0-ddf4faa32ff3","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"3556e5e5-361d-43ae-89ff-25df67c79535","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"c287d1d4-728c-4f49-a1bf-ed8fb97490f8","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"cab2821d-6ed7-469c-8e60-f063086a7996","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"4e7faa28-27ec-4096-b1ab-da3c978a7400","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"0e8b5cdf-1086-4ec9-8d88-3d88fafa0581","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"78d51402-e660-4817-ad1c-2ae5839780ba","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"2cbf87b8-399a-4efc-976e-6bbaa312e207","timestampMs":6000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"49e718d7-815b-44d4-b08c-8ec7f02cdede","timestampMs":6100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"af75afc5-63c7-4bba-a2a2-397e673f19dc","timestampMs":6200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"baec7329-4660-42b2-896d-5a37e0f03c6a","timestampMs":6300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d11add2d-8a99-4d6f-8fcb-50bb6b40540f","timestampMs":6400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"280f7de4-907a-466a-b68d-63ad5b0aa33e","timestampMs":6500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e09d8208-bc6b-4683-bdb7-bcbfa40ee937","timestampMs":6600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7744830b-9f8a-450c-a305-7dfc8f499cfb","timestampMs":6700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6fb90f19-8e59-401e-a6b6-9581d03bb3ce","timestampMs":6800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"29aaa665-d2f2-4398-a216-55886d30e25c","timestampMs":6900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3d3f6875-21ff-467c-93a4-1a2701d3a69e","timestampMs":7000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"79a8e7f0-5093-4676-ada9-335f7b8d9177","timestampMs":7100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e640ba26-2a46-4838-bd44-f138533c5397","timestampMs":7200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"547ffd69-e9b8-4e39-bd8a-ccd96d04d3e6","timestampMs":7300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3c4f14f6-49bf-4c42-9fd8-2911d02650e3","timestampMs":7400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ed26138e-d6e8-40d5-a9cf-2e5d444c56bb","timestampMs":7500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"98b152bb-5310-4bde-b188-1de7721d0eef","timestampMs":7600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"89d5b2b4-8625-464c-bbf9-3a7602e06c02","timestampMs":7700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9875d03c-bfbe-41a6-ae4c-87efdd631e75","timestampMs":7800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9cceb9bd-cf06-428d-81be-74e0e483e694","timestampMs":7900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"48098a10-fece-41b5-873a-498f43545c8c","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"423b127a-567b-4811-b45f-e204604b363c","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"e30960f4-2cde-4010-9b16-4dc6b64b07b2","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"a1917933-4822-4308-b070-d838e3eb57df","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"546786cb-761d-4c07-b15b-c8a18c4e612a","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"5f1ca584-a932-4e3e-8aa9-7b2bf41fddce","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"2f2ffee3-894a-4163-98c5-b9a24283004c","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"671d90d4-0518-417e-aab2-0c8938d5790d","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"3a65c707-138a-4527-8a5d-9bbb480ed1a1","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"66bcd15f-430a-495c-8aeb-d64919608dfe","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"9a720f93-d774-4882-aed3-36067eae7a11","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"f9195a98-970b-4dc2-9eaa-225e1670c701","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"5ef36fe5-b75a-444c-996f-6872b7191a97","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"17f272a9-bad5-4775-8c80-417f1c7e6a4d","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"1ff4bcdb-40af-4f79-bc51-15c07da42d6c","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"2f888e26-dfa5-4244-b4da-b4772e11b132","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"727da53c-7b37-4405-ad5f-03901378dc90","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"8510a196-70e2-4e7c-b3aa-89a0a238a188","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"dc8fb2c3-6dca-4beb-a372-8bdea1e99dc8","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"b5db09f7-f72e-4a28-99b0-f992779b04b9","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"93bb3abd-550f-4d97-9ee9-7049ca969d74","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"2522287a-7477-4541-b4cc-a22768b1bee7","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"c44594c1-2583-486c-83ef-16795ed1371c","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"c0cc4ca2-06e6-4867-a571-eb719ab80f77","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"87e9a79d-9dc2-4cd9-bc59-8c09afa0bcf3","timestampMs":8000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"30a8e16a-1f78-49c0-ad0d-d7fdbd2f63e7","timestampMs":8100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"487095bf-58b2-4043-a369-5100da70cb2c","timestampMs":8200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"46fd77b4-d7ac-42ef-91a7-694e37cad21d","timestampMs":8300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2b806032-b568-4a4e-bdbe-a35946cd41f8","timestampMs":8400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3d205d5c-9c03-4d0c-9305-a445beb25e9f","timestampMs":8500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d9f11fcb-d3cb-4a63-a470-bf3972db25e2","timestampMs":8600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"45252d71-5ce2-47f7-9ebf-6405dd1f20f2","timestampMs":8700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"feb5ab7e-3ff0-4b07-923f-d9ab1359759d","timestampMs":8800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d1936591-6993-4e40-a591-1e390756ca0b","timestampMs":8900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6a9856b8-1b88-4180-ad6d-218d1d9f4dd9","timestampMs":9000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"16117d43-f8e0-417a-8448-56b660616a3d","timestampMs":9100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"63984c71-dbb2-4e2a-b91c-dd634f339307","timestampMs":9200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"aedba1ba-104d-4723-803e-a5e74a16e554","timestampMs":9300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6b7191c2-f332-409b-bcb9-447b1600402a","timestampMs":9400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"209088ce-0aba-4a82-ba06-4f13a3ced9b0","timestampMs":9500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"568b00cb-ccb0-44ca-9c2b-309d3f003e96","timestampMs":9600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e3ec1946-ca52-46cf-ad88-78658260e547","timestampMs":9700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9ba94d66-492f-44df-83a4-c3b686da540d","timestampMs":9800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d04f0e87-b86e-415d-acf2-3c5a4bb0b2b6","timestampMs":9900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"cb5777f0-7630-4853-ad5c-a744ced7a0e0","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"a56fd83d-21ec-4e29-a88b-112e6257b6e1","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"5f52c5d3-f1f7-40b6-8a4d-f96884df36f6","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"e63734e3-9138-4614-8649-e24739636b52","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"2288ee98-1712-483e-b56b-971572cb8fa1","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"5e3311df-c77d-4876-9550-10f87cd6ea3b","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"384c7e56-8b07-40df-a650-2fd7147afbdf","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"01f60369-a385-46c9-b0ec-57826c38f76d","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"9ac3dcd4-ea98-4941-a474-ce265a4c9c21","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"d9702ea4-7c47-48d5-a5c3-48669b97bd5e","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"c3bdaee7-e1b8-4798-ad95-aff3ff29e293","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"f3d73d79-b6b8-458c-af67-40eec6815853","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"714b24d7-0eb8-4869-b29c-3e9a9b91aed6","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"bf88dbe5-a3d1-47c1-b955-8f4bc308ab46","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"04302d4f-d3ed-454b-b3b1-cc6f974cdb24","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"dcdd28e4-6436-4960-90dc-a28d65262f44","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"5163de77-3ac5-4859-ae9f-5ace4e52a766","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"62ddfc37-a329-4f96-8575-5e67d6e5fa4d","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"1d3c27dd-0e57-4676-a379-8eb4071d1246","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"1f3fa6df-4ac2-4e98-a847-d8d56d70a1d8","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"cd4338d1-5135-4789-ad4b-3505ad37fd63","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"b0de704f-5e76-4112-a7dd-586ed518f9eb","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"84906369-e7ec-4454-809b-aa4e56c2021a","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"641180b7-3c09-422d-81b7-175672e71bcf","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"cec01eb9-4f9a-4672-9753-650b5cbd1664","timestampMs":10000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"e048e35b-2e8b-4f7c-affa-e6c159045a40","timestampMs":10100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"93d47a41-a5c0-4aa0-9a0d-cc9960f61df7","timestampMs":10200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"40c9229a-4dc2-4077-87e9-9fd25bb0f0d0","timestampMs":10300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8852040b-fbba-4502-adce-611d38e96112","timestampMs":10400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"44723095-b769-4d09-9eb6-240626681fa4","timestampMs":10500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ae0cfa82-54ad-4cbc-99d6-2a3af88c28da","timestampMs":10600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b766e321-4a5f-4b10-bfe8-89e6f0e701f8","timestampMs":10700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d842d45a-7cd5-4328-9998-30880ef85fdc","timestampMs":10800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7da752f6-a186-4b8a-9ecc-263c55defea4","timestampMs":10900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e562fd59-2d62-4afc-90cc-e1b0f39df18e","timestampMs":11000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0da9ceeb-74ac-471a-8dd3-8429bf562507","timestampMs":11100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7d236b35-cf39-471a-a16b-edf861d7aa32","timestampMs":11200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8ad360a7-23f4-484e-bc6e-bb6c01e236a3","timestampMs":11300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1fae0035-9ede-48e1-b782-c84417a3046e","timestampMs":11400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"00129e03-5ff0-43dc-b47e-7af7b7152e97","timestampMs":11500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4dcd7e09-6a7b-4245-9789-9d58162da4a6","timestampMs":11600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4e03ec32-773e-4a43-af40-3df9c085a391","timestampMs":11700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"40eaf1e6-feb1-4e4e-a7d1-b387430e3921","timestampMs":11800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e18789b1-8030-41ea-a03f-a26241fa10a8","timestampMs":11900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"818044ac-99a6-4f1a-81f4-39cc8a509299","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"7ea9f7f6-7762-4b39-8b92-27f01c035818","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"7122f8ca-850f-4e5c-b2cd-41fed6dd5901","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"8d5ba04c-a2fc-49f0-89ed-d16053801b79","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"165fddf7-927f-4dee-964a-b34eab0a4bf9","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"4ab12b1c-22e1-4874-8312-05f73498d008","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"1ed6b253-f0c6-460b-a85a-c90363f0ffb3","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"cb379357-3fe5-413b-abd4-1bc46d27ed8b","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"cf18d593-939a-439b-809a-0d80472156ac","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"6ad2847e-32e3-4ca4-9891-a8685e0012fa","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"20707d07-8ca2-439e-bf26-6b5ef3c877e4","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"3f92d360-9cdf-4b89-abca-fc6139bf8531","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"07c44b18-38ce-4db8-8cde-9a3de7797ee2","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"f920e100-1155-459d-9abb-1e27fd07439d","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"11bc54e9-a634-4b05-bcc8-884705ce4dbf","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"6a9f06db-c1bc-47bb-acbe-d8a9ac940e47","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"bb89e94f-8eda-4745-84f5-14ded8c72360","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"6827632b-61b0-45a4-89ca-0c0bbbd313ab","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"988730c4-58ef-4dfd-9bc6-39db89be2301","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"630eb632-240c-4f4f-bed2-d990120e9bf8","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"9ea9bc24-cfbc-422f-ab92-83d1f2acd810","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"da0026fa-0c1c-4e18-baf4-cc9c6175a8a2","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"1a06274f-3c0a-4501-9ac3-64dd7ad5e4c8","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"dede1f19-b5fd-4827-be5f-cf8b8709ab8b","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"0d603d89-4b8c-4adb-ad26-b02e0d63853c","timestampMs":12000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"ff1b2f19-3c10-4ed1-9999-a7f19ce76924","timestampMs":12100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"aaaa9e20-c2c8-421d-a32c-8f550a02b2f0","timestampMs":12200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a333d7b5-934d-423e-8b3d-96f28e0e9683","timestampMs":12300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"badda592-b71b-4e93-b749-3f41f2468ff8","timestampMs":12400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"c9070d48-5592-4b51-a0c2-a4af8b3724b2","timestampMs":12500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"153c2e60-7ef1-4693-916a-dd3bb6bef04e","timestampMs":12600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e70244eb-1a7d-450f-a2e3-cdabe3fc62ff","timestampMs":12700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"31d7236d-6bfd-4d79-997a-aab532aa5ee8","timestampMs":12800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2204353b-17a5-42eb-b239-b4aee5477ec6","timestampMs":12900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"f54d0dc7-1181-453d-beff-85731de6fc4e","timestampMs":13000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"602f00b4-5569-4e0b-9d48-4d18a10abf16","timestampMs":13100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1eeb8e7e-4810-4df1-9522-3d372d568cbb","timestampMs":13200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0a8c1378-57d6-42ee-8d99-c669937731bd","timestampMs":13300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6633af53-7aff-4a37-bdae-130cc7f9c5db","timestampMs":13400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"616719b5-7c6c-40d3-91c0-c0ede72cd0b6","timestampMs":13500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9443ca24-1341-4466-ba64-37c3faa8c342","timestampMs":13600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ca37ac2b-555b-40c3-8e2e-aa91248f9da9","timestampMs":13700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"24ad7f75-3bc8-45af-a759-5c1553037382","timestampMs":13800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"22b9b6bf-c0e2-407e-a402-5f134af213e6","timestampMs":13900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1f086038-dc2d-4e77-8fd6-340f3acbe2f3","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"fc06a89f-49fa-4ff5-a6f1-3358c7c1f78c","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"aaee3d88-d9a1-41ba-b941-f793c2305412","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"6952fe66-c0b6-4479-99dc-8a3225bec7db","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"1b1c5572-fca1-4c0b-a8c2-3c3d0781a383","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"7e32fd06-adc6-4820-af90-e79e19d65afd","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"003e7357-c4aa-431b-b541-1f00d929e546","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"cc5e6680-a136-4002-a61d-60c88b8aa944","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"5efb7bfb-b96e-41ab-8135-a5c3947f4a9f","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"ed1a6bbc-ac63-4aa8-b169-9650e7e8e551","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"f9105c6f-0c45-41d3-b303-c19e2a26d632","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"1e500ca2-733f-4538-bdfe-4689db405e9d","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"394f1e1a-d6b2-49b9-b688-2110c5688913","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"5bfd899b-bb66-44d3-b20f-c73a68a6a0ce","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"d74c5463-0f1a-47d9-8a8e-e3f1ea9e30f5","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"43feac8c-11e4-413f-8e49-1d6cedda2c32","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"1ecc229c-6076-4d22-aff5-2ecac213dd79","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"b1031d22-40ed-4237-ae28-abf3f0d94931","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"31303119-3c08-4328-99eb-b32cb7f643e2","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"e0d8bc5b-8378-46ba-b9d4-e741298420d4","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"a20436a6-075a-43c5-8e47-6e15c0d2e975","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"87fc583c-05c9-488c-a20f-13513ecb0c91","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"ccca4bf7-5794-44de-8f24-b89134e62746","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"2e204204-6b67-4a7a-988a-c26f5929cdf6","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"cdb559eb-e516-4a8d-b83b-ec904526e642","timestampMs":14000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"9bf47542-be27-4e27-8095-465e181e28ff","timestampMs":14100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7fa52261-d109-49a7-a79d-f364c03a35de","timestampMs":14200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"68b18e00-cd7d-4ee4-9a97-49623a810868","timestampMs":14300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e692e2f6-96c8-47de-8911-99e85ea9d4d5","timestampMs":14400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"001efe60-7596-46d2-af80-3615843e7e8a","timestampMs":14500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ae92169d-8959-413c-8bc5-04fd0c4d2424","timestampMs":14600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"70348d96-e91a-4a23-83d5-c3ea8837ed2d","timestampMs":14700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9522c02e-1b61-4668-bcbe-ce81eb7231f9","timestampMs":14800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"88eb7f19-a556-4599-b6c9-bd91c63cf5fb","timestampMs":14900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5cad2f13-790b-48a1-bec3-8744f5202934","timestampMs":15000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"19c84490-1144-454d-ba3e-33f48436e520","timestampMs":15100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3ed805cb-4321-42f5-8173-7d0862ec521c","timestampMs":15200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9f2b1f39-beab-416d-af3f-2cd6cb2bb76c","timestampMs":15300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7ee213c5-2f6b-4569-ad7d-07cc953b3aaa","timestampMs":15400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"116d8615-5e53-453f-924e-d074275cf296","timestampMs":15500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0137ebfd-2392-4616-97b0-150c29dfd03e","timestampMs":15600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5ce80629-0886-49da-a288-2f3f0cc7d381","timestampMs":15700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"782783b3-3e94-455c-9edb-b21616be5e64","timestampMs":15800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9d8f392b-06f5-4549-b09f-5a4e58a7de0f","timestampMs":15900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"fdfa32a4-1d91-4304-a33e-093c573006af","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"da86eab0-bfb4-4327-8b96-5e469f6fac4b","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"8ca73a8c-65e5-4c9e-afa9-675da8674450","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"0b5d4914-fb18-44a3-b160-182885b8b13a","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"dc6b67f6-ab2b-42b0-9f28-19be75c5a809","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"dd112186-a37c-4b35-91d0-0ba1e73beb9c","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"e82a7e0c-a67d-4df0-ba3c-f1c235b53298","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"bdd6d66a-199f-423c-8e3b-cb0a61fa43ac","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"62eff5f0-cec7-4eb2-8b0d-24f2cf447dd0","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"a0fc6066-4822-4c7b-b124-75b7543f1f0f","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"c2294b02-998d-40de-85d3-67b733987739","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"c62492c6-ce58-438d-b801-b0ff13df1614","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"0d62187b-6e6b-4d44-af17-05df6a5cc5a5","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"687d8b08-913f-4f44-87b0-372c582a7965","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"f4c75ee0-0b18-4872-a353-684192a7e271","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"d99bef0c-ac4d-4736-92ec-c8cf14acbc77","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"c155b97f-7001-468a-bf7a-d21117a2a2f0","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"c9076a95-3647-4c0d-8cb6-ceeebdcb6d8d","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"98d8bf74-d9ac-48f2-86f1-5b86a1c4a66a","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"bea14aee-742c-4305-9677-d6f53e98cea9","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"7630ed73-52c4-4486-861a-cdf66278a671","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"24a3849d-1793-4cd7-a15f-382d0d2f49e1","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"8c93df62-e426-48c5-866c-07411355e44b","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"986d1a1f-d4ac-4bb5-a3c0-e16a21b3fdc8","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"805cd2a2-a2cd-44be-9a79-2ade2d29e2cd","timestampMs":16000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"db1d6abf-0955-4dd0-bbcd-901b1219b3aa","timestampMs":16100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"aa01ae07-2881-4e9d-953b-73db1878f697","timestampMs":16200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8e4db92d-554a-40bb-81d6-d5af0e227be1","timestampMs":16300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a4ad331e-cff2-410a-aa58-588a91a4fc62","timestampMs":16400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a7b5598a-60b6-4de5-a09a-6c454d297244","timestampMs":16500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"82fb3444-5bae-4a29-a826-bd8960a1b243","timestampMs":16600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"56f09b80-caaf-4086-b272-348b8939412f","timestampMs":16700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e6656ae2-330a-4cde-8d52-a1c6e9d80d5d","timestampMs":16800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e23920f6-6c64-4301-a325-86eb378d7abd","timestampMs":16900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"c8f5d0cd-5419-443e-bc51-1c4ad621ed38","timestampMs":17000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2b44e43e-aed0-409c-958f-df8eb3b6cd3c","timestampMs":17100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a64fd9f5-b51a-4ed5-a2d0-12ae7fdad1dc","timestampMs":17200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"97ffe515-8b71-46d2-a8e8-a6fc091787a5","timestampMs":17300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"05df829e-8b39-4232-af68-b00b2702cbd4","timestampMs":17400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"872858fb-38c2-4736-b585-a41b523c7a0c","timestampMs":17500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7b83cc01-d2d7-40e1-9813-425345113560","timestampMs":17600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"93ea5ee4-69eb-4012-aa48-d03348065cc6","timestampMs":17700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"91c12839-f565-4016-a1ec-cb655f7d5d69","timestampMs":17800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"10c904f7-08f2-485e-8506-e285afd6787c","timestampMs":17900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d82933db-b7ac-493e-aaa9-c09576babebf","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"664072ce-c986-43da-a287-e17557d3b332","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"598579b0-2bb5-4371-86cf-41009104f1ae","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"1c1ddd34-3f93-48a7-840f-c5572d8b5b1e","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"5744d71d-e46f-4c9c-afde-ad42c564233d","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"9bef6ca0-9559-4591-a5f6-986cbd54de88","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"cec453c9-cd40-4e05-85a0-60d92800a19d","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"a5b20ff3-34e0-4d79-830d-d0e5f4bc1be5","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"c869202e-bdbb-44de-bbfd-dc635235b5cc","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"4500393a-3f44-4445-87cf-f6f455ccc404","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"10290b33-4ae9-45ea-8a2f-1666c360a21c","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"6c03590a-20dd-4a43-9244-25d0f4fadaf2","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"2b889311-03b5-4e64-999e-f94d416f6275","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"2bc0969e-b83b-4d07-841f-120712293d31","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"85ffdee7-2f81-4fc8-b1ca-0b85354f61c3","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"8cf2978a-3e71-4763-b734-aaae32e23be3","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"9b2b5d1f-b819-45c6-ad94-6a032f4acb6c","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"2f823dba-9783-4520-a6bf-706c19ae4ff7","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"d371640a-2201-4463-a3e4-f67f637ab07f","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"9fc76057-103d-4e61-888b-2c8dfc41dadf","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"b77f70e6-6e35-4ec8-b8b6-3884119f82c4","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"c3b3e2ff-8a34-47e8-9482-495669f79863","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"76ef5a15-c66d-4461-9291-216e3a98bc96","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"f15e713b-ff49-4b51-b653-4afbb393ef85","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"ed28854b-ae8f-47ce-b245-21d2b2f45861","timestampMs":18000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"ba7306e6-99a2-450a-9ac5-44977256aa14","timestampMs":18100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"f878d942-8c8b-48a4-b1a3-75c585735753","timestampMs":18200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"57e95cb6-7a0c-47db-b367-f62c5d289d25","timestampMs":18300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"27419e16-4b57-4479-80d9-91258f464ca3","timestampMs":18400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"68a6bbf8-8165-42d2-b7fb-10ab8b6061c1","timestampMs":18500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1daf3290-a253-48b8-867c-38fc09b3aa63","timestampMs":18600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"06691ee2-1996-4c85-b6dc-53fb1d00b742","timestampMs":18700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"08e47fd1-9c42-4187-8510-fc9f72075c6a","timestampMs":18800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"f36ba8e3-9fed-4d29-bd81-c88a6b2d0274","timestampMs":18900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e8727235-94d5-4a34-9354-2e8b0f27cf3f","timestampMs":19000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"fac42483-6fc0-4a75-9c71-f307c7fd617f","timestampMs":19100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7ad3af36-d73d-4fa9-b398-481185974593","timestampMs":19200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"833457ca-dde4-4dfb-8504-b8a0e6f6c131","timestampMs":19300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0678a2b9-79a6-4441-9999-982b0e0a0e9b","timestampMs":19400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"bc82868a-8fed-485b-95ae-578b4a23bc56","timestampMs":19500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2b9eac32-1ed0-45a1-9ed6-3972032a34c0","timestampMs":19600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"42a80f87-8680-483e-8f25-e0737ff4cb55","timestampMs":19700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"102b024b-c768-4b04-92ab-d58d13f8149e","timestampMs":19800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"978642c3-2bfc-4470-89bc-6c42b41a6b6e","timestampMs":19900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e9d78634-906f-4f64-a89e-84895b6c52f5","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"16707607-96df-4dfc-bff0-6c13f48cfd42","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"353e1d8a-d036-4e8a-b3b5-9339458a21cd","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"8479d541-4825-49d5-8636-46c76f32539f","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"7f9da90e-921c-4ca8-805d-bcdd6e5e188d","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"6e946dd7-6e3b-4764-b11a-bb8db86f70f0","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"57d8231a-1477-47fd-8d10-c16ac3ce8ca8","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"0fe6ef9a-4d49-4d63-b4dc-97b1dd195dd4","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"b2ad8c30-6790-4d16-ab47-c2f4a879849c","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"14c81c8e-e65c-4ccd-b658-aeb6b9f52ac7","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"be031789-ce0e-4300-9007-e7e59c037add","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"93c4e5ca-5a4d-4ab1-abdc-838e39d3923b","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"c4deb362-a758-4ca1-812e-2c352609bf75","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"fad4e18f-ede6-4599-99f6-eeb7ad1e09cf","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"0f312b88-e9b7-45ab-b83a-3baac8215fd7","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"ee4a3503-3091-4981-af8b-ff04dddbcf46","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"7e304c83-71fb-413c-a4f9-d21f66dbb8fc","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"ba7a34d2-1375-4f70-a220-0266c577f914","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"85a06227-4154-4de1-b546-f70d7a0642ae","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"57bcc542-6bba-4e3c-971e-31b11584884c","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"66a077b7-3864-4f28-8817-aa39bfe082e6","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"dd8499fb-e069-47d3-a909-d0db38a31827","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"2e63af6f-2433-46ae-80ff-a776280bb11a","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"32f2a253-7ed0-4eb4-b6bb-2e0fa4b23732","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"92bb3dfb-9a3d-49dd-a008-e4b1d7c04028","timestampMs":20000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"b7424891-48b6-4710-8dad-21758e38bd41","timestampMs":20100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"bce12624-bd2b-42cd-a2c8-34e0cdb2d4b1","timestampMs":20200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"09b887e4-aa8c-43f4-bd50-185f9bad794b","timestampMs":20300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"111dd442-0e4a-4724-92bc-aa61f9a2e020","timestampMs":20400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2bd9a6b1-d42d-4c26-bd05-5bc6ebfee6a4","timestampMs":20500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4bb40373-aa2b-4d7b-b74a-742fe558a861","timestampMs":20600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a84439ec-a5c0-4f46-8206-7d744f57b1d3","timestampMs":20700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5f282be7-68c2-48fc-be67-5d7d198f9166","timestampMs":20800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0d9cf388-7751-41fb-bd08-ae21ac465f1f","timestampMs":20900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a40611ca-e821-43d1-9e97-315785566369","timestampMs":21000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"614de5b9-ac15-4a57-8eda-222ea1a52cf1","timestampMs":21100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"42a4ab2d-8930-466b-90fd-35daa6a43307","timestampMs":21200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"cbebe326-91d0-4529-9845-3ff1a3f1bf25","timestampMs":21300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"906e3e5e-f886-44fb-aa35-896e01473f46","timestampMs":21400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ea6e7b8a-37cd-4340-aca7-f2667d187bca","timestampMs":21500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"951c5afe-407e-4324-bd8d-cf5360173569","timestampMs":21600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"450ebb68-c557-4d45-9d5f-0989215d74bf","timestampMs":21700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5029e99d-6053-4a5f-bbe6-9e295d81d2e8","timestampMs":21800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7232833b-4b89-428a-85fc-b0f384b020b9","timestampMs":21900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9b7863ec-9d9c-47c6-876e-0c9827bc29e2","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"9d2a21b5-ceb7-4cda-a46e-595d8b5e02d3","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"f0be0f9a-38ff-4af8-818c-6afac3d1dfd1","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"53bf0334-107c-4ee6-a677-25dc45111077","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"5f4ceb48-56ce-4bbf-b74d-1cb9b435ce06","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"393f2293-1c0c-4121-8a4b-558333886669","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"d8cd579a-6f34-4e8e-b7d3-b642df5447ef","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"8daa13e6-6334-486a-9374-00b75d8b29ac","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"0f7dcf03-94dc-45d0-a0f6-8742920d65b2","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"7b55c637-0b47-4a74-8f46-415fa31898c2","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"9f366ca3-3260-48ae-bfa1-731d5129241a","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"c1144675-9355-4119-84d5-7a0ea01ff0e5","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"b7eecda4-17cb-471c-a80e-f741b9f3eaf9","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"a7d8659c-8465-4208-8edf-7370bcb3d3b3","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"62b476f0-8dab-4010-bd4d-f60bda5deef3","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"391be64c-9a05-410c-8700-97f34e37c50a","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"38431702-fa7c-407b-a7a3-0808f01b5f4e","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"073cd5a8-50fa-41b7-84d2-088cdf913ceb","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"9e8dfcb7-e590-48c2-96c8-43db5fb35d34","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"3998eb21-e785-4164-a2d6-8d81ba39ac97","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"4b17752c-1feb-45b5-b630-b655b992098d","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"35660548-38c2-46f1-b8ab-8caf84948a45","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"dee18f0a-008b-4c75-83d8-2b36c14dead8","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"4cb20a5e-6a73-4249-aead-ad25081fa882","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"e5a4e3d4-76c0-479e-957f-5424fcc4af93","timestampMs":22000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"70142492-e298-4a77-a020-223f8612eb42","timestampMs":22100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8088d540-d9a3-49f9-87c3-d4d50f3a470c","timestampMs":22200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"320f3f7f-efb7-4ee4-ad32-975607ee678b","timestampMs":22300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"fefa5345-8782-46cc-ac2a-d27bce0c6496","timestampMs":22400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"103bd511-f10a-4097-b256-f643baf8079b","timestampMs":22500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1c123d85-71ba-43c3-af63-0815789aef57","timestampMs":22600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"b59adc7d-0521-4cf4-ab6d-184447c3eeee","timestampMs":22700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ff602e85-b93e-4ec1-9b8c-ae97f0584943","timestampMs":22800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"12712860-9ec7-4626-896d-608124a985fb","timestampMs":22900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d38a0b27-e4b1-438a-9e19-8228d83de3b3","timestampMs":23000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7afbc554-b5ac-49ea-8fcb-2cf1c9ead473","timestampMs":23100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6fdfadf0-c083-4be4-b77e-bb15d7486d20","timestampMs":23200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"552f0bde-0634-4d46-ac0a-d84657a69e05","timestampMs":23300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"026b39c5-9abd-46db-9989-73a4c03429cd","timestampMs":23400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ff5c5ba1-a856-4f72-a98f-2b8d0f8279af","timestampMs":23500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"c32e555d-9f3a-4c3b-ae20-6572b81a3efb","timestampMs":23600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"75c5cab6-ea39-452f-9a91-445e07035f46","timestampMs":23700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"fcad09b4-0aec-49e5-80f8-760e81986fca","timestampMs":23800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4de3888e-986a-4378-a4cd-7ed4ec42932c","timestampMs":23900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"981fe5cd-8300-4016-86c0-b80289973f5c","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"40ff2e68-a0f3-4304-be0b-fbed825b86ea","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"4d05fb48-5751-4999-a573-acd05b7af4ce","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"8cfe91fb-3445-4b74-84a6-7e76a11e957e","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"d15c0275-082c-4101-92dc-d19dda844a0f","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"5bb40460-0091-49e9-ad20-ba928b177306","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"bcdf8e1c-8f10-4fe6-9cda-e72a95d1cecb","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"b5367078-1f9b-43e7-b10f-4f54aa845733","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"6db74881-c15a-45fa-a5f7-861b23323a84","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"e89948e7-2d97-440e-8857-383c65b838e2","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"a69b55c7-d20b-4f9c-b42e-211bacd050d2","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"1e041d3e-f889-4706-8925-460b7ec2e418","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"be7c93f3-52d4-42b6-a018-0f77ce87974e","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"9ac2554d-b7cd-48dd-bffc-2b2b20fc3d2f","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"da509f02-63ed-41af-8986-604f5d9c8304","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"88d53a81-1cda-4d33-8798-503e8ec8e3b0","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"b103dd8c-3fe5-479d-8f64-4ae40ae706b7","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"becad14a-04aa-4941-8263-b08abc2048da","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"25f9e678-070d-435e-bfd0-f48fc067e24b","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"03418898-afa7-4582-8405-b75b8b55ad2c","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"179cdc8f-a7ac-420e-b7e3-f9cc1322685a","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"7646e934-ded8-485f-8fa1-93079ca966dc","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"7af686aa-e48d-4157-bbd7-e9b034089a2d","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"4d3874b9-16fe-4145-b011-d2c29eac52bf","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"c4c32167-6003-4135-8f61-f414ea82c5d9","timestampMs":24000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"6a4cf313-7c5a-466b-b118-c046e501e1f7","timestampMs":24100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"65e3f3c8-036e-427a-be99-be8337418be9","timestampMs":24200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"cdbcb6f4-4865-4298-9cc1-d91681f7082b","timestampMs":24300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"98158ddc-f1c7-4a1f-97d9-eccae2b5ede9","timestampMs":24400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0500ab9a-11de-4831-933b-8ded7e118fa2","timestampMs":24500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"028147f6-46c9-46fa-8a2b-1cc9e19acbf6","timestampMs":24600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a2e6ffee-fb1f-493e-812e-500b75ae19e3","timestampMs":24700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3e94287a-052f-4a59-8c1c-7add72106e56","timestampMs":24800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2d9b98fb-4888-480f-8cbe-529e47b0afa2","timestampMs":24900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"f0bc1fe5-a5a2-41d3-bc3b-bfca7368c969","timestampMs":25000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"dc91ecc8-8e96-4ffe-9bf2-8134188cd8e1","timestampMs":25100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e13bf986-d0b7-4a89-a905-a7095b7b6284","timestampMs":25200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"df26f71d-8074-475e-a8d4-1bff051379df","timestampMs":25300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e4f5cb8d-4316-48e5-b421-04a5b2c5eb08","timestampMs":25400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0188bf65-ae8b-4792-a73e-8fd447fa0368","timestampMs":25500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"212cb372-b4ab-48b9-b887-ec20914f80ac","timestampMs":25600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a2667155-979a-4138-ad36-97ce7df0ccec","timestampMs":25700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1c10a63b-fad9-4873-b075-dc7807b8aafb","timestampMs":25800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7e985314-ff39-40ff-a2ef-ed63c249dc82","timestampMs":25900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5948ac72-6f74-4968-aff5-c8cc49f92ab5","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"ea9f260e-40e4-4cb1-b7d3-95390ee7e921","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"ab09a596-99a9-489a-a101-f3f5d5b3abcc","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"4ed8080f-4982-4a0d-b717-126b46640714","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"c8dd5316-0d09-407a-b058-f677bde84c9a","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"a4000b50-50c3-4d39-97ce-124da736959e","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"59b03ecb-40e0-4512-9338-502a60f9c6a3","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"f73f9674-8dce-4646-aa35-a6cfffcddeb5","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"74d41c35-f487-4e85-b1ea-a9f181d89aad","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"cb6a9420-400c-4756-839c-f5eca1768572","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"46dcc75f-ae36-4f79-b10a-7013ce213b8c","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"3420d152-6d13-4d11-a5e6-ae1fd9b4fa36","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"65748177-086a-419a-aec8-c62af1479023","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"e64f13c2-f905-4af8-92a7-d18d6be52301","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"2a019131-c9df-45fb-9233-ee8c0a954363","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"53b254e9-e6e5-4c46-8e76-a600a48b9206","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"14b8628c-fa0c-47e4-a2a1-107fcdd316ed","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"19161776-e19b-4377-bb93-4c42dcfe1cc5","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"25e067b9-975e-455e-a809-841c4ba4c527","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"a0c8f337-61ec-4101-8368-3d7a8d0c5927","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"8617bca5-7af6-4eff-acd5-b8b02615a472","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"74d329b0-8016-4920-ba01-6db1cb765168","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"eb5d2287-d788-4f1c-a727-532b2b01cc68","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"af4d9da9-8df4-4bf3-8246-43bb96a468f8","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"74af9324-bdb2-49b2-8604-4ef8b8b86661","timestampMs":26000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"3ad6a1a6-96fc-4174-adf6-20916486957e","timestampMs":26100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9e94f6e1-98f1-4598-ba36-a395734feb44","timestampMs":26200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d88136ec-209b-469b-9663-cddbc988f680","timestampMs":26300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"cfabc8f9-029b-44cf-8bf1-20e08dc4acdc","timestampMs":26400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"79c5bb4d-53af-4738-8bcc-c664af9b352b","timestampMs":26500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"635d3a98-4674-49ed-b7f9-d3ccd7adc641","timestampMs":26600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"68ed6be4-d9ee-4fc1-be19-fef9b4d7dae8","timestampMs":26700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d9836509-56ed-4c91-af49-d61683f7d21b","timestampMs":26800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"8862cc64-77c3-401d-9a09-8f8417d450f9","timestampMs":26900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3a7d8027-4b84-44a1-8d25-41baf1a254ff","timestampMs":27000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"9752bab0-bfcf-4485-a493-7ea2fed72b97","timestampMs":27100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0e64adc2-19b4-4891-9b7c-a036b689e969","timestampMs":27200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"3c44b277-1c47-4373-8b23-f5440c2db2a5","timestampMs":27300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"de44cfd9-fcbd-4539-9d66-7b52e0709295","timestampMs":27400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"63cbaa2d-2197-4d50-a1fd-d49581f5a56b","timestampMs":27500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"7e3b7b3f-20f0-4afe-bccd-1d3157a6b03d","timestampMs":27600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"bf382ee5-fa9e-41ed-a875-4392b99413b5","timestampMs":27700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"2c44f80d-0b2c-4e35-b560-6d4b84288380","timestampMs":27800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"aee82558-774e-49d6-9647-e8903a0c5bf1","timestampMs":27900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1876e175-c5cf-4805-9c44-8369a19ec185","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"LEAK_OCCURRED","eventId":"eb1e61d5-ec5b-4e47-b01d-d7c3a4f20ff2","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":4.0,"waterLevelAfterLeak":6.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"f39a77ec-71ca-450d-a9b3-90ce8d8d0eed","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"10.0","leakedAmount":"4.0","waterAfterLeak":"6.0","newWaterLevel":"7.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"17289607-b354-4c57-a91f-ab14d5c5399e","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":7.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"aff2317a-466e-49a6-a17c-8937de301af9","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"7.0","leakedAmount":"0.0","waterAfterLeak":"7.0","newWaterLevel":"8.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"afd189d9-0fa0-4c46-8c56-00016725ee29","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":8.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"98859089-9400-4e03-b984-68cde075f925","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"8.0","leakedAmount":"0.0","waterAfterLeak":"8.0","newWaterLevel":"9.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"2100815b-5c08-4af4-b3f5-6968ac60fdfd","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":9.0,"payload":{}}
+{"type":"REQUEST_ALLOWED","eventId":"825521de-546a-49fa-8d9b-3a854559bcda","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{"waterBefore":"9.0","leakedAmount":"0.0","waterAfterLeak":"9.0","newWaterLevel":"10.0","key":"sim-key"}}
+{"type":"LEAK_OCCURRED","eventId":"9eaa840a-664e-42ef-86c5-7a0085da0929","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"77ae54c5-322e-4d94-990f-e07e4c3a84d1","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"69fa4c0b-8c4b-40d8-bdc7-0d73d5800f77","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"7674326b-9627-4b01-a95b-2075aea5bdec","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"28957e6e-262b-4022-8ca4-e492b9961078","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"28bdb15a-76f6-4a07-aa7e-6363eb720dcc","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"6c2b61ee-dd46-4645-b389-300a46c0407f","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"8a37bd6b-1634-494e-b065-587b18ee8af1","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"d4ebacb8-8e84-41a0-99a0-ff4157f42147","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"3da4ae9b-e22c-4ca0-9a9d-67dd71c5596a","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"59e431ae-87f5-4316-81dc-c51c5cc84ed5","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"cd38deba-76c5-4227-a6d1-ec6406c85c33","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"f840e733-59d7-4adb-a53b-f27c5e737f7e","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"96a523ae-b3ff-4504-a64d-aba8b568086b","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"LEAK_OCCURRED","eventId":"ded554d6-8d61-4dc3-840b-b7874570eb5c","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","leakedAmount":0.0,"waterLevelAfterLeak":10.0,"payload":{}}
+{"type":"REQUEST_BLOCKED","eventId":"b91e8e35-0c6f-4b0e-bee2-2bd53e857f75","timestampMs":28000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","reason":"Rate limit exceeded","payload":{"waterBefore":"10.0","leakedAmount":"0.0","waterAfterLeak":"10.0","key":"sim-key","retryAfterMs":"500"}}
+{"type":"TICK","eventId":"d3bfc210-9a6d-42bc-9284-d28d4780d52b","timestampMs":28100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"ef5814e9-6d87-4187-95f5-f61982a5ce9e","timestampMs":28200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"285d6bb6-2199-44fa-b5bd-3624ba49e9e7","timestampMs":28300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"19abcdd7-ba63-499c-a6af-cc2d579c47bc","timestampMs":28400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"417a38f4-b1d4-494f-9b37-d839c4fe2a25","timestampMs":28500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"c369fcd6-0227-4626-a5b0-218e036f0f34","timestampMs":28600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d11e4b28-85bc-4755-a469-c3b83bc017db","timestampMs":28700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"1373f6b9-7301-4ded-9d3c-67ad11d812b8","timestampMs":28800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"4530bb0f-8d3a-400e-8e09-8930e0fda030","timestampMs":28900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"d2038211-5e48-4fd7-aadd-40c7d8717251","timestampMs":29000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"5cf95f0d-333d-4999-ab71-1cdb39d976db","timestampMs":29100,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"acb244bf-59a9-4fd7-9f77-2eb0a988e089","timestampMs":29200,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"e27bd31f-7dd5-4229-83ad-acb7c51012b9","timestampMs":29300,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"0ffbfdaa-8902-4fed-aeff-8349536d0a04","timestampMs":29400,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"a0010728-a09b-4950-8498-228312969a5c","timestampMs":29500,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"6a28bc26-ffa6-4b43-8467-6e350d518c51","timestampMs":29600,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"74ca7a6c-13aa-4deb-92c9-d7fd88f08f31","timestampMs":29700,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"67020e6e-812b-4ef5-91f8-a9125ae558dd","timestampMs":29800,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"647029fa-87c7-48c2-a8cc-db33ab041abd","timestampMs":29900,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}
+{"type":"TICK","eventId":"f95c5037-7ab0-457e-a53e-d03a801bd065","timestampMs":30000,"strategy":"LEAKY_BUCKET","nodeId":"node-1","payload":{}}

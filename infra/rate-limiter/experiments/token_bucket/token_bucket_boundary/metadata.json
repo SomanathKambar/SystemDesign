@@ -1,0 +1,20 @@
+{
+    "id": "token_bucket_boundary",
+    "name": "TOKEN_BUCKET - Boundary",
+    "description": "Simulation of TOKEN_BUCKET under Boundary traffic.",
+    "strategy": "TOKEN_BUCKET",
+    "config": {
+        "capacity": "10.0",
+        "rate": "2.0",
+        "duration": "30000",
+        "windowSizeMs": "5000"
+    },
+    "profile": {
+        "type": "com.systemdesign.infra.ratelimiter.runner.TrafficProfile.Boundary",
+        "name": "Boundary Burst",
+        "windowSizeMs": 5000,
+        "burstSize": 10,
+        "durationMs": 30000
+    },
+    "timestamp": 1769776311417
+}
