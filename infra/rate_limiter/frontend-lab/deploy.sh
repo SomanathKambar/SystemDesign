@@ -26,32 +26,28 @@ if [ ! -d "dist" ]; then
 fi
 
 # 3. Handle the mono-repo structure manually
-# We want the files to live in /infra/rate_limiter/ on the gh-pages branch
-# But we also need an index.html at the root to redirect users
-
 echo "🔨 Setting up gh-pages branch structure..."
 cd $DEPLOY_DIR
 git init
 git remote add origin https://github.com/SomanathKambar/SystemDesign.git
-git fetch origin gh-pages || echo "First time deployment or branch doesn't exist yet"
 
 # Create the folder structure
 mkdir -p infra/rate_limiter
 cp -r "$(cd - > /dev/null && pwd)/dist/"* infra/rate_limiter/
 
-# Create a redirect at the root so people don't see a 404
+# Create a redirect at the root so people don't see a 404 or ABOUT.md
 cat <<EOF > index.html
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; url='./infra/rate_limiter/'" />
+    <meta http-equiv="refresh" content="0; url='/SystemDesign/infra/rate_limiter/'" />
     <script type="text/javascript">
-      window.location.href = "./infra/rate_limiter/"
+      window.location.href = "/SystemDesign/infra/rate_limiter/"
     </script>
     <title>Redirecting to Rate Limiter Lab</title>
   </head>
   <body>
-    If you are not redirected, <a href="./infra/rate_limiter/">click here</a>.
+    If you are not redirected, <a href="/SystemDesign/infra/rate_limiter/">click here</a>.
   </body>
 </html>
 EOF
@@ -61,9 +57,12 @@ touch .nojekyll
 
 # 4. Commit and Push
 echo "⬆️ Pushing to GitHub..."
+git config user.name "GitHub Action" || true
+git config user.email "action@github.com" || true
+
 git add .
-git commit -m "Deploy Rate Limiter Lab to infra/rate_limiter"
-git push -f origin master:gh-pages
+git commit -m "Deploy Rate Limiter Lab to infra/rate_limiter (with absolute base path)"
+git push -f origin HEAD:gh-pages
 
 echo "✅ SUCCESS!"
 echo "Your lab will be live shortly at: https://SomanathKambar.github.io/SystemDesign/infra/rate_limiter/"
