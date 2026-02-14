@@ -1,15 +1,16 @@
 package com.systemdesign.infra.ratelimiter.runner
 
-import com.systemdesign.infra.ratelimiter.core.EventEmittingRateLimiter
+import com.systemdesign.infra.ratelimiter.core.EventEmittingMechanism
 import com.systemdesign.infra.ratelimiter.core.TestClock
-import com.systemdesign.infra.ratelimiter.core.event.RateLimitEvent
+import com.systemdesign.infra.ratelimiter.core.model.RequestContext
 import java.util.*
 
 class Simulator(
-    private val limiter: EventEmittingRateLimiter,
+    private val limiter: EventEmittingMechanism,
     private val clock: TestClock
 ) {
     private val tickIntervalMs = 100L
+    private val defaultContext = RequestContext(key = "sim-key")
 
     fun run(profile: TrafficProfile) {
         when (profile) {
@@ -46,7 +47,7 @@ class Simulator(
             }
 
             repeat(profile.burstSize) {
-                limiter.allow("sim-key")
+                limiter.execute(defaultContext)
             }
 
             // Second burst at the very start of the next window
@@ -54,7 +55,7 @@ class Simulator(
             elapsed += 20
 
             repeat(profile.burstSize) {
-                limiter.allow("sim-key")
+                limiter.execute(defaultContext)
             }
 
             // Advance to the next window boundary
@@ -69,8 +70,13 @@ class Simulator(
     private fun simulateConstant(profile: TrafficProfile.Constant) {
         val intervalMs = (1000.0 / profile.requestsPerSecond).toLong()
         var elapsed = 0L
+        if (intervalMs <= 0) {
+             // Avoid infinite loop if RPS is too high for Long precision
+             limiter.execute(defaultContext)
+             return
+        }
         while (elapsed < profile.durationMs) {
-            limiter.allow("sim-key")
+            limiter.execute(defaultContext)
             advanceTime(intervalMs)
             elapsed += intervalMs
         }
@@ -80,7 +86,7 @@ class Simulator(
         var elapsed = 0L
         while (elapsed < profile.durationMs) {
             repeat(profile.burstSize) {
-                limiter.allow("sim-key")
+                limiter.execute(defaultContext)
             }
             advanceTime(profile.intervalMs)
             elapsed += profile.intervalMs
@@ -93,7 +99,7 @@ class Simulator(
         while (elapsed < profile.durationMs) {
             val requests = random.nextInt((profile.avgRequestsPerSecond * 2).toInt())
             repeat(requests) {
-                limiter.allow("sim-key")
+                limiter.execute(defaultContext)
             }
             advanceTime(1000)
             elapsed += 1000

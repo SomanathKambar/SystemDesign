@@ -1,12 +1,19 @@
+plugins {
+    kotlin("plugin.serialization") version "1.9.22"
+}
+
 dependencies {
     implementation(project(":core"))
-    implementation(project(":engine"))
     implementation(project(":strategies:fixed-window"))
     implementation(project(":strategies:token-bucket"))
     implementation(project(":strategies:leaky-bucket"))
     implementation(project(":strategies:sliding-window"))
-    implementation(project(":persistence:redis"))
-    
-    implementation("org.springframework.boot:spring-boot-starter:3.2.2")
-    implementation("redis.clients:jedis:5.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.2")
+}
+
+tasks.withType<Test> {
+    useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+    }
 }

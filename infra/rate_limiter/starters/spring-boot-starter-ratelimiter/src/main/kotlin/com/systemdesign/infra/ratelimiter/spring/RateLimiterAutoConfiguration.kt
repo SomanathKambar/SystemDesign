@@ -1,21 +1,8 @@
 package com.systemdesign.infra.ratelimiter.spring
 
 import com.systemdesign.infra.ratelimiter.core.RateLimiter
-import com.systemdesign.infra.ratelimiter.core.StateStore
-import com.systemdesign.infra.ratelimiter.core.TokenBucketStore
-import com.systemdesign.infra.ratelimiter.core.SlidingWindowStore
-import com.systemdesign.infra.ratelimiter.persistence.redis.RedisFixedWindowStore
-import com.systemdesign.infra.ratelimiter.persistence.redis.RedisSlidingWindowCounterStore
-import com.systemdesign.infra.ratelimiter.persistence.redis.RedisTokenBucketStore
-import com.systemdesign.infra.ratelimiter.persistence.redis.RedisSlidingWindowStore
-import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.FixedWindowRateLimiter
-import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.InMemoryStateStore as FixedInMemoryStore
-import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowRateLimiter
-import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowLogRateLimiter
-import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.InMemorySlidingWindowStore
-import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.InMemoryStateStore as SlidingInMemoryStore
-import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.TokenBucketRateLimiter
-import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.InMemoryTokenBucketStore
+import com.systemdesign.infra.ratelimiter.core.MechanismAdapter
+import com.systemdesign.infra.ratelimiter.engine.DecisionClient
 import org.springframework.boot.autoconfigure.AutoConfiguration
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty
@@ -36,42 +23,63 @@ class RateLimiterAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean
-    fun rateLimiter(properties: RateLimiterProperties, 
-                    jedis: Jedis? = null): RateLimiter {
+    fun decisionClient(properties: RateLimiterProperties): DecisionClient {
+        val policyJson = properties.policyJson ?: generateDefaultPolicyJson(properties)
         
-        return when (properties.type) {
-            RateLimiterProperties.RateLimiterType.FIXED_WINDOW -> {
-                val store = if (jedis != null) RedisFixedWindowStore(jedis) else FixedInMemoryStore()
-                FixedWindowRateLimiter(
-                    windowSizeMs = properties.fixedWindow.windowSizeMs,
-                    maxRequests = properties.fixedWindow.limit,
-                    store = store
-                )
-            }
-            RateLimiterProperties.RateLimiterType.SLIDING_WINDOW_COUNTER -> {
-                val store = if (jedis != null) RedisSlidingWindowCounterStore(jedis) else SlidingInMemoryStore()
-                SlidingWindowRateLimiter(
-                    windowSizeMs = properties.slidingWindow.windowSizeMs,
-                    maxRequests = properties.slidingWindow.limit,
-                    store = store
-                )
-            }
-            RateLimiterProperties.RateLimiterType.SLIDING_WINDOW_LOG -> {
-                val store = if (jedis != null) RedisSlidingWindowStore(jedis) else InMemorySlidingWindowStore()
-                SlidingWindowLogRateLimiter(
-                    windowSizeMs = properties.slidingWindow.windowSizeMs,
-                    maxRequests = properties.slidingWindow.limit,
-                    store = store
-                )
-            }
-            RateLimiterProperties.RateLimiterType.TOKEN_BUCKET -> {
-                val store = if (jedis != null) RedisTokenBucketStore(jedis) else InMemoryTokenBucketStore()
-                TokenBucketRateLimiter(
-                    capacity = properties.tokenBucket.capacity,
-                    refillTokensPerSecond = properties.tokenBucket.refillTokensPerSecond,
-                    store = store
-                )
+        val builder = DecisionClient.builder()
+            .withPolicyJson(policyJson)
+            .withShadowMode(properties.shadowMode)
+        
+        if (properties.mode == RateLimiterProperties.ExecutionMode.SIMULATION) {
+            builder.withSimulationMode()
+        } else {
+            builder.withOperationalMode()
+        }
+        
+        return builder.build()
+    }
+
+    @Bean
+    @ConditionalOnMissingBean
+    fun rateLimiter(decisionClient: DecisionClient): RateLimiter {
+        // Bridge for legacy code that expects RateLimiter interface
+        return object : RateLimiter {
+            override fun allow(key: String): com.systemdesign.infra.ratelimiter.core.model.Decision {
+                return decisionClient.evaluate(key)
             }
         }
+    }
+
+    private fun generateDefaultPolicyJson(properties: RateLimiterProperties): String {
+        val use = when (properties.type) {
+            RateLimiterProperties.RateLimiterType.FIXED_WINDOW -> "fixed_window"
+            RateLimiterProperties.RateLimiterType.SLIDING_WINDOW_COUNTER -> "sliding_window_counter"
+            RateLimiterProperties.RateLimiterType.SLIDING_WINDOW_LOG -> "sliding_window_log"
+            RateLimiterProperties.RateLimiterType.TOKEN_BUCKET -> "token_bucket"
+        }
+        
+        val params = when (properties.type) {
+            RateLimiterProperties.RateLimiterType.FIXED_WINDOW -> 
+                "\"limit\": \"${properties.fixedWindow.limit}\", \"windowSizeMs\": \"${properties.fixedWindow.windowSizeMs}\""
+            RateLimiterProperties.RateLimiterType.SLIDING_WINDOW_COUNTER, RateLimiterProperties.RateLimiterType.SLIDING_WINDOW_LOG ->
+                "\"limit\": \"${properties.slidingWindow.limit}\", \"windowSizeMs\": \"${properties.slidingWindow.windowSizeMs}\""
+            RateLimiterProperties.RateLimiterType.TOKEN_BUCKET ->
+                "\"capacity\": \"${properties.tokenBucket.capacity}\", \"refillRate\": \"${properties.tokenBucket.refillTokensPerSecond}\""
+        }
+
+        return """
+            {
+                "policies": [
+                    {
+                        "name": "default-policy",
+                        "priority": 0,
+                        "then": {
+                            "use": "$use",
+                            "params": { $params }
+                        }
+                    }
+                ]
+            }
+        """.trimIndent()
     }
 }

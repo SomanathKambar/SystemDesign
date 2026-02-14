@@ -6,6 +6,7 @@ import { LeakyBucketVisualizer } from './components/LeakyBucketVisualizer'
 import { FixedWindowVisualizer } from './components/FixedWindowVisualizer'
 import { SlidingWindowVisualizer } from './components/SlidingWindowVisualizer'
 import { ComparisonDashboard } from './components/ComparisonDashboard'
+import { LiveDashboard } from './components/LiveDashboard'
 
 const SAMPLE_EXPERIMENTS = [
     { strategy: 'fixed_window', id: 'fixed_window_boundary', label: 'Fixed Window (Boundary Burst)' },
@@ -23,9 +24,68 @@ const SAMPLE_EXPERIMENTS = [
     { strategy: 'leaky_bucket', id: 'leaky_bucket_burst', label: 'Leaky Bucket (Standard Burst)' },
 ]
 
+interface ScenarioCardProps {
+    exp: { strategy: string; id: string; label: string };
+    isSelected: boolean;
+    onSelect: (exp: { strategy: string; id: string; label: string }) => void;
+}
+
+const ScenarioCard = ({ exp, isSelected, onSelect }: ScenarioCardProps) => {
+    const [summary, setSummary] = useState<{ allowed: number; blocked: number } | null>(null);
+
+    useEffect(() => {
+        ExperimentLoader.loadEvents(exp.strategy, exp.id)
+            .then(events => {
+                const allowed = events.filter(e => e.type === 'REQUEST_ALLOWED').length;
+                const blocked = events.filter(e => e.type === 'REQUEST_BLOCKED').length;
+                setSummary({ allowed, blocked });
+            })
+            .catch(console.error);
+    }, [exp]);
+
+    return (
+        <button 
+            onClick={() => onSelect(exp)}
+            className={`group p-6 rounded-3xl border transition-all text-left h-full flex flex-col ${
+                isSelected 
+                ? 'bg-fuchsia-600/10 border-fuchsia-500/50 shadow-[0_0_30px_rgba(232,121,249,0.1)]' 
+                : 'bg-slate-900/40 border-white/5 hover:border-white/10'
+            }`}
+        >
+            <div className="flex justify-between items-start mb-4">
+                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">{exp.strategy.replace('_', ' ')}</span>
+                {isSelected && <span className="w-2 h-2 bg-fuchsia-500 rounded-full animate-pulse"></span>}
+            </div>
+            <h4 className="text-sm font-bold text-slate-200 mb-2">{exp.label}</h4>
+            <p className="text-[10px] text-slate-400 leading-relaxed mb-6 flex-1">
+                {exp.label.includes('Boundary') ? 'Stress test for window-edge overflow vulnerabilities. Tests if the system allows 2x limit at boundaries.' : 
+                 exp.label.includes('High Load') ? 'Sustainability test under constant maximum throughput. Checks for long-term stability.' : 
+                 'Validation of burst handling and recovery speed under irregular traffic spikes.'}
+            </p>
+            
+            <div className="flex items-center justify-between mt-auto pt-4 border-t border-white/5">
+                <div className="flex gap-4">
+                    <div className="flex flex-col">
+                        <span className="text-[8px] text-slate-500 uppercase font-black">Allowed</span>
+                        <span className="text-xs font-mono font-bold text-green-400">{summary?.allowed ?? '...'}</span>
+                    </div>
+                    <div className="flex flex-col">
+                        <span className="text-[8px] text-slate-500 uppercase font-black">Blocked</span>
+                        <span className="text-xs font-mono font-bold text-red-400">{summary?.blocked ?? '...'}</span>
+                    </div>
+                </div>
+                <span className={`text-[9px] font-black uppercase tracking-tighter group-hover:underline ${isSelected ? 'text-fuchsia-400' : 'text-cyan-400'}`}>
+                    Launch Simulation →
+                </span>
+            </div>
+        </button>
+    );
+};
+
 function App() {
   const [selectedExp, setSelectedExp] = useState(SAMPLE_EXPERIMENTS[0])
-  const [viewMode, setViewMode] = useState<'single' | 'comparison'>('single')
+  const [viewMode, setViewMode] = useState<'single' | 'comparison' | 'live'>('single')
+  const [activeScenario, setActiveScenario] = useState('Boundary')
   const [metadata, setMetadata] = useState<ExperimentMetadata | null>(null)
   const [events, setEvents] = useState<RateLimitEvent[]>([])
   const [currentTime, setCurrentTime] = useState(0)
@@ -35,17 +95,22 @@ function App() {
   const requestRef = useRef<number | null>(null)
   const lastUpdateTimeRef = useRef<number | null>(null)
 
+  const resetTime = () => {
+    setCurrentTime(0);
+    setIsPlaying(false);
+  };
+
   useEffect(() => {
-    if (viewMode === 'comparison') {
+    if (viewMode !== 'single') {
         setMetadata(null);
         setEvents([]);
+        if (viewMode === 'comparison') resetTime();
         return;
     }
 
     setMetadata(null)
     setEvents([])
-    setCurrentTime(0)
-    setIsPlaying(false)
+    resetTime()
 
     ExperimentLoader.loadMetadata(selectedExp.strategy, selectedExp.id)
       .then(setMetadata)
@@ -55,6 +120,12 @@ function App() {
       .then(setEvents)
       .catch(console.error)
   }, [selectedExp, viewMode])
+
+  useEffect(() => {
+    if (viewMode === 'comparison') {
+        resetTime();
+    }
+  }, [activeScenario]);
 
   const animate = (time: number) => {
     if (lastUpdateTimeRef.current !== null) {
@@ -85,8 +156,8 @@ function App() {
     }
   }, [isPlaying, playbackSpeed, metadata])
 
-  const visibleEvents = events.filter(e => e.timestampMs <= currentTime)
-  const latestEvents = visibleEvents.slice(-8).reverse()
+  const visibleEvents = viewMode === 'live' ? events : events.filter(e => e.timestampMs <= currentTime)
+  const latestEvents = visibleEvents.slice(-12).reverse()
 
   const renderVisualizer = () => {
     if (!metadata) return null;
@@ -132,6 +203,12 @@ function App() {
                     >
                         COMPARISON
                     </button>
+                    <button 
+                        onClick={() => setViewMode('live')}
+                        className={`px-3 py-1 text-[10px] font-bold rounded-md transition-all ${viewMode === 'live' ? 'bg-fuchsia-600 text-white shadow-lg' : 'text-slate-400 hover:text-slate-200'}`}
+                    >
+                        LIVE ENGINE
+                    </button>
                 </div>
 
                 {viewMode === 'single' && (
@@ -174,89 +251,96 @@ function App() {
 
       <main className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Visualization Area */}
-        <div className={viewMode === 'single' ? 'lg:col-span-2 space-y-6' : 'lg:col-span-3 space-y-6'}>
-          <div className={`${viewMode === 'single' ? 'aspect-video' : 'h-[600px]'} bg-slate-900/50 backdrop-blur-sm rounded-3xl border border-white/5 shadow-2xl flex items-center justify-center relative overflow-hidden group`}>
+        <div className={viewMode !== 'comparison' ? 'lg:col-span-2 space-y-6' : 'lg:col-span-3 space-y-6'}>
+          <div className={`${viewMode !== 'comparison' ? 'aspect-video' : 'h-[600px]'} bg-slate-900/50 backdrop-blur-sm rounded-3xl border border-white/5 shadow-2xl flex items-center justify-center relative overflow-hidden group`}>
              <div className="absolute top-6 left-6 flex items-center gap-2 z-10">
-                <div className="w-2 h-2 bg-cyan-500 rounded-full animate-pulse shadow-[0_0_8px_#22d3ee]"></div>
-                <span className="text-[10px] font-mono text-cyan-500 uppercase tracking-widest">
-                    {viewMode === 'single' ? 'Real-time Simulation' : 'Comparison Matrix'}
+                <div className={`${viewMode === 'live' ? 'bg-fuchsia-500 shadow-[0_0_8px_#d946ef]' : 'bg-cyan-500 shadow-[0_0_8px_#22d3ee]'} w-2 h-2 rounded-full animate-pulse`}></div>
+                <span className={`text-[10px] font-mono ${viewMode === 'live' ? 'text-fuchsia-500' : 'text-cyan-500'} uppercase tracking-widest`}>
+                    {viewMode === 'single' ? 'Real-time Simulation' : viewMode === 'comparison' ? 'Comparison Matrix' : 'Live Governed Runtime'}
                 </span>
              </div>
              
-             {viewMode === 'single' ? renderVisualizer() : <ComparisonDashboard currentTime={currentTime} allExperiments={SAMPLE_EXPERIMENTS} />}
+             {viewMode === 'single' ? renderVisualizer() : 
+              viewMode === 'comparison' ? <ComparisonDashboard currentTime={currentTime} allExperiments={SAMPLE_EXPERIMENTS} activeScenario={activeScenario} setActiveScenario={setActiveScenario} /> :
+              <LiveDashboard />
+             }
 
-             {/* Time HUD */}
-             <div className="absolute bottom-6 right-8 text-right z-10 bg-slate-950/80 px-4 py-2 rounded-2xl backdrop-blur-md border border-white/5">
-                <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1">Elapsed Time</div>
-                <div className="text-3xl font-mono font-bold tabular-nums text-cyan-400">
-                    {currentTime.toFixed(0).padStart(5, '0')}<span className="text-cyan-900 ml-1">MS</span>
+             {/* Time HUD (Not for Live) */}
+             {viewMode !== 'live' && (
+                <div className="absolute bottom-6 right-8 text-right z-10 bg-slate-950/80 px-4 py-2 rounded-2xl backdrop-blur-md border border-white/5">
+                    <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1">Elapsed Time</div>
+                    <div className="text-3xl font-mono font-bold tabular-nums text-cyan-400">
+                        {currentTime.toFixed(0).padStart(5, '0')}<span className="text-cyan-900 ml-1">MS</span>
+                    </div>
                 </div>
-             </div>
+             )}
           </div>
 
-          {/* Controls */}
-          <div className="bg-slate-900/50 backdrop-blur-md p-8 rounded-3xl border border-white/5 shadow-xl">
-            <div className="flex flex-wrap items-center gap-6 mb-8">
-              <button 
-                onClick={() => setIsPlaying(!isPlaying)}
-                className={`group relative flex items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${
-                    isPlaying ? 'bg-fuchsia-500 hover:bg-fuchsia-400' : 'bg-cyan-600 hover:bg-cyan-500'
-                } shadow-lg shadow-cyan-900/20`}
-              >
-                {isPlaying ? (
-                    <svg className="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                ) : (
-                    <svg className="w-6 h-6 fill-white ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                )}
-              </button>
-              
-              <button 
-                onClick={() => { setCurrentTime(0); setIsPlaying(false); }}
-                className="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 transition-colors"
-                title="Reset Simulation"
-              >
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-              </button>
+          {/* Controls (Only for non-live) */}
+          {viewMode !== 'live' && (
+              <div className="bg-slate-900/50 backdrop-blur-md p-8 rounded-3xl border border-white/5 shadow-xl">
+                <div className="flex flex-wrap items-center gap-6 mb-8">
+                <button 
+                    onClick={() => setIsPlaying(!isPlaying)}
+                    className={`group relative flex items-center justify-center w-14 h-14 rounded-full transition-all duration-300 ${
+                        isPlaying ? 'bg-fuchsia-500 hover:bg-fuchsia-400' : 'bg-cyan-600 hover:bg-cyan-500'
+                    } shadow-lg shadow-cyan-900/20`}
+                >
+                    {isPlaying ? (
+                        <svg className="w-6 h-6 fill-white" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    ) : (
+                        <svg className="w-6 h-6 fill-white ml-1" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    )}
+                </button>
+                
+                <button 
+                    onClick={() => { setCurrentTime(0); setIsPlaying(false); }}
+                    className="p-3 rounded-xl bg-white/5 hover:bg-white/10 text-slate-300 transition-colors"
+                    title="Reset Simulation"
+                >
+                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                </button>
 
-              <div className="h-8 w-px bg-white/5 mx-2"></div>
+                <div className="h-8 w-px bg-white/5 mx-2"></div>
 
-              <div className="flex items-center gap-3">
-                <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Playback Speed</span>
-                <div className="flex p-1 bg-slate-950/50 rounded-xl border border-white/5">
-                    {[0.5, 1, 2, 5].map(speed => (
-                    <button
-                        key={speed}
-                        onClick={() => setPlaybackSpeed(speed)}
-                        className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
-                            playbackSpeed === speed ? 'bg-cyan-600 text-white shadow-md' : 'text-slate-500 hover:text-slate-300'
-                        }`}
-                    >
-                        {speed}x
-                    </button>
-                    ))}
+                <div className="flex items-center gap-3">
+                    <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Playback Speed</span>
+                    <div className="flex p-1 bg-slate-950/50 rounded-xl border border-white/5">
+                        {[0.5, 1, 2, 5].map(speed => (
+                        <button
+                            key={speed}
+                            onClick={() => setPlaybackSpeed(speed)}
+                            className={`px-4 py-1.5 rounded-lg text-xs font-bold transition-all ${
+                                playbackSpeed === speed ? 'bg-cyan-600 text-white shadow-md' : 'text-slate-500 hover:text-slate-300'
+                            }`}
+                        >
+                            {speed}x
+                        </button>
+                        ))}
+                    </div>
                 </div>
-              </div>
-            </div>
-            
-            <div className="relative pt-2">
-                <input 
-                    type="range" 
-                    min="0" 
-                    max={metadata ? metadata.config.duration : 10000} 
-                    value={currentTime}
-                    onChange={(e) => setCurrentTime(parseInt(e.target.value))}
-                    className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-500"
-                />
-                <div className="flex justify-between mt-2 text-[10px] font-mono text-slate-600 uppercase tracking-tighter">
-                    <span>00000ms</span>
-                    <span>{metadata?.config.duration || '10000'}ms</span>
+                </div>
+                
+                <div className="relative pt-2">
+                    <input 
+                        type="range" 
+                        min="0" 
+                        max={metadata ? metadata.config.duration : 10000} 
+                        value={currentTime}
+                        onChange={(e) => setCurrentTime(parseInt(e.target.value))}
+                        className="w-full h-1.5 bg-slate-800 rounded-lg appearance-none cursor-pointer accent-cyan-500"
+                    />
+                    <div className="flex justify-between mt-2 text-[10px] font-mono text-slate-600 uppercase tracking-tighter">
+                        <span>00000ms</span>
+                        <span>{metadata?.config.duration || '10000'}ms</span>
+                    </div>
                 </div>
             </div>
-          </div>
+          )}
         </div>
 
-        {/* Sidebar / Logs (Only in single view) */}
-        {viewMode === 'single' && (
+        {/* Sidebar / Logs (Only in non-comparison view) */}
+        {viewMode !== 'comparison' && (
           <div className="space-y-6">
             <div className="bg-slate-900/50 backdrop-blur-md p-6 rounded-3xl border border-white/5 shadow-xl h-[640px] flex flex-col">
               <div className="flex items-center justify-between mb-6">
@@ -294,11 +378,17 @@ function App() {
                     </div>
                   </div>
                 ))}
-                {!metadata && (
+                {viewMode === 'single' && !metadata && (
                   <div className="h-full flex flex-col items-center justify-center animate-pulse">
                       <div className="w-12 h-12 border-4 border-cyan-500/30 border-t-cyan-500 rounded-full animate-spin mb-4"></div>
                       <div className="text-[10px] font-mono uppercase tracking-widest text-slate-500">Loading Telemetry...</div>
                   </div>
+                )}
+                {viewMode === 'live' && latestEvents.length === 0 && (
+                   <div className="h-full flex flex-col items-center justify-center text-center opacity-30">
+                        <div className="text-4xl mb-4">📡</div>
+                        <div className="text-[10px] font-mono uppercase tracking-[0.2em]">Waiting for live telemetry...</div>
+                   </div>
                 )}
               </div>
             </div>
@@ -308,33 +398,20 @@ function App() {
 
       {/* Scenario Catalog (Single View Only) */}
       {viewMode === 'single' && (
-          <div className="max-w-7xl mx-auto mt-20 mb-20">
-              <h3 className="text-xs font-black text-slate-500 uppercase tracking-[0.4em] mb-8 text-center">Scenario Catalog & Lab Reports</h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="max-w-7xl mx-auto mt-20 mb-32">
+              <div className="flex flex-col items-center mb-12">
+                  <h3 className="text-xs font-black text-slate-500 uppercase tracking-[0.4em] mb-4">Scenario Catalog & Lab Reports</h3>
+                  <div className="h-1 w-20 bg-gradient-to-r from-transparent via-cyan-500 to-transparent"></div>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {SAMPLE_EXPERIMENTS.map((exp) => (
-                      <button 
+                      <ScenarioCard 
                         key={`${exp.strategy}-${exp.id}`}
-                        onClick={() => setSelectedExp(exp)}
-                        className={`group p-6 rounded-3xl border transition-all text-left ${
-                            selectedExp.id === exp.id 
-                            ? 'bg-fuchsia-600/10 border-fuchsia-500/50 shadow-[0_0_30px_rgba(232,121,249,0.1)]' 
-                            : 'bg-slate-900/40 border-white/5 hover:border-white/10'
-                        }`}
-                      >
-                          <div className="flex justify-between items-start mb-4">
-                              <span className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">{exp.strategy.replace('_', ' ')}</span>
-                              {selectedExp.id === exp.id && <span className="w-2 h-2 bg-fuchsia-500 rounded-full animate-pulse"></span>}
-                          </div>
-                          <h4 className="text-sm font-bold text-slate-200 mb-2">{exp.label}</h4>
-                          <p className="text-[10px] text-slate-400 leading-relaxed mb-4">
-                              {exp.label.includes('Boundary') ? 'Stress test for window-edge overflow vulnerabilities.' : 
-                               exp.label.includes('High Load') ? 'Sustainability test under constant maximum throughput.' : 
-                               'Validation of burst handling and recovery speed.'}
-                          </p>
-                          <div className="flex items-center gap-2">
-                              <span className={`text-[9px] font-black uppercase tracking-tighter group-hover:underline ${selectedExp.id === exp.id ? 'text-fuchsia-400' : 'text-cyan-400'}`}>Launch Simulation →</span>
-                          </div>
-                      </button>
+                        exp={exp}
+                        isSelected={selectedExp.id === exp.id}
+                        onSelect={setSelectedExp}
+                      />
                   ))}
               </div>
           </div>

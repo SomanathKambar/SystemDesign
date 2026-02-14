@@ -2,20 +2,23 @@ package com.systemdesign.infra.ratelimiter.strategy.leakybucket
 
 import com.systemdesign.infra.ratelimiter.core.Clock
 import com.systemdesign.infra.ratelimiter.core.LeakyBucketStore
-import com.systemdesign.infra.ratelimiter.core.RateLimiter
+import com.systemdesign.infra.ratelimiter.core.Mechanism
 import com.systemdesign.infra.ratelimiter.core.SystemClock
 import com.systemdesign.infra.ratelimiter.core.model.Decision
 import com.systemdesign.infra.ratelimiter.core.model.LeakyBucketState
+import com.systemdesign.infra.ratelimiter.core.model.RequestContext
 import kotlin.math.max
 
-class LeakyBucketRateLimiter(
+class LeakyBucketMechanism(
     private val capacity: Double,
     private val leakRatePerSecond: Double,
     private val store: LeakyBucketStore = InMemoryLeakyBucketStore(),
     private val clock: Clock = SystemClock()
-) : RateLimiter {
+) : Mechanism {
 
-    override fun allow(key: String): Decision {
+    override fun execute(context: RequestContext): Decision {
+        val key = context.key
+        val cost = context.tokens.toDouble()
         val now = clock.currentTimeMillis()
         var decision: Decision? = null
 
@@ -27,31 +30,31 @@ class LeakyBucketRateLimiter(
             val leakedAmount = (timePassedMs * leakRatePerSecond) / 1000.0
             val currentWaterLevel = max(0.0, currentState.waterLevel - leakedAmount)
 
-            val context = mutableMapOf<String, Any>(
+            val meta = mapOf(
                 "waterBefore" to currentState.waterLevel,
                 "leakedAmount" to leakedAmount,
-                "waterAfterLeak" to currentWaterLevel
+                "waterAfterLeak" to currentWaterLevel,
+                "cost" to cost
             )
 
             // 2. Decide
-            if (currentWaterLevel + 1.0 <= capacity) {
-                val newWaterLevel = currentWaterLevel + 1.0
+            if (currentWaterLevel + cost <= capacity) {
+                val newWaterLevel = currentWaterLevel + cost
                 decision = Decision(
                     allowed = true,
-                    context = context + ("newWaterLevel" to newWaterLevel)
+                    reason = "Allowed",
+                    metadata = meta + ("newWaterLevel" to newWaterLevel)
                 )
                 LeakyBucketState(newWaterLevel, now)
             } else {
-                // How long until we have space for 1.0 units?
-                // currentWaterLevel + 1.0 - leak = capacity
-                // leak = currentWaterLevel + 1.0 - capacity
-                val neededLeak = currentWaterLevel + 1.0 - capacity
+                val neededLeak = currentWaterLevel + cost - capacity
                 val waitTimeMs = (neededLeak * 1000.0 / leakRatePerSecond).toLong()
                 
                 decision = Decision(
                     allowed = false,
+                    reason = "Leaky bucket overflow",
                     retryAfterMs = waitTimeMs,
-                    context = context
+                    metadata = meta
                 )
                 LeakyBucketState(currentWaterLevel, now)
             }

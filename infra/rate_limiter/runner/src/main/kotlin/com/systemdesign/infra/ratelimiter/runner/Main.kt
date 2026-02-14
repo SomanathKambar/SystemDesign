@@ -1,14 +1,14 @@
 package com.systemdesign.infra.ratelimiter.runner
 
 import com.github.ajalt.clikt.core.CliktCommand
-import com.systemdesign.infra.ratelimiter.core.EventEmittingRateLimiter
+import com.systemdesign.infra.ratelimiter.core.EventEmittingMechanism
 import com.systemdesign.infra.ratelimiter.core.TestClock
 import com.systemdesign.infra.ratelimiter.core.event.RateLimitEvent
-import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.FixedWindowRateLimiter
-import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.TokenBucketRateLimiter
-import com.systemdesign.infra.ratelimiter.strategy.leakybucket.LeakyBucketRateLimiter
-import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowRateLimiter
-import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowLogRateLimiter
+import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.FixedWindowMechanism
+import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.TokenBucketMechanism
+import com.systemdesign.infra.ratelimiter.strategy.leakybucket.LeakyBucketMechanism
+import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowMechanism
+import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowLogMechanism
 import java.util.*
 
 class RunExperiment : CliktCommand() {
@@ -32,28 +32,28 @@ class RunExperiment : CliktCommand() {
         val rate = 2.0
         val windowSizeMs = 5000L
 
-        val limiter = when (strategy.uppercase()) {
-            "TOKEN_BUCKET" -> TokenBucketRateLimiter(
+        val mechanism = when (strategy.uppercase()) {
+            "TOKEN_BUCKET" -> TokenBucketMechanism(
                 capacity = capacity,
                 refillTokensPerSecond = rate,
                 clock = clock
             )
-            "LEAKY_BUCKET" -> LeakyBucketRateLimiter(
+            "LEAKY_BUCKET" -> LeakyBucketMechanism(
                 capacity = capacity,
                 leakRatePerSecond = rate,
                 clock = clock
             )
-            "FIXED_WINDOW" -> FixedWindowRateLimiter(
+            "FIXED_WINDOW" -> FixedWindowMechanism(
                 windowSizeMs = windowSizeMs,
                 maxRequests = capacity.toInt(),
                 clock = clock
             )
-            "SLIDING_WINDOW_COUNTER" -> SlidingWindowRateLimiter(
+            "SLIDING_WINDOW_COUNTER" -> SlidingWindowMechanism(
                 windowSizeMs = windowSizeMs,
                 maxRequests = capacity.toInt(),
                 clock = clock
             )
-            "SLIDING_WINDOW_LOG" -> SlidingWindowLogRateLimiter(
+            "SLIDING_WINDOW_LOG" -> SlidingWindowLogMechanism(
                 windowSizeMs = windowSizeMs,
                 maxRequests = capacity.toInt(),
                 clock = clock
@@ -61,8 +61,8 @@ class RunExperiment : CliktCommand() {
             else -> throw IllegalArgumentException("Unknown strategy: $strategy")
         }
 
-        val emitter = EventEmittingRateLimiter(
-            delegate = limiter,
+        val emitter = EventEmittingMechanism(
+            delegate = mechanism,
             strategyName = strategy,
             nodeId = "node-1",
             clock = clock,

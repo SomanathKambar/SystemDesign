@@ -2,14 +2,18 @@ package com.systemdesign.infra.ratelimiter.app
 
 import com.systemdesign.infra.ratelimiter.core.Clock
 import com.systemdesign.infra.ratelimiter.core.RateLimiter
-import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.FixedWindowRateLimiter
+import com.systemdesign.infra.ratelimiter.core.MechanismAdapter
+import com.systemdesign.infra.ratelimiter.core.SystemClock
+import com.systemdesign.infra.ratelimiter.engine.DecisionClient
+import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.FixedWindowMechanism
 import com.systemdesign.infra.ratelimiter.strategy.fixedwindow.InMemoryStateStore as FixedInMemoryStateStore
-import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowRateLimiter
-import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowLogRateLimiter
+import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowMechanism
+import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.SlidingWindowLogMechanism
 import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.InMemorySlidingWindowStore
 import com.systemdesign.infra.ratelimiter.strategy.slidingwindow.InMemoryStateStore as SlidingInMemoryStateStore
-import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.TokenBucketRateLimiter
+import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.TokenBucketMechanism
 import com.systemdesign.infra.ratelimiter.strategy.tokenbucket.InMemoryTokenBucketStore
+import io.ktor.serialization.kotlinx.*
 import io.ktor.serialization.kotlinx.json.*
 import io.ktor.server.application.*
 import io.ktor.server.engine.*
@@ -19,7 +23,14 @@ import io.ktor.server.plugins.contentnegotiation.*
 import io.ktor.server.request.*
 import io.ktor.server.response.*
 import io.ktor.server.routing.*
+import io.ktor.server.websocket.*
+import io.ktor.websocket.*
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
+import java.util.*
 import java.util.concurrent.atomic.AtomicReference
 
 @Serializable
@@ -27,7 +38,8 @@ enum class StrategyType {
     FIXED_WINDOW,
     SLIDING_WINDOW_COUNTER,
     SLIDING_WINDOW_LOG,
-    TOKEN_BUCKET
+    TOKEN_BUCKET,
+    LEAKY_BUCKET
 }
 
 @Serializable
@@ -36,7 +48,9 @@ data class ConfigRequest(
     val windowSizeMs: Long,
     val strategy: StrategyType = StrategyType.FIXED_WINDOW,
     val capacity: Double = 10.0,
-    val refillTokensPerSecond: Double = 1.0
+    val refillTokensPerSecond: Double = 1.0,
+    val leakRate: Double = 1.0,
+    val simulationMode: Boolean = true
 )
 
 @Serializable
@@ -45,14 +59,25 @@ data class RateLimitRequest(val key: String)
 @Serializable
 data class RateLimitResponse(
     val allowed: Boolean,
+    val reason: String? = null,
     val retryAfterMs: Long? = null,
     val currentLimit: Int,
     val currentWindowSizeMs: Long,
     val serverTimeMs: Long,
-    val windowStartMs: Long,
     val strategy: StrategyType,
-    val estimatedCount: Double? = null,
-    val tokens: Double? = null
+    val metadata: Map<String, String> = emptyMap()
+)
+
+@Serializable
+data class TelemetryEvent(
+    val type: String,
+    val eventId: String,
+    val timestampMs: Long,
+    val strategy: StrategyType,
+    val nodeId: String = "node-1",
+    val payload: Map<String, String>,
+    val allowed: Boolean,
+    val reason: String? = null
 )
 
 @Serializable
@@ -87,24 +112,63 @@ data class ComparisonResponse(
     val timeSeries: List<ComparisonDataPoint>
 )
 
-class RateLimiterManager {
+class TelemetryService {
+    private val _events = MutableSharedFlow<TelemetryEvent>()
+    val events = _events.asSharedFlow()
+
+    suspend fun emit(event: TelemetryEvent) {
+        _events.emit(event)
+    }
+}
+
+class RateLimiterManager(private val telemetryService: TelemetryService) {
     private var currentConfig = ConfigRequest(5, 10000, StrategyType.FIXED_WINDOW)
-    private val fixedStateStore = FixedInMemoryStateStore()
-    private val slidingCounterStore = SlidingInMemoryStateStore()
-    private val slidingLogStore = InMemorySlidingWindowStore()
-    private val tokenBucketStore = InMemoryTokenBucketStore()
+    private val clock = SystemClock()
     
-    private val limiterRef = AtomicReference<RateLimiter>(
-        createLimiter(currentConfig)
+    private val clientRef = AtomicReference<DecisionClient>(
+        createClient(currentConfig)
     )
 
-    private fun createLimiter(config: ConfigRequest): RateLimiter {
-        return when (config.strategy) {
-            StrategyType.FIXED_WINDOW -> FixedWindowRateLimiter(config.windowSizeMs, config.limit, fixedStateStore)
-            StrategyType.SLIDING_WINDOW_COUNTER -> SlidingWindowRateLimiter(config.windowSizeMs, config.limit, slidingCounterStore)
-            StrategyType.SLIDING_WINDOW_LOG -> SlidingWindowLogRateLimiter(config.windowSizeMs, config.limit, slidingLogStore)
-            StrategyType.TOKEN_BUCKET -> TokenBucketRateLimiter(config.capacity, config.refillTokensPerSecond, tokenBucketStore)
+    private fun createClient(config: ConfigRequest): DecisionClient {
+        val strategyName = when (config.strategy) {
+            StrategyType.FIXED_WINDOW -> "fixed_window"
+            StrategyType.SLIDING_WINDOW_COUNTER -> "sliding_window"
+            StrategyType.SLIDING_WINDOW_LOG -> "sliding_window_log"
+            StrategyType.TOKEN_BUCKET -> "token_bucket"
+            StrategyType.LEAKY_BUCKET -> "leaky_bucket"
         }
+        
+        val policyJson = """
+        {
+            "policies": [
+                {
+                    "name": "default",
+                    "then": {
+                        "use": "$strategyName",
+                        "params": {
+                            "limit": "${config.limit}",
+                            "windowSizeMs": "${config.windowSizeMs}",
+                            "capacity": "${config.capacity}",
+                            "refillRate": "${config.refillTokensPerSecond}",
+                            "leakRate": "${config.leakRate}"
+                        }
+                    }
+                }
+            ]
+        }
+        """.trimIndent()
+
+        val builder = DecisionClient.builder()
+            .withPolicyJson(policyJson)
+            .withClock(clock)
+        
+        if (config.simulationMode) {
+            builder.withSimulationMode()
+        } else {
+            builder.withOperationalMode()
+        }
+        
+        return builder.build()
     }
 
     fun runComparison(durationSec: Int, rps: Int, limit: Int, windowMs: Long): ComparisonResponse {
@@ -121,10 +185,10 @@ class RateLimiterManager {
         val slidingLogClock = ManualClock(startTime)
         val tokenBucketClock = ManualClock(startTime)
 
-        val fixed = FixedWindowRateLimiter(windowMs, limit, FixedInMemoryStateStore(), fixedClock)
-        val slidingCounter = SlidingWindowRateLimiter(windowMs, limit, SlidingInMemoryStateStore(), slidingCounterClock)
-        val slidingLog = SlidingWindowLogRateLimiter(windowMs, limit, InMemorySlidingWindowStore(), slidingLogClock)
-        val tokenBucket = TokenBucketRateLimiter(limit.toDouble(), (limit.toDouble() / (windowMs / 1000.0)), InMemoryTokenBucketStore(), tokenBucketClock)
+        val fixed = MechanismAdapter(FixedWindowMechanism(windowMs, limit, FixedInMemoryStateStore(), fixedClock))
+        val slidingCounter = MechanismAdapter(SlidingWindowMechanism(windowMs, limit, SlidingInMemoryStateStore(), slidingCounterClock))
+        val slidingLog = MechanismAdapter(SlidingWindowLogMechanism(windowMs, limit, InMemorySlidingWindowStore(), slidingLogClock))
+        val tokenBucket = MechanismAdapter(TokenBucketMechanism(limit.toDouble(), (limit.toDouble() / (windowMs / 1000.0)), InMemoryTokenBucketStore(), tokenBucketClock))
         
         var totalFixedAllowed = 0
         var totalSlidingCounterAllowed = 0
@@ -190,7 +254,6 @@ class RateLimiterManager {
             )
         )
 
-        // Simple winner logic for now
         val winner = results.maxByOrNull { it.allowed }?.strategy ?: StrategyType.TOKEN_BUCKET
         
         return ComparisonResponse(
@@ -203,29 +266,33 @@ class RateLimiterManager {
 
     fun updateConfig(config: ConfigRequest) {
         this.currentConfig = config
-        limiterRef.set(createLimiter(config))
+        clientRef.set(createClient(config))
     }
 
-    fun allow(key: String): RateLimitResponse {
-        val now = System.currentTimeMillis()
-        val decision = limiterRef.get().allow(key)
-        val windowStart = (now / currentConfig.windowSizeMs) * currentConfig.windowSizeMs
+    suspend fun allow(key: String): RateLimitResponse {
+        val decision = clientRef.get().evaluate(key)
+        val now = clock.currentTimeMillis()
         
-        // For Token Bucket, we want to know current tokens
-        val tokens = if (currentConfig.strategy == StrategyType.TOKEN_BUCKET) {
-            tokenBucketStore.get(key)?.tokens
-        } else null
+        val telemetry = TelemetryEvent(
+            type = if (decision.allowed) "REQUEST_ALLOWED" else "REQUEST_BLOCKED",
+            eventId = UUID.randomUUID().toString(),
+            timestampMs = now,
+            strategy = currentConfig.strategy,
+            payload = decision.metadata.mapValues { it.value.toString() },
+            allowed = decision.allowed,
+            reason = decision.reason
+        )
+        telemetryService.emit(telemetry)
 
         return RateLimitResponse(
             allowed = decision.allowed,
+            reason = decision.reason,
             retryAfterMs = decision.retryAfterMs,
             currentLimit = currentConfig.limit,
             currentWindowSizeMs = currentConfig.windowSizeMs,
             serverTimeMs = now,
-            windowStartMs = windowStart,
             strategy = currentConfig.strategy,
-            estimatedCount = decision.context["estimatedCount"] as? Double ?: (decision.context["estimatedCount"] as? Int)?.toDouble(),
-            tokens = tokens
+            metadata = decision.metadata.mapValues { it.value.toString() }
         )
     }
     
@@ -237,8 +304,12 @@ fun main() {
         install(ContentNegotiation) {
             json()
         }
+        install(WebSockets) {
+            contentConverter = KotlinxWebsocketSerializationConverter(Json)
+        }
         
-        val manager = RateLimiterManager()
+        val telemetryService = TelemetryService()
+        val manager = RateLimiterManager(telemetryService)
 
         routing {
             staticResources("/", "static", index = "index.html")
@@ -266,6 +337,12 @@ fun main() {
                     val limit = call.request.queryParameters["limit"]?.toInt() ?: 20
                     val windowMs = call.request.queryParameters["windowMs"]?.toLong() ?: 5000L
                     call.respond(manager.runComparison(duration, rps, limit, windowMs))
+                }
+            }
+
+            webSocket("/ws/telemetry") {
+                telemetryService.events.collect { event ->
+                    send(Json.encodeToString(event))
                 }
             }
         }

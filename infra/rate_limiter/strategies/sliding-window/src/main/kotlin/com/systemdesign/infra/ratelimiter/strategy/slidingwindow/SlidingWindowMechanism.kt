@@ -1,20 +1,23 @@
 package com.systemdesign.infra.ratelimiter.strategy.slidingwindow
 
 import com.systemdesign.infra.ratelimiter.core.Clock
-import com.systemdesign.infra.ratelimiter.core.RateLimiter
+import com.systemdesign.infra.ratelimiter.core.Mechanism
 import com.systemdesign.infra.ratelimiter.core.StateStore
 import com.systemdesign.infra.ratelimiter.core.SystemClock
 import com.systemdesign.infra.ratelimiter.core.model.Decision
+import com.systemdesign.infra.ratelimiter.core.model.RequestContext
 import com.systemdesign.infra.ratelimiter.core.model.SlidingWindowCounter
 
-class SlidingWindowRateLimiter(
+class SlidingWindowMechanism(
     private val windowSizeMs: Long,
     private val maxRequests: Int,
     private val store: StateStore<SlidingWindowCounter> = InMemoryStateStore(),
     private val clock: Clock = SystemClock()
-) : RateLimiter {
+) : Mechanism {
 
-    override fun allow(key: String): Decision {
+    override fun execute(context: RequestContext): Decision {
+        val key = context.key
+        val cost = context.tokens.toInt()
         val now = clock.currentTimeMillis()
         val currentWindowStart = (now / windowSizeMs) * windowSizeMs
         val previousWindowStart = currentWindowStart - windowSizeMs
@@ -34,27 +37,32 @@ class SlidingWindowRateLimiter(
             val timeElapsedInCurrentWindow = now - currentWindowStart
             val weight = 1.0 - (timeElapsedInCurrentWindow.toDouble() / windowSizeMs)
             val estimatedCount = currentState.count + (currentState.previousCount * weight)
+            val projectedCount = estimatedCount + cost
 
-            val context = mapOf(
+            val meta = mapOf(
                 "windowStart" to currentWindowStart,
                 "isNewWindow" to isNewWindow,
-                "estimatedCount" to estimatedCount
+                "estimatedCount" to estimatedCount,
+                "projectedCount" to projectedCount,
+                "cost" to cost
             )
 
-            if (estimatedCount >= maxRequests) {
+            if (projectedCount > maxRequests) {
                 val resetTime = currentWindowStart + windowSizeMs
                 decision = Decision(
                     allowed = false,
+                    reason = "Sliding window limit exceeded. Max: $maxRequests, Est: $projectedCount",
                     retryAfterMs = resetTime - now,
-                    context = context
+                    metadata = meta
                 )
                 currentState
             } else {
                 decision = Decision(
                     allowed = true,
-                    context = context + ("newEstimatedCount" to (estimatedCount + 1))
+                    reason = "Allowed",
+                    metadata = meta + ("newCount" to (currentState.count + cost))
                 )
-                currentState.copy(count = currentState.count + 1)
+                currentState.copy(count = currentState.count + cost)
             }
         }
 

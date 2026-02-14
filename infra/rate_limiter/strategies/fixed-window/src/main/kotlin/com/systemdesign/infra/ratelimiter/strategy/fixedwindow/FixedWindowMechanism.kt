@@ -1,27 +1,28 @@
 package com.systemdesign.infra.ratelimiter.strategy.fixedwindow
 
 import com.systemdesign.infra.ratelimiter.core.Clock
-import com.systemdesign.infra.ratelimiter.core.RateLimiter
+import com.systemdesign.infra.ratelimiter.core.Mechanism
 import com.systemdesign.infra.ratelimiter.core.StateStore
 import com.systemdesign.infra.ratelimiter.core.SystemClock
 import com.systemdesign.infra.ratelimiter.core.model.Decision
 import com.systemdesign.infra.ratelimiter.core.model.FixedWindowCounter
+import com.systemdesign.infra.ratelimiter.core.model.RequestContext
 
-class FixedWindowRateLimiter(
+class FixedWindowMechanism(
     private val windowSizeMs: Long,
     private val maxRequests: Int,
     private val store: StateStore<FixedWindowCounter> = InMemoryStateStore(),
     private val clock: Clock = SystemClock()
-) : RateLimiter {
+) : Mechanism {
 
-    override fun allow(key: String): Decision {
+    override fun execute(context: RequestContext): Decision {
+        val key = context.key
         val now = clock.currentTimeMillis()
         val windowStart = (now / windowSizeMs) * windowSizeMs
 
         var decision: Decision? = null
 
-        // TTL should be at least one full window to ensure we can look back if needed,
-        // although for fixed window, we only care about the current window.
+        // TTL should be at least one full window
         store.compute(key, windowSizeMs * 2) { state: FixedWindowCounter? ->
             val isNewWindow = state == null || state.windowStart != windowStart
             val currentState = if (isNewWindow) {
@@ -30,26 +31,31 @@ class FixedWindowRateLimiter(
                 state!!
             }
 
-            val context = mapOf(
+            val cost = context.tokens.toInt()
+            val projectedCount = currentState.count + cost
+
+            val meta = mapOf(
                 "windowStart" to windowStart,
-                "isNewWindow" to isNewWindow,
-                "currentCount" to currentState.count
+                "currentCount" to currentState.count,
+                "cost" to cost
             )
 
-            if (currentState.count >= maxRequests) {
+            if (projectedCount > maxRequests) {
                 val resetTime = windowStart + windowSizeMs
                 decision = Decision(
                     allowed = false,
+                    reason = "Fixed window limit exceeded. Max: $maxRequests, Current: ${currentState.count}, Requested: $cost",
                     retryAfterMs = resetTime - now,
-                    context = context
+                    metadata = meta
                 )
                 currentState
             } else {
                 decision = Decision(
                     allowed = true,
-                    context = context + ("newCount" to (currentState.count + 1))
+                    reason = "Allowed",
+                    metadata = meta + ("newCount" to projectedCount)
                 )
-                FixedWindowCounter(currentState.count + 1, windowStart)
+                FixedWindowCounter(projectedCount, windowStart)
             }
         }
 

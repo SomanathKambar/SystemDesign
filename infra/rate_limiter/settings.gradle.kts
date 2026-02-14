@@ -1,6 +1,7 @@
 rootProject.name = "rate-limiter"
 
 include(":core")
+include(":engine")
 include(":strategies:fixed-window")
 include(":strategies:sliding-window")
 include(":strategies:token-bucket")

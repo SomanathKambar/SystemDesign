@@ -222,10 +222,10 @@ Event categories:
 - [x] Connect Event stream to visual intents.
 - [x] Implement Strategy Selector in UI.
 
-### PHASE 5 — Comparison & Deployment (IN PROGRESS)
+### PHASE 5 — Comparison & Deployment (COMPLETED)
 - [x] Implement Comparison Mode (side-by-side playback).
 - [x] Basic winner detection logic.
-- [ ] UI Refinement: Fix block visibility in comparison view.
+- [x] UI Refinement: Fix block visibility in comparison view.
 - [x] Simulation Refinement:
     - **FIXED:** Simulator now emits granular TICK events every 100ms.
     - **FIXED:** Token Bucket interpolates refill on the frontend for smooth visualization.
@@ -235,91 +235,22 @@ Event categories:
 - [ ] Setup GitHub Actions for automated deployment to GitHub Pages.
 
 ## CURRENT STATE
-Phase: PHASE 5
-Last completed step: Side-by-side comparison implemented.
-Next step: Refactor Simulator to support granular time stepping and TICK events.
-Interruption Snapshot: 
-- Identified that Simulator jumps time too fast and doesn't emit intermediate state events.
-- Token Bucket refill only happens during `allow()` calls, making it look broken in UI when no requests are made.
-Open questions: None.
-
-
-## 8. Verification & Correctness Audit
-
-### 1. Token Bucket: The "Flexible" Metric
-- **Target Logic**: `Allow if tokens >= 1.0`.
-- **Refill Algorithm**: Lazy calculation: `newTokens = min(capacity, currentTokens + (now - lastRefill) * refillRate)`.
-- **Precision**: Uses `Double` for tokens to ensure smooth refill even at high frequencies.
-- **Wait Time**: `(1.0 - currentTokens) / refillRate` converted to milliseconds.
-- **Trade-off**: High precision and burst support, but slightly more complex than counters.
-
-### 2. Leaky Bucket: The "Smoothing" Metric
-- **Target Logic**: `Allow if bucket has space`.
-- **Drip Algorithm**: Constant outflow rate.
-- **Implementation**: Can be implemented using a "Next Available Time" slot or a FIFO queue.
-- **Difference from Token Bucket**: Token Bucket allows bursts up to capacity; Leaky Bucket forces a steady stream (shaping).
-- **Status**: **PENDING IMPLEMENTATION**.
-
-### 3. Fixed Window Counter: The "Cheap" Metric
-- **Target Logic**: `Allow if counter < limit`.
-- **Reset Logic**: `windowStart = (now / windowSize) * windowSize`.
-- **Critical Flaw**: Window boundary burst (2x limit in short duration).
-- **Trade-off**: Extremely low memory (1 counter per key) and high performance.
-
-### 4. Sliding Window Counter: The "Precision Estimate"
-- **Target Logic**: `weightedSum = currentCount + (previousCount * weight)`.
-- **Weight**: `(windowSize - timeElapsedInCurrentWindow) / windowSize`.
-- **Accuracy**: Good approximation of a sliding window without the memory overhead of a log.
-- **Trade-off**: Much better than Fixed Window at boundaries, still uses constant memory.
-
-### 5. Sliding Window Log: The "Perfect" Metric
-- **Target Logic**: `count(timestamps in [now - windowSize, now]) < limit`.
-- **Implementation**: Store timestamps in a list/ZSET and filter old ones on every request.
-- **Accuracy**: 100% accurate sliding window.
-- **Trade-off**: Memory scales with the limit (O(N)).
-
----
-
-## 9. Execution Plan (Refined)
-
-### Step 1: Implement Leaky Bucket
-- [ ] Create `LeakyBucketRateLimiter` in `:strategies:leaky-bucket`.
-- [ ] Implement `InMemoryLeakyBucketStore`.
-- [ ] Add unit tests verifying the "smoothing" behavior (constant outflow).
-
-### Step 2: Correctness & Concurrency Audit
-- [ ] **Boundary Test**: Verify Fixed Window "double burst" and how Sliding Window Counter mitigates it.
-- [ ] **Concurrency Test**: Ensure `store.compute` handles high-contention updates without losing tokens/counts.
-- [ ] **Precision Test**: Compare `SlidingWindowLog` vs `SlidingWindowCounter` under jittery traffic.
-
-### Step 3: Visualization & Lab Update
-- [ ] Add `LEAKY_BUCKET` to `frontend-lab`.
-- [ ] Update `runner` to generate `LEAKY_BUCKET` experiments.
-- [ ] Fix comparison view visibility issues.
-
-### Step 4: Distributed Readiness
-- [ ] Verify `persistence:redis` implementations for all strategies.
-- [ ] Ensure Lua scripts are used (or planned) for Redis atomicity if multi-key operations are needed.
-
----
-
-## CURRENT STATE
 Phase: PHASE 5 (Verification & Refinement)
-Last completed step: Enhanced Comparison Dashboard with per-strategy selection, resilience scoring, and architectural reporting.
-Next step: Implement "Dynamic Lab" UX - Global Scenario Selector, Strategy Addition Awareness, and Single-View Telemetry Catalog.
+Last completed step: Implemented Global Scenario Selector and Strategy Addition awareness in Comparison Mode.
+Next step: Enhance Telemetry Catalog (Single View) with dynamic metrics and post-mortems.
 Interruption Snapshot: 
-- Moving from per-card selection to Global Scenario selection in Comparison Mode.
-- Implementing "Add Strategy" button with awareness of available strategies.
-- Adding "Scenario Catalog" to Single View with detailed success/failure post-mortems.
-- Ensuring smooth, zero-latency UI transitions when switching global inputs.
+- Global Scenario selection in Comparison Mode is functional.
+- "Add Strategy" button with awareness of available strategies is functional.
+- Scenario Catalog in Single View needs dynamic telemetry (Allow/Block counts).
+- Animation smoothness and zero-flicker transitions during scenario swaps.
 Open questions: None.
 
 ## 10. Dynamic Lab UX Refinement
 
 ### Step 1: Global Scenario Control (Comparison)
-- [ ] Add `GlobalScenario` selector (Boundary vs Burst vs HighLoad).
-- [ ] Sync all active strategy cards to the selected scenario automatically.
-- [ ] Update "Add Strategy" button to pick an unrepresented strategy and disable when full.
+- [x] Add `GlobalScenario` selector (Boundary vs Burst vs HighLoad).
+- [x] Sync all active strategy cards to the selected scenario automatically.
+- [x] Update "Add Strategy" button to pick an unrepresented strategy and disable when full.
 
 ### Step 2: Telemetry Catalog (Single View)
 - [ ] Add a scrollable "Scenario List" at the bottom of Single View.

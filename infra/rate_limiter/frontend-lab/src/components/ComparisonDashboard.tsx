@@ -10,6 +10,8 @@ import { TelemetryReport } from './TelemetryReport';
 interface Props {
   currentTime: number;
   allExperiments: { strategy: string; id: string; label: string }[];
+  activeScenario: string;
+  setActiveScenario: (scenario: string) => void;
 }
 
 interface StrategyState {
@@ -30,8 +32,7 @@ const STRATEGY_TYPES = [
 
 const SCENARIOS = ['Boundary', 'Burst', 'HighLoad'];
 
-export const ComparisonDashboard = ({ currentTime, allExperiments }: Props) => {
-  const [activeScenario, setActiveScenario] = useState('Boundary');
+export const ComparisonDashboard = ({ currentTime, allExperiments, activeScenario, setActiveScenario }: Props) => {
   const [states, setStates] = useState<StrategyState[]>([
     { strategyType: 'FIXED_WINDOW', metadata: null, events: [], loading: true, showTelemetry: false },
     { strategyType: 'TOKEN_BUCKET', metadata: null, events: [], loading: true, showTelemetry: false },
@@ -61,6 +62,7 @@ export const ComparisonDashboard = ({ currentTime, allExperiments }: Props) => {
 
   // Sync all strategies when scenario changes
   useEffect(() => {
+    setStates(prev => prev.map(s => ({ ...s, loading: true })));
     states.forEach((s, i) => {
         loadExperimentForStrategy(i, s.strategyType, activeScenario);
     });
